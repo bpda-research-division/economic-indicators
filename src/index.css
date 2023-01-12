@@ -1,13 +1,75 @@
+
+
+@font-face {
+  font-family: "LegatoOT";
+  src: url("./Fonts/LegatoOT.otf");
+}
+
+@font-face {
+  font-family: "LegatoOT-Bold";
+  src: url("./Fonts/LegatoOT-Bold.otf");
+}
+
+:root {
+  --lightblue: #e8f3f6;
+  --mediumblue: #00a6b4;
+  --darkblue: #003c50;
+  --orange: #e05926;
+}
+
+
 body {
+  background-color: var(--lightblue);
+  color: var(--darkblue);
   margin: 0;
+  padding: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1{
+  font-family: LegatoOT-Bold;
+  font-size: 2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2{
+  font-family: LegatoOT-Bold;
+  font-size: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.recharts-legend-item, .recharts-default-tooltip { font-size: 0.75rem; }
+
+.HeaderDiv{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+}
+
+
+.subHeader {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 0.75rem 0rem 0rem 1rem;
+  background-color: var(--darkblue);
+  color: white;
+}
+
+.accentNumber {
+  color: var(--mediumblue);
+}
+
+.indicatorSubtext {
+  font-size: 1em;
 }
