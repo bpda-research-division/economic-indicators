@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { InfoLg } from "react-bootstrap-icons";
+
 
 function About() {
   const [show, setShow] = useState(false);
@@ -9,9 +11,9 @@ function About() {
   const handleShow = () => setShow(true);
 
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        About The Dashboard
+    <div className="aboutComp">
+      <Button variant="btn-primary" onClick={handleShow} id="aboutButton">
+        <InfoLg size={25}/>
       </Button>
 
       <Offcanvas show={show} onHide={handleClose} placement="end">
@@ -28,6 +30,7 @@ function About() {
           four commercial hubs: Fenway/Longwood, Back Bay, Downtown, and South Boston
           Waterfront.
           </p>
+          <img src={require("../images/CommercialCenters.png")} alt="Commercial Centers of Boston: Downtown, Back Bay, South Boston Waterfront, Fenway and Longwood" id="commercialCenters" className="img-fluid" />
           <p>
           For more economic and demographic research about Boston, please visit <a href="For more economic and demographic research about Boston, please visit https://www.bostonplans.org/research">https://www.bostonplans.org/research</a>
           </p>
@@ -98,7 +101,7 @@ function About() {
           </ul>
         </Offcanvas.Body>
       </Offcanvas>
-    </>
+    </ div>
   );
 }
 

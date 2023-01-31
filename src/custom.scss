@@ -1,24 +1,51 @@
 // @import "../node_modules/bootstrap/scss/bootstrap";
 // @import "~bootstrap/scss/bootstrap";
 @import "bootstrap";
+@import "../node_modules/bootstrap/scss/functions";
+// @import "node_modules/bootstrap/scss/functions";
+// @import "node_modules/bootstrap/scss/variables";
+// @import "node_modules/bootstrap/scss/mixins";
+
 
 $darkblue:#003c50;
 $mediumblue:#00a6b4;
 $lightblue:#e8f3f6;
 $orange:#e05926;
 
-.btn-primary {
-  @include button-variant($darkblue, darken($darkblue, 7.5%), darken($darkblue, 10%), lighten($darkblue,5%), lighten($darkblue, 10%), darken($darkblue,30%));
-  color: #fff;
-  &:hover {
-            color: #fff;
-            background-color: lighten($darkblue, 5%);
-        }
+/* change the colors */
+$primary: #dd0000;
+
+
+// .btn-btn-primary {
+//   @include button-variant($darkblue, darken($darkblue, 7.5%), darken($darkblue, 10%), lighten($darkblue,5%), lighten($darkblue, 10%), darken($darkblue,30%));
+//   color: #fff;
+//   &:hover {
+//             color: #fff;
+//             background-color: lighten($darkblue, 5%);
+//         }
+// }
+
+// .btn-btn-primary {
+//   @include button-variant($darkblue, darken($darkblue, 7.5%), darken($darkblue, 10%), lighten($darkblue,5%), lighten($darkblue, 10%), darken($darkblue,30%));
+//   color: #fff;
+//   &:hover {
+//             color: #fff;
+//             background-color: lighten($darkblue, 5%);
+//         }
+// }
+
+
+// .btn-btn-outline-primary {
+//   @include button-outline-variant($darkblue, white, lighten($darkblue, 5%), $darkblue);
+// }
+
+.btn-btn-outline-primary {
+  @include button-outline-variant($orange, white, lighten($orange, 5%), $orange);
 }
 
-.btn-outline-primary {
-  @include button-outline-variant($darkblue, #222222, lighten($darkblue,5%), $darkblue);
-}
+// .btn-btn-outline-primary {
+//   @include button-outline-variant(lighten($mediumblue, 5%), $darkblue, lighten($mediumblue, 10%), $mediumblue);
+// }
 
 .nav-link {
   color: $darkblue;
@@ -49,3 +76,6 @@ $orange:#e05926;
 //         @include button-variant($btn-background, $btn-border, $btn-color);
 //     }
 // }
+// @import "node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";

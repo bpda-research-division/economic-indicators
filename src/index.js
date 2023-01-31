@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import './custom.scss'
 import './index.css';
+import "@esri/calcite-components/dist/calcite/calcite.css";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

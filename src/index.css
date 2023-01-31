@@ -1,4 +1,4 @@
-
+/* Fonts & Colors */
 
 @font-face {
   font-family: "LegatoOT";
@@ -14,15 +14,19 @@
   --lightblue: #e8f3f6;
   --mediumblue: #00a6b4;
   --darkblue: #003c50;
+  --darkestblue: #002F3D;
   --orange: #e05926;
 }
 
+/* Large Container Styling */
+* {
+  border-radius: 0 !important;
+}
 
 body {
   background-color: var(--lightblue);
   color: var(--darkblue);
   margin: 0;
-  padding: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -31,11 +35,61 @@ body {
   
 }
 
+/* .row, .App {
+  --bs-gutter-x: 0rem !important;
+} */
+
+
+.dashBody {
+  padding: 1rem 5rem 1rem 5rem;
+}
+
+.BodyRow {
+  margin: 0 !important;
+}
+
+/* Header Styling */
+
+.HeaderDiv{
+  display: flex;
+  /* justify-content: flex-start; */
+  align-items: center !important;
+  gap: 30px;
+  background-color: var(--darkestblue);
+  color: white;
+  height: 7vh;
+  /* padding: 1; */
+  padding: 0.7rem 5rem 0rem 5rem !important;
+  /* color: var(--darkblue); */
+  
+}
+
 h1{
   font-family: LegatoOT-Bold;
   font-size: 2em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  align-self: center;
+  margin-bottom: 0 !important;
+}
+
+#BPDALogo {
+  /* width: 2.5rem; */
+  width: 15rem;
+  align-self: center;
+}
+
+.aboutComp {
+  margin-left: auto;
+}
+
+.subHeader {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 0.75rem 5rem 0rem 5rem !important;
+  background-color: var(--darkblue);
+  color: white;
 }
 
 h2{
@@ -45,31 +99,45 @@ h2{
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-.recharts-legend-item, .recharts-default-tooltip { font-size: 0.75rem; }
-
-.HeaderDiv{
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-
+.subHeader > h2 {
+  font-size: 1.4em;
+  padding: 0rem;
 }
 
 
-.subHeader {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  padding: 0.75rem 0rem 0rem 1rem;
-  background-color: var(--darkblue);
-  color: white;
-}
+/* Indicator Styling  */
 
+.indicatorContainer, .chartContainer{
+  /* regular shadow */
+  /* box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important; */
+
+  /* light shadow */
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
 .accentNumber {
   color: var(--mediumblue);
 }
 
 .indicatorSubtext {
-  font-size: 1em;
+  font-size: 1vw;
 }
+
+.accentSubText {
+  color: var(--orange);
+  font-weight: bold;
+
+}
+
+/* Recharts Styling */
+
+.recharts-legend-item, .recharts-default-tooltip { font-size: 0.75rem; }
+
+.recharts-responsive-container, .recharts-wrapper {
+  background-color: white;
+}
+
+.chartTitle {
+  font-size: 1vw;
+  font-weight: bold;
+}
+
