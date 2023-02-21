@@ -12,9 +12,9 @@ function About() {
 
   return (
     <div className="aboutComp">
-      <Button variant="btn-primary" onClick={handleShow} id="aboutButton">
-        <InfoLg size={25}/>
-      </Button>
+      <a onClick={handleShow} className="underlineButton">
+        <InfoLg size={35} id="infoI" />
+      </a>
 
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>

@@ -13,69 +13,72 @@ function OffcanvasNav() {
   const handleShow = () => setNav(true);
 
   return (
-    <div classname="navContainer">
-      <Button variant="btn-primary" onClick={handleShow} className="navbar-toggler" >
+    <div className="navContainer">
+      {/* <Button variant="btn-primary" onClick={handleShow} className="navbar-toggler" >
         <List size={45}/>
-      </Button>
+      </Button> */}
+      <a onClick={handleShow} className="underlineButton">
+        <List size={45}  className="navbar-toggler"/>
+      </a>
 
       <Offcanvas show={nav} onHide={handleClose} placement="start" tabindex="-1" id="offcanvasNavbar">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Nav defaultActiveKey="/labor-market" className="flex-column" variant="tabs">
+          <Nav defaultActiveKey="/labor-market" className="flex-column">
             <ul class="list-unstyled row justify-content-start">
                 <li className="nav-heading">Citywide Overview</li>
                 <ul class="list-unstyled">
-                    <Nav.Item as="li">
+                    <Nav.Item as="li" className="underlineNav">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/labor-market">Labor Market</Nav.Link>
+                        <Nav.Link as={Link} to="/labor-market" onClick={handleClose}>Labor Market</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/mobility">Mobility</Nav.Link>
+                        <Nav.Link as={Link} to="/mobility" onClick={handleClose}>Mobility</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/economic-activity">Economic Activity</Nav.Link>
+                        <Nav.Link as={Link} to="/economic-activity" onClick={handleClose}>Economic Activity</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/real-estate-market">Real Estate Market</Nav.Link>
+                        <Nav.Link as={Link} to="/real-estate-market" onClick={handleClose}>Real Estate Market</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/real-estate-development">Real Estate Development</Nav.Link>
+                        <Nav.Link as={Link} to="/real-estate-development" onClick={handleClose}>Real Estate Development</Nav.Link>
                     </Nav.Item>
                 </ul>
                 <li className="nav-heading">Commercial Hubs</li>
                 <ul class="list-unstyled">
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/back-bay">Back Bay</Nav.Link>
+                        <Nav.Link as={Link} to="/back-bay" onClick={handleClose}>Back Bay</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/fenway-longwood">Fenway Longwood</Nav.Link>
+                        <Nav.Link as={Link} to="/fenway-longwood" onClick={handleClose}>Fenway Longwood</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/greater-downtown">Greater Downtown</Nav.Link>
+                        <Nav.Link as={Link} to="/greater-downtown" onClick={handleClose}>Greater Downtown</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/south-boston-waterfront">South Boston Waterfront</Nav.Link>
+                        <Nav.Link as={Link} to="/south-boston-waterfront" onClick={handleClose}>South Boston Waterfront</Nav.Link>
                     </Nav.Item>
                 </ul>
                 <li className="nav-heading">Annual Snapshot</li>
                 <ul class="list-unstyled">
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/population">Population</Nav.Link>
+                        <Nav.Link as={Link} to="/population" onClick={handleClose}>Population</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                        <Nav.Link as={Link} to="/economy">Economy</Nav.Link>
+                        <Nav.Link as={Link} to="/economy" onClick={handleClose}>Economy</Nav.Link>
                     </Nav.Item>
                 </ul>
             </ul>
