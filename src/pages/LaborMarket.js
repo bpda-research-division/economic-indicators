@@ -166,7 +166,7 @@ const LaborMarket = () => {
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-md justify-content-center text-center">
+          <div className="col-12 col-md-6">
               <h6 className="chartTitle">Change in Payroll Employment in Boston from February 2020</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart

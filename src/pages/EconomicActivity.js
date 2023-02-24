@@ -5,8 +5,6 @@ import React, {
 import { 
   LineChart, 
   Line, 
-  BarChart, 
-  Bar, 
   Legend, 
   Tooltip, 
   YAxis,
@@ -25,140 +23,127 @@ import {
 } from "../utils.js"
 
 const EconomicActivity = () => {
-  const [payroll, setPayroll] = useState([])
-  const [postings, setPostings] = useState([])
-  const [unemployment, setUnemployment] = useState([])
-  const [laborforce, setLaborforce] = useState([])
+  const [dining, setDining] = useState([])
+  const [hotels, setHotels] = useState([])
+  const [spending, setSpending] = useState([])
+  const [hotelsYearly, setHotelsYearly] = useState([])
 
   useEffect(() => {
     Promise.all([
-      fetch(baseAPI + 'LaborMarket_PayrollEst'),
-      fetch(baseAPI + 'LaborMarket_JobPostings'),
-      fetch(baseAPI + 'LaborMarket_UnemploymentRate'),
-      fetch(baseAPI + 'LaborMarket_ResLaborForce'),
+      fetch(baseAPI + 'EconomicActivity_SeatedDining'),
+      fetch(baseAPI + 'EconomicActivity_HotelOccupancy'),
+      fetch(baseAPI + 'EconomicActivity_InPersonSpending'),
+      fetch(baseAPI + 'EconomicActivity_HotelOccupancyByYear'),
     ])
-      .then(([resPayroll, resPostings, resUnemployment, resLaborforce]) =>
-        Promise.all([resPayroll.json(), resPostings.json(), resUnemployment.json(), resLaborforce.json()])
+      .then(([resSeatedDining, resHotelOccupancy, resInPersonSpending, resHotelOccupancyByYear]) =>
+        Promise.all([resSeatedDining.json(), resHotelOccupancy.json(), resInPersonSpending.json(), resHotelOccupancyByYear.json()])
       )
-      .then(([dataPayroll, dataPostings, dataUnemployment, dataLaborforce]) => {
-        setPayroll(dataPayroll);
-        setPostings(dataPostings);
-        setUnemployment(dataUnemployment);
-        setLaborforce(dataLaborforce);
+      .then(([dataSeatedDining, dataHotelOccupancy, dataInPersonSpending, dataHotelOccupancyByYear]) => {
+        setDining(dataSeatedDining);
+        setHotels(dataHotelOccupancy);
+        setSpending(dataInPersonSpending);
+        setHotelsYearly(dataHotelOccupancyByYear);
       })
-
   }, []);
 
-  // if (payroll.length > 1) {
-  //   console.log('plain month', payroll[0]['Month'])
-  //   console.log('new date', new Date(payroll[0]['Month']).getTime())
-  //   console.log('ex epoch', payroll[0]['Epoch Miliseconds'])
-  //   console.log('unemployment value', unemployment[4]['Boston Unemployment Rate']);
-  //   console.log('Total Nonfarm Payroll Jobs', postings[4]['Total Nonfarm Payroll Jobs']);
-  //   console.log(test);
-  // }
 
   return (
     <div>
       <div className="subHeader">
         <Clipboard2DataFill size={24} color={'#94D5DB'} className="subHeaderIcon"/>
-        <h2>Labor Market</h2>
+        <h2>Economic Activity</h2>
       </div>
       <div className="dashBody">
         <div className="row mh-20 g-6 indicator-row">
-          <div className="col-6 col-md-3 justify-content-center text-center">
+          <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"> 
-                Change in Boston <span className="accentSubText">Payroll Employment</span> from {
-                    payroll.length ?
+                Change in <span className="accentSubText">Seated Dining</span> from {
+                    dining.length ?
                       // @ts-ignore
-                      new Intl.DateTimeFormat("en-US", options).format((new Date(payroll[0]['Month'])))
+                      new Intl.DateTimeFormat("en-US", options).format((new Date(dining[0]['Month'])))
                       : 'loading'
                 }
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                  payroll.length ?
+                  dining.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(payroll[payroll.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(dining[dining.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                  payroll.length ?
-                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((payroll[payroll.length - 1]['Total Nonfarm Payroll Jobs']) * 100).toFixed(1))
+                  dining.length ?
+                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((dining[dining.length - 1]['Boston']) * 100).toFixed(1))
+                    : 'loading'
+                }%
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div className="col-md justify-content-center text-center">
+            <div className="indicatorContainer">
+              <h4 className="indicatorSubtext"><span className="accentSubText">Hotel Occupancy Rate</span></h4>
+              <div className="d-flex flex-row justify-content-around">
+                <h4 className="date">{
+                hotels.length ?
+                  // @ts-ignore
+                  new Intl.DateTimeFormat("en-US", options).format((new Date(hotels[hotels.length - 1]['Month'])))
+                  : 'loading'
+                }
+                </h4>
+                <h4 className="accentNumber">{
+                  hotels.length ?
+                    ((hotels[hotels.length - 1]['Boston']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
             </div>
           </div>
-          <div className="col-6 col-md-3 justify-content-center text-center">
+          <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Job Postings</span> from {
-                postings.length ?
-                  // @ts-ignoreang 
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(postings[0]['Month'])))
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Overall Spending</span> from {
+                spending.length ?
+                  // @ts-ignore
+                  new Intl.DateTimeFormat("en-US", options).format((new Date(spending[0]['Month'])))
                   : 'loading'
               }</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                postings.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(postings[postings.length - 1]['Month'])))
-                  : 'loading'
-                }
-                </h4>
-                <h4 className="accentNumber">{
-                  postings.length ?
-                    ((postings[postings.length - 1]['Total Nonfarm Payroll Jobs']) * 100).toFixed(1)
-                    : 'loading'
-                }%</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-6 col-md-3 justify-content-center text-center">
-            <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Unemployment</span> Rate from {
-                unemployment.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(unemployment[0]['Month'])))
-                  : 'loading'
-              }</h4>
-              <div className="d-flex flex-row justify-content-around">
-                <h4 className="date">{
-                  unemployment.length ?
+                  spending.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(unemployment[unemployment.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(spending[spending.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                  unemployment.length ?
-                    ((unemployment[unemployment.length - 1]['Boston Unemployment Rate'])).toFixed(1)
+                  spending.length ?
+                    ((spending[spending.length - 1]['Overall Spending'])).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
             </div>
           </div>
-          <div className="col-6 col-md-3 justify-content-center text-center">
+          <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Labor Force</span> from {
-                laborforce.length ?
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Resturant Spending</span> from {
+                spending.length ?
                   // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[0]['Month'])))
+                  new Intl.DateTimeFormat("en-US", options).format((new Date(spending[0]['Month'])))
                   : 'loading'
               }</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
-                    laborforce.length ?
+                    spending.length ?
                       // @ts-ignore
-                      new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[laborforce.length - 1]['Month'])))
+                      new Intl.DateTimeFormat("en-US", options).format((new Date(spending[spending.length - 1]['Month'])))
                       : 'loading'
                   }
                 </h4>
                 <h4 className="accentNumber">{
-                  laborforce.length ?
-                    ((laborforce[laborforce.length - 1]['Change From Previous Year']) * 100).toFixed(1)
+                  spending.length ?
+                    ((spending[spending.length - 1]['Eating Places']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -167,12 +152,12 @@ const EconomicActivity = () => {
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
           <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Change in Payroll Employment in Boston from February 2020</h6>
+              <h6 className="chartTitle">Seated Diners Compared to the Same Month in 2019</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
                   height={400}
-                  data={payroll}
+                  data={dining}
                   stackOffset="expand"
                 >
                   <XAxis
@@ -195,51 +180,27 @@ const EconomicActivity = () => {
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
-                    dataKey="Total Nonfarm Payroll Jobs"
+                    dataKey="Boston"
                     stroke="#003c50"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="Production Construction Logistics"
+                    dataKey="US"
                     stroke="#00a6b4"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Professional and Financial Services"
-                    stroke="#e05926"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Healthcare and Education"
-                    stroke="#a6c838"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="In Person and Support Services"
-                    stroke="#ce1b46"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Government"
-                    stroke="#7a3a86"
                     dot={false}
                   />
                 </LineChart>
               </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
+            <p className="citation">Source: OpenTable, Seated diners from online, phone, and walk-in reservations</p>
           </div>
           <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Boston Resident Labor Force Unemployment Rate</h6>
+              <h6 className="chartTitle">Overall In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
                   height={400}
-                  data={unemployment}
+                  data={spending}
                 >
                   <XAxis
                     dataKey="Epoch Miliseconds"
@@ -259,35 +220,76 @@ const EconomicActivity = () => {
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
-                    dataKey="Boston Unemployment Rate"
+                    dataKey="Overall Spending"
+                    stroke="#003c50"
+                    dot={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+              <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+          </div>
+        </div>
+        <div className="row mh-20 gx-5 gy-5">
+          <div className="col-12 col-md-6">
+              <h6 className="chartTitle">Hotel Occupancy Rate in Boston</h6>
+              <ResponsiveContainer width="90%" height={graphHeight}>
+                <LineChart
+                  width={500}
+                  height={400}
+                  data={hotelsYearly}
+                >
+                  <XAxis
+                    dataKey="Month"
+                    // scale="time"
+                    // type="number"
+                    // domain={['dataMin', 'dataMax']}
+                    // tickFormatter={dateFormatter}
+                  />
+                  <YAxis
+                    type="number"
+                    domain={[-.65, 0.5]}
+                    tickFormatter={decimalFormatter}
+                  />
+                  <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip formatter={decimalFormatter} />
+                  <Legend iconType="plainline" />
+                  <Line
+                    type="monotone"
+                    dataKey="2019"
                     stroke="#003c50"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="Massachusetts Unemployment Rate"
+                    dataKey="2020"
                     stroke="#00a6b4"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="US Unemployment Rate"
+                    dataKey="2021"
                     stroke="#e05926"
+                    dot={false}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="2022"
+                    stroke="#a6c838"
                     dot={false}
                   />
                 </LineChart>
               </ResponsiveContainer>
-              <p className="citation">Source: Burning Glass Technologies, Labor Insight</p>
+              <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report</p>
+
           </div>
-        </div>
-        <div className="row mh-20 gx-5 gy-5">
           <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Change in Job Postings in Boston from February 2020</h6>
+              <h6 className="chartTitle">In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
                   height={400}
-                  data={postings}
+                  data={spending}
                 >
                   <XAxis
                     dataKey="Epoch Miliseconds"
@@ -298,88 +300,34 @@ const EconomicActivity = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[-.65, 0.5]}
+                    domain={[0, .2]}
                     tickFormatter={decimalFormatter}
                   />
-                  <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
+                  
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
-                    dataKey="Total Nonfarm Payroll Jobs"
+                    dataKey="Grocery"
                     stroke="#003c50"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="Production Construction Logistics"
+                    dataKey="Eating Places"
                     stroke="#00a6b4"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="Professional and Financial Services"
+                    dataKey="Overall Spending"
                     stroke="#e05926"
                     dot={false}
                   />
-                  <Line
-                    type="monotone"
-                    dataKey="Healthcare and Education"
-                    stroke="#a6c838"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="In Person and Support Services"
-                    stroke="#ce1b46"
-                    dot={false}
-                  />
-                  <Line type="monotone" dataKey="Government" stroke="#7a3a86" dot={false} />
                 </LineChart>
               </ResponsiveContainer>
-              <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
-
-          </div>
-          <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Boston Resident Labor Force</h6>
-              <ResponsiveContainer width="90%" height={graphHeight}>
-                <BarChart
-                  width={500}
-                  height={400}
-                  data={laborforce}
-                  margin={{
-                    top: 20,
-                    right: 50,
-                    left: 50,
-                    bottom: 5,
-                  }}
-                >
-                  <XAxis
-                    dataKey="Epoch Miliseconds"
-                    scale="time"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
-                    tickFormatter={dateFormatter}
-                    padding={{ left: 15, right: 15 }}
-                  />
-                  <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} />
-                  <Legend iconType="plainline" />
-                  <Bar
-                    stackId="a"
-                    dataKey="Boston Resident Employment"
-                    fill="#003c50"
-                  />
-                  <Bar
-                    stackId="a"
-                    dataKey="Boston Resident Unemployment"
-                    fill="#e05926"
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-              <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
+              <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
           </div>
         </div>
       </div>

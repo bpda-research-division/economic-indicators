@@ -12,6 +12,7 @@ import Header from "./components/Header"
 import LaborMarket from './pages/LaborMarket';
 import Mobility from './pages/Mobility';
 import EconomicActivity from './pages/EconomicActivity';
+import RealEstateMarket from './pages/RealEstateMarket';
 import BackBay from './pages/BackBay';
 
 
@@ -30,6 +31,7 @@ function App() {
               <Route path="/labor-market" element={<LaborMarket />} />
               <Route path="/mobility" element={<Mobility />} />
               <Route path="/economic-activity" element={<EconomicActivity />} />
+              <Route path="/real-estate-market" element={<RealEstateMarket />} />
               <Route path="/back-bay" element={<BackBay />} />
             </Routes>    
           </Col>
