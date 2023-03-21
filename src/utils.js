@@ -15,7 +15,7 @@ export const dateFormatter = date => {
 
  {/* @ts-ignore */ }
 export const quarterlyFormatter = epoch => {
-   return (new Date(epoch)).getFullYear() + " Q" + Math.floor((new Date(epoch)).getMonth() + 3/3);
+   return (new Date(epoch)).getFullYear() + " Q" + (Math.floor(((new Date(epoch)).getMonth() + 3) / 3));
 };
 
   {/* @ts-ignore */ }
@@ -23,6 +23,14 @@ export const decimalFormatter = (value) => {
     let num = (value * 100).toFixed(1);
     let label = `${num}%`;
     return label;
+};
+
+export const commaFormatter = (value) => {
+    return value.toLocaleString("en-US");
+};
+
+export const dollarFormatter = (value) => {
+    return ('$' + Math.round(value).toLocaleString("en-US"));
 };
 
 export const ordinal = n => {

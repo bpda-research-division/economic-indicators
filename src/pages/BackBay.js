@@ -21,32 +21,38 @@ import {
   graphHeight,
   dateFormatter,
   decimalFormatter,
+  dollarFormatter,
   options,
+  ordinal,
+  quarterlyFormatter,
 } from "../utils.js"
 
 
 const BackBay = () => {
-  const [payroll, setPayroll] = useState([])
-  const [postings, setPostings] = useState([])
-  const [unemployment, setUnemployment] = useState([])
-  const [laborforce, setLaborforce] = useState([])
+  const [hubEconomicActivity, setHubEconomicActivity] = useState([])
+  const [hubMobility, setHubMobility] = useState([])
+  const [hubRealEstate, setHubRealEstate] = useState([])
+  const [hubRealEstateDev, setHubRealEstateDev] = useState([])
+  const [hubValidationSum, setHubValidationSum] = useState([])
 
 
   useEffect(() => {
     Promise.all([
-      fetch(baseAPI + 'LaborMarket_PayrollEst'),
-      fetch(baseAPI + 'LaborMarket_JobPostings'),
-      fetch(baseAPI + 'LaborMarket_UnemploymentRate'),
-      fetch(baseAPI + 'LaborMarket_ResLaborForce'),
+      fetch(baseAPI + 'Hub_Backbay_EconomicActivity'),
+      fetch(baseAPI + 'Hub_BackBay_Mobility'),
+      fetch(baseAPI + 'Hub_BackBay_RealEstate'),
+      fetch(baseAPI + 'Hub_BackBay_RealEstateDev'),
+      fetch(baseAPI + 'Hub_MBTAValidationSums'),
     ])
-      .then(([resPayroll, resPostings, resUnemployment, resLaborforce]) =>
-        Promise.all([resPayroll.json(), resPostings.json(), resUnemployment.json(), resLaborforce.json()])
+      .then(([resEconomicActivity, resMobility, resRealEstate, resRealEstateDev, resValidationSums]) =>
+        Promise.all([resEconomicActivity.json(), resMobility.json(), resRealEstate.json(), resRealEstateDev.json(),  resValidationSums.json()])
       )
-      .then(([dataPayroll, dataPostings, dataUnemployment, dataLaborforce]) => {
-        setPayroll(dataPayroll);
-        setPostings(dataPostings);
-        setUnemployment(dataUnemployment);
-        setLaborforce(dataLaborforce);
+      .then(([dataEconomicActivity, dataMobility, dataRealEstate, dataRealEstateDev, dataValidationSums]) => {
+        setHubEconomicActivity(dataEconomicActivity);
+        setHubMobility(dataMobility);
+        setHubRealEstate(dataRealEstate);
+        setHubRealEstateDev(dataRealEstateDev);
+        setHubValidationSum(dataValidationSums);
       })
 
   }, []);
@@ -58,28 +64,23 @@ const BackBay = () => {
         <h2>Back Bay</h2>
       </div>
       <div className="dashBody">
-        <div className="row mh-20 g-3">
+      <div className="row mh-20 g-6 indicator-row">
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">
-                  Change in Boston <span className="accentSubText">Payroll Employment</span> from {
-                    payroll.length ?
-                      // @ts-ignore
-                      new Intl.DateTimeFormat("en-US", options).format((new Date(payroll[0]['Month'])))
-                      : 'loading'
-                }
+              <h4 className="indicatorSubtext"> 
+                Change in <span className="accentSubText">Commuters</span> from the same month in 2019
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                  payroll.length ?
+                  hubMobility.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(payroll[payroll.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(hubMobility[hubMobility.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                  payroll.length ?
-                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((payroll[payroll.length - 1]['Total Nonfarm Payroll Jobs']) * 100).toFixed(1))
+                  hubMobility.length ?
+                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((hubMobility[hubMobility.length - 1]['Commuting Trips']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -87,47 +88,20 @@ const BackBay = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Job Postings</span> from {
-                postings.length ?
-                  // @ts-ignoreang 
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(postings[0]['Month'])))
-                  : 'loading'
-              }</h4>
-              <div className="d-flex flex-row justify-content-around">
-              <h4 className="date">{
-                postings.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(postings[postings.length - 1]['Month'])))
-                  : 'loading'
-                }
-                </h4>
-                <h4 className="accentNumber">{
-                  postings.length ?
-                    ((postings[postings.length - 1]['Total Nonfarm Payroll Jobs']) * 100).toFixed(1)
-                    : 'loading'
-                }%</h4>
-              </div>
-            </div> 
-          </div>
-          <div className="col-md justify-content-center text-center">
-            <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Unemployment</span> Rate from {
-                unemployment.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(unemployment[0]['Month'])))
-                  : 'loading'
-              }</h4>
+              <h4 className="indicatorSubtext"> 
+                Change in <span className="accentSubText">MBTA Passengers</span> from the same month in 2019
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                  unemployment.length ?
+                  hubMobility.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(unemployment[unemployment.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(hubMobility[hubMobility.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                  unemployment.length ?
-                    ((unemployment[unemployment.length - 1]['Boston Unemployment Rate'])).toFixed(1)
+                  hubMobility.length ?
+                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((hubMobility[hubMobility.length - 1]['Non-Work-Related Trips']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -135,23 +109,18 @@ const BackBay = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Labor Force</span> from {
-                laborforce.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[0]['Month'])))
-                  : 'loading'
-              }</h4>
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Overall In-person Spending</span> from same month in 2019</h4>
               <div className="d-flex flex-row justify-content-around">
-                <h4>{
-                    laborforce.length ?
-                      // @ts-ignore
-                      new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[laborforce.length - 1]['Month'])))
-                      : 'loading'
-                  }
+                <h4 className="date">{
+                  hubEconomicActivity.length ?
+                    // @ts-ignore
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(hubEconomicActivity[hubEconomicActivity.length - 1]['Month'])))
+                    : 'loading'
+                }
                 </h4>
                 <h4 className="accentNumber">{
-                  laborforce.length ?
-                    ((laborforce[laborforce.length - 1]['Change From Previous Year']) * 100).toFixed(1)
+                  hubEconomicActivity.length ?
+                    ((hubEconomicActivity[hubEconomicActivity.length - 1]['Overall Spending']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -159,23 +128,18 @@ const BackBay = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Labor Force</span> from {
-                laborforce.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[0]['Month'])))
-                  : 'loading'
-              }</h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Top Use Type for Recent and Upcoming Development</span></h4>
               <div className="d-flex flex-row justify-content-around">
-                <h4>{
-                    laborforce.length ?
-                      // @ts-ignore
-                      new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[laborforce.length - 1]['Month'])))
-                      : 'loading'
-                  }
+                <h4 className="date">{
+                  hubRealEstate.length ?
+                    // @ts-ignore
+                    Object.keys(hubRealEstateDev[hubRealEstateDev.length - 1])[1].slice(0, -5)
+                    : 'loading'
+                }
                 </h4>
                 <h4 className="accentNumber">{
-                  laborforce.length ?
-                    ((laborforce[laborforce.length - 1]['Change From Previous Year']) * 100).toFixed(1)
+                  hubRealEstateDev.length ?
+                    ((hubRealEstateDev[hubRealEstateDev.length - 1]['Residential sqft']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -183,38 +147,51 @@ const BackBay = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Labor Force</span> from {
-                laborforce.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[0]['Month'])))
-                  : 'loading'
-              }</h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Office Vacancy Rate</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
-                    laborforce.length ?
+                    hubRealEstate.length ?
                       // @ts-ignore
-                      new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[laborforce.length - 1]['Month'])))
+                      (hubRealEstate[hubRealEstate.length - 1]['Year and Quater'])
                       : 'loading'
                   }
                 </h4>
                 <h4 className="accentNumber">{
-                  laborforce.length ?
-                    ((laborforce[laborforce.length - 1]['Change From Previous Year']) * 100).toFixed(1)
+                  hubRealEstate.length ?
+                    ((hubRealEstate[hubRealEstate.length - 1]['Office']) * 100).toFixed(1)
+                    : 'loading'
+                }%</h4>
+              </div>
+            </div>
+          </div>
+          <div className="col-md justify-content-center text-center">
+            <div className="indicatorContainer">
+              <h4 className="indicatorSubtext"><span className="accentSubText">Office Asking Rent per Square Foot</span></h4>
+              <div className="d-flex flex-row justify-content-around">
+                <h4>{
+                    hubRealEstate.length ?
+                      // @ts-ignore
+                      (hubRealEstate[hubRealEstate.length - 1]['Year and Quater'])
+                      : 'loading'
+                  }
+                </h4>
+                <h4 className="accentNumber">{
+                  hubRealEstateDev.length ?
+                    ((hubRealEstateDev[hubRealEstateDev.length - 1]['Residential sqft']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
             </div>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-md justify-content-center text-center">
-            <div className="chartContainer">
-              <h6 className="chartTitle">Change in Payroll Employment in Boston from February 2020</h6>
+        <div className="row mh-20 gx-5 gy-5 graph-row">
+          <div className="col-12 col-md-4">
+              <h6 className="chartTitle">Incoming Trips to Boston, Compared to the Same Month in 2019</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
                   height={400}
-                  data={payroll}
+                  data={hubMobility}
                   stackOffset="expand"
                 >
                   <XAxis
@@ -237,52 +214,27 @@ const BackBay = () => {
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
-                    dataKey="Total Nonfarm Payroll Jobs"
+                    dataKey="Non-Work-Related Trips"
                     stroke="#003c50"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="Production Construction Logistics"
+                    dataKey="Commuting Trips"
                     stroke="#00a6b4"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Professional and Financial Services"
-                    stroke="#e05926"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Healthcare and Education"
-                    stroke="#a6c838"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="In Person and Support Services"
-                    stroke="#ce1b46"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Government"
-                    stroke="#7a3a86"
                     dot={false}
                   />
                 </LineChart>
               </ResponsiveContainer>
-            </div>
+            <p className="citation">Source: Cuebiq mobility data.</p>
           </div>
           <div className="col-12 col-md-4">
-            <div className="chartContainer">
-              <h6 className="chartTitle">Boston Resident Labor Force Unemployment Rate</h6>
+              <h6 className="chartTitle">In-Person Spending* in Back Bay, Compared to the Same Month 2019</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
                   height={400}
-                  data={unemployment}
+                  data={hubEconomicActivity}
                 >
                   <XAxis
                     dataKey="Epoch Miliseconds"
@@ -293,152 +245,123 @@ const BackBay = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[0, .2]}
-                    tickFormatter={decimalFormatter}
+                    width={80}
+                    // domain={[0, .2]}
+                    // tickFormatter={decimalFormatter}
                   />
                   
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                  <Tooltip labelFormatter={dateFormatter}  />
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
-                    dataKey="Boston Unemployment Rate"
+                    dataKey="Grocery"
                     stroke="#003c50"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="Massachusetts Unemployment Rate"
+                    dataKey="Eating Places"
                     stroke="#00a6b4"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="US Unemployment Rate"
+                    dataKey="Overall Spending"
                     stroke="#e05926"
                     dot={false}
                   />
                 </LineChart>
               </ResponsiveContainer>
-            </div>
+              <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
           </div>
           <div className="col-12 col-md-4">
-            <div className="chartContainer">
-              <h6 className="chartTitle">Boston Resident Labor Force Unemployment Rate</h6>
+              <h6 className="chartTitle">Vacancy Rates in Back Bay</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
                   height={400}
-                  data={unemployment}
+                  data={hubRealEstate}
                 >
                   <XAxis
                     dataKey="Epoch Miliseconds"
                     scale="time"
                     type="number"
                     domain={['dataMin', 'dataMax']}
-                    tickFormatter={dateFormatter}
+                    tickFormatter={quarterlyFormatter}
                   />
                   <YAxis
                     type="number"
-                    domain={[0, .2]}
-                    tickFormatter={decimalFormatter}
-                  />
-                  
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                  <Legend iconType="plainline" />
-                  <Line
-                    type="monotone"
-                    dataKey="Boston Unemployment Rate"
-                    stroke="#003c50"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Massachusetts Unemployment Rate"
-                    stroke="#00a6b4"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="US Unemployment Rate"
-                    stroke="#e05926"
-                    dot={false}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-        </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-4">
-            <div className="chartContainer">
-              <h6 className="chartTitle">Change in Job Postings in Boston from February 2020</h6>
-              <ResponsiveContainer width="90%" height={graphHeight}>
-                <LineChart
-                  width={500}
-                  height={400}
-                  data={postings}
-                >
-                  <XAxis
-                    dataKey="Epoch Miliseconds"
-                    scale="time"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
-                    tickFormatter={dateFormatter}
-                  />
-                  <YAxis
-                    type="number"
-                    domain={[-.65, 0.5]}
+                    width={80}
+                    // domain={[0, .2]}
                     tickFormatter={decimalFormatter}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                  <Tooltip labelFormatter={quarterlyFormatter} formatter={decimalFormatter} />
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
-                    dataKey="Total Nonfarm Payroll Jobs"
+                    dataKey="Office"
                     stroke="#003c50"
                     dot={false}
                   />
                   <Line
                     type="monotone"
-                    dataKey="Production Construction Logistics"
+                    dataKey="Retail"
                     stroke="#00a6b4"
                     dot={false}
                   />
-                  <Line
-                    type="monotone"
-                    dataKey="Professional and Financial Services"
-                    stroke="#e05926"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Healthcare and Education"
-                    stroke="#a6c838"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="In Person and Support Services"
-                    stroke="#ce1b46"
-                    dot={false}
-                  />
-                  <Line type="monotone" dataKey="Government" stroke="#7a3a86" dot={false} />
                 </LineChart>
               </ResponsiveContainer>
-            </div>
+              <p className="citation">Source: CoStar</p>
           </div>
+        </div>
+        <div className="row mh-20 gx-5 gy-5">
           <div className="col-12 col-md-4">
-            <div className="chartContainer">
-              <h6 className="chartTitle">Boston Resident Labor Force</h6>
+              <h6 className="chartTitle">MBTA Gated Station Validations in Back Bay</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
-                <BarChart
+                <LineChart
                   width={500}
                   height={400}
-                  data={laborforce}
+                  data={hubValidationSum}
+                >
+                  <XAxis
+                    dataKey="Epoch Miliseconds"
+                    scale="time"
+                    type="number"
+                    domain={['dataMin', 'dataMax']}
+                    tickFormatter={dateFormatter}
+                  />
+                  <YAxis
+                    type="number"
+                    width={80}
+                    // domain={[-.65, 0.5]}
+                    // tickFormatter={decimalFormatter}
+                  />
+                  <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip labelFormatter={dateFormatter} />
+                  <Legend iconType="plainline" />
+                  <Line
+                    type="monotone"
+                    dataKey="Back Bay Validation Sums"
+                    stroke="#003c50"
+                    dot={false}
+                  />
+                  
+                </LineChart>
+              </ResponsiveContainer>
+              <p className="citation">Source: MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</p>
+
+          </div>
+          <div className="col-12 col-md-4">
+              <h6 className="chartTitle">Recent and Upcoming Development in Back Bay</h6>
+              <ResponsiveContainer width="90%" height={graphHeight}>
+              <BarChart
+                  width={500}
+                  height={400}
+                  data={hubRealEstateDev}
                   margin={{
                     top: 20,
                     right: 50,
@@ -447,71 +370,107 @@ const BackBay = () => {
                   }}
                 >
                   <XAxis
-                    dataKey="Epoch Miliseconds"
-                    scale="time"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
-                    tickFormatter={dateFormatter}
+                    dataKey="Category"
                     padding={{ left: 15, right: 15 }}
                   />
                   <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} />
+                  <Tooltip />
                   <Legend iconType="plainline" />
                   <Bar
                     stackId="a"
-                    dataKey="Boston Resident Employment"
+                    dataKey="Residential sqft"
                     fill="#003c50"
                   />
                   <Bar
                     stackId="a"
-                    dataKey="Boston Resident Unemployment"
+                    dataKey="Retail sqft"
+                    fill="#00a6b4"
+                  />
+                  <Bar
+                    stackId="a"
+                    dataKey="Office sqft"
+                    fill="#bd9033"
+                  />
+                  <Bar
+                    stackId="a"
+                    dataKey="RnD sqft"
                     fill="#e05926"
+                  />
+                  <Bar
+                    stackId="a"
+                    dataKey="Cultural sqft"
+                    fill="#a6c838"
+                  />
+                  <Bar
+                    stackId="a"
+                    dataKey="Hotel sqft"
+                    fill="#ce1b46"
+                  />
+                  <Bar
+                    stackId="a"
+                    dataKey="Medical Clinical sqft"
+                    fill="#7a3a86"
+                  />
+                  <Bar
+                    stackId="a"
+                    dataKey="Recreational sqft"
+                    fill="#144746"
+                  />
+                  <Bar
+                    stackId="a"
+                    dataKey="Education/Dormitory sqft"
+                    fill="#496c2a"
+                  />
+                  <Bar
+                    stackId="a"
+                    dataKey="Other sqft"
+                    fill="#931d26"
                   />
                 </BarChart>
               </ResponsiveContainer>
-            </div>
+              <p className="citation">Boston Planning & Development Agency (BPDA) Development Review</p>
           </div>
           <div className="col-12 col-md-4">
-            <div className="chartContainer">
-              <h6 className="chartTitle">Boston Resident Labor Force</h6>
+              <h6 className="chartTitle">Commerical Asking Rents in Back Bay</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
-                <BarChart
+                <LineChart
                   width={500}
                   height={400}
-                  data={laborforce}
-                  margin={{
-                    top: 20,
-                    right: 50,
-                    left: 50,
-                    bottom: 5,
-                  }}
+                  data={hubRealEstate}
                 >
                   <XAxis
                     dataKey="Epoch Miliseconds"
                     scale="time"
                     type="number"
                     domain={['dataMin', 'dataMax']}
-                    tickFormatter={dateFormatter}
-                    padding={{ left: 15, right: 15 }}
+                    tickFormatter={quarterlyFormatter}
                   />
-                  <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+                  <YAxis
+                    type="number"
+                    width={80}
+                    // domain={[-.65, 0.5]}
+                    tickFormatter={dollarFormatter}
+                  />
+                  <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} />
+                  <Tooltip labelFormatter={quarterlyFormatter} />
                   <Legend iconType="plainline" />
-                  <Bar
-                    stackId="a"
-                    dataKey="Boston Resident Employment"
-                    fill="#003c50"
+                  <Line
+                    type="monotone"
+                    dataKey="Office Asking Rent"
+                    stroke="#003c50"
+                    dot={false}
                   />
-                  <Bar
-                    stackId="a"
-                    dataKey="Boston Resident Unemployment"
-                    fill="#e05926"
+                  <Line
+                    type="monotone"
+                    dataKey="Retail Asking Rent"
+                    stroke="#CE1B46"
+                    dot={false}
                   />
-                </BarChart>
+                </LineChart>
               </ResponsiveContainer>
-            </div>
+              <p className="citation">Source: CoStar</p>
           </div>
         </div>
       </div>

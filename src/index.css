@@ -185,7 +185,7 @@ h2{
 }
 
 .citation {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   opacity: .7;
 }
 
@@ -248,7 +248,6 @@ background: linear-gradient(90deg, rgba(224,89,38,1) 0%, rgba(224,89,38,1) 78%, 
   transform-origin: right;
   transform: scaleX(0);
   transition: transform .3s ease-out;
-  /* add an ease out here seperate & quicker */
   color: var(--mediumblue) !important;
 }
 

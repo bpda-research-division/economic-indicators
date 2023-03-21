@@ -19,6 +19,7 @@ import {
   graphHeight,
   dateFormatter,
   decimalFormatter,
+  dollarFormatter,
   options,
   ordinal,
   quarterlyFormatter,
@@ -124,7 +125,7 @@ const RealEstateMarket = () => {
                 </h4>
                 <h4 className="accentNumber">${
                   rent.length ?
-                    ((rent[rent.length - 1]['Office Asking Rent'])).toFixed(2)
+                    ((rent[rent.length - 1]['Office Asking Rent']).toFixed(2).toLocaleString("en-US"))
                     : 'loading'
                 }</h4>
               </div>
@@ -143,8 +144,8 @@ const RealEstateMarket = () => {
                 </h4>
                 <h4 className="accentNumber">${
                   qmhp.length ?
-                    // ((qmhp[qmhp.length - 1]['Condominium Unit']) * 100).toFixed(1)
-                    (qmhp[qmhp.length - 1]['Condominium Unit'])
+
+                    ((qmhp[qmhp.length - 1]['Condominium Unit']).toLocaleString("en-US"))
                     : 'loading'
                 }</h4>
               </div>
@@ -193,7 +194,7 @@ const RealEstateMarket = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
-            <p className="citation">Source: OpenTable, Seated diners from online, phone, and walk-in reservations</p>
+            <p className="citation">Source: CoStar</p>
           </div>
           <div className="col-12 col-md-6">
               <h6 className="chartTitle">Commercial Space Asking Rent Per Square Foot in Boston</h6>
@@ -213,7 +214,7 @@ const RealEstateMarket = () => {
                   <YAxis
                     type="number"
                     domain={[0, .2]}
-                    // tickFormatter={decimalFormatter}
+                    tickFormatter={dollarFormatter}
                   />
                   
                   <CartesianGrid strokeDasharray="3 3" />
@@ -233,7 +234,7 @@ const RealEstateMarket = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
-              <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+              <p className="citation">Source: CoStar</p>
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5">
@@ -269,7 +270,7 @@ const RealEstateMarket = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
-              <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report</p>
+              <p className="citation">Source: CoStar</p>
 
           </div>
           <div className="col-12 col-md-6">
@@ -290,7 +291,8 @@ const RealEstateMarket = () => {
                   <YAxis
                     type="number"
                     domain={[0, .2]}
-                    // tickFormatter={decimalFormatter}
+                    tickFormatter={dollarFormatter}
+                    width={80}
                   />
                   
                   <CartesianGrid strokeDasharray="3 3" />
@@ -310,7 +312,7 @@ const RealEstateMarket = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
-              <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+              <p className="citation">Source: City of Boston, Mayor's Office of Housing based on data provided by Banker and Tradesman Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
           </div>
         </div>
       </div>
