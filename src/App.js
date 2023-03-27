@@ -13,7 +13,9 @@ import LaborMarket from './pages/LaborMarket';
 import Mobility from './pages/Mobility';
 import EconomicActivity from './pages/EconomicActivity';
 import RealEstateMarket from './pages/RealEstateMarket';
-import BackBay from './pages/BackBay';
+import RealEstateDevelopment from './pages/RealEstateDevelopment';
+import CommercialHub from './pages/CommercialHub';
+import SnapshotEconomy from './pages/SnapshotEconomy';
 
 
 function App() {
@@ -32,7 +34,12 @@ function App() {
               <Route path="/mobility" element={<Mobility />} />
               <Route path="/economic-activity" element={<EconomicActivity />} />
               <Route path="/real-estate-market" element={<RealEstateMarket />} />
-              <Route path="/back-bay" element={<BackBay />} />
+              <Route path="/real-estate-development" element={<RealEstateDevelopment />} />
+              <Route path="/back-bay" element={<CommercialHub hubName={'Back Bay'} hubVar={'Backbay'} />} />
+              <Route path="/fenway-longwood" element={<CommercialHub hubName={'Fenway/Longwood'} hubVar={'FenwayLongwood'} />} />
+              <Route path="/greater-downtown" element={<CommercialHub hubName={'Greater Downtown'} hubVar={'Downtown'} />} />
+              <Route path="/south-boston-waterfront" element={<CommercialHub hubName={'South Boston Waterfront'} hubVar={'SouthBostonWaterfront'} />} />
+              <Route path="/economy" element={<SnapshotEconomy />} />
             </Routes>    
           </Col>
         </Row> 

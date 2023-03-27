@@ -28,21 +28,26 @@ import {
 } from "../utils.js"
 
 
-const BackBay = () => {
+const CommercialHub = (props) => {
+
+  const hubName = props.hubName;
+  const hubVar = props.hubVar;
+  console.log(hubName + ", " + hubVar);
+  // const [hubName, setHubName] = useState(props)
+  // const [hubVar, setHubVar] = useState(props)
   const [hubEconomicActivity, setHubEconomicActivity] = useState([])
   const [hubMobility, setHubMobility] = useState([])
   const [hubRealEstate, setHubRealEstate] = useState([])
   const [hubRealEstateDev, setHubRealEstateDev] = useState([])
   const [hubValidationSum, setHubValidationSum] = useState([])
 
-
   useEffect(() => {
     Promise.all([
-      fetch(baseAPI + 'Hub_Backbay_EconomicActivity'),
-      fetch(baseAPI + 'Hub_BackBay_Mobility'),
-      fetch(baseAPI + 'Hub_BackBay_RealEstate'),
-      fetch(baseAPI + 'Hub_BackBay_RealEstateDev'),
-      fetch(baseAPI + 'Hub_MBTAValidationSums'),
+      fetch(baseAPI + `Hub_${hubVar}_EconomicActivity`),
+      fetch(baseAPI + `Hub_${hubVar}_Mobility`),
+      fetch(baseAPI + `Hub_${hubVar}_RealEstate`),
+      fetch(baseAPI + `Hub_${hubVar}_RealEstateDev`),
+      fetch(baseAPI + `Hub_MBTAValidationSums`),
     ])
       .then(([resEconomicActivity, resMobility, resRealEstate, resRealEstateDev, resValidationSums]) =>
         Promise.all([resEconomicActivity.json(), resMobility.json(), resRealEstate.json(), resRealEstateDev.json(),  resValidationSums.json()])
@@ -55,13 +60,13 @@ const BackBay = () => {
         setHubValidationSum(dataValidationSums);
       })
 
-  }, []);
+  }, [props.hubName, props.hubVar]);
 
   return (
     <div>
       <div className="subHeader">
         <GeoAltFill size={24} color={'#94D5DB'} />
-        <h2>Back Bay</h2>
+        <h2>{hubName}</h2>
       </div>
       <div className="dashBody">
       <div className="row mh-20 g-6 indicator-row">
@@ -186,7 +191,7 @@ const BackBay = () => {
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
           <div className="col-12 col-md-4">
-              <h6 className="chartTitle">Incoming Trips to Boston, Compared to the Same Month in 2019</h6>
+              <h6 className="chartTitle">Incoming Trips to {hubName}, Compared to the Same Month in 2019</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
@@ -200,6 +205,7 @@ const BackBay = () => {
                     type="number"
                     domain={['dataMin', 'dataMax']}
                     tickFormatter={dateFormatter}
+                    padding={{ left: 15, right: 15 }}
                   />
                   <YAxis
                     type="number"
@@ -226,10 +232,10 @@ const BackBay = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
-            <p className="citation">Source: Cuebiq mobility data.</p>
+            <p className="citation">Source: Cuebiq mobility data</p>
           </div>
           <div className="col-12 col-md-4">
-              <h6 className="chartTitle">In-Person Spending* in Back Bay, Compared to the Same Month 2019</h6>
+              <h6 className="chartTitle">In-Person Spending* in {hubName}, Compared to the Same Month 2019</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
@@ -276,7 +282,7 @@ const BackBay = () => {
               <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
           </div>
           <div className="col-12 col-md-4">
-              <h6 className="chartTitle">Vacancy Rates in Back Bay</h6>
+              <h6 className="chartTitle">Vacancy Rates in {hubName}</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
@@ -319,7 +325,7 @@ const BackBay = () => {
         </div>
         <div className="row mh-20 gx-5 gy-5">
           <div className="col-12 col-md-4">
-              <h6 className="chartTitle">MBTA Gated Station Validations in Back Bay</h6>
+              <h6 className="chartTitle">MBTA Gated Station Validations in {hubName}</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
@@ -345,7 +351,7 @@ const BackBay = () => {
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
-                    dataKey="Back Bay Validation Sums"
+                    dataKey= {hubName + " Validation Sums"}
                     stroke="#003c50"
                     dot={false}
                   />
@@ -356,7 +362,7 @@ const BackBay = () => {
 
           </div>
           <div className="col-12 col-md-4">
-              <h6 className="chartTitle">Recent and Upcoming Development in Back Bay</h6>
+              <h6 className="chartTitle">Recent and Upcoming Development in {hubName}</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
               <BarChart
                   width={500}
@@ -432,7 +438,7 @@ const BackBay = () => {
               <p className="citation">Boston Planning & Development Agency (BPDA) Development Review</p>
           </div>
           <div className="col-12 col-md-4">
-              <h6 className="chartTitle">Commerical Asking Rents in Back Bay</h6>
+              <h6 className="chartTitle">Commerical Asking Rents in {hubName}</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <LineChart
                   width={500}
@@ -478,4 +484,4 @@ const BackBay = () => {
   );
 };
 
-export default BackBay;
+export default CommercialHub;

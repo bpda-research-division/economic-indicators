@@ -167,8 +167,12 @@ h2{
   font-size: 0.70rem; 
 }
 
+/* .recharts-default-tooltip {
+  z-index: 10;
+} */
 .recharts-responsive-container, .recharts-wrapper {
   background-color: white;
+  z-index: 10;
 }
 
 .chartTitle {
