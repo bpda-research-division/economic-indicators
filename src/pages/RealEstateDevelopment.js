@@ -280,7 +280,7 @@ const RealEstateDevelopment = () => {
                   />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="citation">Boston Planning & Development Agency (BPDA) Development Review</p>
+              <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5">

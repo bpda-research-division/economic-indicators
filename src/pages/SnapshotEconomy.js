@@ -28,6 +28,7 @@ import {
   quarterlyFormatter,
 } from "../utils.js"
 
+
 const SnapshotEconomy = () => {
   const [jobs, setJobs] = useState([])
   const [industry, setIndustry] = useState([])
@@ -131,7 +132,7 @@ const SnapshotEconomy = () => {
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-10">
+          <div className="col-12 col-md-6">
               <h6 className="chartTitle">Total Employment in Boston</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <BarChart
@@ -170,17 +171,21 @@ const SnapshotEconomy = () => {
               </ResponsiveContainer>
             <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
           </div>
-          <div className="col-12 col-md-2">
-            <img src={require("../images/JobDensity.png")} alt="Static map showing job density Boston" className="img-fluid" />  
-                <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
+          <div className="col-12 col-md-6 d-flex flex-column">
+            <h6 className="chartTitle">Job Density in Boston</h6>
+            <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=f6888321688549db927b547864d7b3c7&locale=en-US"  frameborder={0} style={{border:0}} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe>
+            {/* <img src={require("../images/JobDensity.png")} alt="Static map showing job density Boston" className="img-fluid" />   */}
+            <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-2">
-            <img src={require("../images/Commuter.png")} alt="Static msap showing where people working in Boston actually live" className="img-fluid" />
+          <div className="col-12 col-md-6 d-flex flex-column">
+            <h6 className="chartTitle">Commuter Map</h6>
+            <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US"  frameborder={0} style={{border:0}} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe>
+            {/* <img src={require("../images/JobDensity.png")} alt="Static map showing job density Boston" className="img-fluid" />   */}
             <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
           </div>
-          <div className="col-12 col-md-10">
+          <div className="col-12 col-md-6">
               <h6 className="chartTitle">Monthly Construction Hours</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
               <BarChart

@@ -435,7 +435,7 @@ const CommercialHub = (props) => {
                   />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="citation">Boston Planning & Development Agency (BPDA) Development Review</p>
+              <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
           </div>
           <div className="col-12 col-md-4">
               <h6 className="chartTitle">Commerical Asking Rents in {hubName}</h6>
