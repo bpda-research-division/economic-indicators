@@ -16,6 +16,7 @@ import RealEstateMarket from './pages/RealEstateMarket';
 import RealEstateDevelopment from './pages/RealEstateDevelopment';
 import CommercialHub from './pages/CommercialHub';
 import SnapshotEconomy from './pages/SnapshotEconomy';
+import SnapshotPopulation from './pages/SnapshotPopulation';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               <Route path="/greater-downtown" element={<CommercialHub hubName={'Greater Downtown'} hubVar={'Downtown'} />} />
               <Route path="/south-boston-waterfront" element={<CommercialHub hubName={'South Boston Waterfront'} hubVar={'SouthBostonWaterfront'} />} />
               <Route path="/economy" element={<SnapshotEconomy />} />
+              <Route path="/population" element={<SnapshotPopulation />} />
             </Routes>    
           </Col>
         </Row> 
