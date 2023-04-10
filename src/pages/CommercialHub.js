@@ -371,7 +371,7 @@ const CommercialHub = (props) => {
                   margin={{
                     top: 20,
                     right: 50,
-                    left: 50,
+                    left: 30,
                     bottom: 5,
                   }}
                 >
@@ -382,7 +382,7 @@ const CommercialHub = (props) => {
                   <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip />
-                  <Legend iconType="plainline" />
+                  {/* <Legend iconType="plainline" /> */}
                   <Bar
                     stackId="a"
                     dataKey="Residential sqft"

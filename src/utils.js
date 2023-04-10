@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { Text } from 'recharts';
 
 
 export const baseAPI = 'https://script.google.com/macros/s/AKfycbyy_JR7AM_AAnUB2DB_AnKXqsdqlIPJoBc-7CKW-S2In2_OslstV1XSz0Ex2MWobh9w/exec?path=';
@@ -48,3 +49,20 @@ if (n === 1) {
 
 
 export const options = { month: "long", year: "numeric" };
+
+// custom tick for word-wrap labels
+export const CustomXAxisTick = ({ x, y, payload }: any) => {
+    if (payload && payload.value) {
+      return (
+        <Text
+            fontSize={"14px"}
+            width={"14px"}
+            x={x} 
+            y={y} 
+            textAnchor="middle" 
+            verticalAnchor="start"
+        >{payload.value}</Text>
+      );
+    }
+    return null;
+};

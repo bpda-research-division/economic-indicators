@@ -14,53 +14,73 @@ import {
     ResponsiveContainer, 
     CartesianGrid, 
     ReferenceLine, 
+    Cell,
+    Text,
 } from 'recharts';
 import { AspectRatioFill } from "react-bootstrap-icons";
 import {
     baseAPI,
     graphHeight,
-    dateFormatter,
     decimalFormatter,
-    dollarFormatter,
     commaFormatter,
-    options,
-    ordinal,
-    quarterlyFormatter,
+    CustomXAxisTick,
 } from "../utils.js"
 import { Placeholder } from "react-bootstrap";
 
 const RealEstateMarket = () => {
+    // set up state variables that will store g-sheet data
     const [foreignBorn, setForeignBorn] = useState([])
     const [age, setAge] = useState([])
     const [education, setEducation] = useState([])
     const [raceEthnicity, setRaceEthnicity] = useState([])
 
+    // set up state variables that will store transposed data for bar charts
     const [ageBar, setAgeBar] = useState([])
     const [edBar, setEdBar] = useState([])
     const [reBar, setReBar] = useState([])
 
+    // set up empty arrays to transpose data
     let ageArray = []
     let edArray = []
     let reArray = []
-            
 
+    // set up color order for last bar chart
+    const barColors = [
+        "#003c50",
+        "#003c50",
+        "#003c50",
+        "#003c50",
+        "#003c50",
+        "#003c50",
+        "#003c50",
+        "#e05926",
+        "#e05926",
+    ]
+
+    
+            
+    // useEffect to load on reciving data
     useEffect(() => {
+        // promise/fetch data from g-sheet pages
         Promise.all([
         fetch(baseAPI + 'AnnualSnapshot_Population_ForeignBorn'),
         fetch(baseAPI + 'AnnualSnapshot_Population_AgeGroups'),
         fetch(baseAPI + 'AnnualSnapshot_Population_EducationalAttainmentForOver25'),
         fetch(baseAPI + 'AnnualSnapshot_Population_RaceEthnicity'),
         ])
+        // parse json results
         .then(([resForeignBorn, resAge, resEducation, resRaceEthnicity]) =>
             Promise.all([resForeignBorn.json(), resAge.json(), resEducation.json(), resRaceEthnicity.json()])
         )
+        // store parsed data in state
         .then(([dataForeignBorn, dataAge, dataEducation, dataRaceEthnicity]) => {
             setForeignBorn(dataForeignBorn);
             setAge(dataAge);
             setEducation(dataEducation);
             setRaceEthnicity(dataRaceEthnicity);
-        }).then(() => {
-            let ageLatest = age[age.length - 1];
+
+            // transpose the most recent age data
+            let ageLatest = dataAge[dataAge.length - 1];
             
             for (var name in ageLatest) {
                 if (name.includes("Percent")) {
@@ -74,9 +94,10 @@ const RealEstateMarket = () => {
                     console.log(ageArray);
                 }
             }
-            
-            let edLatest = education[education.length - 1];
-            console.log(edLatest);
+
+            // transpose the most recent education data
+            let edLatest = dataEducation[dataEducation.length - 1];
+            // console.log(edLatest);
             
             for (var name in edLatest) {
                 if (name.includes("Percent")) {
@@ -91,8 +112,9 @@ const RealEstateMarket = () => {
                 }
             }
 
-            let reLatest = raceEthnicity[raceEthnicity.length - 1];
-            console.log(reLatest);
+            // transpose the most recent race & ethnicity  data 
+            let reLatest = dataRaceEthnicity[dataRaceEthnicity.length - 1];
+            // console.log(reLatest);
             
             for (var name in reLatest) {
                 if (name.includes("Percent")) {
@@ -106,10 +128,8 @@ const RealEstateMarket = () => {
                     reArray.push(newEntry);
                 }
             }
-            
-
-            
         }).then(() => {
+            // store the above transposed data in state
             setAgeBar(ageArray)
             console.log(ageBar);
 
@@ -139,6 +159,7 @@ const RealEstateMarket = () => {
                             </h4>
                             <div className="d-flex flex-row justify-content-around">
                                 <h4 className="date">{
+                                    // once data is loaded, display text. otherwise, show "loading"
                                     foreignBorn.length ?
                                         // @ts-ignore
                                         foreignBorn[foreignBorn.length - 1]['Year']
@@ -149,8 +170,9 @@ const RealEstateMarket = () => {
                                     foreignBorn.length ?
                                     ((foreignBorn[foreignBorn.length - 1]['Total Population']).toLocaleString("en-US"))
                                         : 'loading'
-                                }%
+                                }*
                                 </h4>
+                                <p>*The City of Boston is challenging this number</p>
                             </div>
                         </div>
                     </div>
@@ -187,7 +209,7 @@ const RealEstateMarket = () => {
                                 </h4>
                                 <h4 className="accentNumber">{
                                     raceEthnicity.length ?
-                                        ((raceEthnicity[raceEthnicity.length - 1]['Percent Foreign-Born'])).toFixed(1)
+                                        ((raceEthnicity[raceEthnicity.length - 1]['Percent Foreign-Born']) * 100).toFixed(1)
                                         : 'loading'
                                 }%</h4>
                             </div>
@@ -206,7 +228,7 @@ const RealEstateMarket = () => {
                                 </h4>
                                 <h4 className="accentNumber">{
                                     age.length ?
-                                        ((age[age.length - 1]['18-34 As Percent']).toFixed(1))
+                                        ((age[age.length - 1]['18-34 As Percent'] * 100).toFixed(1))
                                         : 'loading'
                                 }%</h4>
                             </div>
@@ -222,6 +244,12 @@ const RealEstateMarket = () => {
                                 height={400}
                                 data={foreignBorn}
                                 stackOffset="expand"
+                                margin={{
+                                    top: 20,
+                                    right: 50,
+                                    left: 50,
+                                    bottom: 5,
+                                  }}
                             >
                                 <XAxis
                                     dataKey="Year"
@@ -232,7 +260,7 @@ const RealEstateMarket = () => {
                                 />
                                 <YAxis
                                     type="number"
-                                    domain={[-0.5, .1]}
+                                    domain={[0, dataMax => (Math.round(dataMax/100.0) * 100)]}
                                     // ticksCount={5}
                                     // interval={0}
                                     tickFormatter={commaFormatter}
@@ -245,7 +273,7 @@ const RealEstateMarket = () => {
                                     type="monotone"
                                     dataKey="Total Population"
                                     stroke="#003c50"
-                                    dot={false}
+                                    dot={true}
                                 />
                             </LineChart>
                         </ResponsiveContainer>
@@ -258,6 +286,7 @@ const RealEstateMarket = () => {
                                 width={500}
                                 height={400}
                                 data={ageBar}
+                            
                             >
                                 <XAxis
                                     dataKey="category"
@@ -268,15 +297,14 @@ const RealEstateMarket = () => {
                                 />
                                 <YAxis
                                     type="number"
-                                    domain={[0, .2]}
+                                    domain={[0, .50]}
                                     tickFormatter={decimalFormatter}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <Tooltip />
-                                <Legend iconType="plainline" />
                                 <Bar
                                     dataKey="percent"
-                                    fill="#003c50"
+                                    fill="#e05926"
                                 />
                                 
                             </BarChart>
@@ -292,9 +320,14 @@ const RealEstateMarket = () => {
                                 width={500}
                                 height={400}
                                 data={edBar}
+                                margin={{
+                                    bottom: 70,
+                                }}
                             >
                                 <XAxis
                                     dataKey="category"
+                                    interval={0} 
+                                    tick={<CustomXAxisTick/>}
                                     // scale="time"
                                     // type="number"
                                     // domain={['dataMin', 'dataMax']}
@@ -302,15 +335,14 @@ const RealEstateMarket = () => {
                                 />
                                 <YAxis
                                     type="number"
-                                    // domain={[0, .2]}
+                                    domain={[0, .3]}
                                     tickFormatter={decimalFormatter}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <Tooltip  />
-                                <Legend iconType="plainline" />
                                 <Bar
                                     dataKey="percent"
-                                    fill="#003c50"
+                                    fill="#e05926"
                                 />
                                 
                             </BarChart>
@@ -325,9 +357,14 @@ const RealEstateMarket = () => {
                                 width={500}
                                 height={400}
                                 data={reBar}
+                                margin={{
+                                    bottom: 50,
+                                }}
                             >
                                 <XAxis
                                     dataKey="category"
+                                    interval={0} 
+                                    tick={<CustomXAxisTick/>}
                                     // scale="time"
                                     // type="number"
                                     // domain={['dataMin', 'dataMax']}
@@ -335,17 +372,20 @@ const RealEstateMarket = () => {
                                 />
                                 <YAxis
                                     type="number"
-                                    domain={[0, .2]}
+                                    domain={[0, .8]}
                                     tickFormatter={decimalFormatter}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <Tooltip />
-                                <Legend iconType="plainline" />
                                 <Bar
                                     dataKey="percent"
                                     fill="#003c50"
-                                />
-                            
+                                >
+                                    {barColors.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={barColors[index % 20]} />
+                                    ))}
+                                </Bar>
+                                
                             </BarChart>
                         </ResponsiveContainer>
                         <p className="citation">Source: U.S. Census Bureau, 2021 American Community Survey 1-Year Estimates</p>
