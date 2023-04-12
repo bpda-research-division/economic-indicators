@@ -182,6 +182,24 @@ h2{
   text-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 
+.subChartTitle {
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0 !important;
+}
+
+.recharts-line > path {
+  stroke-width: 2;
+}
+
+line.recharts-legend-icon  {
+  stroke-width: 6;
+}
+
+/* .blackLegend {
+  color: #151515 !important;
+} */
+
 /* Button Styling */
 #infoI {
   box-sizing: border-box;

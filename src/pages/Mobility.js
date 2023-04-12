@@ -21,6 +21,7 @@ import {
   graphHeight,
   dateFormatter,
   decimalFormatter,
+  commaFormatter,
   options,
 } from "../utils.js"
 
@@ -60,12 +61,13 @@ const Mobility = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"> 
-                Change in Boston <span className="accentSubText">Visitors</span> from {
+                Change in Boston <span className="accentSubText">Visitors</span> from the Same Month in 2019
+                {/* {
                     domestic.length ?
                       // @ts-ignore
                       new Intl.DateTimeFormat("en-US", options).format((new Date(domestic[0]['Month'])))
                       : 'loading'
-                }
+                } */}
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -86,12 +88,13 @@ const Mobility = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"> 
-                Change in Boston <span className="accentSubText">Commuters</span> from {
+                Change in Boston <span className="accentSubText">Commuters</span> from the Same Month in 2019
+                {/* {
                     domestic.length ?
                       // @ts-ignore
                       new Intl.DateTimeFormat("en-US", options).format((new Date(domestic[0]['Month'])))
                       : 'loading'
-                }
+                } */}
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -111,12 +114,14 @@ const Mobility = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">MBTA Passengers</span> from {
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">MBTA Passengers</span> from the Same Month in 2019
+              {/* {
                 MBTA.length ?
                   // @ts-ignoreang 
                   new Intl.DateTimeFormat("en-US", options).format((new Date(MBTA[0]['Month'])))
                   : 'loading'
-              }</h4>
+              } */}
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                 MBTA.length ?
@@ -135,12 +140,14 @@ const Mobility = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">MBTA Orange Line Passengers</span> Rate from {
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">MBTA Orange Line Passengers</span> Rate from the Same Month in 2019
+              {/* {
                 MBTALine.length ?
                   // @ts-ignore
                   new Intl.DateTimeFormat("en-US", options).format((new Date(MBTALine[0]['Month'])))
                   : 'loading'
-              }</h4>
+              } */}
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   MBTALine.length ?
@@ -159,12 +166,14 @@ const Mobility = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Logan Airport Domestic Passengers</span> from {
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Logan Airport Domestic Passengers</span> from the Same Month in 2019
+              {/* {
                 logan.length ?
                   // @ts-ignore
                   new Intl.DateTimeFormat("en-US", options).format((new Date(logan[0]['Month'])))
                   : 'loading'
-              }</h4>
+              } */}
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                     logan.length ?
@@ -201,7 +210,7 @@ const Mobility = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[-0.5, .1]}
+                    // domain={[-0.5, .1]}
                     // ticksCount={5}
                     // interval={0}
                     tickFormatter={decimalFormatter}
@@ -219,7 +228,7 @@ const Mobility = () => {
                   <Line
                     type="monotone"
                     dataKey="Commuting Trips"
-                    stroke="#00a6b4"
+                    stroke="#e05926"
                     dot={false}
                   />
                 </LineChart>
@@ -243,14 +252,15 @@ const Mobility = () => {
                   />
                   <YAxis
                     type="number"
-                    width={80}
+                    width={90}
+                    tickFormatter={commaFormatter}
                     // domain={[0, .2]}
                     // tickFormatter={decimalFormatter}
                   />
                   
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter}  />
-                  <Legend iconType="plainline" />
+                  <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
+                  {/* <Legend iconType="plainline" /> */}
                   <Line
                     type="monotone"
                     dataKey="Sum of Validations"
@@ -280,13 +290,14 @@ const Mobility = () => {
                   />
                   <YAxis
                     type="number"
-                    width={80}
+                    width={90}
+                    tickFormatter={commaFormatter}
                     // domain={[-.65, 0.5]}
                     // tickFormatter={decimalFormatter}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} />
+                  <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter}/>
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
@@ -297,7 +308,7 @@ const Mobility = () => {
                   <Line
                     type="monotone"
                     dataKey="Logan International Passengers"
-                    stroke="#00a6b4"
+                    stroke="#e05926"
                     dot={false}
                   />
                 </LineChart>
@@ -322,13 +333,14 @@ const Mobility = () => {
                   />
                   <YAxis
                     type="number"
-                    width={80}
+                    width={90}
+                    tickFormatter={commaFormatter}
                     // domain={[-.65, 0.5]}
                     // tickFormatter={decimalFormatter}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} />
+                  <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"

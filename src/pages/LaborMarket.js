@@ -21,6 +21,7 @@ import {
   graphHeight,
   dateFormatter,
   decimalFormatter,
+  commaFormatter,
   options,
 } from "../utils.js"
 
@@ -110,7 +111,7 @@ const LaborMarket = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   postings.length ?
-                    ((postings[postings.length - 1]['Total Nonfarm Payroll Jobs']) * 100).toFixed(1)
+                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((postings[postings.length - 1]['Total Nonfarm Payroll Jobs']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -118,12 +119,7 @@ const LaborMarket = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Unemployment</span> Rate from {
-                unemployment.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(unemployment[0]['Month'])))
-                  : 'loading'
-              }</h4>
+              <h4 className="indicatorSubtext">Boston <span className="accentSubText">Resident Unemployment</span> Rate</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   unemployment.length ?
@@ -134,7 +130,7 @@ const LaborMarket = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   unemployment.length ?
-                    ((unemployment[unemployment.length - 1]['Boston Unemployment Rate'])).toFixed(1)
+                    ((unemployment[unemployment.length - 1]['Boston Unemployment Rate'])*100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -145,7 +141,7 @@ const LaborMarket = () => {
               <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Labor Force</span> from {
                 laborforce.length ?
                   // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[0]['Month'])))
+                  new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[1]['Month'])))
                   : 'loading'
               }</h4>
               <div className="d-flex flex-row justify-content-around">
@@ -158,7 +154,7 @@ const LaborMarket = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   laborforce.length ?
-                    ((laborforce[laborforce.length - 1]['Change From Previous Year']) * 100).toFixed(1)
+                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((laborforce[laborforce.length - 1]['Change From Previous Year']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -214,7 +210,7 @@ const LaborMarket = () => {
                   <Line
                     type="monotone"
                     dataKey="Healthcare and Education"
-                    stroke="#a6c838"
+                    stroke="#7d972a"
                     dot={false}
                   />
                   <Line
@@ -365,8 +361,8 @@ const LaborMarket = () => {
                   />
                   <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} />
-                  <Legend iconType="plainline" />
+                  <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter}/>
+                  <Legend />
                   <Bar
                     stackId="a"
                     dataKey="Boston Resident Employment"

@@ -26,6 +26,7 @@ import {
   options,
   ordinal,
   quarterlyFormatter,
+  CustomXAxisTick,
 } from "../utils.js"
 
 const RealEstateDevelopment = () => {
@@ -85,7 +86,7 @@ const RealEstateDevelopment = () => {
                   boardApproved.length ?
                   ((boardApproved[boardApproved.length - 1]['Sum of Net Gross Floor Area']).toLocaleString("en-US"))
                     : 'loading'
-                }
+                }&nbsp; SF
                 </h4>
               </div>
             </div>
@@ -103,7 +104,7 @@ const RealEstateDevelopment = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   netUnits.length ?
-                    (netUnits[netUnits.length - 1]['Permitted Housing Units'])
+                    (netUnits[netUnits.length - 1]['Permitted Housing Units']).toLocaleString("en-US")
                     : 'loading'
                 }</h4>
               </div>
@@ -122,7 +123,7 @@ const RealEstateDevelopment = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   netUnits.length ?
-                    (netUnits[netUnits.length - 1]['Net Income-restricted Units'])
+                    (netUnits[netUnits.length - 1]['Net Income-restricted Units']).toLocaleString("en-US")
                     : 'loading'
                 }</h4>
               </div>
@@ -149,7 +150,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Change in Construciton Hours from the same Month in 2019</span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Change in Construciton Hours from the Same Month in 2019</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                     bjrp.length ?
@@ -169,7 +170,7 @@ const RealEstateDevelopment = () => {
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
           <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Non-Residential Permitted Square Feet</h6>
+              <h6 className="chartTitle">Non-Residential Permitted Square Footage</h6>
               <ResponsiveContainer width="90%" height={graphHeight}>
                 <BarChart
                   width={500}
@@ -188,15 +189,16 @@ const RealEstateDevelopment = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[-0.5, .1]}
+                    // domain={[-0.5, .1]}
                     // ticksCount={5}
                     // interval={0}
+                    width= {100}
                     tickFormatter={commaFormatter}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip labelFormatter={quarterlyFormatter} formatter={commaFormatter} />
-                  <Legend iconType="plainline" />
+                  {/* <Legend iconType="plainline" /> */}
                   <Bar
                     dataKey="New or Redeveloped SF"
                     fill="#003c50"
@@ -213,21 +215,24 @@ const RealEstateDevelopment = () => {
                   width={500}
                   height={400}
                   data={upcomingDev}
+                  
                   // margin={{
-                  //   top: 20,
-                  //   right: 50,
-                  //   left: 50,
-                  //   bottom: 5,
+                  //   bottom: 45,
                   // }}
                 >
                   <XAxis
                     dataKey="Category"
-                    
+                    interval={0}
+                    tick={<CustomXAxisTick/>}
+                    height= {80}
                   />
-                  <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+                  <YAxis 
+                    tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
+                    width= {100}
+                  />
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip />
-                  <Legend iconType="plainline" />
+                  {/* <Legend iconType="plainline" /> */}
                   <Bar
                     stackId="a"
                     dataKey="Residential sqft"
@@ -290,7 +295,7 @@ const RealEstateDevelopment = () => {
                 <BarChart
                   width={500}
                   height={400}
-                  data={netUnits}
+                  data={affordableHousing}
                 >
                   <XAxis
                     dataKey="Epoch Miliseconds"
@@ -303,15 +308,15 @@ const RealEstateDevelopment = () => {
                   <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip labelFormatter={quarterlyFormatter} />
-                  <Legend iconType="plainline" />
+                  <Legend />
                   <Bar
                     stackId="a"
-                    dataKey="Net Market Rate Units"
+                    dataKey="Afford New Units"
                     fill="#003c50"
                   />
                   <Bar
                     stackId="a"
-                    dataKey="Net Income-restricted Units"
+                    dataKey="Net Market Rate New Units"
                     fill="#e05926"
                   />
                   
@@ -337,7 +342,7 @@ const RealEstateDevelopment = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[0, 1200000]}
+                    // domain={[0, 1200000]}
                     tickFormatter={commaFormatter}
                     width={80}
                     // padding={{ top: 15, bottom: 15 }}
@@ -345,7 +350,7 @@ const RealEstateDevelopment = () => {
                   
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
-                  <Legend iconType="plainline" />
+                  {/* <Legend iconType="plainline" /> */}
                   <Line
                     type="monotone"
                     dataKey="Construction Hours"

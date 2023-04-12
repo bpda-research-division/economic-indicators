@@ -25,6 +25,8 @@ import {
   options,
   ordinal,
   quarterlyFormatter,
+  commaFormatter,
+  CustomXAxisTick,
 } from "../utils.js"
 
 
@@ -133,7 +135,14 @@ const CommercialHub = (props) => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Top Use Type for Recent and Upcoming Development</span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Top Use Type for Recent and Upcoming Development</span> in &nbsp;  
+              {
+                    hubRealEstate.length ?
+                      // @ts-ignore
+                      (hubRealEstate[hubRealEstate.length - 1]['Year and Quater'])
+                      : 'loading'
+                  }
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   hubRealEstate.length ?
@@ -180,11 +189,11 @@ const CommercialHub = (props) => {
                       : 'loading'
                   }
                 </h4>
-                <h4 className="accentNumber">{
-                  hubRealEstateDev.length ?
-                    ((hubRealEstateDev[hubRealEstateDev.length - 1]['Residential sqft']) * 100).toFixed(1)
+                <h4 className="accentNumber">${
+                  hubRealEstate.length ?
+                    ((hubRealEstate[hubRealEstate.length - 1]['Office Asking Rent']).toFixed(0).toLocaleString("en-US"))
                     : 'loading'
-                }%</h4>
+                }</h4>
               </div>
             </div>
           </div>
@@ -205,11 +214,10 @@ const CommercialHub = (props) => {
                     type="number"
                     domain={['dataMin', 'dataMax']}
                     tickFormatter={dateFormatter}
-                    padding={{ left: 15, right: 15 }}
                   />
                   <YAxis
                     type="number"
-                    domain={[-0.5, .1]}
+                    domain={[-1, .5]}
                     // ticksCount={5}
                     // interval={0}
                     tickFormatter={decimalFormatter}
@@ -252,12 +260,13 @@ const CommercialHub = (props) => {
                   <YAxis
                     type="number"
                     width={80}
-                    // domain={[0, .2]}
+                    domain={[-1, .5]}
+                    tickFormatter={decimalFormatter}
                     // tickFormatter={decimalFormatter}
                   />
-                  
+                  <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter}  />
+                  <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
@@ -299,7 +308,7 @@ const CommercialHub = (props) => {
                   <YAxis
                     type="number"
                     width={80}
-                    // domain={[0, .2]}
+                    domain={[0, .1]}
                     tickFormatter={decimalFormatter}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
@@ -316,6 +325,12 @@ const CommercialHub = (props) => {
                     type="monotone"
                     dataKey="Retail"
                     stroke="#00a6b4"
+                    dot={false}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="Multifamily Residential"
+                    stroke="#e05926"
                     dot={false}
                   />
                 </LineChart>
@@ -342,13 +357,14 @@ const CommercialHub = (props) => {
                   <YAxis
                     type="number"
                     width={80}
+                    tickFormatter={commaFormatter}
                     // domain={[-.65, 0.5]}
                     // tickFormatter={decimalFormatter}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} />
-                  <Legend iconType="plainline" />
+                  <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter}/>
+                  {/* <Legend iconType="plainline" /> */}
                   <Line
                     type="monotone"
                     dataKey= {hubName + " Validation Sums"}
@@ -367,21 +383,26 @@ const CommercialHub = (props) => {
               <BarChart
                   width={500}
                   height={400}
-                  data={hubRealEstateDev}
-                  margin={{
-                    top: 20,
-                    right: 50,
-                    left: 30,
-                    bottom: 5,
-                  }}
+                  data={hubRealEstateDev.slice(0,4)}
+                  // margin={{
+                  //   top: 20,
+                  //   left: 30,
+                  //   bottom: 45,
+                  // }}
                 >
                   <XAxis
                     dataKey="Category"
                     padding={{ left: 15, right: 15 }}
+                    interval={0}
+                    tick={<CustomXAxisTick/>}
+                    height={80}
                   />
-                  <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+                  <YAxis 
+                    tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
+                    width= {80}
+                  />
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip />
+                  <Tooltip formatter={commaFormatter}/>
                   {/* <Legend iconType="plainline" /> */}
                   <Bar
                     stackId="a"
@@ -460,7 +481,7 @@ const CommercialHub = (props) => {
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={quarterlyFormatter} />
+                  <Tooltip labelFormatter={quarterlyFormatter} formatter={dollarFormatter}/>
                   <Legend iconType="plainline" />
                   <Line
                     type="monotone"
@@ -471,7 +492,7 @@ const CommercialHub = (props) => {
                   <Line
                     type="monotone"
                     dataKey="Retail Asking Rent"
-                    stroke="#CE1B46"
+                    stroke="#e05926"
                     dot={false}
                   />
                 </LineChart>

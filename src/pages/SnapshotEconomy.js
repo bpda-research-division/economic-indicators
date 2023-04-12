@@ -26,6 +26,7 @@ import {
   options,
   ordinal,
   quarterlyFormatter,
+  legendText,
 } from "../utils.js"
 
 
@@ -53,7 +54,10 @@ const SnapshotEconomy = () => {
         setCommuterShare(dataCommuterShare);
         setDowntownJobs(dataDowntownJobs);
       })
-
+      .then(() => {
+        console.log("Industry Test");
+        console.log(industry[1]);
+      })
   }, []);
 
 
@@ -76,7 +80,7 @@ const SnapshotEconomy = () => {
                   jobs.length ?
                   ((jobs[jobs.length - 1]['Total Jobs']).toLocaleString("en-US"))
                     : 'loading'
-                }%
+                }
                 </h4>
               </div>
             </div>
@@ -87,7 +91,7 @@ const SnapshotEconomy = () => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   downtownJobs.length ?
-                    (downtownJobs[0]['Percent'])
+                    (downtownJobs[0]['Percent']*100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -99,7 +103,7 @@ const SnapshotEconomy = () => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   commuterShare.length ?
-                    (commuterShare[0]['Boston Residents Share'])
+                    (commuterShare[0]['Boston Residents Share']*100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -112,7 +116,7 @@ const SnapshotEconomy = () => {
                 <h4 className="accentNumber">{
                   industry.length ?
 
-                    (industry[18]['Boston Share'])
+                    (industry[18]['Boston Share']*100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -120,21 +124,21 @@ const SnapshotEconomy = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Ratio of Boston Educational Services Job Shae Compared to US in 2021</h4>
+              <h4 className="indicatorSubtext">Ratio of Boston Educational Services Job Share Compared to US in 2021</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   industry.length ?
                     (industry[14]['Location Quotient'])
                     : 'loading'
-                }%</h4>
+                }</h4>
               </div>
             </div>
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-8">
               <h6 className="chartTitle">Total Employment in Boston</h6>
-              <ResponsiveContainer width="90%" height={graphHeight}>
+              <ResponsiveContainer width="100%" height={graphHeight}>
                 <BarChart
                   width={500}
                   height={400}
@@ -144,8 +148,8 @@ const SnapshotEconomy = () => {
                   <XAxis
                     dataKey="Year"
                     // scale="time"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
+                    type="category"
+                    // domain={['dataMin', 'dataMax']}
                     // tickFormatter={dateFormatter}
                   />
                   <YAxis
@@ -161,17 +165,15 @@ const SnapshotEconomy = () => {
                     // labelFormatter={dateFormatter} 
                     formatter={commaFormatter} 
                   />
-                  <Legend iconType="plainline" />
                   <Bar
                     dataKey="Total Jobs"
                     fill="#003c50"
                   />
-                
                 </BarChart>
               </ResponsiveContainer>
             <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
           </div>
-          <div className="col-12 col-md-6 d-flex flex-column">
+          <div className="col-12 col-md-4 d-flex flex-column">
             <h6 className="chartTitle">Job Density in Boston</h6>
             <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=f6888321688549db927b547864d7b3c7&locale=en-US"  frameborder={0} style={{border:0}} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe>
             {/* <img src={require("../images/JobDensity.png")} alt="Static map showing job density Boston" className="img-fluid" />   */}
@@ -179,50 +181,75 @@ const SnapshotEconomy = () => {
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-6 d-flex flex-column">
+          <div className="col-12 col-md-4 d-flex flex-column">
             <h6 className="chartTitle">Commuter Map</h6>
             <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US"  frameborder={0} style={{border:0}} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe>
             {/* <img src={require("../images/JobDensity.png")} alt="Static map showing job density Boston" className="img-fluid" />   */}
             <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
           </div>
-          <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Monthly Construction Hours</h6>
-              <ResponsiveContainer width="90%" height={graphHeight}>
-              <BarChart
+          <div className="col-12 col-md-8">
+              <h6 className="chartTitle">Boston Employment Shares by Industry</h6>
+              <p className="subChartTitle">As Compared to Overall U.S. Employment Rate</p>
+              <ResponsiveContainer width="100%" height={graphHeight}>
+                <BarChart
                   width={500}
                   height={400}
-                  data={jobs}
-                  stackOffset="expand"
+                  data={industry}
+                  // margin={{right: 0}}
+                  layout="vertical"
+                  // stackOffset="expand"
+                  barGap={50}
+                  // barCategoryGap={20}
                 >
-                  <XAxis
-                    dataKey="Year"
+                  <YAxis
+                    dataKey="Category"
+                    type="category"
+                    interval={0} 
+                    tick={{fontSize: 12}}
+                    width={350}
                     // scale="time"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
+                    // type="number"
+                    // domain={['dataMin', 'dataMax']}
                     // tickFormatter={dateFormatter}
                   />
-                  <YAxis
+                  <XAxis
                     type="number"
-                    domain={['dataMin', 'dataMax']}
+                    domain={[0, 0.20]}
+                    tickFormatter={decimalFormatter}
+
                     // ticksCount={5}
                     // interval={0}
-                    tickFormatter={commaFormatter}
+                    // tickFormatter={commaFormatter}
                   />
-                  <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
+                  {/* <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/> */}
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip 
                     // labelFormatter={dateFormatter} 
-                    formatter={commaFormatter} 
+                    formatter={decimalFormatter} 
                   />
-                  <Legend iconType="plainline" />
+                  <Legend 
+                    // formatter={(value, entry, index) => <span className="blackLegend">{value}</span>}
+                    // payload={
+                    //   [
+                    //     { id: 'US Share Item', value: 'US Share', type: 'rect', color: 'rgba(0, 0, 0, .0)', stroke: '#151515'},
+                    //   ]
+                    // }
+                  />
                   <Bar
-                    dataKey="Total Jobs"
+                    // stackId="a"
+                    dataKey="Boston Share"
                     fill="#003c50"
+                  />
+                  <Bar
+                    // stackId="a"
+                    dataKey="US Share"
+                    fill="rgba(224, 89, 38, .9)"
+                    // stroke="#151515"
                   />
                 
                 </BarChart>
               </ResponsiveContainer>
-              <p className="citation">Source: Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports</p>
+              <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
           </div>
         </div>
       </div>

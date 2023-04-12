@@ -58,12 +58,13 @@ const EconomicActivity = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"> 
-                Change in <span className="accentSubText">Seated Dining</span> from {
+                Change in <span className="accentSubText">Seated Dining</span> from the Same Month in 2019
+                {/* {
                     dining.length ?
                       // @ts-ignore
                       new Intl.DateTimeFormat("en-US", options).format((new Date(dining[0]['Month'])))
                       : 'loading'
-                }
+                } */}
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -103,12 +104,14 @@ const EconomicActivity = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Overall Spending</span> from {
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Overall Spending</span> from the Same Month in 2019 
+              {/* {
                 spending.length ?
                   // @ts-ignore
                   new Intl.DateTimeFormat("en-US", options).format((new Date(spending[0]['Month'])))
                   : 'loading'
-              }</h4>
+              } */}
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   spending.length ?
@@ -119,7 +122,7 @@ const EconomicActivity = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   spending.length ?
-                    ((spending[spending.length - 1]['Overall Spending'])).toFixed(1)
+                    ((spending[spending.length - 1]['Overall Spending'])*100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -127,12 +130,14 @@ const EconomicActivity = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Resturant Spending</span> from {
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Resturant Spending</span> from the Same Month in 2019
+              {/* {
                 spending.length ?
                   // @ts-ignore
                   new Intl.DateTimeFormat("en-US", options).format((new Date(spending[0]['Month'])))
                   : 'loading'
-              }</h4>
+              } */}
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                     spending.length ?
@@ -169,7 +174,7 @@ const EconomicActivity = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[-0.5, .1]}
+                    // domain={[-0.5, .1]}
                     // ticksCount={5}
                     // interval={0}
                     tickFormatter={decimalFormatter}
@@ -211,7 +216,7 @@ const EconomicActivity = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[0, .2]}
+                    // domain={[0, .2]}
                     tickFormatter={decimalFormatter}
                   />
                   
@@ -247,7 +252,7 @@ const EconomicActivity = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[-.65, 0.5]}
+                    // domain={[-.65, 0.5]}
                     tickFormatter={decimalFormatter}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
@@ -300,7 +305,7 @@ const EconomicActivity = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[0, .2]}
+                    // domain={[0, .2]}
                     tickFormatter={decimalFormatter}
                   />
                   

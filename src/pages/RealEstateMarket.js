@@ -67,7 +67,7 @@ const RealEstateMarket = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   rent.length ?
-                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((rent[rent.length - 1]['Office Vacancy']) * 100).toFixed(1))
+                  ((rent[rent.length - 1]['Office Vacancy']) * 100).toFixed(1)
                     : 'loading'
                 }%
                 </h4>
@@ -106,7 +106,7 @@ const RealEstateMarket = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   rent.length ?
-                    ((rent[rent.length - 1]['Multifamily Vacancy'])).toFixed(2)
+                    ((rent[rent.length - 1]['Multifamily Vacancy']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -125,7 +125,7 @@ const RealEstateMarket = () => {
                 </h4>
                 <h4 className="accentNumber">${
                   rent.length ?
-                    ((rent[rent.length - 1]['Office Asking Rent']).toFixed(2).toLocaleString("en-US"))
+                    ((rent[rent.length - 1]['Office Asking Rent']).toFixed(0).toLocaleString("en-US"))
                     : 'loading'
                 }</h4>
               </div>
@@ -171,7 +171,7 @@ const RealEstateMarket = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[-0.5, .1]}
+                    // domain={[0, .1]}
                     // ticksCount={5}
                     // interval={0}
                     tickFormatter={decimalFormatter}
@@ -189,7 +189,7 @@ const RealEstateMarket = () => {
                   <Line
                     type="monotone"
                     dataKey="Retail Vacancy"
-                    stroke="#00a6b4"
+                    stroke="#e05926"
                     dot={false}
                   />
                 </LineChart>
@@ -213,7 +213,7 @@ const RealEstateMarket = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[0, .2]}
+                    domain={[30, 55]}
                     tickFormatter={dollarFormatter}
                   />
                   
@@ -229,7 +229,7 @@ const RealEstateMarket = () => {
                   <Line
                     type="monotone"
                     dataKey="Retail Asking Rent"
-                    stroke="#00a6b4"
+                    stroke="#e05926"
                     dot={false}
                   />
                 </LineChart>
@@ -255,7 +255,7 @@ const RealEstateMarket = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[-.65, 0.5]}
+                    // domain={[-.65, 0.5]}
                     tickFormatter={decimalFormatter}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
@@ -290,7 +290,7 @@ const RealEstateMarket = () => {
                   />
                   <YAxis
                     type="number"
-                    domain={[0, .2]}
+                    // domain={[0, .2]}
                     tickFormatter={dollarFormatter}
                     width={80}
                   />
@@ -307,7 +307,7 @@ const RealEstateMarket = () => {
                   <Line
                     type="monotone"
                     dataKey="Condominium Unit"
-                    stroke="#00a6b4"
+                    stroke="#e05926"
                     dot={false}
                   />
                 </LineChart>

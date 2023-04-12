@@ -157,6 +157,7 @@ const RealEstateMarket = () => {
                             <h4 className="indicatorSubtext">
                                 City of Boston <span className="accentSubText">Total Population</span>
                             </h4>
+                            <p className="citation">*The City of Boston is challenging this number</p>
                             <div className="d-flex flex-row justify-content-around">
                                 <h4 className="date">{
                                     // once data is loaded, display text. otherwise, show "loading"
@@ -172,8 +173,8 @@ const RealEstateMarket = () => {
                                         : 'loading'
                                 }*
                                 </h4>
-                                <p>*The City of Boston is challenging this number</p>
                             </div>
+                            
                         </div>
                     </div>
                     <div className="col-md justify-content-center text-center">
@@ -244,12 +245,12 @@ const RealEstateMarket = () => {
                                 height={400}
                                 data={foreignBorn}
                                 stackOffset="expand"
-                                margin={{
-                                    top: 20,
-                                    right: 50,
-                                    left: 50,
-                                    bottom: 5,
-                                  }}
+                                // margin={{
+                                //     top: 20,
+                                //     right: 50,
+                                //     left: 50,
+                                //     bottom: 5,
+                                // }}
                             >
                                 <XAxis
                                     dataKey="Year"
@@ -264,6 +265,7 @@ const RealEstateMarket = () => {
                                     // ticksCount={5}
                                     // interval={0}
                                     tickFormatter={commaFormatter}
+                                    width= {70}
                                 />
                                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                                 <CartesianGrid strokeDasharray="3 3" />
@@ -301,7 +303,7 @@ const RealEstateMarket = () => {
                                     tickFormatter={decimalFormatter}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <Tooltip />
+                                <Tooltip formatter={decimalFormatter}/>
                                 <Bar
                                     dataKey="percent"
                                     fill="#e05926"
@@ -320,14 +322,15 @@ const RealEstateMarket = () => {
                                 width={500}
                                 height={400}
                                 data={edBar}
-                                margin={{
-                                    bottom: 70,
-                                }}
+                                // margin={{
+                                //     bottom: 70,
+                                // }}
                             >
                                 <XAxis
                                     dataKey="category"
                                     interval={0} 
                                     tick={<CustomXAxisTick/>}
+                                    height= {90}
                                     // scale="time"
                                     // type="number"
                                     // domain={['dataMin', 'dataMax']}
@@ -339,7 +342,7 @@ const RealEstateMarket = () => {
                                     tickFormatter={decimalFormatter}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <Tooltip  />
+                                <Tooltip formatter={decimalFormatter} />
                                 <Bar
                                     dataKey="percent"
                                     fill="#e05926"
@@ -351,20 +354,21 @@ const RealEstateMarket = () => {
 
                     </div>
                     <div className="col-12 col-md-6">
-                        <h6 className="chartTitle">Race, Ethincity, and Nativity</h6>
+                        <h6 className="chartTitle">Race, Ethnicity, and Nativity</h6>
                         <ResponsiveContainer width="90%" height={graphHeight}>
-                        <BarChart
+                            <BarChart
                                 width={500}
                                 height={400}
                                 data={reBar}
-                                margin={{
-                                    bottom: 50,
-                                }}
+                                // margin={{
+                                //     bottom: 50,
+                                // }}
                             >
                                 <XAxis
                                     dataKey="category"
                                     interval={0} 
                                     tick={<CustomXAxisTick/>}
+                                    height= {90}
                                     // scale="time"
                                     // type="number"
                                     // domain={['dataMin', 'dataMax']}
@@ -376,7 +380,7 @@ const RealEstateMarket = () => {
                                     tickFormatter={decimalFormatter}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <Tooltip />
+                                <Tooltip formatter={decimalFormatter} />
                                 <Bar
                                     dataKey="percent"
                                     fill="#003c50"
