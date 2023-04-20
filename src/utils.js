@@ -4,11 +4,6 @@ import { Text } from 'recharts';
 
 export const baseAPI = 'https://script.google.com/macros/s/AKfycbyy_JR7AM_AAnUB2DB_AnKXqsdqlIPJoBc-7CKW-S2In2_OslstV1XSz0Ex2MWobh9w/exec?path=';
 
-const h = window.innerHeight;
-// export const graphHeight = h/3.46;
-export const graphHeight = h / 3.75;
-export const chartHeight = h / 3.75;
-
 {/* @ts-ignore */ }
 export const dateFormatter = date => {
     return format(new Date(date), "MMM yyyy");

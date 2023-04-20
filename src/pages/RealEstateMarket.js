@@ -16,18 +16,21 @@ import {
 import { Clipboard2DataFill } from "react-bootstrap-icons";
 import {
   baseAPI,
-  graphHeight,
   dateFormatter,
   decimalFormatter,
   dollarFormatter,
   options,
   quarterlyFormatter,
 } from "../utils.js"
+import {
+  useDeviceSize
+} from "../useDeviceSize"
 
 const RealEstateMarket = () => {
   // set up state variables that will store g-sheet data
   const [rent, setRent] = useState([])
   const [qmhp, setQmhp] = useState([])
+  const [width, height, graphHeight] = useDeviceSize();
 
   // useEffect to load component after reciving data
   useEffect(() => {
@@ -49,9 +52,9 @@ const RealEstateMarket = () => {
 
 
   return (
-    <div>
+    <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={24} color={'#94D5DB'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
         <h2>Real Estate Market</h2>
       </div>
       <div className="dashBody">
@@ -167,9 +170,9 @@ const RealEstateMarket = () => {
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Commercial Vacancy Rate in Boston</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -207,9 +210,9 @@ const RealEstateMarket = () => {
             </ResponsiveContainer>
             <p className="citation">Source: CoStar</p>
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Commercial Space Asking Rent Per Square Foot in Boston</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -250,10 +253,10 @@ const RealEstateMarket = () => {
             <p className="citation">Source: CoStar</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-6">
+        <div className="row mh-20 gx-5 gy-5 graph-row">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">MultiFamily Residential Vacancy Rate in Boston</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -285,9 +288,9 @@ const RealEstateMarket = () => {
             <p className="citation">Source: CoStar</p>
 
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Median Sales Price for Single-Family Homes and Condos</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}

@@ -375,7 +375,8 @@ svg {
   .indicatorSubtext, h4 {
     /* font-size: clamp(0.7rem, 1vw, 1.3rem) !important; */
     margin-top: 0.5rem;
-    font-size: calc(0.1rem + 0.8vw) !important;
+    font-size: calc(0.1rem + 0.7vw) !important;
+    /* font-size: clamp(calc(0.1rem + 0.6vw), calc(0.1rem + 0.8vw), calc(0.1rem + 0.8vw)) !important; */
   }
 
   .chartTitle {

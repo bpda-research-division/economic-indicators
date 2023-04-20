@@ -16,11 +16,13 @@ import {
 import { Clipboard2DataFill } from "react-bootstrap-icons";
 import {
   baseAPI,
-  graphHeight,
   dateFormatter,
   decimalFormatter,
   options,
 } from "../utils.js"
+import {
+  useDeviceSize
+} from "../useDeviceSize"
 
 const EconomicActivity = () => {
   // set up state variables that will store g-sheet data
@@ -28,6 +30,7 @@ const EconomicActivity = () => {
   const [hotels, setHotels] = useState([])
   const [spending, setSpending] = useState([])
   const [hotelsYearly, setHotelsYearly] = useState([])
+  const [width, height, graphHeight] = useDeviceSize();
 
   // useEffect to load component after reciving dat
   useEffect(() => {
@@ -53,9 +56,9 @@ const EconomicActivity = () => {
 
 
   return (
-    <div>
+    <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={24} color={'#94D5DB'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
         <h2>Economic Activity</h2>
       </div>
       <div className="dashBody">
@@ -170,9 +173,9 @@ const EconomicActivity = () => {
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Seated Diners Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -210,9 +213,9 @@ const EconomicActivity = () => {
             </ResponsiveContainer>
             <p className="citation">Source: OpenTable, Seated diners from online, phone, and walk-in reservations</p>
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Overall In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -244,10 +247,10 @@ const EconomicActivity = () => {
             <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-6">
+        <div className="row mh-20 gx-5 gy-5 graph-row">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Hotel Occupancy Rate in Boston</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -293,9 +296,9 @@ const EconomicActivity = () => {
             <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report</p>
 
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}

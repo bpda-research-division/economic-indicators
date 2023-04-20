@@ -16,10 +16,12 @@ import {
 import { AspectRatioFill } from "react-bootstrap-icons";
 import {
   baseAPI,
-  graphHeight,
   decimalFormatter,
   commaFormatter,
 } from "../utils.js"
+import {
+  useDeviceSize
+} from "../useDeviceSize"
 
 
 const SnapshotEconomy = () => {
@@ -28,6 +30,7 @@ const SnapshotEconomy = () => {
   const [industry, setIndustry] = useState([])
   const [commuterShare, setCommuterShare] = useState([])
   const [downtownJobs, setDowntownJobs] = useState([])
+  const [width, height, graphHeight] = useDeviceSize();
 
   // useEffect to load component after reciving data
   useEffect(() => {
@@ -53,9 +56,9 @@ const SnapshotEconomy = () => {
 
 
   return (
-    <div>
+    <div className="dashboard">
       <div className="subHeader">
-        <AspectRatioFill size={24} color={'#94D5DB'} className="subHeaderIcon" />
+        <AspectRatioFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
         <h2>Annual Snapshot: Economy</h2>
       </div>
       <div className="dashBody">
@@ -132,9 +135,9 @@ const SnapshotEconomy = () => {
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-8">
+          <div className="col-12 col-md-8 graph-column">
             <h6 className="chartTitle">Total Employment in Boston</h6>
-            <ResponsiveContainer width="100%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
                 height={400}
@@ -164,22 +167,22 @@ const SnapshotEconomy = () => {
             </ResponsiveContainer>
             <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
           </div>
-          <div className="col-12 col-md-4 d-flex flex-column">
+          <div className="col-12 col-md-4 d-flex flex-column graph-column">
             <h6 className="chartTitle">Job Density in Boston</h6>
             <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=f6888321688549db927b547864d7b3c7&locale=en-US" frameborder={0} style={{ border: 0 }} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe>
             <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-4 d-flex flex-column">
+        <div className="row mh-20 gx-5 gy-5 graph-row">
+          <div className="col-12 col-md-4 d-flex flex-column graph-column">
             <h6 className="chartTitle">Commuter Map</h6>
             <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US" frameborder={0} style={{ border: 0 }} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe>
             <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
           </div>
-          <div className="col-12 col-md-8">
+          <div className="col-12 col-md-8 graph-column">
             <h6 className="chartTitle">Boston Employment Shares by Industry</h6>
             <p className="subChartTitle">As Compared to Overall U.S. Employment Rate</p>
-            <ResponsiveContainer width="100%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
                 height={400}

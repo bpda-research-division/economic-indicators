@@ -16,12 +16,14 @@ import {
 import { Clipboard2DataFill } from "react-bootstrap-icons";
 import {
   baseAPI,
-  graphHeight,
   dateFormatter,
   decimalFormatter,
   commaFormatter,
   options,
 } from "../utils.js"
+import {
+  useDeviceSize
+} from "../useDeviceSize"
 
 const Mobility = () => {
   // set up state variables that will store g-sheet data
@@ -29,6 +31,7 @@ const Mobility = () => {
   const [logan, setLogan] = useState([])
   const [MBTA, setMBTA] = useState([])
   const [MBTALine, setMBTALine] = useState([])
+  const [width, height, graphHeight] = useDeviceSize();
 
   // useEffect to load component after reciving data
   useEffect(() => {
@@ -54,9 +57,9 @@ const Mobility = () => {
   }, []);
 
   return (
-    <div>
+    <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={24} color={'#94D5DB'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
         <h2>Mobility</h2>
       </div>
       <div className="dashBody">
@@ -202,15 +205,15 @@ const Mobility = () => {
             </div>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-6">
+        <div className="row graph-row">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Incoming Trips to Boston, Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
                 data={domestic}
-                stackOffset="expand"
+                // stackOffset="expand"
               >
                 <XAxis
                   dataKey="Epoch Miliseconds"
@@ -243,9 +246,9 @@ const Mobility = () => {
             </ResponsiveContainer>
             <p className="citation">Source: Cuebiq mobility data.</p>
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">MBTA Gated Station Validations in Boston</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -277,10 +280,10 @@ const Mobility = () => {
             <p className="citation">Source: MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-6">
+        <div className="row graph-row">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Logan Passengers</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -319,9 +322,9 @@ const Mobility = () => {
             <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport)</p>
 
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Monthly Validations by MBTA Line within Boston</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}

@@ -29,18 +29,18 @@ import {
   useDeviceSize
 } from "../useDeviceSize"
 
+
 const LayoutDummy = () => {
   // set up state variables that will store g-sheet data
   const [payroll, setPayroll] = useState([])
   const [postings, setPostings] = useState([])
   const [unemployment, setUnemployment] = useState([])
   const [laborforce, setLaborforce] = useState([])
-  const [width, height] = useDeviceSize();
+  const [width, height, graphHeight] = useDeviceSize();
 
-  // const graphHeight = (height * 0.25);
-  const ratio = (width/height + 0.8)
-  // const graphHeight = (height * 0.57 /ratio);
-  const graphHeight = (height * 0.8 / ratio);
+
+  // const ratio = (width/height + 0.8)
+  // const graphHeight = (height * 0.8 / ratio);
 
   // useEffect to load component after reciving data
   useEffect(() => {
@@ -300,7 +300,7 @@ const LayoutDummy = () => {
             <p className="citation">Source: Burning Glass Technologies, Labor Insight</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Change in Job Postings in Boston from February 2020</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>

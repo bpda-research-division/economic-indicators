@@ -18,13 +18,15 @@ import {
 import { Clipboard2DataFill } from "react-bootstrap-icons";
 import {
   baseAPI,
-  graphHeight,
   dateFormatter,
   commaFormatter,
   options,
   quarterlyFormatter,
   CustomXAxisTick,
 } from "../utils.js"
+import {
+  useDeviceSize
+} from "../useDeviceSize"
 
 const RealEstateDevelopment = () => {
   // set up state variables that will store g-sheet data
@@ -34,6 +36,7 @@ const RealEstateDevelopment = () => {
   const [bjrp, setBjrp] = useState([])
   const [affordableHousing, setAffordableHousing] = useState([])
   const [startsDemos, setStartsDemos] = useState([])
+  const [width, height, graphHeight] = useDeviceSize();
 
     // useEffect to load component after reciving data
   useEffect(() => {
@@ -64,9 +67,9 @@ const RealEstateDevelopment = () => {
 
 
   return (
-    <div>
+    <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={24} color={'#94D5DB'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
         <h2>Real Estate Development</h2>
       </div>
       <div className="dashBody">
@@ -186,9 +189,9 @@ const RealEstateDevelopment = () => {
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Non-Residential Permitted Square Footage</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
                 height={400}
@@ -221,9 +224,9 @@ const RealEstateDevelopment = () => {
             </ResponsiveContainer>
             <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Development Pipeline Square Footage by Use Type</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
                 height={400}
@@ -296,10 +299,10 @@ const RealEstateDevelopment = () => {
             <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-6">
+        <div className="row mh-20 gx-5 gy-5 graph-row">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Permitted Market Rate and Affordable Housing Units</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
                 height={400}
@@ -333,9 +336,9 @@ const RealEstateDevelopment = () => {
             <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
 
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Monthly Construction Hours</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}

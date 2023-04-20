@@ -18,7 +18,6 @@ import {
 import { GeoAltFill } from "react-bootstrap-icons";
 import {
   baseAPI,
-  graphHeight,
   dateFormatter,
   decimalFormatter,
   dollarFormatter,
@@ -27,6 +26,9 @@ import {
   commaFormatter,
   CustomXAxisTick,
 } from "../utils.js"
+import {
+  useDeviceSize
+} from "../useDeviceSize"
 
 
 const CommercialHub = (props) => {
@@ -42,6 +44,7 @@ const CommercialHub = (props) => {
   const [hubRealEstate, setHubRealEstate] = useState([])
   const [hubRealEstateDev, setHubRealEstateDev] = useState([])
   const [hubValidationSum, setHubValidationSum] = useState([])
+  const [width, height, graphHeight] = useDeviceSize();
 
    // useEffect to load component after reciving data
   useEffect(() => {
@@ -70,9 +73,9 @@ const CommercialHub = (props) => {
   }, [props.hubName, props.hubVar]);
 
   return (
-    <div>
+    <div className="dashboard">
       <div className="subHeader">
-        <GeoAltFill size={24} color={'#94D5DB'} />
+        <GeoAltFill size={(height*0.015)+12} color={'#94D5DB'} />
         <h2>{hubName}</h2>
       </div>
       <div className="dashBody">
@@ -218,9 +221,9 @@ const CommercialHub = (props) => {
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Incoming Trips to {hubName}, Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -261,9 +264,9 @@ const CommercialHub = (props) => {
             </ResponsiveContainer>
             <p className="citation">Source: Cuebiq mobility data</p>
           </div>
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">In-Person Spending* in {hubName}, Compared to the Same Month 2019</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -310,9 +313,9 @@ const CommercialHub = (props) => {
             </ResponsiveContainer>
             <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
           </div>
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Vacancy Rates in {hubName}</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -360,10 +363,10 @@ const CommercialHub = (props) => {
             <p className="citation">Source: CoStar</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-4">
+        <div className="row mh-20 gx-5 gy-5 graph-row">
+          <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">MBTA Gated Station Validations in {hubName}</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -396,9 +399,9 @@ const CommercialHub = (props) => {
             <p className="citation">Source: MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</p>
 
           </div>
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Recent and Upcoming Development in {hubName}</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
                 height={400}
@@ -471,9 +474,9 @@ const CommercialHub = (props) => {
             </ResponsiveContainer>
             <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
           </div>
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Commerical Asking Rents in {hubName}</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}

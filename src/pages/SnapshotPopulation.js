@@ -19,12 +19,14 @@ import {
 import { AspectRatioFill } from "react-bootstrap-icons";
 import {
     baseAPI,
-    graphHeight,
     decimalFormatter,
     commaFormatter,
     CustomXAxisTick,
 } from "../utils.js"
 import { Placeholder } from "react-bootstrap";
+import {
+    useDeviceSize
+  } from "../useDeviceSize"
 
 const RealEstateMarket = () => {
     // set up state variables that will store g-sheet data
@@ -32,6 +34,7 @@ const RealEstateMarket = () => {
     const [age, setAge] = useState([])
     const [education, setEducation] = useState([])
     const [raceEthnicity, setRaceEthnicity] = useState([])
+    const [width, height, graphHeight] = useDeviceSize();
 
     // set up state variables that will store transposed data for bar charts
     const [ageBar, setAgeBar] = useState([])
@@ -143,9 +146,9 @@ const RealEstateMarket = () => {
 
 
     return (
-        <div>
+        <div className="dashboard">
             <div className="subHeader">
-                <AspectRatioFill size={24} color={'#94D5DB'} className="subHeaderIcon" />
+                <AspectRatioFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
                 <h2>Annual Snapshot: Population</h2>
             </div>
             <div className="dashBody">
@@ -235,9 +238,9 @@ const RealEstateMarket = () => {
                     </div>
                 </div>
                 <div className="row mh-20 gx-5 gy-5 graph-row">
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Citywide Population</h6>
-                        <ResponsiveContainer width="90%" height={graphHeight}>
+                        <ResponsiveContainer width="98%" height={graphHeight}>
                             <LineChart
                                 width={500}
                                 height={400}
@@ -269,9 +272,9 @@ const RealEstateMarket = () => {
                         </ResponsiveContainer>
                         <p className="citation">Source: U.S. Census Bureau, 2021 American Community Survey 1-Year Estimates</p>
                     </div>
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Age Groups</h6>
-                        <ResponsiveContainer width="90%" height={graphHeight}>
+                        <ResponsiveContainer width="98%" height={graphHeight}>
                             <BarChart
                                 width={500}
                                 height={400}
@@ -298,10 +301,10 @@ const RealEstateMarket = () => {
                         <p className="citation">Source: U.S. Census Bureau, 2021 American Community Survey 1-Year Estimates</p>
                     </div>
                 </div>
-                <div className="row mh-20 gx-5 gy-5">
-                    <div className="col-12 col-md-6">
+                <div className="row mh-20 gx-5 gy-5 graph-row">
+                    <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Educational Attainment for Population over 25</h6>
-                        <ResponsiveContainer width="90%" height={graphHeight}>
+                        <ResponsiveContainer width="98%" height={graphHeight}>
                             <BarChart
                                 width={500}
                                 height={400}
@@ -332,9 +335,9 @@ const RealEstateMarket = () => {
                         <p className="citation">Source: U.S. Census Bureau, 2021 American Community Survey 1-Year Estimates</p>
 
                     </div>
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Race, Ethnicity, and Nativity</h6>
-                        <ResponsiveContainer width="90%" height={graphHeight}>
+                        <ResponsiveContainer width="98%" height={graphHeight}>
                             <BarChart
                                 width={500}
                                 height={400}

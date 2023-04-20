@@ -4,13 +4,16 @@ export const useDeviceSize = () => {
 
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
+    const [graphHeight, setGraphHeight] = useState(0)
 
     const handleWindowResize = () => {
         setWidth(window.innerWidth);
         setHeight(window.innerHeight);
-        console.log('width: ' + width + '->' + ((0-(width*0.0026)*2)));
-        // console.log(1 - ((width/3000)/3));
-        // console.log(window.innerWidth);
+        
+        // "window.innerHeight * 0.8" -> scale graph height based on inner browser window height
+        // " / ((window.innerWidth/window.innerHeight) + 0.8)" -> adjust graph height by screen ratio
+        // "(window.innerWidth/window.innerHeight) + 0.8" -> pure ratio caused too much fluxation-- softened by +0.8
+        setGraphHeight(window.innerHeight * 0.8 / ((window.innerWidth/window.innerHeight) + 0.8));
     }
 
     useEffect(() => {
@@ -22,5 +25,5 @@ export const useDeviceSize = () => {
         return () => window.removeEventListener('resize', handleWindowResize);
     }, []);
 
-    return [width, height]
+    return [width, height, graphHeight]
 }
