@@ -1,20 +1,20 @@
-import React, { 
+import React, {
   useEffect,
-  useState, 
+  useState,
 } from "react";
-import { 
-  LineChart, 
-  Line, 
-  Legend, 
-  Tooltip, 
+import {
+  LineChart,
+  Line,
+  Legend,
+  Tooltip,
   YAxis,
-  XAxis, 
-  ResponsiveContainer, 
-  CartesianGrid, 
-  ReferenceLine, 
+  XAxis,
+  ResponsiveContainer,
+  CartesianGrid,
+  ReferenceLine,
 } from 'recharts';
 import { Clipboard2DataFill } from "react-bootstrap-icons";
-import { 
+import {
   baseAPI,
   graphHeight,
   dateFormatter,
@@ -23,21 +23,26 @@ import {
 } from "../utils.js"
 
 const EconomicActivity = () => {
+  // set up state variables that will store g-sheet data
   const [dining, setDining] = useState([])
   const [hotels, setHotels] = useState([])
   const [spending, setSpending] = useState([])
   const [hotelsYearly, setHotelsYearly] = useState([])
 
+  // useEffect to load component after reciving dat
   useEffect(() => {
+     // promise/fetch data from g-sheet pages
     Promise.all([
       fetch(baseAPI + 'EconomicActivity_SeatedDining'),
       fetch(baseAPI + 'EconomicActivity_HotelOccupancy'),
       fetch(baseAPI + 'EconomicActivity_InPersonSpending'),
       fetch(baseAPI + 'EconomicActivity_HotelOccupancyByYear'),
     ])
+      // parse json results
       .then(([resSeatedDining, resHotelOccupancy, resInPersonSpending, resHotelOccupancyByYear]) =>
         Promise.all([resSeatedDining.json(), resHotelOccupancy.json(), resInPersonSpending.json(), resHotelOccupancyByYear.json()])
       )
+      // store parsed data in state
       .then(([dataSeatedDining, dataHotelOccupancy, dataInPersonSpending, dataHotelOccupancyByYear]) => {
         setDining(dataSeatedDining);
         setHotels(dataHotelOccupancy);
@@ -50,14 +55,14 @@ const EconomicActivity = () => {
   return (
     <div>
       <div className="subHeader">
-        <Clipboard2DataFill size={24} color={'#94D5DB'} className="subHeaderIcon"/>
+        <Clipboard2DataFill size={24} color={'#94D5DB'} className="subHeaderIcon" />
         <h2>Economic Activity</h2>
       </div>
       <div className="dashBody">
         <div className="row mh-20 g-6 indicator-row">
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"> 
+              <h4 className="indicatorSubtext">
                 Change in <span className="accentSubText">Seated Dining</span> from the Same Month in 2019
                 {/* {
                     dining.length ?
@@ -68,6 +73,7 @@ const EconomicActivity = () => {
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
+                  // once data is loaded, display text. otherwise, show "loading"
                   dining.length ?
                     // @ts-ignore
                     new Intl.DateTimeFormat("en-US", options).format((new Date(dining[dining.length - 1]['Month'])))
@@ -75,8 +81,10 @@ const EconomicActivity = () => {
                 }
                 </h4>
                 <h4 className="accentNumber">{
+                  // once data is loaded, display text. otherwise, show "loading"
                   dining.length ?
-                  new Intl.NumberFormat("en-US", {signDisplay: "exceptZero"}).format(((dining[dining.length - 1]['Boston']) * 100).toFixed(1))
+                    // format number to expplicitly show positive/negtaive sign
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((dining[dining.length - 1]['Boston']) * 100).toFixed(1))
                     : 'loading'
                 }%
                 </h4>
@@ -88,13 +96,15 @@ const EconomicActivity = () => {
               <h4 className="indicatorSubtext"><span className="accentSubText">Hotel Occupancy Rate</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                hotels.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(hotels[hotels.length - 1]['Month'])))
-                  : 'loading'
+                  // once data is loaded, display text. otherwise, show "loading"
+                  hotels.length ?
+                    // @ts-ignore
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(hotels[hotels.length - 1]['Month'])))
+                    : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
+                  // once data is loaded, display text. otherwise, show "loading"
                   hotels.length ?
                     ((hotels[hotels.length - 1]['Boston']) * 100).toFixed(1)
                     : 'loading'
@@ -104,8 +114,8 @@ const EconomicActivity = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Overall Spending</span> from the Same Month in 2019 
-              {/* {
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Overall Spending</span> from the Same Month in 2019
+                {/* {
                 spending.length ?
                   // @ts-ignore
                   new Intl.DateTimeFormat("en-US", options).format((new Date(spending[0]['Month'])))
@@ -114,6 +124,7 @@ const EconomicActivity = () => {
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
+                  // once data is loaded, display text. otherwise, show "loading"
                   spending.length ?
                     // @ts-ignore
                     new Intl.DateTimeFormat("en-US", options).format((new Date(spending[spending.length - 1]['Month'])))
@@ -121,8 +132,9 @@ const EconomicActivity = () => {
                 }
                 </h4>
                 <h4 className="accentNumber">{
+                  // once data is loaded, display text. otherwise, show "loading"
                   spending.length ?
-                    ((spending[spending.length - 1]['Overall Spending'])*100).toFixed(1)
+                    ((spending[spending.length - 1]['Overall Spending']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -131,7 +143,7 @@ const EconomicActivity = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">Change in <span className="accentSubText">Resturant Spending</span> from the Same Month in 2019
-              {/* {
+                {/* {
                 spending.length ?
                   // @ts-ignore
                   new Intl.DateTimeFormat("en-US", options).format((new Date(spending[0]['Month'])))
@@ -140,13 +152,15 @@ const EconomicActivity = () => {
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
-                    spending.length ?
-                      // @ts-ignore
-                      new Intl.DateTimeFormat("en-US", options).format((new Date(spending[spending.length - 1]['Month'])))
-                      : 'loading'
-                  }
+                  // once data is loaded, display text. otherwise, show "loading"
+                  spending.length ?
+                    // @ts-ignore
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(spending[spending.length - 1]['Month'])))
+                    : 'loading'
+                }
                 </h4>
                 <h4 className="accentNumber">{
+                  // once data is loaded, display text. otherwise, show "loading"
                   spending.length ?
                     ((spending[spending.length - 1]['Eating Places']) * 100).toFixed(1)
                     : 'loading'
@@ -157,182 +171,173 @@ const EconomicActivity = () => {
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
           <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Seated Diners Compared to the Same Month in 2019</h6>
-              <ResponsiveContainer width="90%" height={graphHeight}>
-                <LineChart
-                  width={500}
-                  height={400}
-                  data={dining}
-                  stackOffset="expand"
-                >
-                  <XAxis
-                    dataKey="Epoch Miliseconds"
-                    scale="time"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
-                    tickFormatter={dateFormatter}
-                  />
-                  <YAxis
-                    type="number"
-                    // domain={[-0.5, .1]}
-                    // ticksCount={5}
-                    // interval={0}
-                    tickFormatter={decimalFormatter}
-                  />
-                  <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                  <Legend iconType="plainline" />
-                  <Line
-                    type="monotone"
-                    dataKey="Boston"
-                    stroke="#003c50"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="US"
-                    stroke="#00a6b4"
-                    dot={false}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
+            <h6 className="chartTitle">Seated Diners Compared to the Same Month in 2019</h6>
+            <ResponsiveContainer width="90%" height={graphHeight}>
+              <LineChart
+                width={500}
+                height={400}
+                data={dining}
+                stackOffset="expand"
+              >
+                <XAxis
+                  dataKey="Epoch Miliseconds"
+                  scale="time"
+                  type="number"
+                  domain={['dataMin', 'dataMax']}
+                  tickFormatter={dateFormatter}
+                />
+                <YAxis
+                  type="number"
+                  tickFormatter={decimalFormatter}
+                />
+                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Legend iconType="plainline" />
+                <Line
+                  type="monotone"
+                  dataKey="Boston"
+                  stroke="#003c50"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="US"
+                  stroke="#00a6b4"
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
             <p className="citation">Source: OpenTable, Seated diners from online, phone, and walk-in reservations</p>
           </div>
           <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Overall In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
-              <ResponsiveContainer width="90%" height={graphHeight}>
-                <LineChart
-                  width={500}
-                  height={400}
-                  data={spending}
-                >
-                  <XAxis
-                    dataKey="Epoch Miliseconds"
-                    scale="time"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
-                    tickFormatter={dateFormatter}
-                  />
-                  <YAxis
-                    type="number"
-                    // domain={[0, .2]}
-                    tickFormatter={decimalFormatter}
-                  />
-                  
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                  <Legend iconType="plainline" />
-                  <Line
-                    type="monotone"
-                    dataKey="Overall Spending"
-                    stroke="#003c50"
-                    dot={false}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-              <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+            <h6 className="chartTitle">Overall In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
+            <ResponsiveContainer width="90%" height={graphHeight}>
+              <LineChart
+                width={500}
+                height={400}
+                data={spending}
+              >
+                <XAxis
+                  dataKey="Epoch Miliseconds"
+                  scale="time"
+                  type="number"
+                  domain={['dataMin', 'dataMax']}
+                  tickFormatter={dateFormatter}
+                />
+                <YAxis
+                  type="number"
+                  tickFormatter={decimalFormatter}
+                />
+
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Legend iconType="plainline" />
+                <Line
+                  type="monotone"
+                  dataKey="Overall Spending"
+                  stroke="#003c50"
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+            <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5">
           <div className="col-12 col-md-6">
-              <h6 className="chartTitle">Hotel Occupancy Rate in Boston</h6>
-              <ResponsiveContainer width="90%" height={graphHeight}>
-                <LineChart
-                  width={500}
-                  height={400}
-                  data={hotelsYearly}
-                >
-                  <XAxis
-                    dataKey="Month"
-                    // scale="time"
-                    // type="number"
-                    // domain={['dataMin', 'dataMax']}
-                    // tickFormatter={dateFormatter}
-                  />
-                  <YAxis
-                    type="number"
-                    // domain={[-.65, 0.5]}
-                    tickFormatter={decimalFormatter}
-                  />
-                  <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2"/>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip formatter={decimalFormatter} />
-                  <Legend iconType="plainline" />
-                  <Line
-                    type="monotone"
-                    dataKey="2019"
-                    stroke="#003c50"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="2020"
-                    stroke="#00a6b4"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="2021"
-                    stroke="#e05926"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="2022"
-                    stroke="#a6c838"
-                    dot={false}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-              <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report</p>
+            <h6 className="chartTitle">Hotel Occupancy Rate in Boston</h6>
+            <ResponsiveContainer width="90%" height={graphHeight}>
+              <LineChart
+                width={500}
+                height={400}
+                data={hotelsYearly}
+              >
+                <XAxis
+                  dataKey="Month"
+                />
+                <YAxis
+                  type="number"
+                  tickFormatter={decimalFormatter}
+                />
+                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip formatter={decimalFormatter} />
+                <Legend iconType="plainline" />
+                <Line
+                  type="monotone"
+                  dataKey="2019"
+                  stroke="#003c50"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="2020"
+                  stroke="#00a6b4"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="2021"
+                  stroke="#e05926"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="2022"
+                  stroke="#a6c838"
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+            <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report</p>
 
           </div>
           <div className="col-12 col-md-6">
-              <h6 className="chartTitle">In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
-              <ResponsiveContainer width="90%" height={graphHeight}>
-                <LineChart
-                  width={500}
-                  height={400}
-                  data={spending}
-                >
-                  <XAxis
-                    dataKey="Epoch Miliseconds"
-                    scale="time"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
-                    tickFormatter={dateFormatter}
-                  />
-                  <YAxis
-                    type="number"
-                    // domain={[0, .2]}
-                    tickFormatter={decimalFormatter}
-                  />
-                  
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                  <Legend iconType="plainline" />
-                  <Line
-                    type="monotone"
-                    dataKey="Grocery"
-                    stroke="#003c50"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Eating Places"
-                    stroke="#00a6b4"
-                    dot={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Overall Spending"
-                    stroke="#e05926"
-                    dot={false}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-              <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+            <h6 className="chartTitle">In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
+            <ResponsiveContainer width="90%" height={graphHeight}>
+              <LineChart
+                width={500}
+                height={400}
+                data={spending}
+              >
+                <XAxis
+                  dataKey="Epoch Miliseconds"
+                  scale="time"
+                  type="number"
+                  domain={['dataMin', 'dataMax']}
+                  tickFormatter={dateFormatter}
+                />
+                <YAxis
+                  type="number"
+                  // domain={[0, .2]}
+                  tickFormatter={decimalFormatter}
+                />
+
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Legend iconType="plainline" />
+                <Line
+                  type="monotone"
+                  dataKey="Grocery"
+                  stroke="#003c50"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Eating Places"
+                  stroke="#00a6b4"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Overall Spending"
+                  stroke="#e05926"
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+            <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
           </div>
         </div>
       </div>

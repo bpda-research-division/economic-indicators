@@ -2,33 +2,36 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { InfoLg } from "react-bootstrap-icons";
+import {
+  useDeviceSize
+} from "../useDeviceSize"
 
 
 function About() {
   const [show, setShow] = useState(false);
-
+  const [width, height] = useDeviceSize();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
     <div className="aboutComp">
       <a onClick={handleShow} className="underlineButton">
-        <InfoLg size={35} id="infoI" />
+        <InfoLg size={(height*0.025)+15} id="infoI" />
       </a>
 
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>About The Dashboard</Offcanvas.Title>
+          <Offcanvas.Title><h4>About The Dashboard</h4></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <p>
-           This Economic Indicators Dashboard is a joint project of the BPDA Research Division
+          This Economic Indicators Dashboard is a joint project of the BPDA Research Division
           and Office of Digital Cartography and GIS. It provides monthly data updates to
-          track Boston’s economy in five areas: Labor Market, Mobility, Economic Activity,
-          Real Estate Market, and Real Estate Development. In addition to citywide data for
+          track Boston’s economy in five areas: <b>Labor Market, Mobility, Economic Activity,
+          Real Estate Market, and Real Estate Development</b>. In addition to citywide data for
           each of these five topic areas, the dashboard provides profiles of each of Boston’s
-          four commercial hubs: Fenway/Longwood, Back Bay, Downtown, and South Boston
-          Waterfront.
+          four commercial hubs: <b>Fenway/Longwood, Back Bay, Downtown, and South Boston
+          Waterfront</b>.
           </p>
           <img src={require("../images/CommercialCenters.png")} alt="Commercial Centers of Boston: Downtown, Back Bay, South Boston Waterfront, Fenway and Longwood" id="commercialCenters" className="img-fluid" />
           <p>

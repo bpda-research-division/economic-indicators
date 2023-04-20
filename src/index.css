@@ -58,7 +58,7 @@ body {
 
 
 .dashBody {
-  padding: 1vh 7vw 1vh 7vw;
+  padding: 1vh 3vw 1vh 3vw;
   /* background-color: #f3f3f3; */
 }
 
@@ -67,7 +67,7 @@ body {
 }
 
 .indicator-row{
-  margin-bottom: 3vh !important;
+  margin-bottom: 2vh !important;
 }
 
 /* Header Styling */
@@ -81,12 +81,13 @@ body {
   color: white;
   height: 7vh;
   /* padding: 0.5rem 0.5rem 0.5rem 1rem !important; */
-  padding: 1vh 5vw 0.5vh 5vw !important; 
+  padding: 1vh 5vw 0.5vh 2.9vw !important; 
 }
 
 h1{
   font-family: LegatoOT-Bold;
-  font-size: 1.25rem !important;
+  /* font-size: 1.25rem !important; */
+  font-size: calc(0.6rem + 1.9vw) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   align-self: center;
@@ -98,8 +99,13 @@ h2{
   font-family: LegatoOT-Bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.4rem !important;
+  /* font-size: 1.4rem !important; */
+  font-size: calc(1.3rem + 1vw) !important;
   text-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+h5{
+  font-size: 0.65rem;
 }
 
 
@@ -119,8 +125,8 @@ h2{
   align-content: center;
   /* padding: 0.75rem 5rem 0rem 5rem !important; */
   /* padding: 0.5rem 0.7rem 0rem 0.70rem !important; */
-  padding: 1vh 4.5vw 0vh 6vw !important;
-  margin-bottom: 1.5vh;
+  padding: 1vh 4.5vw 0vh 3.2vw !important;
+  margin-bottom: 1vh;
   background-color: var(--darkblue);
   color: white;
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
@@ -128,6 +134,7 @@ h2{
 
 .subHeader > h2 {
   padding: 0rem 0rem 0rem 0.5rem;
+  margin-bottom: 0.4vh !important;
 }
 
 
@@ -135,7 +142,8 @@ h2{
 .indicatorContainer, .chartContainer, .recharts-responsive-container{
   box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
   padding: 0.75rem;
-  margin: 0.5rem 0 0.5rem 0;
+  padding: 1vh;
+  /* margin: 1vh 0 1vh 0; */
 }
 
 .indicatorContainer{
@@ -170,9 +178,22 @@ h2{
 /* .recharts-default-tooltip {
   z-index: 10;
 } */
-.recharts-responsive-container, .recharts-wrapper {
+.recharts-responsive-container {
   background-color: white;
   z-index: 10;
+}
+
+/* Legend was overlapping the responsize-container.  */
+/* This was because the auto-calculated height of recharts-wrapper & recharts-surface was greater than parent container */
+/* Solution: Set recharts-wrapper & recharts-surface height to 99%, forcing them to stay within parent container */
+.recharts-wrapper {
+  background-color: white;
+  z-index: 10;
+  height: 99% !important;
+}
+
+.recharts-surface {
+  height: 99% !important;
 }
 
 .chartTitle {
@@ -180,6 +201,7 @@ h2{
   text-align: center;
   font-weight: bold;
   text-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  margin-bottom: 0 !important;
 }
 
 .subChartTitle {
@@ -265,7 +287,7 @@ line.recharts-legend-icon  {
   height: 3px;
   border-radius: 0px;
   background: rgb(224,89,38);
-background: linear-gradient(90deg, rgba(224,89,38,1) 0%, rgba(224,89,38,1) 78%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(90deg, rgba(224,89,38,1) 0%, rgba(224,89,38,1) 78%, rgba(255,255,255,1) 100%);
   bottom: 0;
   transform-origin: right;
   transform: scaleX(0);
@@ -284,32 +306,86 @@ svg {
   filter: drop-shadow(0 .5rem 1rem rgb(0 0 0 / 0.15));
 }
 
+.list-unstyled {
+  margin-bottom: 1.5em;
+}
+
+.list-unstyled > li {
+  font-size: 1.3rem;
+}
+
 /* Media Query For Wide Screens*/
 @media (min-width: 1400px) {
+  #root {
+    height: 100vh;
+    width: 100vw;
+  }
+  .App, #AppContainer {
+    height: 100%;
+    width: 100vw;
+  }
+  #headerRow{
+    box-sizing: border-box;
+    height: 7%;
+  }
+  #bodyRow{
+    height: 93%;
+  }
+  #bodyColumn {
+    height: 100%;
+  }
+  #dashboard{
+    height: 100%;
+  }
+  .subHeader {
+    box-sizing: border-box;
+    height: 3.5%;
+    padding: 1vh 4.5vw 0vh 3.2vw !important;
+  }
+  .dashBody{
+    height: 95.5%;
+  }
+  .indicator-row{
+    box-sizing: border-box;
+    height: 8%;
+    padding-bottom: 1vh !important;
+    margin-bottom: 0 !important;
+  }
+  .indicatorContainer{
+    height: 100%;
+  }
+  .graph-row{
+    box-sizing: border-box;
+    height: 48%;
+    padding-top: 1.5vh;
+  }
+
+  .graph-column {
+    height: 100%
+  }
+
   h1 {
-    font-size: 2.5rem !important;
+    font-size: calc(0.25rem + 1.9vw) !important;
   }
 
   h2 {
-    font-size: 1.6rem !important;
-  }
-  .subHeader {
-    padding: 1vh 4.5vw 0vh 5.2vw !important;
+    font-size: calc(0.60rem + 0.8vw) !important;
   }
 
-  .indicatorSubtext, h4, indicatorContainer {
-    font-size: clamp(0.7rem, 1vw, 1.3rem) !important;
-  }
-
-  .indicator-row{
-    margin-bottom: 2vh !important;
+  .indicatorSubtext, h4 {
+    /* font-size: clamp(0.7rem, 1vw, 1.3rem) !important; */
+    margin-top: 0.5rem;
+    font-size: calc(0.1rem + 0.8vw) !important;
   }
 
   .chartTitle {
-    font-size: 1.4rem;
+    /* font-size: 1.4rem; */
+    /* font-size: 1vw; */
+    font-size: calc(0.15rem + 0.8vw) !important;
   }
 
   .recharts-legend-item, .recharts-default-tooltip, .citation { 
-    font-size: 0.9rem; 
+    font-size: calc(0.1rem + 0.65vw); 
   }
 }
+

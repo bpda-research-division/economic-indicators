@@ -17,17 +17,18 @@ import RealEstateDevelopment from './pages/RealEstateDevelopment';
 import CommercialHub from './pages/CommercialHub';
 import SnapshotEconomy from './pages/SnapshotEconomy';
 import SnapshotPopulation from './pages/SnapshotPopulation';
+import LayoutDummy from './pages/LayoutDummy'
 
 
 function App() {
   return (
     <div className="App">
-      <Container fluid className="g-0">
-        <Row className="header-row g-0">
+      <Container fluid className="g-0" id="AppContainer">
+        <Row className="header-row g-0" id="headerRow">
             <Header />
         </Row>
-        <Row className="body-row g-0" >
-          <Col xs={12} md={12}>
+        <Row className="body-row g-0" id="bodyRow">
+          <Col xs={12} md={12} id="bodyColumn">
             {/* use hypenated urls for SEO optimization */}
             <Routes>
               <Route path="/" element={<LaborMarket />} />
@@ -42,6 +43,7 @@ function App() {
               <Route path="/south-boston-waterfront" element={<CommercialHub hubName={'South Boston Waterfront'} hubVar={'SouthBostonWaterfront'} />} />
               <Route path="/economy" element={<SnapshotEconomy />} />
               <Route path="/population" element={<SnapshotPopulation />} />
+              <Route path="/dummy" element={<LayoutDummy />} />
             </Routes>    
           </Col>
         </Row> 

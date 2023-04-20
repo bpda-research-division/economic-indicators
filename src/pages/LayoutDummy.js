@@ -14,6 +14,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   ReferenceLine,
+  Text
 } from 'recharts';
 import { Clipboard2DataFill } from "react-bootstrap-icons";
 import {
@@ -24,13 +25,22 @@ import {
   commaFormatter,
   options,
 } from "../utils.js"
+import {
+  useDeviceSize
+} from "../useDeviceSize"
 
-const LaborMarket = () => {
+const LayoutDummy = () => {
   // set up state variables that will store g-sheet data
   const [payroll, setPayroll] = useState([])
   const [postings, setPostings] = useState([])
   const [unemployment, setUnemployment] = useState([])
   const [laborforce, setLaborforce] = useState([])
+  const [width, height] = useDeviceSize();
+
+  // const graphHeight = (height * 0.25);
+  const ratio = (width/height + 0.8)
+  // const graphHeight = (height * 0.57 /ratio);
+  const graphHeight = (height * 0.8 / ratio);
 
   // useEffect to load component after reciving data
   useEffect(() => {
@@ -56,10 +66,12 @@ const LaborMarket = () => {
   }, []);
 
   return (
-    <div>
+    <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={24} color={'#94D5DB'} className="subHeaderIcon" />
-        <h2>Labor Market</h2>
+        {/* <Clipboard2DataFill size={(width/95)} color={'#94D5DB'} className="subHeaderIcon" /> */}
+        {/* <Clipboard2DataFill size={(height*0.02)} color={'#94D5DB'} className="subHeaderIcon" /> */}
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
+        <h2>Dummy Market</h2>
       </div>
       <div className="dashBody">
         <div className="row mh-20 g-6 indicator-row">
@@ -174,15 +186,15 @@ const LaborMarket = () => {
           </div>
         </div>
         {/* <div className="row mh-20 gx-5 gy-5 graph-row"> */}
-        <div className="row mh-20 gx-5 gy-5 graph-row">
-          <div className="col-12 col-md-6">
-            <h6 className="chartTitle">Change in Payroll Employment in Boston from February 2020</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+        <div className="row graph-row">
+          <div className="col-12 col-md-6 graph-column">
+            <h6 className="chartTitle">DUMMY Change in Payroll Employment in Boston from February 2020</h6>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
                 data={payroll}
-                stackOffset="expand"
+                // stackOffset="expand"
               >
                 <XAxis
                   dataKey="Epoch Miliseconds"
@@ -199,7 +211,8 @@ const LaborMarket = () => {
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                <Legend iconType="plainline" />
+                {/* <Legend iconType="plainline" wrapperStyle={{ position: 'relative' }} height={0} chartHeight={300} /> */}
+                <Legend iconType="plainline" ></Legend>
                 <Line
                   type="monotone"
                   dataKey="Total Nonfarm Payroll Jobs"
@@ -240,9 +253,9 @@ const LaborMarket = () => {
             </ResponsiveContainer>
             <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Boston Resident Labor Force Unemployment Rate</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -287,10 +300,10 @@ const LaborMarket = () => {
             <p className="citation">Source: Burning Glass Technologies, Labor Insight</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5">
-          <div className="col-12 col-md-6">
+        <div className="row mh-20 gx-5 gy-5 graph-row">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Change in Job Postings in Boston from February 2020</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
@@ -348,9 +361,9 @@ const LaborMarket = () => {
             <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
 
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Boston Resident Labor Force</h6>
-            <ResponsiveContainer width="90%" height={graphHeight}>
+            <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
                 height={400}
@@ -394,4 +407,4 @@ const LaborMarket = () => {
   );
 };
 
-export default LaborMarket;
+export default LayoutDummy;
