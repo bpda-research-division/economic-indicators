@@ -70,6 +70,9 @@ body {
   margin-bottom: 2vh !important;
 }
 
+#aboutCanvas{
+  width:700px !important;
+}
 /* Header Styling */
 
 .HeaderDiv{
@@ -171,14 +174,19 @@ h5{
 .econ-column {
   display: flex;
   flex-direction: column;
-  padding: .5vh;
-  box-sizing: border-box;
+  /* padding: .5vh;
+  box-sizing: border-box; */
 }
 
+#commuterMapCol{
+  padding: 1.5vh;
+}
 #commuterMapDiv, #commuterMap {
   display: flex;
   flex-direction: column;
   flex-grow: 1!important;
+  padding: 0.5vh;
+  box-sizing: border-box;
 }
 
 /* Recharts Styling */
@@ -274,6 +282,7 @@ line.recharts-legend-icon  {
 }
 
 .nav-link {
+  color: #003c50 !important;
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -316,8 +325,9 @@ svg {
 }
 
 .list-unstyled > li {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
+
 
 /* Media Query For Wide Screens*/
 @media (min-width: 1400px) {
@@ -401,6 +411,11 @@ svg {
     box-sizing: border-box;
     padding: 0.6rem;
   }
+
+  #commercialHub{
+    width: 100%;
+  }
+  
 
 }
 

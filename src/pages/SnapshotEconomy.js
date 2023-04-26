@@ -136,10 +136,10 @@ const SnapshotEconomy = () => {
           </div>
         </div>
         <div className="row gx-0 econ-row">
-          <div className="col-12 col-md-7 graph-column flex-column ">
+          <div className="col-12 col-md-7 graph-column flex-column">
             <div>
               <h6 className="chartTitle">Total Employment in Boston</h6>
-              <ResponsiveContainer width="98%" height={graphHeight}>
+              <ResponsiveContainer width="98%" height={graphHeight/1.5}>
                 <BarChart
                   width={500}
                   height={400}
@@ -172,7 +172,7 @@ const SnapshotEconomy = () => {
             <div>
               <h6 className="chartTitle">Boston Employment Shares by Industry</h6>
               <p className="subChartTitle">As Compared to Overall U.S. Employment Rate</p>
-              <ResponsiveContainer width="98%" height={graphHeight * 0.9}>
+              <ResponsiveContainer width="98%" height={(graphHeight * 0.9)+(graphHeight/2.3)}>
                 <BarChart
                   width={500}
                   height={400}
@@ -218,7 +218,7 @@ const SnapshotEconomy = () => {
               <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
             </div>
           </div>
-          <div className="col-12 col-md-5 flex-column econ-column">
+          <div className="col-12 col-md-5 flex-column econ-column" id="commuterMapCol">
             <div id="commuterMapDiv">
               <h6 className="chartTitle">Commuter Map</h6>
               {/* <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US" frameborder={0} style={{ border: 0 }} height={graphHeight} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe> */}
@@ -232,105 +232,6 @@ const SnapshotEconomy = () => {
             </div>
           </div>
         </div>
-
-
-
-
-        {/* <div className="row gx-0 graph-row">
-          <div className="col-12 col-md-8 graph-column">
-            <h6 className="chartTitle">Total Employment in Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
-              <BarChart
-                width={500}
-                height={400}
-                data={jobs}
-                stackOffset="expand"
-              >
-                <XAxis
-                  dataKey="Year"
-                  type="category"
-                />
-                <YAxis
-                  type="number"
-                  width={40}
-                  domain={[500000, 1000000]}
-                  tickFormatter={commaFormatter}
-                />
-                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip
-                  formatter={commaFormatter}
-                />
-                <Bar
-                  dataKey="Total Jobs"
-                  fill="#003c50"
-                />
-              </BarChart>
-            </ResponsiveContainer>
-            <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
-          </div>
-          <div className="col-12 col-md-4 d-flex flex-column graph-column mapDiv">
-            <h6 className="chartTitle">Job Density in Boston</h6>
-            <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=f6888321688549db927b547864d7b3c7&locale=en-US" frameborder={0} style={{ border: 0}} height={graphHeight} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe>
-            <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
-          </div>
-        </div>
-        <div className="row gx-0 graph-row">
-          <div className="col-12 col-md-4 d-flex flex-column graph-column">
-            <h6 className="chartTitle">Commuter Map</h6>
-            <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US" frameborder={0} style={{ border: 0 }} height={graphHeight} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe>
-            <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
-          </div>
-          <div className="col-12 col-md-8 graph-column">
-            <h6 className="chartTitle">Boston Employment Shares by Industry</h6>
-            <p className="subChartTitle">As Compared to Overall U.S. Employment Rate</p>
-            <ResponsiveContainer width="100%" height={graphHeight * 0.9}>
-              <BarChart
-                width={500}
-                height={400}
-                data={industry}
-                layout="vertical"
-                barGap={50}
-              >
-                <YAxis
-                  dataKey="Category"
-                  type="category"
-                  interval={0}
-                  tick={{ fontSize: 11 }}
-                  width={350}
-                />
-                <XAxis
-                  type="number"
-                  domain={[0, 0.20]}
-                  tickFormatter={decimalFormatter}
-                />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip formatter={decimalFormatter} />
-                <Legend
-                // formatter={(value, entry, index) => <span className="blackLegend">{value}</span>}
-                // payload={
-                //   [
-                //     { id: 'US Share Item', value: 'US Share', type: 'rect', color: 'rgba(0, 0, 0, .0)', stroke: '#151515'},
-                //   ]
-                // }
-                />
-                <Bar
-                  // stackId="a"
-                  dataKey="Boston Share"
-                  fill="#003c50"
-                />
-                <Bar
-                  // stackId="a"
-                  dataKey="US Share"
-                  fill="rgba(224, 89, 38, .9)"
-                // stroke="#151515"
-                />
-              </BarChart>
-            </ResponsiveContainer>
-            <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
-          </div>
-        </div>
-      </div> */}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import OffcanvasXL from 'react-bootstrap/Offcanvas';
 import { InfoLg } from "react-bootstrap-icons";
 import {
   useDeviceSize
@@ -19,7 +20,7 @@ function About() {
         <InfoLg size={(height*0.025)+15} id="infoI" />
       </a>
 
-      <Offcanvas show={show} onHide={handleClose} placement="end">
+      <Offcanvas show={show} onHide={handleClose} placement="end" id="aboutCanvas">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title><h4>About The Dashboard</h4></Offcanvas.Title>
         </Offcanvas.Header>
@@ -33,7 +34,8 @@ function About() {
           four commercial hubs: <b>Fenway/Longwood, Back Bay, Downtown, and South Boston
           Waterfront</b>.
           </p>
-          <img src={require("../images/CommercialCenters.png")} alt="Commercial Centers of Boston: Downtown, Back Bay, South Boston Waterfront, Fenway and Longwood" id="commercialCenters" className="img-fluid" />
+          {/* <img src={require("../images/CommercialCenters.png")} alt="Commercial Centers of Boston: Downtown, Back Bay, South Boston Waterfront, Fenway and Longwood" id="commercialCenters" className="img-fluid" /> */}
+          <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=830b98dc4250498795558383a3d20eb4&locale=en-US" frameborder={0} style={{ border: 0 }}  height="400" allow="fullscreen" id="commercialHub">iFrames are not supported on this page.</iframe>
           <p>
           For more economic and demographic research about Boston, please visit <a href="For more economic and demographic research about Boston, please visit https://www.bostonplans.org/research">https://www.bostonplans.org/research</a>
           </p>
