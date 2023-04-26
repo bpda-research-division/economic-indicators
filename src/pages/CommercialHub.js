@@ -36,7 +36,7 @@ const CommercialHub = (props) => {
   // the commercial hub is passed as a prop, and stored in a variable
   const hubName = props.hubName;
   const hubVar = props.hubVar;
-  // console.log(hubName + ", " + hubVar);
+  console.log(hubName + ", " + hubVar);
 
   // set up state variables that will store g-sheet data
   const [hubEconomicActivity, setHubEconomicActivity] = useState([])
@@ -265,7 +265,7 @@ const CommercialHub = (props) => {
             <p className="citation">Source: Cuebiq mobility data</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
-            <h6 className="chartTitle">In-Person Spending* in {hubName}, Compared to the Same Month 2019</h6>
+            <h6 className="chartTitle">In-Person Spending in {hubName}, Compared to the Same Month 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -311,7 +311,7 @@ const CommercialHub = (props) => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+            <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Vacancy Rates in {hubName}</h6>
@@ -406,15 +406,17 @@ const CommercialHub = (props) => {
                 width={500}
                 height={400}
                 data={hubRealEstateDev.slice(0, 4)}
+                layout="vertical"
               >
-                <XAxis
-                  dataKey="Category"
-                  padding={{ left: 15, right: 15 }}
-                  interval={0}
-                  tick={<CustomXAxisTick />}
-                  height={80}
-                />
                 <YAxis
+                  dataKey="Category"
+                  type="category"
+                  tick={{ fontSize: 11 }}
+                  width={150}
+                />
+                <XAxis
+                  type="number"
+                  // domain={[0, 0.20]}
                   tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
                   width={80}
                 />
@@ -472,7 +474,7 @@ const CommercialHub = (props) => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
+            <p className="citation">Source: BPDA Development Review</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Commerical Asking Rents in {hubName}</h6>

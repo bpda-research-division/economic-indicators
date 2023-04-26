@@ -154,7 +154,7 @@ const Mobility = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">MBTA Orange Line Passengers</span> Rate from the Same Month in 2019
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">MBTA Orange Line Passengers</span> from the Same Month in 2019
                 {/* {
                 MBTALine.length ?
                   // @ts-ignore
@@ -307,7 +307,7 @@ const Mobility = () => {
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
-                  dataKey="Logan Domestic Passengers (incl. General Aviation)"
+                  dataKey="Logan Domestic Passengers"
                   stroke="#003c50"
                   dot={false}
                 />
@@ -349,25 +349,25 @@ const Mobility = () => {
                 <Line
                   type="monotone"
                   dataKey="Blue Line"
-                  stroke="#003c50"
+                  stroke="#003da5"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Red Line"
-                  stroke="#CE1B46"
+                  stroke="#da291c"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Orange Line"
-                  stroke="#E05926"
+                  stroke="#ed8b00"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Green Line"
-                  stroke="#a6c838"
+                  stroke="#00843d"
                   dot={false}
                 />
               </LineChart>

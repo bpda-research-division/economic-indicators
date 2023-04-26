@@ -151,7 +151,7 @@ h5{
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: auto;
 }
 .accentNumber {
   color: var(--mediumblue);
@@ -166,7 +166,19 @@ h5{
 .accentSubText {
   color: var(--orange);
   font-weight: bold;
+}
 
+.econ-column {
+  display: flex;
+  flex-direction: column;
+  padding: .5vh;
+  box-sizing: border-box;
+}
+
+#commuterMapDiv, #commuterMap {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1!important;
 }
 
 /* Recharts Styling */
@@ -175,9 +187,6 @@ h5{
   font-size: 0.70rem; 
 }
 
-/* .recharts-default-tooltip {
-  z-index: 10;
-} */
 .recharts-responsive-container {
   background-color: white;
   z-index: 10;
@@ -217,10 +226,6 @@ h5{
 line.recharts-legend-icon  {
   stroke-width: 6;
 }
-
-/* .blackLegend {
-  color: #151515 !important;
-} */
 
 /* Button Styling */
 #infoI {
@@ -385,8 +390,17 @@ svg {
     font-size: calc(0.15rem + 0.8vw) !important;
   }
 
+  .subChartTitle {
+    font-size: calc(0.1rem + 0.75vw) !important;
+  }
   .recharts-legend-item, .recharts-default-tooltip, .citation { 
     font-size: calc(0.1rem + 0.65vw); 
   }
+
+  iframe {
+    box-sizing: border-box;
+    padding: 0.6rem;
+  }
+
 }
 

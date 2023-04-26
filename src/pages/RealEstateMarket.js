@@ -255,7 +255,7 @@ const RealEstateMarket = () => {
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">MultiFamily Residential Vacancy Rate in Boston</h6>
+            <h6 className="chartTitle">Multifamily Residential Vacancy Rate in Boston</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -326,7 +326,7 @@ const RealEstateMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: City of Boston, Mayor's Office of Housing based on data provided by Banker and Tradesman Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+            <p className="citation">Source: City of Boston, Mayor's Office of Housing</p>
           </div>
         </div>
       </div>

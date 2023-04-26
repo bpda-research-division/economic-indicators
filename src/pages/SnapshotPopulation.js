@@ -211,7 +211,7 @@ const RealEstateMarket = () => {
                                 </h4>
                                 <h4 className="accentNumber">{
                                     raceEthnicity.length ?
-                                        ((raceEthnicity[raceEthnicity.length - 1]['Percent Foreign-Born']) * 100).toFixed(1)
+                                        ((raceEthnicity[raceEthnicity.length - 1]['Percent Foreign Born']) * 100).toFixed(1)
                                         : 'loading'
                                 }%</h4>
                             </div>
@@ -270,7 +270,7 @@ const RealEstateMarket = () => {
                                 />
                             </LineChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 2021 American Community Survey 1-Year Estimates</p>
+                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2020 U.S. Decennial Census</p>
                     </div>
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Age Groups</h6>

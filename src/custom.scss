@@ -1,81 +1,14 @@
-// @import "../node_modules/bootstrap/scss/bootstrap";
-// @import "~bootstrap/scss/bootstrap";
-@import "bootstrap";
+// import necessaru bootstrap files
 @import "../node_modules/bootstrap/scss/functions";
-// @import "node_modules/bootstrap/scss/functions";
-// @import "node_modules/bootstrap/scss/variables";
-// @import "node_modules/bootstrap/scss/mixins";
-
-
-$darkblue:#003c50;
-$mediumblue:#00a6b4;
-$lightblue:#e8f3f6;
-$orange:#e05926;
-
-/* change the colors */
-$primary: #dd0000;
-
-
-// .btn-btn-primary {
-//   @include button-variant($darkblue, darken($darkblue, 7.5%), darken($darkblue, 10%), lighten($darkblue,5%), lighten($darkblue, 10%), darken($darkblue,30%));
-//   color: #fff;
-//   &:hover {
-//             color: #fff;
-//             background-color: lighten($darkblue, 5%);
-//         }
-// }
-
-// .btn-btn-primary {
-//   @include button-variant($darkblue, darken($darkblue, 7.5%), darken($darkblue, 10%), lighten($darkblue,5%), lighten($darkblue, 10%), darken($darkblue,30%));
-//   color: #fff;
-//   &:hover {
-//             color: #fff;
-//             background-color: lighten($darkblue, 5%);
-//         }
-// }
-
-
-// .btn-btn-outline-primary {
-//   @include button-outline-variant($darkblue, white, lighten($darkblue, 5%), $darkblue);
-// }
-
-.btn-btn-outline-primary {
-  @include button-outline-variant($orange, white, lighten($orange, 5%), $orange);
-}
-
-// .btn-btn-outline-primary {
-//   @include button-outline-variant(lighten($mediumblue, 5%), $darkblue, lighten($mediumblue, 10%), $mediumblue);
-// }
-
-.nav-link {
-  color: $darkblue;
-  &:hover {
-    color: $mediumblue;
-  }
-  &:focus {
-    color: $orange;
-  }
-}
-// $btn-background: #003c50;
-// $btn-border: #003c50;
-// $btn-color: #fff;
-
-// @mixin button-variant($background, $border, $color) {
-//     background-color: $btn-background;
-//     border: 2px solid $btn-border;
-//     color: #fff;
-
-//     &:hover {
-//         border: 2px solid $btn-background;
-//         color: $btn-color;
-//     }
-// }
-
-// .btn-primary {
-//     &.basic {
-//         @include button-variant($btn-background, $btn-border, $btn-color);
-//     }
-// }
-// @import "node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+
+// set custom color bases
+$custom-colors: (
+  "boylstonblue": #003c50
+);
+
+// merge with bootstrap's color map
+$theme-colors: map-merge($map1: $theme-colors, $map2: $custom-colors);
+
+// include bootstrap
+@import "bootstrap";

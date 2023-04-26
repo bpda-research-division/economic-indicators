@@ -214,7 +214,7 @@ const EconomicActivity = () => {
             <p className="citation">Source: OpenTable, Seated diners from online, phone, and walk-in reservations</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Overall In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
+            <h6 className="chartTitle">Overall In-Person Spending in Boston, Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -244,7 +244,7 @@ const EconomicActivity = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+            <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row">
@@ -297,7 +297,7 @@ const EconomicActivity = () => {
 
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">In-Person Spending* in Boston, Compared to the Same Month in 2019</h6>
+            <h6 className="chartTitle">In-Person Spending in Boston, Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -340,7 +340,7 @@ const EconomicActivity = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mastercard Geographic Insights from Carto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *In January 2019 dollars</p>
+            <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
           </div>
         </div>
       </div>

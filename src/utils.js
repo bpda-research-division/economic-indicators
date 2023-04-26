@@ -16,7 +16,7 @@ export const quarterlyFormatter = epoch => {
 
 {/* @ts-ignore */ }
 export const decimalFormatter = (value) => {
-    let num = (value * 100).toFixed(1);
+    let num = (value * 100).toFixed(0);
     let label = `${num}%`;
     return label;
 };
@@ -62,3 +62,10 @@ export const CustomXAxisTick = ({ x, y, payload }) => {
     return null;
 };
 
+// if value is zero, dont show in tool tip
+export const supressZeros = ({ value, props }) => {
+    console.log(value)
+    console.log(props)
+    // if (value == 0) return
+    // return value
+}

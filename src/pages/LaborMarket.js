@@ -287,7 +287,7 @@ const LaborMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Burning Glass Technologies, Labor Insight</p>
+            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
           </div>
         </div>
         <div className="row mh-20 gx-5 gy-5 graph-row graph-column">
@@ -348,7 +348,7 @@ const LaborMarket = () => {
                 <Line type="monotone" dataKey="Government" stroke="#7a3a86" dot={false} />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
+            <p className="citation">Source: Burning Glass Technologies, Labor Insight</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -381,11 +381,13 @@ const LaborMarket = () => {
                   stackId="a"
                   dataKey="Boston Resident Employment"
                   fill="#003c50"
+                  name="Employed Residents"
                 />
                 <Bar
                   stackId="a"
                   dataKey="Boston Resident Unemployment"
                   fill="#e05926"
+                  name="Unemployed Residents"
                 />
               </BarChart>
             </ResponsiveContainer>

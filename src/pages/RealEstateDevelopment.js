@@ -23,6 +23,7 @@ import {
   options,
   quarterlyFormatter,
   CustomXAxisTick,
+  supressZeros,
 } from "../utils.js"
 import {
   useDeviceSize
@@ -37,6 +38,21 @@ const RealEstateDevelopment = () => {
   const [affordableHousing, setAffordableHousing] = useState([])
   const [startsDemos, setStartsDemos] = useState([])
   const [width, height, graphHeight] = useDeviceSize();
+
+  // const CustomTooltip = ({ active, payload, label }) => {
+  //   if (active && payload && payload.length) {
+  //     return (
+  //       <div className="custom-tooltip">
+  //         <p>CUSTOM TOOLTIP</p>
+  //         <p className="label">{`${label} : ${payload[0].value}`}</p>
+  //         <p className="desc">Anything you want can be displayed here.</p>
+  //       </div>
+  //     );
+  //   }
+  
+  //   return null;
+  // };
+  
 
     // useEffect to load component after reciving data
   useEffect(() => {
@@ -167,7 +183,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Change in Construciton Hours from the Same Month in 2019</span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Change in Construction Hours from the Same Month in 2019</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -222,7 +238,7 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
+            <p className="citation">Source: Mayor’s Office of Housing</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Development Pipeline Square Footage by Use Type</h6>
@@ -231,19 +247,30 @@ const RealEstateDevelopment = () => {
                 width={500}
                 height={400}
                 data={upcomingDev}
+                layout="vertical"
               >
-                <XAxis
-                  dataKey="Category"
-                  interval={0}
-                  tick={<CustomXAxisTick />}
-                  height={80}
-                />
                 <YAxis
+                  dataKey="Category"
+                  type="category"
+                  tick={{ fontSize: 11 }}
+                  width={180}
+                />
+                <XAxis
+                  type="number"
+                  // domain={[0, 0.20]}
                   tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
-                  width={100}
+                  // width={80}
                 />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
+                <Tooltip 
+                  formatter={commaFormatter} 
+                  // formatter= {
+                  //   (value) => ( value > 0 ) ? value : null
+                  // }
+                  // filterNull={true}
+                  // payload={this.props.payload.filter(data => data.value>0)}
+                  // payload={this.props.data.filter(data => data.value>0)}
+                />
                 <Bar
                   stackId="a"
                   dataKey="Residential sqft"
@@ -324,16 +351,18 @@ const RealEstateDevelopment = () => {
                   stackId="a"
                   dataKey="Afford New Units"
                   fill="#003c50"
+                  name="Income-restricted New Units"
                 />
                 <Bar
                   stackId="a"
                   dataKey="Net Market Rate New Units"
                   fill="#e05926"
+                  name="Market Rate New Units"
                 />
 
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
+            <p className="citation">Source: Mayor’s Office of Housing</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -349,7 +378,7 @@ const RealEstateDevelopment = () => {
                   scale="time"
                   type="number"
                   domain={['dataMin', 'dataMax']}
-                  tickFormatter={quarterlyFormatter}
+                  tickFormatter={dateFormatter}
                 />
                 <YAxis
                   type="number"
