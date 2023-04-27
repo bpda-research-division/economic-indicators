@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  Container, 
-  Row, 
-  Col 
+import {
+  Container,
+  Row,
+  Col
 } from 'react-bootstrap';
-import { 
-  Routes, 
+import {
+  Routes,
   Route
 } from 'react-router-dom';
 import Header from "./components/Header"
@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       <Container fluid className="g-0" id="AppContainer">
         <Row className="header-row g-0" id="headerRow">
-            <Header />
+          <Header />
         </Row>
         <Row className="body-row g-0" id="bodyRow">
           <Col xs={12} md={12} id="bodyColumn">
@@ -42,11 +42,11 @@ function App() {
               <Route path="/south-boston-waterfront" element={<CommercialHub hubName={'South Boston Waterfront'} hubVar={'SouthBostonWaterfront'} />} />
               <Route path="/economy" element={<SnapshotEconomy />} />
               <Route path="/population" element={<SnapshotPopulation />} />
-            </Routes>    
+            </Routes>
           </Col>
-        </Row> 
+        </Row>
       </Container>
-      
+
     </div>
   );
 

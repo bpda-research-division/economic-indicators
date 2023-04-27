@@ -76,7 +76,7 @@ export const CustomXAxisTick = ({ x, y, payload }) => {
 export const CustomTooltip = (props) => {
 
     // create deep copy of props. a shallow copy (let propsVar = props;) is read only.
-    let propsVar = {...props};
+    let propsVar = { ...props };
 
     // filter the data payload property in propsVar
     const nonZeroPayload = propsVar.payload.filter(data => data.value > 0);

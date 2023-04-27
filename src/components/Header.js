@@ -6,7 +6,7 @@ function Header() {
     return (
         <div className="HeaderDiv">
             <OffcanvasNav />
-            <h1><span style={{color: '#FFF'}}>Boston</span> Economic Indicator Dashboard</h1>
+            <h1><span style={{ color: '#FFF' }}>Boston</span> Economic Indicator Dashboard</h1>
             <About />
         </div>
     );
