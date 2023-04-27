@@ -34,7 +34,7 @@
 /* Large Container Styling */
 * {
   border-radius: 0 !important;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   padding: 0;
   margin: 0;
 }
@@ -244,6 +244,7 @@ line.recharts-legend-icon  {
 .citation {
   font-size: 0.6rem;
   opacity: .7;
+  margin-bottom: 0.5rem;
 }
 
 .underlineButton {
@@ -334,16 +335,20 @@ svg {
   #root {
     height: 100vh;
     width: 100vw;
+    box-sizing: border-box;
   }
   .App, #AppContainer {
+    box-sizing: border-box;
     height: 100%;
-    width: 100vw;
+    width: 100%;
   }
   #headerRow{
+    box-sizing: border-box;
     box-sizing: border-box;
     height: 7%;
   }
   #bodyRow{
+    box-sizing: border-box;
     height: 93%;
   }
   #bodyColumn {
@@ -351,6 +356,7 @@ svg {
   }
   #dashboard{
     height: 100%;
+    box-sizing: border-box;
   }
   .subHeader {
     box-sizing: border-box;
@@ -359,6 +365,7 @@ svg {
   }
   .dashBody{
     height: 95.5%;
+    box-sizing: border-box;
   }
   .indicator-row{
     box-sizing: border-box;
@@ -368,10 +375,11 @@ svg {
   }
   .indicatorContainer{
     height: 100%;
+    box-sizing: border-box;
   }
   .graph-row{
     box-sizing: border-box;
-    height: 48%;
+    height: 46%;
     padding-top: 1.5vh;
   }
 

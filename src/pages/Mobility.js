@@ -205,7 +205,7 @@ const Mobility = () => {
             </div>
           </div>
         </div>
-        <div className="row graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Incoming Trips to Boston, Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -224,7 +224,10 @@ const Mobility = () => {
                 />
                 <YAxis
                   type="number"
+                  domain={[-1, 0.5]}
                   tickFormatter={decimalFormatter}
+                  tickCount={4}
+                  interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
@@ -280,7 +283,7 @@ const Mobility = () => {
             <p className="citation">Source: MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</p>
           </div>
         </div>
-        <div className="row graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Logan Passengers</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -300,6 +303,8 @@ const Mobility = () => {
                   type="number"
                   width={90}
                   tickFormatter={commaFormatter}
+                  tickCount={4}
+                  interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
@@ -341,6 +346,7 @@ const Mobility = () => {
                   type="number"
                   width={90}
                   tickFormatter={commaFormatter}
+                  domain={[0, 4000000]}
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />

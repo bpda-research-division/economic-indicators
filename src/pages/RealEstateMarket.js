@@ -169,7 +169,7 @@ const RealEstateMarket = () => {
             </div>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Commercial Vacancy Rate in Boston</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -253,7 +253,7 @@ const RealEstateMarket = () => {
             <p className="citation">Source: CoStar</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Multifamily Residential Vacancy Rate in Boston</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -271,6 +271,7 @@ const RealEstateMarket = () => {
                 />
                 <YAxis
                   type="number"
+                  tickCount={4}
                   tickFormatter={decimalFormatter}
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />

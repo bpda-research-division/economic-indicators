@@ -189,7 +189,7 @@ const RealEstateDevelopment = () => {
             </div>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Non-Residential Permitted Square Footage</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -211,6 +211,8 @@ const RealEstateDevelopment = () => {
                 <YAxis
                   type="number"
                   width={100}
+                  tickCount={4}
+                  domain={[0, 3000000]}
                   tickFormatter={commaFormatter}
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
@@ -242,7 +244,7 @@ const RealEstateDevelopment = () => {
                 />
                 <XAxis
                   type="number"
-                  // domain={[0, 0.20]}
+                  domain={[0, 40000000]}
                   tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
                   // width={80}
                 />
@@ -316,7 +318,7 @@ const RealEstateDevelopment = () => {
             <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Permitted Market Rate and Affordable Housing Units</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -333,7 +335,10 @@ const RealEstateDevelopment = () => {
                   tickFormatter={quarterlyFormatter}
                   padding={{ left: 40, right: 40 }}
                 />
-                <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)} />
+                <YAxis 
+                  tickFormatter={(value) => new Intl.NumberFormat('en').format(value)} 
+                  tickCount={4}
+                />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={quarterlyFormatter} />
                 <Legend />

@@ -155,6 +155,7 @@ const SnapshotEconomy = () => {
                     width={40}
                     domain={[500000, 1000000]}
                     tickFormatter={commaFormatter}
+                    tickCount={3}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                   <CartesianGrid strokeDasharray="3 3" />
@@ -194,14 +195,7 @@ const SnapshotEconomy = () => {
                   />
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip formatter={decimalFormatter} />
-                  <Legend
-                  // formatter={(value, entry, index) => <span className="blackLegend">{value}</span>}
-                  // payload={
-                  //   [
-                  //     { id: 'US Share Item', value: 'US Share', type: 'rect', color: 'rgba(0, 0, 0, .0)', stroke: '#151515'},
-                  //   ]
-                  // }
-                  />
+                  <Legend />
                   <Bar
                     // stackId="a"
                     dataKey="Boston Share"

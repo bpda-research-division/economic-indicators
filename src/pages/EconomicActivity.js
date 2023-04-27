@@ -172,7 +172,7 @@ const EconomicActivity = () => {
             </div>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Seated Diners Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -191,7 +191,10 @@ const EconomicActivity = () => {
                 />
                 <YAxis
                   type="number"
+                  domain={[-1, 0.5]}
                   tickFormatter={decimalFormatter}
+                  tickCount={4}
+                  interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
@@ -247,7 +250,7 @@ const EconomicActivity = () => {
             <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Hotel Occupancy Rate in Boston</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -313,10 +316,12 @@ const EconomicActivity = () => {
                 />
                 <YAxis
                   type="number"
-                  // domain={[0, .2]}
+                  domain={[-1, 0.5]}
                   tickFormatter={decimalFormatter}
+                  tickCount={4}
+                  interval="equidistantPreserveStart"
                 />
-
+                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
                 <Legend iconType="plainline" />

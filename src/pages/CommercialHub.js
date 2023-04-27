@@ -220,7 +220,7 @@ const CommercialHub = (props) => {
             </div>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Incoming Trips to {hubName}, Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -333,7 +333,7 @@ const CommercialHub = (props) => {
                   width={80}
                   domain={[0, .1]}
                   tickFormatter={decimalFormatter}
-                  tickCount={5}
+                  tickCount={3}
                   interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
@@ -363,7 +363,7 @@ const CommercialHub = (props) => {
             <p className="citation">Source: CoStar</p>
           </div>
         </div>
-        <div className="row mh-20 gx-5 gy-5 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">MBTA Gated Station Validations in {hubName}</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -383,6 +383,8 @@ const CommercialHub = (props) => {
                   type="number"
                   width={80}
                   tickFormatter={commaFormatter}
+                  tickCount={4}
+                  interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
@@ -419,6 +421,8 @@ const CommercialHub = (props) => {
                   // domain={[0, 0.20]}
                   tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
                   width={80}
+                  tickCount={3}
+                  interval="equidistantPreserveStart"
                 />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip formatter={commaFormatter} />

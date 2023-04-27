@@ -186,7 +186,7 @@ const LayoutDummy = () => {
           </div>
         </div>
         {/* <div className="row mh-20 gx-5 gy-5 graph-row"> */}
-        <div className="row graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">DUMMY Change in Payroll Employment in Boston from February 2020</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
@@ -300,7 +300,7 @@ const LayoutDummy = () => {
             <p className="citation">Source: Burning Glass Technologies, Labor Insight</p>
           </div>
         </div>
-        <div className="row graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Change in Job Postings in Boston from February 2020</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
