@@ -17,9 +17,6 @@ function OffcanvasNav() {
 
   return (
     <div className="navContainer">
-      {/* <Button variant="btn-primary" onClick={handleShow} className="navbar-toggler" >
-        <List size={45}/>
-      </Button> */}
       <a onClick={handleShow} className="underlineButton">
         <List size={(height*0.025)+20}  className="navbar-toggler"/>
       </a>
