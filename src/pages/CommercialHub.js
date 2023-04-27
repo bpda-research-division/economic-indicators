@@ -24,7 +24,6 @@ import {
   options,
   quarterlyFormatter,
   commaFormatter,
-  CustomXAxisTick,
 } from "../utils.js"
 import {
   useDeviceSize

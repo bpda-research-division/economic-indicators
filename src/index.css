@@ -348,11 +348,18 @@ svg {
     height: 7%;
   }
   #bodyRow{
-    box-sizing: border-box;
     height: 93%;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
   #bodyColumn {
     height: 100%;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
   #dashboard{
     height: 100%;

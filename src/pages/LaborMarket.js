@@ -14,6 +14,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   ReferenceLine,
+  Label,
 } from 'recharts';
 import { Clipboard2DataFill } from "react-bootstrap-icons";
 import {
@@ -307,7 +308,10 @@ const LaborMarket = () => {
                   type="number"
                   domain={['dataMin', 'dataMax']}
                   tickFormatter={dateFormatter}
-                />
+                  height={60}
+                >
+                  <Label value="see legend above" offset={0} position="insideBottom" fill="#151515"/>
+                </XAxis>
                 <YAxis
                   type="number"
                   domain={[-0.70, 0.70]}
@@ -318,7 +322,7 @@ const LaborMarket = () => {
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                <Legend iconType="plainline" />
+                {/* <Legend iconType="plainline" /> */}
                 <Line
                   type="monotone"
                   dataKey="Total Nonfarm Payroll Jobs"
@@ -362,12 +366,6 @@ const LaborMarket = () => {
                 width={500}
                 height={400}
                 data={laborforce}
-                // margin={{
-                //   top: 20,
-                //   right: 50,
-                //   left: 50,
-                //   bottom: 5,
-                // }}
               >
                 <XAxis
                   dataKey="Epoch Miliseconds"

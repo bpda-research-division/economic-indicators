@@ -22,7 +22,6 @@ import {
   commaFormatter,
   options,
   quarterlyFormatter,
-  CustomXAxisTick,
   CustomTooltip,
 } from "../utils.js"
 import {

@@ -1,23 +1,26 @@
 import { format } from "date-fns";
 import { Text } from 'recharts';
 
-// for tooltip util
+// imports for CustomTooltip util:
 import { createElement } from "react";
 var _DefaultTooltipContent = require("recharts/lib/component/DefaultTooltipContent");
 
-
+// Google Sheets API base url
 export const baseAPI = 'https://script.google.com/macros/s/AKfycbyy_JR7AM_AAnUB2DB_AnKXqsdqlIPJoBc-7CKW-S2In2_OslstV1XSz0Ex2MWobh9w/exec?path=';
 
+// format date as MMM YYYY
 {/* @ts-ignore */ }
 export const dateFormatter = date => {
     return format(new Date(date), "MMM yyyy");
 };
 
+// format date as Q# YYYY
 {/* @ts-ignore */ }
 export const quarterlyFormatter = epoch => {
     return (new Date(epoch)).getFullYear() + " Q" + (Math.floor(((new Date(epoch)).getMonth() + 3) / 3));
 };
 
+// convert decimals to percents
 {/* @ts-ignore */ }
 export const decimalFormatter = (value) => {
     let num = (value * 100).toFixed(0);
@@ -25,14 +28,17 @@ export const decimalFormatter = (value) => {
     return label;
 };
 
+// add commas to values
 export const commaFormatter = (value) => {
     return value.toLocaleString("en-US");
 };
 
+// format number as dollar value with commas
 export const dollarFormatter = (value) => {
     return ('$' + Math.round(value).toLocaleString("en-US"));
 };
 
+// convert a number to an ordinal, est 1 -> 1st, 2 -> 2nd, 3 -> 3rd
 export const ordinal = n => {
     if (n === 1) {
         n += 'st';
@@ -66,15 +72,7 @@ export const CustomXAxisTick = ({ x, y, payload }) => {
     return null;
 };
 
-// if value is zero, dont show in tool tip
-export const supressZeros = ({ value, props }) => {
-    console.log(value)
-    console.log(props)
-    // if (value == 0) return
-    // return value
-}
-
-// only display values > 0 in tooltip
+// only display values greater than 0 in tooltip
 export const CustomTooltip = (props) => {
 
     // create deep copy of props. a shallow copy (let propsVar = props;) is read only.
