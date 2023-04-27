@@ -1,6 +1,10 @@
 import { format } from "date-fns";
 import { Text } from 'recharts';
 
+// for tooltip util
+import { createElement } from "react";
+var _DefaultTooltipContent = require("recharts/lib/component/DefaultTooltipContent");
+
 
 export const baseAPI = 'https://script.google.com/macros/s/AKfycbyy_JR7AM_AAnUB2DB_AnKXqsdqlIPJoBc-7CKW-S2In2_OslstV1XSz0Ex2MWobh9w/exec?path=';
 
@@ -69,3 +73,23 @@ export const supressZeros = ({ value, props }) => {
     // if (value == 0) return
     // return value
 }
+
+// only display values > 0 in tooltip
+export const CustomTooltip = (props) => {
+
+    // create deep copy of props. a shallow copy (let propsVar = props;) is read only.
+    let propsVar = {...props};
+
+    // filter the data payload property in propsVar
+    const nonZeroPayload = propsVar.payload.filter(data => data.value > 0);
+
+    //  reassign the payload property in propsVar
+    propsVar.payload = nonZeroPayload
+
+    //  create tooltip element using Rechart's default tooltip content + our new propsVar
+    if (props.active && props.payload && props.payload.length) {
+        return createElement(_DefaultTooltipContent.DefaultTooltipContent, propsVar);
+    }
+
+    return null;
+};

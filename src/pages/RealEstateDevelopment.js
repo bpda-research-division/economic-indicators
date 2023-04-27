@@ -23,7 +23,7 @@ import {
   options,
   quarterlyFormatter,
   CustomXAxisTick,
-  supressZeros,
+  CustomTooltip,
 } from "../utils.js"
 import {
   useDeviceSize
@@ -38,21 +38,6 @@ const RealEstateDevelopment = () => {
   const [affordableHousing, setAffordableHousing] = useState([])
   const [startsDemos, setStartsDemos] = useState([])
   const [width, height, graphHeight] = useDeviceSize();
-
-  // const CustomTooltip = ({ active, payload, label }) => {
-  //   if (active && payload && payload.length) {
-  //     return (
-  //       <div className="custom-tooltip">
-  //         <p>CUSTOM TOOLTIP</p>
-  //         <p className="label">{`${label} : ${payload[0].value}`}</p>
-  //         <p className="desc">Anything you want can be displayed here.</p>
-  //       </div>
-  //     );
-  //   }
-  
-  //   return null;
-  // };
-  
 
     // useEffect to load component after reciving data
   useEffect(() => {
@@ -263,13 +248,18 @@ const RealEstateDevelopment = () => {
                 />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip 
-                  formatter={commaFormatter} 
+                  // {...this.props}
+                  formatter={commaFormatter}
+                  // payload={CustomPayload}
+                  content={<CustomTooltip />} 
                   // formatter= {
                   //   (value) => ( value > 0 ) ? value : null
                   // }
                   // filterNull={true}
                   // payload={this.props.payload.filter(data => data.value>0)}
                   // payload={this.props.data.filter(data => data.value>0)}
+                  // {console.log(payload);}
+                  // payload={this.props.data}
                 />
                 <Bar
                   stackId="a"
