@@ -74,13 +74,16 @@ body {
   width: 700px !important;
 }
 
+/* .btn-close {
+  align-self: flex-end;
+} */
 /* Header Styling */
 
 .HeaderDiv {
   box-sizing: border-box;
   display: flex;
   align-items: center !important;
-  gap: 30px;
+  gap: 5px;
   background-color: var(--darkestblue);
   color: white;
   height: 7vh;
@@ -114,8 +117,22 @@ h5 {
 
 
 #BPDALogo {
-  width: 15rem;
   align-self: center;
+  height: 110%;
+  box-sizing: border-box;
+  max-width: auto;
+  max-height: 110%;
+  width: auto;
+  padding-left: 20px;
+}
+
+#aboutLogo {
+  /* align-self: center; */
+  height: auto;
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: auto;
+  width: 55%;
 }
 
 .aboutComp {

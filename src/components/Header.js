@@ -6,7 +6,8 @@ function Header() {
     return (
         <div className="HeaderDiv">
             <OffcanvasNav />
-            <h1><span style={{ color: '#FFF' }}>Boston</span> Economic Indicator Dashboard</h1>
+                <img src={require("../images/BPDALogo.png")} alt="BPDA Logo" id="BPDALogo" />
+                <h1>Boston Economic Indicator Dashboard</h1>
             <About />
         </div>
     );

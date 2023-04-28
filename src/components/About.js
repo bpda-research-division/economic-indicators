@@ -20,9 +20,12 @@ function About() {
         <InfoLg size={(height * 0.025) + 15} id="infoI" />
       </a>
 
-      <Offcanvas show={show} onHide={handleClose} placement="end" id="aboutCanvas">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title><h4>About The Dashboard</h4></Offcanvas.Title>
+      <Offcanvas show={show} onHide={handleClose} placement="end" id="aboutCanvas" >
+        <Offcanvas.Header className="d-flex flex-row align-items-start p-4" closeButton>
+        {/* <Offcanvas.Header className="" closeButton> */}
+          {/* <Offcanvas.Title><h4>About The Dashboard</h4></Offcanvas.Title> */}
+          <div className="invisibleObject"></div>
+          <img src={require("../images/BPDALogoFull.png")} alt="BPDA Logo" id="aboutLogo" className=""/>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <p>

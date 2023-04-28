@@ -59,7 +59,7 @@ const SnapshotEconomy = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <AspectRatioFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
+        <AspectRatioFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
         <h2>Annual Snapshot: Economy</h2>
       </div>
       <div className="dashBody">

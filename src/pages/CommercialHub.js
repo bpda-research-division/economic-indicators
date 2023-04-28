@@ -74,7 +74,7 @@ const CommercialHub = (props) => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <GeoAltFill size={(height*0.015)+12} color={'#94D5DB'} />
+        <GeoAltFill size={(height*0.015)+12} color={'#4dc1cb'} />
         <h2>{hubName}</h2>
       </div>
       <div className="dashBody">
