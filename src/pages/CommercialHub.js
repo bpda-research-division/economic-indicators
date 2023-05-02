@@ -70,12 +70,6 @@ const CommercialHub = (props) => {
         setHubRealEstate(dataRealEstate);
         setHubRealEstateDev(dataRealEstateDev);
         setHubValidationSum(dataValidationSums);
-        // console tests
-        // console.log('julie test')
-        // console.log(dataRealEstateDev[dataRealEstateDev.length -1])
-        // const obj =dataRealEstateDev[dataRealEstateDev.length -1]
-        // const maxVal = Object.keys(obj).slice(0,-1).reduce((a, b) => obj[a] > obj[b] ? a : b);
-        // console.log(maxVal)
       })
     // reload useEffect when hubName or hubVar updates
   }, [props.hubName, props.hubVar]);
