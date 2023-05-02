@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Economics Indicator Dashboard
+This application is a react dashboard that displays key insights and trends to Boston's Economy. The high-frequency data that powers it is maintained by the research department in a google sheet that has been leveraged as an API. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Screenshot of Application](https://i.imgur.com/SAaIbLf.png)
 
-## Available Scripts
+Technology Used:
+* React
+* Node
+* Bootstrap
+* Recharts
+* Google App Script
 
-In the project directory, you can run:
+## Back End
+Prior to this application, the Research Team was maintaining a dashboard made in Tableau and they were using an spreadsheet to maintian the data. With this new application it was decided that 1. collaboration and 2. being able to copy & paste sections of data would be important to the research team. Because of this we decided to keep googlesheets as the interface where they maintain their data.
 
-### `npm start`
+The google sheet can be found here: https://docs.google.com/spreadsheets/d/1mVztFT0iCkFQD0FX7kx6lMC7-uVSCe1OcDVl1q9SXcY/edit#gid=2071536899
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The googlesheet can become an JSON API by extending Google Sheets with a Google Apps Script. To view the script that extends the workbook: `open up the google sheets workbook > hover over 'Extensions' > click 'Apps Script'. `
+<details>
+    <summary> In the event this piece of script is lost or corrupted, I've copied it here for safe keeping:</summary>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    ```
+    function json(sheetName) {
+    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+    const sheet = spreadsheet.getSheetByName(sheetName)
+    const data = sheet.getDataRange().getValues()
+    const jsonData = convertToJson(data)
+    return ContentService
+            .createTextOutput(JSON.stringify(jsonData))
+            .setMimeType(ContentService.MimeType.JSON)
+    }
 
-### `npm test`
+    function convertToJson(data) {
+    const headers = data[0]
+    const raw_data = data.slice(1,)
+    let json = []
+    raw_data.forEach(d => {
+        let object = {}
+        for (let i = 0; i < headers.length; i++) {
+            object[headers[i]] = d[i]
+        }
+        json.push(object)
+    });
+    return json
+    }
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    function doGet(e) {
+    const path = e.parameter.path
+    return json(path)
+    }
+    ```
+</details>
+<br>
+Deploy the script as a web application. Execute as yourself (your work email) and set 'Who Has Access' to 'Anyone'.
+<br>
+To access a g-sheet as a JSON API:
+1. View your deployment (hover over deploy > click 'manage deployments')
+![Hover over 'deploy' and click 'manage deployments'](https://i.imgur.com/g7TT5kC.png)
 
-### `npm run build`
+2. Copy the URL under "Web App"
+![Example of Deployment Window](https://i.imgur.com/tmWeEaB.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Concatenate the following:
+    ```
+    <Web App URL> + ?path= + <google sheet name>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    <!-- full example -->
+    https://script.google.com/macros/s/AKfycbyy_JR7AM_AAnUB2DB_AnKXqsdqlIPJoBc-7CKW-S2In2_OslstV1XSz0Ex2MWobh9w/exec?path=LaborMarket_PayrollEst
+    ```
+## Front End
+The front end leverages React Boot Strap & the Recharts library. Recharts was selected for the charts as it was most compatiable with how the G-Sheet JSON Data is formatted.
+<br>
+https://react-bootstrap.github.io/
+<br>
+https://recharts.org/en-US/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Useful functions & tools (and their descriptions) have been stored in src/utils.js and are called throughout the project. Where possible, tools & components should be made reusable/modular.
 
-### `npm run eject`
+## Deployed Application
+https://maps.bostonplans.org/economic-indicators
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Enchancements
