@@ -91,3 +91,10 @@ export const CustomTooltip = (props) => {
 
     return null;
 };
+
+// aquire the key of the maximum value in an object 
+// ex: obj {A: 13, B: 4, C: 37}
+// maxKey(obj) returns c
+export const maxKey = (obj) => {
+    return Object.keys(obj).slice(0,-1).reduce((a, b) => obj[a] > obj[b] ? a : b);
+}

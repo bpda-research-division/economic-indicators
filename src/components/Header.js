@@ -7,7 +7,7 @@ function Header() {
         <div className="HeaderDiv">
             <OffcanvasNav />
                 <img src={require("../images/BPDALogo.png")} alt="BPDA Logo" id="BPDALogo" />
-                <h1>Boston Economic Indicator Dashboard</h1>
+                <h1>Boston Economic Indicators Dashboard</h1>
             <About />
         </div>
     );

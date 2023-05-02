@@ -24,6 +24,8 @@ import {
   options,
   quarterlyFormatter,
   commaFormatter,
+  CustomTooltip,
+  maxKey
 } from "../utils.js"
 import {
   useDeviceSize
@@ -36,6 +38,8 @@ const CommercialHub = (props) => {
   const hubName = props.hubName;
   const hubVar = props.hubVar;
   console.log(hubName + ", " + hubVar);
+  {/* set to true if South Boston Waterfront */ }
+  const hide = props.hubVar == 'SouthBostonWaterfront' ? true : false;
 
   // set up state variables that will store g-sheet data
   const [hubEconomicActivity, setHubEconomicActivity] = useState([])
@@ -45,7 +49,7 @@ const CommercialHub = (props) => {
   const [hubValidationSum, setHubValidationSum] = useState([])
   const [width, height, graphHeight] = useDeviceSize();
 
-   // useEffect to load component after reciving data
+  // useEffect to load component after reciving data
   useEffect(() => {
     // promise/fetch data from g-sheet pages
     Promise.all([
@@ -66,15 +70,20 @@ const CommercialHub = (props) => {
         setHubRealEstate(dataRealEstate);
         setHubRealEstateDev(dataRealEstateDev);
         setHubValidationSum(dataValidationSums);
+        // console tests
+        // console.log('julie test')
+        // console.log(dataRealEstateDev[dataRealEstateDev.length -1])
+        // const obj =dataRealEstateDev[dataRealEstateDev.length -1]
+        // const maxVal = Object.keys(obj).slice(0,-1).reduce((a, b) => obj[a] > obj[b] ? a : b);
+        // console.log(maxVal)
       })
-
-  // reload useEffect when hubName or hubVar updates
+    // reload useEffect when hubName or hubVar updates
   }, [props.hubName, props.hubVar]);
 
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <GeoAltFill size={(height*0.015)+12} color={'#4dc1cb'} />
+        <GeoAltFill size={(height * 0.015) + 12} color={'#4dc1cb'} />
         <h2>{hubName}</h2>
       </div>
       <div className="dashBody">
@@ -162,15 +171,16 @@ const CommercialHub = (props) => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  hubRealEstate.length ?
-                    // @ts-ignore
-                    Object.keys(hubRealEstateDev[hubRealEstateDev.length - 1])[1].slice(0, -5)
-                    : 'loading'
+                  hubRealEstateDev.length ?
+                  // determine the key with the highest percentage of square feet
+                  maxKey(hubRealEstateDev[hubRealEstateDev.length - 1]).slice(0, -5)
+                  : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
                   hubRealEstateDev.length ?
-                    ((hubRealEstateDev[hubRealEstateDev.length - 1]['Residential sqft']) * 100).toFixed(1)
+                  //  display percentage of the max key from above
+                    ((hubRealEstateDev[hubRealEstateDev.length - 1][maxKey(hubRealEstateDev[hubRealEstateDev.length - 1])]) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -424,7 +434,7 @@ const CommercialHub = (props) => {
                   interval="equidistantPreserveStart"
                 />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip formatter={commaFormatter} />
+                <Tooltip formatter={commaFormatter} content={<CustomTooltip />} />
                 <Bar
                   stackId="a"
                   dataKey="Residential sqft"
@@ -448,7 +458,7 @@ const CommercialHub = (props) => {
                 <Bar
                   stackId="a"
                   dataKey="Cultural sqft"
-                  fill="#a6c838"
+                  fill="#7d972a"
                 />
                 <Bar
                   stackId="a"
@@ -509,11 +519,14 @@ const CommercialHub = (props) => {
                   stroke="#003c50"
                   dot={false}
                 />
+
+                {/* hide if Retail Asking Rent is empty */}
                 <Line
                   type="monotone"
                   dataKey="Retail Asking Rent"
                   stroke="#e05926"
                   dot={false}
+                  hide={hide}
                 />
               </LineChart>
             </ResponsiveContainer>

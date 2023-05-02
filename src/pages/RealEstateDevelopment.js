@@ -69,7 +69,7 @@ const RealEstateDevelopment = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
         <h2>Real Estate Development</h2>
       </div>
       <div className="dashBody">
@@ -285,7 +285,7 @@ const RealEstateDevelopment = () => {
                 <Bar
                   stackId="a"
                   dataKey="Cultural sqft"
-                  fill="#a6c838"
+                  fill="#7d972a"
                 />
                 <Bar
                   stackId="a"

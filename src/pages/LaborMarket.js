@@ -344,7 +344,7 @@ const LaborMarket = () => {
                 <Line
                   type="monotone"
                   dataKey="Healthcare and Education"
-                  stroke="#a6c838"
+                  stroke="#7d972a"
                   dot={false}
                 />
                 <Line

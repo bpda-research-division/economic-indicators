@@ -214,7 +214,7 @@ const SnapshotEconomy = () => {
           </div>
           <div className="col-12 col-md-5 flex-column econ-column" id="commuterMapCol">
             <div id="commuterMapDiv">
-              <h6 className="chartTitle">Commuter Map</h6>
+              <h6 className="chartTitle">Home Locations of People who Work in Boston</h6>
               {/* <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US" frameborder={0} style={{ border: 0 }} height={graphHeight} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe> */}
               <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US" frameborder={0} style={{ border: 0 }}  allow="fullscreen" id="commuterMap">iFrames are not supported on this page.</iframe>
               <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
