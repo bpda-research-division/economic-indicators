@@ -58,11 +58,11 @@ In the event you need to deploy your own script, here is how to do so:
 
 2. View your deployment (hover over deploy > click 'manage deployments')
 <br>
-![Hover over 'deploy' and click 'manage deployments'](https://i.imgur.com/g7TT5kC.png)
+    ![Hover over 'deploy' and click 'manage deployments'](https://i.imgur.com/g7TT5kC.png)
 
 23. Copy the URL under "Web App"
 <br>
-![Example of Deployment Window](https://i.imgur.com/tmWeEaB.png)
+    ![Example of Deployment Window](https://i.imgur.com/tmWeEaB.png)
 
 4. Concatenate the following to get the full API URL:
     ```
@@ -88,9 +88,9 @@ Hash Routing is used instead of browser routing; browser routing is incompatible
 Uses react's grid and breakpoints system to make a mobile & desktop friendly website
 ## Getting Started
 1. Clone the repo to your local computer
-2. Run `npm install` in your terminal
-3. Run `npm start` in your terminal to start a live preview of the application
-4. Once changes are made and you are ready to push them live run `npm run build` in the terminal
+2. While working in the project folder, run `npm install` in your terminal
+3. While working in the project folder, run `npm start` in your terminal to start a live preview of the application
+4. Once changes are made and you are ready to push them live: While working in the project folder, run `npm run build` in the terminal
 5. Copy the contents in the `build` folder and replace the contents of the economic-indicators folder on the www.maps server
 
 
