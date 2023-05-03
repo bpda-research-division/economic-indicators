@@ -5,9 +5,9 @@ This application is a react dashboard that displays key insights and trends to B
 
 Technology Used:
 * React
-* Node
 * Bootstrap
 * Recharts
+* Google Sheets
 * Google App Script
 
 ## Back End
@@ -51,22 +51,27 @@ The googlesheet can become an JSON API by extending Google Sheets with a Google 
     ```
 </details>
 <br>
-Deploy the script as a web application. Execute as yourself (your work email) and set 'Who Has Access' to 'Anyone'.
+In the event you need to deploy your own script, here is how to do so: 
+
+1. Deploy the script as a web application. Execute as yourself (your work email) and set 'Who Has Access' to 'Anyone'.
 <br>
-To access a g-sheet as a JSON API:
-1. View your deployment (hover over deploy > click 'manage deployments')
+
+2. View your deployment (hover over deploy > click 'manage deployments')
+<br>
 ![Hover over 'deploy' and click 'manage deployments'](https://i.imgur.com/g7TT5kC.png)
 
-2. Copy the URL under "Web App"
+23. Copy the URL under "Web App"
+<br>
 ![Example of Deployment Window](https://i.imgur.com/tmWeEaB.png)
 
-3. Concatenate the following:
+4. Concatenate the following to get the full API URL:
     ```
     <Web App URL> + ?path= + <google sheet name>
 
     <!-- full example -->
     https://script.google.com/macros/s/AKfycbyy_JR7AM_AAnUB2DB_AnKXqsdqlIPJoBc-7CKW-S2In2_OslstV1XSz0Ex2MWobh9w/exec?path=LaborMarket_PayrollEst
     ```
+5. Test the url in the browser, you should see the JSON response
 ## Front End
 The front end leverages React Boot Strap & the Recharts library. Recharts was selected for the charts as it was most compatiable with how the G-Sheet JSON Data is formatted.
 <br>
@@ -76,7 +81,19 @@ https://recharts.org/en-US/
 
 Useful functions & tools (and their descriptions) have been stored in src/utils.js and are called throughout the project. Where possible, tools & components should be made reusable/modular.
 
+A script for responsive screen sizing is stored in src/useDeviceSize.js
+
+Hash Routing is used instead of browser routing; browser routing is incompatible with how our server domain is set up.
+
+Uses react's grid and breakpoints system to make a mobile & desktop friendly website
+## Getting Started
+1. Clone the repo to your local computer
+2. Run `npm install` in your terminal
+3. Run `npm start` in your terminal to start a live preview of the application
+4. Once changes are made and you are ready to push them live run `npm run build` in the terminal
+5. Copy the contents in the `build` folder and replace the contents of the economic-indicators folder on the www.maps server
+
+
 ## Deployed Application
 https://maps.bostonplans.org/economic-indicators
 
-## Future Enchancements
