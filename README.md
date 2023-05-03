@@ -60,7 +60,7 @@ In the event you need to deploy your own script, here is how to do so:
 <br>
     ![Hover over 'deploy' and click 'manage deployments'](https://i.imgur.com/g7TT5kC.png)
 
-23. Copy the URL under "Web App"
+3. Copy the URL under "Web App"
 <br>
     ![Example of Deployment Window](https://i.imgur.com/tmWeEaB.png)
 
