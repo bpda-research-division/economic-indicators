@@ -1,7 +1,7 @@
 # Economics Indicator Dashboard
 This application is a react dashboard that displays key insights and trends to Boston's Economy. The high-frequency data that powers it is maintained by the research department in a google sheet that has been leveraged as an API. 
 
-![Screenshot of Application](https://i.imgur.com/SAaIbLf.png)
+![Screenshot of Application](https://i.imgur.com/yftst1X.png)
 
 Technology Used:
 * React
