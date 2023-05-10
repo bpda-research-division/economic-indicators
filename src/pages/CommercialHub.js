@@ -114,17 +114,17 @@ const CommercialHub = (props) => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  hubMobility.length ?
+                  hubValidationSum.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(hubMobility[hubMobility.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(hubValidationSum[hubValidationSum.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  hubMobility.length ?
+                  hubValidationSum.length ?
                     // format number to expplicitly show positive/negtaive sign
-                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((hubMobility[hubMobility.length - 1]['Non-Work-Related Trips']) * 100).toFixed(1))
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((hubValidationSum[hubValidationSum.length - 1][`${hubName} Percent Change From 2019`]) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -518,7 +518,7 @@ const CommercialHub = (props) => {
                 <Line
                   type="monotone"
                   dataKey="Retail Asking Rent"
-                  stroke="#e05926"
+                  stroke="#00a6b4"
                   dot={false}
                   hide={hide}
                 />

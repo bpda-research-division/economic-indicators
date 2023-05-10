@@ -106,6 +106,8 @@ function About() {
             <li>Boston Mayor’s Office of Housing  </li>
             <li>Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports</li>
           </ul>
+
+          <p>Application developed by the BPDA GIS Lab</p>
         </Offcanvas.Body>
       </Offcanvas>
     </div>

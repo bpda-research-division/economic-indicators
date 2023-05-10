@@ -30,11 +30,9 @@ import {
 
 const RealEstateDevelopment = () => {
   // set up state variables that will store g-sheet data
-  const [boardApproved, setBoardApproved] = useState([])
   const [netUnits, setNetUnits] = useState([])
   const [upcomingDev, setUpcomingDev] = useState([])
   const [bjrp, setBjrp] = useState([])
-  const [affordableHousing, setAffordableHousing] = useState([])
   const [startsDemos, setStartsDemos] = useState([])
   const [width, height, graphHeight] = useDeviceSize();
 
@@ -42,24 +40,20 @@ const RealEstateDevelopment = () => {
   useEffect(() => {
     Promise.all([
       // promise/fetch data from g-sheet pages
-      fetch(baseAPI + `RealEstateDev_BPDABoardApprovedByType`),
       fetch(baseAPI + `RealEstateDev_NetUnits`),
       fetch(baseAPI + `RealEstateDev_RecentUpcomingDevelopments`),
       fetch(baseAPI + `RealEstateDev_BJRPConstructionHours`),
-      fetch(baseAPI + `RealEstateDev_MarketAndAffordableHousingProduction`),
       fetch(baseAPI + `RealEstateDev_CommercialInstitutionalStartsAndDemos`),
     ])
       // parse json results
-      .then(([resBoardApproved, resNetUnits, resUpcomingDev, resBjrp, resAffordableHousing, resStartsDemo]) =>
-        Promise.all([resBoardApproved.json(), resNetUnits.json(), resUpcomingDev.json(), resBjrp.json(), resAffordableHousing.json(), resStartsDemo.json()])
+      .then(([resNetUnits, resUpcomingDev, resBjrp, resStartsDemo]) =>
+        Promise.all([resNetUnits.json(), resUpcomingDev.json(), resBjrp.json(), resStartsDemo.json()])
       )
       // store parsed data in state
-      .then(([dataBoardApproved, dataNetUnits, dataUpcomingDev, dataBjrp, dataAffordableHousing, dataStartsDemo]) => {
-        setBoardApproved(dataBoardApproved);
+      .then(([dataNetUnits, dataUpcomingDev, dataBjrp, dataStartsDemo]) => {
         setNetUnits(dataNetUnits);
         setUpcomingDev(dataUpcomingDev);
         setBjrp(dataBjrp);
-        setAffordableHousing(dataAffordableHousing);
         setStartsDemos(dataStartsDemo);
       })
 
@@ -82,17 +76,17 @@ const RealEstateDevelopment = () => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  boardApproved.length ?
+                  startsDemos.length ?
                     // @ts-ignore
-                    (boardApproved[boardApproved.length - 1]['Year and Quater'])
+                    (startsDemos[startsDemos.length - 1]['Year and Quater'])
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  boardApproved.length ?
+                  startsDemos.length ?
                     // format number with comma-based thousands seperator
-                    ((boardApproved[boardApproved.length - 1]['Sum of Net Gross Floor Area']).toLocaleString("en-US"))
+                    ((startsDemos[startsDemos.length - 1]['New or Redeveloped SF']).toLocaleString("en-US"))
                     : 'loading'
                 }&nbsp; SF
                 </h4>
@@ -105,9 +99,9 @@ const RealEstateDevelopment = () => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  boardApproved.length ?
+                  netUnits.length ?
                     // @ts-ignore
-                    (boardApproved[boardApproved.length - 1]['Year and Quater'])
+                    (netUnits[netUnits.length - 1]['Year and Quater'])
                     : 'loading'
                 }
                 </h4>
@@ -127,9 +121,9 @@ const RealEstateDevelopment = () => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  boardApproved.length ?
+                  netUnits.length ?
                     // @ts-ignore
-                    (boardApproved[boardApproved.length - 1]['Year and Quater'])
+                    (netUnits[netUnits.length - 1]['Year and Quater'])
                     : 'loading'
                 }
                 </h4>
@@ -324,7 +318,7 @@ const RealEstateDevelopment = () => {
               <BarChart
                 width={500}
                 height={400}
-                data={affordableHousing}
+                data={netUnits}
               >
                 <XAxis
                   dataKey="Epoch Miliseconds"
@@ -343,13 +337,13 @@ const RealEstateDevelopment = () => {
                 <Legend />
                 <Bar
                   stackId="a"
-                  dataKey="Afford New Units"
+                  dataKey="Net Income-restricted Units"
                   fill="#003c50"
                   name="Income-restricted New Units"
                 />
                 <Bar
                   stackId="a"
-                  dataKey="Net Market Rate New Units"
+                  dataKey="Net Market Rate Units"
                   fill="#e05926"
                   name="Market Rate New Units"
                 />
