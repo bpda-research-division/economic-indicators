@@ -30,7 +30,7 @@ function About() {
         <Offcanvas.Body>
           <p>
             This Economic Indicators Dashboard is a joint project of the BPDA Research Division
-            and Office of Digital Cartography and GIS. It provides monthly and quarterly data updates to
+            and the BPDA GIS Lab. It provides monthly and quarterly data updates to
             track Boston’s economy in five areas: <b>Labor Market, Mobility, Economic Activity,
               Real Estate Market, and Real Estate Development</b>. In addition to citywide data for
             each of these five topic areas, the dashboard provides profiles of each of Boston’s
@@ -106,8 +106,9 @@ function About() {
             <li>Boston Mayor’s Office of Housing  </li>
             <li>Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports</li>
           </ul>
-
-          <p>Application developed by the BPDA GIS Lab</p>
+          <br /><br />
+          <p className="text-center">Data curated and managed by BPDA Research Division</p>
+          <p className="text-center">Application developed by the BPDA GIS Lab</p>
         </Offcanvas.Body>
       </Offcanvas>
     </div>

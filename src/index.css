@@ -357,6 +357,15 @@ svg {
   font-size: 1.1rem;
 }
 
+/* iframes */
+iframe {
+  box-sizing: border-box;
+  padding: 0.6rem !important;
+}
+
+#commercialHub {
+  width: 100%  !important;
+}
 
 /* Media Query For Wide Screens*/
 @media (min-width: 1400px) {
@@ -465,14 +474,8 @@ svg {
     font-size: calc(0.1rem + 0.65vw);
   }
 
-  iframe {
-    box-sizing: border-box;
-    padding: 0.6rem !important;
-  }
+ 
 
-  #commercialHub {
-    width: 100%;
-  }
 
 
 }

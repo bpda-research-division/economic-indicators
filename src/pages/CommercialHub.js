@@ -345,6 +345,12 @@ const CommercialHub = (props) => {
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
+                  dataKey="Multifamily Residential"
+                  stroke="#e05926"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
                   dataKey="Office"
                   stroke="#003c50"
                   dot={false}
@@ -354,13 +360,9 @@ const CommercialHub = (props) => {
                   dataKey="Retail"
                   stroke="#00a6b4"
                   dot={false}
+                  hide={hide}
                 />
-                <Line
-                  type="monotone"
-                  dataKey="Multifamily Residential"
-                  stroke="#e05926"
-                  dot={false}
-                />
+                
               </LineChart>
             </ResponsiveContainer>
             <p className="citation">Source: CoStar</p>
