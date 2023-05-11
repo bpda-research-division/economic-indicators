@@ -172,7 +172,7 @@ const Mobility = () => {
                 </h4>
                 <h4 className="accentNumber">{
                   MBTALine.length ?
-                    ((MBTALine[MBTALine.length - 1]['Percent Change Orange Line'])).toFixed(1)
+                    ((MBTALine[MBTALine.length - 1]['Percent Change Orange Line']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
