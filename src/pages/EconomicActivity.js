@@ -58,7 +58,7 @@ const EconomicActivity = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
         <h2>Economic Activity</h2>
       </div>
       <div className="dashBody">
@@ -292,6 +292,12 @@ const EconomicActivity = () => {
                   type="monotone"
                   dataKey="2022"
                   stroke="#7d972a"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="2023"
+                  stroke="#ce1b46"
                   dot={false}
                 />
               </LineChart>

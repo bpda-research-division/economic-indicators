@@ -63,7 +63,7 @@ const RealEstateDevelopment = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#94D5DB'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
         <h2>Real Estate Development</h2>
       </div>
       <div className="dashBody">
