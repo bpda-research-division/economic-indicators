@@ -51,6 +51,7 @@ const EconomicActivity = () => {
         setHotels(dataHotelOccupancy);
         setSpending(dataInPersonSpending);
         setHotelsYearly(dataHotelOccupancyByYear);
+        console.log(dataHotelOccupancyByYear)
       })
   }, []);
 
@@ -294,12 +295,13 @@ const EconomicActivity = () => {
                   stroke="#7d972a"
                   dot={false}
                 />
-                <Line
+                {/* <Line
                   type="monotone"
                   dataKey="2023"
                   stroke="#ce1b46"
                   dot={false}
-                />
+                  connectNulls={true}
+                /> */}
               </LineChart>
             </ResponsiveContainer>
             <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report</p>

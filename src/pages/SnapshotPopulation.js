@@ -93,7 +93,7 @@ const RealEstateMarket = () => {
                         newEntry.category = name.substring(0, name.length - 11);
                         newEntry.percent = ageLatest[name];
                         ageArray.push(newEntry);
-                        console.log(ageArray);
+                        // console.log(ageArray);
                     }
                 }
 
@@ -103,7 +103,7 @@ const RealEstateMarket = () => {
 
                 for (var name in edLatest) {
                     if (name.includes("Percent")) {
-                        console.log(name);
+                        // console.log(name);
                         let newEntry = {
                             category: 'placeholder',
                             percent: 0
@@ -119,7 +119,7 @@ const RealEstateMarket = () => {
 
                 for (var name in reLatest) {
                     if (name.includes("Percent")) {
-                        console.log(name);
+                        // console.log(name);
                         let newEntry = {
                             category: 'placeholder',
                             percent: 0
@@ -132,13 +132,13 @@ const RealEstateMarket = () => {
             }).then(() => {
                 // store the above transposed data in state
                 setAgeBar(ageArray)
-                console.log(ageBar);
+                // console.log(ageBar);
 
                 setEdBar(edArray);
-                console.log(edBar);
+                // console.log(edBar);
 
                 setReBar(reArray);
-                console.log(reBar);
+                // console.log(reBar);
             }
             );
 
