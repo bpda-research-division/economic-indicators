@@ -79,8 +79,10 @@ function About() {
           </ul>
           <h5>Mobility</h5>
           <ul>
-            <li>Cuebiq mobility data. Cuebiq collects first-party data from anonymized users who have opted-in to provide
-              access to their location data anonymously through a GDPR-compliant framework</li>
+            <li>Cuebiq mobility data. Cuebiq collects first-party data from anonymized users who have opted-in to provide access 
+              to their location data anonymously through a GDPR-compliant framework. Starting in March 2023, Cuebiq mobility 
+              metrics on this dashboard represent 3-month rolling averages rather than 1-month snapshots, due to a change in the
+               underlying Cuebiq data which reduced the monthly sample size.</li>
             <li>Massachusetts Port Authority, Aviation General Management (Massport)</li>
             <li>MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</li>
           </ul>
