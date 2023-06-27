@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import OffcanvasXL from 'react-bootstrap/Offcanvas';
 import { InfoLg } from "react-bootstrap-icons";
 import {
   useDeviceSize
@@ -37,7 +35,7 @@ function About() {
             four commercial hubs: <b>Fenway/Longwood, Back Bay, Downtown, and South Boston
               Waterfront</b>.
           </p>
-          <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=830b98dc4250498795558383a3d20eb4&locale=en-US" frameborder={0} style={{ border: 0 }} height="400" allow="fullscreen" id="commercialHub">iFrames are not supported on this page.</iframe>
+          <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=830b98dc4250498795558383a3d20eb4&locale=en-US" frameborder={0} style={{ border: 0 }} height="400" allow="fullscreen" id="commercialHub" title="Map of Commercial Hubs">iFrames are not supported on this page.</iframe>
           <p>
             For more economic and demographic research about Boston, please visit <a href="For more economic and demographic research about Boston, please visit https://www.bostonplans.org/research">https://www.bostonplans.org/research</a>
           </p>
