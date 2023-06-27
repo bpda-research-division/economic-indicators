@@ -37,7 +37,7 @@ const CommercialHub = (props) => {
   // the commercial hub is passed as a prop, and stored in a variable
   const hubName = props.hubName;
   const hubVar = props.hubVar;
-  console.log(hubName + ", " + hubVar);
+  // console.log(hubName + ", " + hubVar);
   {/* set to true if South Boston Waterfront */ }
   const hide = props.hubVar == 'SouthBostonWaterfront' ? true : false;
 

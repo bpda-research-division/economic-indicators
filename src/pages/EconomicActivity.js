@@ -51,7 +51,7 @@ const EconomicActivity = () => {
         setHotels(dataHotelOccupancy);
         setSpending(dataInPersonSpending);
         setHotelsYearly(dataHotelOccupancyByYear);
-        console.log(dataHotelOccupancyByYear)
+        // console.log(dataHotelOccupancyByYear)
       })
   }, []);
 
@@ -258,10 +258,14 @@ const EconomicActivity = () => {
               <LineChart
                 width={500}
                 height={400}
-                data={hotelsYearly}
+                data={hotels}
               >
                 <XAxis
-                  dataKey="Month"
+                  dataKey="Epoch Miliseconds"
+                  scale="time"
+                  type="number"
+                  domain={['dataMin', 'dataMax']}
+                  tickFormatter={dateFormatter}
                 />
                 <YAxis
                   type="number"
@@ -269,15 +273,15 @@ const EconomicActivity = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip formatter={decimalFormatter} />
-                <Legend iconType="plainline" />
+                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                {/* <Legend iconType="plainline" /> */}
                 <Line
                   type="monotone"
-                  dataKey="2019"
+                  dataKey="Boston"
                   stroke="#003c50"
                   dot={false}
                 />
-                <Line
+                {/* <Line
                   type="monotone"
                   dataKey="2020"
                   stroke="#00a6b4"
@@ -294,7 +298,7 @@ const EconomicActivity = () => {
                   dataKey="2022"
                   stroke="#7d972a"
                   dot={false}
-                />
+                /> */}
                 {/* <Line
                   type="monotone"
                   dataKey="2023"
