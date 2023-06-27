@@ -280,6 +280,7 @@ const EconomicActivity = () => {
                   dataKey="Boston"
                   stroke="#003c50"
                   dot={false}
+                  name="Hotel Occupancy Rate in Boston"
                 />
                 {/* <Line
                   type="monotone"
