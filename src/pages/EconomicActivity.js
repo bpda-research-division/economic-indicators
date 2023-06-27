@@ -271,7 +271,6 @@ const EconomicActivity = () => {
                   type="number"
                   tickFormatter={decimalFormatter}
                 />
-                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
                 {/* <Legend iconType="plainline" /> */}
@@ -282,31 +281,6 @@ const EconomicActivity = () => {
                   dot={false}
                   name="Hotel Occupancy Rate in Boston"
                 />
-                {/* <Line
-                  type="monotone"
-                  dataKey="2020"
-                  stroke="#00a6b4"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="2021"
-                  stroke="#e05926"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="2022"
-                  stroke="#7d972a"
-                  dot={false}
-                /> */}
-                {/* <Line
-                  type="monotone"
-                  dataKey="2023"
-                  stroke="#ce1b46"
-                  dot={false}
-                  connectNulls={true}
-                /> */}
               </LineChart>
             </ResponsiveContainer>
             <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report</p>

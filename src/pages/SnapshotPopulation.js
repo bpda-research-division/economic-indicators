@@ -23,7 +23,7 @@ import {
     commaFormatter,
     CustomXAxisTick,
 } from "../utils.js"
-import { Placeholder } from "react-bootstrap";
+// import { Placeholder } from "react-bootstrap";
 import {
     useDeviceSize
   } from "../useDeviceSize"
