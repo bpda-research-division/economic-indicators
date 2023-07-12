@@ -85,7 +85,7 @@ const CommercialHub = (props) => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in <span className="accentSubText">Commuters</span> from the same month in 2019
+                Change in <span className="accentSubText">People Stopping</span> from the same month in 2019
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -100,7 +100,7 @@ const CommercialHub = (props) => {
                   // once data is loaded, display text. otherwise, show "loading"
                   hubMobility.length ?
                     // format number to expplicitly show positive/negtaive sign
-                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((hubMobility[hubMobility.length - 1]['Commuting Trips']) * 100).toFixed(1))
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((hubMobility[hubMobility.length - 1]['Total Stoppers']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -225,7 +225,7 @@ const CommercialHub = (props) => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-4 graph-column">
-            <h6 className="chartTitle">Incoming Trips to {hubName}, Compared to the Same Month in 2019</h6>
+            <h6 className="chartTitle">People Stopping in {hubName}, Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -250,17 +250,10 @@ const CommercialHub = (props) => {
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
-                  dataKey="Non-Work-Related Trips"
+                  dataKey="Total Stoppers"
                   stroke="#003c50"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Commuting Trips"
-                  stroke="#00a6b4"
                   dot={false}
                 />
               </LineChart>

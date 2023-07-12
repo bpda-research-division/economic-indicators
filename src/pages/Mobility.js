@@ -59,7 +59,7 @@ const Mobility = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height * 0.015) + 12} color={'#4dc1cb'} className="subHeaderIcon" />
         <h2>Mobility</h2>
       </div>
       <div className="dashBody">
@@ -67,7 +67,7 @@ const Mobility = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in Boston <span className="accentSubText">Visitors</span> from the Same Month in 2019
+                Change in Boston <span className="accentSubText">People Stopping</span> from the Same Month in 2019
                 {/* {
                     domestic.length ?
                       // @ts-ignore
@@ -77,7 +77,7 @@ const Mobility = () => {
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                   // once data is loaded, display text. otherwise, show "loading"
+                  // once data is loaded, display text. otherwise, show "loading"
                   domestic.length ?
                     // @ts-ignore
                     new Intl.DateTimeFormat("en-US", options).format((new Date(domestic[domestic.length - 1]['Month'])))
@@ -85,10 +85,36 @@ const Mobility = () => {
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                   // once data is loaded, display text. otherwise, show "loading"
+                  // once data is loaded, display text. otherwise, show "loading"
                   domestic.length ?
                     // format number to expplicitly show positive/negtaive sign
-                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((domestic[domestic.length - 1]['Non-Work-Related Trips']) * 100).toFixed(1))
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((domestic[domestic.length - 1]['Total Stoppers']) * 100).toFixed(1))
+                    : 'loading'
+                }%</h4>
+              </div>
+            </div>
+          </div>
+          <div className="col-md justify-content-center text-center">
+            <div className="indicatorContainer">
+              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Logan Airport Domestic Passengers</span> from the Same Month in 2019
+                {/* {
+                logan.length ?
+                  // @ts-ignore
+                  new Intl.DateTimeFormat("en-US", options).format((new Date(logan[0]['Month'])))
+                  : 'loading'
+              } */}
+              </h4>
+              <div className="d-flex flex-row justify-content-around">
+                <h4>{
+                  logan.length ?
+                    // @ts-ignore
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(logan[logan.length - 1]['Month'])))
+                    : 'loading'
+                }
+                </h4>
+                <h4 className="accentNumber">{
+                  logan.length ?
+                    ((logan[logan.length - 1]['Percent Change Domestic']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -97,7 +123,7 @@ const Mobility = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in Boston <span className="accentSubText">Commuters</span> from the Same Month in 2019
+                Change in <span className="accentSubText">Logan Airport International Passengers</span> from the Same Month in 2019
                 {/* {
                     domestic.length ?
                       // @ts-ignore
@@ -106,19 +132,16 @@ const Mobility = () => {
                 } */}
               </h4>
               <div className="d-flex flex-row justify-content-around">
-                <h4 className="date">{
-                   // once data is loaded, display text. otherwise, show "loading"
-                  domestic.length ?
+                <h4>{
+                  logan.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(domestic[domestic.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(logan[logan.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                   // once data is loaded, display text. otherwise, show "loading"
-                  domestic.length ?
-                    // format number to expplicitly show positive/negtaive sign
-                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((domestic[domestic.length - 1]['Commuting Trips']) * 100).toFixed(1))
+                  logan.length ?
+                    ((logan[logan.length - 1]['Percent Change International']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
@@ -136,7 +159,7 @@ const Mobility = () => {
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                   // once data is loaded, display text. otherwise, show "loading"
+                  // once data is loaded, display text. otherwise, show "loading"
                   MBTA.length ?
                     // @ts-ignore
                     new Intl.DateTimeFormat("en-US", options).format((new Date(MBTA[MBTA.length - 1]['Month'])))
@@ -144,7 +167,7 @@ const Mobility = () => {
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                   // once data is loaded, display text. otherwise, show "loading"
+                  // once data is loaded, display text. otherwise, show "loading"
                   MBTA.length ?
                     ((MBTA[MBTA.length - 1]['Percent Change']) * 100).toFixed(1)
                     : 'loading'
@@ -178,42 +201,17 @@ const Mobility = () => {
               </div>
             </div>
           </div>
-          <div className="col-md justify-content-center text-center">
-            <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Logan Airport Domestic Passengers</span> from the Same Month in 2019
-                {/* {
-                logan.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(logan[0]['Month'])))
-                  : 'loading'
-              } */}
-              </h4>
-              <div className="d-flex flex-row justify-content-around">
-                <h4>{
-                  logan.length ?
-                    // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(logan[logan.length - 1]['Month'])))
-                    : 'loading'
-                }
-                </h4>
-                <h4 className="accentNumber">{
-                  logan.length ?
-                    ((logan[logan.length - 1]['Percent Change Domestic']) * 100).toFixed(1)
-                    : 'loading'
-                }%</h4>
-              </div>
-            </div>
-          </div>
+          
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Incoming Trips to Boston, Compared to the Same Month in 2019</h6>
+            <h6 className="chartTitle">People Stopping in Boston, Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
                 data={domestic}
-                // stackOffset="expand"
+              // stackOffset="expand"
               >
                 <XAxis
                   dataKey="Epoch Miliseconds"
@@ -232,17 +230,10 @@ const Mobility = () => {
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
-                  dataKey="Non-Work-Related Trips"
+                  dataKey="Total Stoppers"
                   stroke="#003c50"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Commuting Trips"
-                  stroke="#e05926"
                   dot={false}
                 />
               </LineChart>
