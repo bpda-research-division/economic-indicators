@@ -158,7 +158,7 @@ const RealEstateMarket = () => {
                             <h4 className="indicatorSubtext">
                                 City of Boston <span className="accentSubText">Total Population</span>
                             </h4>
-                            <p className="citation">*The City of Boston is challenging this number</p>
+                            <p className="citation">*Includes revision of group quarters population</p>
                             <div className="d-flex flex-row justify-content-around">
                                 <h4 className="date">{
                                     // once data is loaded, display text. otherwise, show "loading"
