@@ -28,11 +28,15 @@ function OffcanvasNav() {
         <Offcanvas.Body>
           <Nav defaultActiveKey="/labor-market" className="flex-column">
             <ul class="list-unstyled row justify-content-start">
-              <li className="nav-heading"><h4>Citywide Overview</h4></li>
+              <li className="nav-heading"><h4>Citywide Indicators</h4></li>
               <ul class="list-unstyled">
-                <Nav.Item as="li" className="underlineNav">
+                <Nav.Item as="li">
                   {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
-                  <Nav.Link as={Link} to="/labor-market" onClick={handleClose}>Labor Market</Nav.Link>
+                  <Nav.Link as={Link} to="/labor-market" onClick={handleClose}>Labor Market Trends</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
+                  <Nav.Link as={Link} to="/labor-market-snapshot" onClick={handleClose}>Labor Market Snapshot</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
                   {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
@@ -71,7 +75,7 @@ function OffcanvasNav() {
                   <Nav.Link as={Link} to="/south-boston-waterfront" onClick={handleClose}>South Boston Waterfront</Nav.Link>
                 </Nav.Item>
               </ul>
-              <li className="nav-heading"><h4>Annual Snapshot</h4></li>
+              <li className="nav-heading"><h4>Citywide Overview</h4></li>
               <ul class="list-unstyled">
                 <Nav.Item as="li">
                   {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}

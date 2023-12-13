@@ -218,10 +218,10 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mayor’s Office of Housing</p>
+            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Development Pipeline Square Footage by Use Type</h6>
+            <h6 className="chartTitle">BPDA Development Pipeline Square Footage by Use Type</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
@@ -350,7 +350,7 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mayor’s Office of Housing</p>
+            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">

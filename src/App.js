@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import Header from "./components/Header"
 import LaborMarket from './pages/LaborMarket';
+import LaborMarketSnapshot from './pages/LaborMarketSnapshot';
 import Mobility from './pages/Mobility';
 import EconomicActivity from './pages/EconomicActivity';
 import RealEstateMarket from './pages/RealEstateMarket';
@@ -32,6 +33,7 @@ function App() {
             <Routes>
               <Route path="/" element={<LaborMarket />} />
               <Route path="/labor-market" element={<LaborMarket />} />
+              <Route path="/labor-market-snapshot" element={<LaborMarketSnapshot />} />
               <Route path="/mobility" element={<Mobility />} />
               <Route path="/economic-activity" element={<EconomicActivity />} />
               <Route path="/real-estate-market" element={<RealEstateMarket />} />

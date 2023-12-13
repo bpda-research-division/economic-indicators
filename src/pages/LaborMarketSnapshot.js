@@ -26,9 +26,9 @@ import {
 } from "../utils.js"
 import {
   useDeviceSize
-} from "../useDeviceSize"
+} from "../useDeviceSize.js"
 
-const LaborMarket = () => {
+const LaborMarketSnapshot = () => {
   // set up state variables that will store g-sheet data
   const [payroll, setPayroll] = useState([])
   const [postings, setPostings] = useState([])
@@ -63,7 +63,7 @@ const LaborMarket = () => {
     <div className="dashboard">
       <div className="subHeader">
         <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
-        <h2>Labor Market Trends</h2>
+        <h2>Labor Market</h2>
       </div>
       <div className="dashBody">
         <div className="row mh-20 g-6 indicator-row">
@@ -401,4 +401,4 @@ const LaborMarket = () => {
   );
 };
 
-export default LaborMarket;
+export default LaborMarketSnapshot;
