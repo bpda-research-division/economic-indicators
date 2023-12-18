@@ -185,8 +185,8 @@ const SnapshotEconomy = () => {
                     dataKey="Category"
                     type="category"
                     interval={0}
-                    tick={{ fontSize: 11 }}
-                    width={350}
+                    tick={{width: 500,  fontSize: 11   }}
+                    width={250}
                   />
                   <XAxis
                     type="number"

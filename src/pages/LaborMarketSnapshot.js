@@ -3,8 +3,7 @@ import React, {
   useState,
 } from "react";
 import {
-  LineChart,
-  Line,
+  LabelList,
   BarChart,
   Bar,
   Legend,
@@ -16,7 +15,7 @@ import {
   ReferenceLine,
   Label,
 } from 'recharts';
-import { Clipboard2DataFill } from "react-bootstrap-icons";
+import { AspectRatioFill } from "react-bootstrap-icons";
 import {
   baseAPI,
   dateFormatter,
@@ -30,31 +29,34 @@ import {
 
 const LaborMarketSnapshot = () => {
   // set up state variables that will store g-sheet data
-  const [payroll, setPayroll] = useState([])
-  const [postings, setPostings] = useState([])
-  const [unemployment, setUnemployment] = useState([])
-  const [laborforce, setLaborforce] = useState([])
-  const [width, height, graphHeight] = useDeviceSize();
+  const [employment, setEmployment] = useState([])
+  const [occupation, setOccupation] = useState([])
+  const [width, height, graphHeight] = useDeviceSize()
+  // state to access column names in LaborMarket_Occupation
+  const [colNames, setColNames] = useState([])
 
   // useEffect to load component after reciving data
   useEffect(() => {
     // promise/fetch data from g-sheet pages
     Promise.all([
-      fetch(baseAPI + 'LaborMarket_PayrollEst'),
-      fetch(baseAPI + 'LaborMarket_JobPostings'),
-      fetch(baseAPI + 'LaborMarket_UnemploymentRate'),
-      fetch(baseAPI + 'LaborMarket_ResLaborForce'),
+      fetch(baseAPI + 'LaborMarket_Employment'),
+      fetch(baseAPI + 'LaborMarket_Occupation'),
     ])
      // parse json results
-      .then(([resPayroll, resPostings, resUnemployment, resLaborforce]) =>
-        Promise.all([resPayroll.json(), resPostings.json(), resUnemployment.json(), resLaborforce.json()])
+      .then(([resEmployment, resOccupation]) =>
+        Promise.all([resEmployment.json(), resOccupation.json()])
       )
       // store parsed data in state
-      .then(([dataPayroll, dataPostings, dataUnemployment, dataLaborforce]) => {
-        setPayroll(dataPayroll);
-        setPostings(dataPostings);
-        setUnemployment(dataUnemployment);
-        setLaborforce(dataLaborforce);
+      .then(([dataEmployment, dataOccupation]) => {
+        setEmployment(dataEmployment);
+        // We're only focused on the top 30 occupations based on their 3 month averages
+        // first sort the list by this average, then slice the array to extrat the top 30 records
+        const topOcc = [...dataOccupation].sort((a,b) => (b["3 Month Average"] < a["3 Month Average"])).slice(0,30);
+        // use topOcc to set state of Occupation
+        setOccupation(topOcc);
+        setColNames(Object.keys(dataOccupation[0]));
+        // @ts-ignore
+        console.log(employment[0].Quarter);
       })
 
   }, []);
@@ -62,338 +64,117 @@ const LaborMarketSnapshot = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
-        <h2>Labor Market</h2>
+        <AspectRatioFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <h2>Labor Market Snapshot</h2>
       </div>
       <div className="dashBody">
-        <div className="row mh-20 g-6 indicator-row">
-          <div className="col-md justify-content-center text-center">
-            <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">
-                Change in Boston <span className="accentSubText">Payroll Employment</span> from {
-                  // once data is loaded, display text. otherwise, show "loading"
-                  payroll.length ?
-                    // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(payroll[0]['Month'])))
-                    : 'loading'
-                }
-              </h4>
-              <div className="d-flex flex-row justify-content-around">
-                <h4 className="date">{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  payroll.length ?
-                    // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(payroll[payroll.length - 1]['Month'])))
-                    : 'loading'
-                }
-                </h4>
-                <h4 className="accentNumber">{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  payroll.length ?
-                    // format number to expplicitly show positive/negtaive sign
-                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((payroll[payroll.length - 1]['Total Nonfarm Payroll Jobs']) * 100).toFixed(1))
-                    : 'loading'
-                }%</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-md justify-content-center text-center">
-            <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Job Postings</span> from {
-                // once data is loaded, display text. otherwise, show "loading"
-                postings.length ?
-                  // @ts-ignoreang 
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(postings[0]['Month'])))
-                  : 'loading'
-              }</h4>
-              <div className="d-flex flex-row justify-content-around">
-                <h4 className="date">{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  postings.length ?
-                  // format number to expplicitly show positive/negtaive sign
-                    // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(postings[postings.length - 1]['Month'])))
-                    : 'loading'
-                }
-                </h4>
-                <h4 className="accentNumber">{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  postings.length ?
-                    // format number to expplicitly show positive/negtaive sign
-                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((postings[postings.length - 1]['Total Nonfarm Payroll Jobs']) * 100).toFixed(1))
-                    : 'loading'
-                }%</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-md justify-content-center text-center">
-            <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Boston <span className="accentSubText">Resident Unemployment</span> Rate</h4>
-              <div className="d-flex flex-row justify-content-around">
-                <h4 className="date">{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  unemployment.length ?
-                    // format number to expplicitly show positive/negtaive sign
-                    // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(unemployment[unemployment.length - 1]['Month'])))
-                    : 'loading'
-                }
-                </h4>
-                <h4 className="accentNumber">{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  unemployment.length ?
-                    ((unemployment[unemployment.length - 1]['Boston Unemployment Rate']) * 100).toFixed(1)
-                    : 'loading'
-                }%</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-md justify-content-center text-center">
-            <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Resident Labor Force</span> from {
-                // once data is loaded, display text. otherwise, show "loading"
-                laborforce.length ?
-                  // @ts-ignore
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[1]['Month'])))
-                  : 'loading'
-              }</h4>
-              <div className="d-flex flex-row justify-content-around">
-                <h4>{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  laborforce.length ?
-                    // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[laborforce.length - 1]['Month'])))
-                    : 'loading'
-                }
-                </h4>
-                <h4 className="accentNumber">{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  laborforce.length ?
-                    // format number to expplicitly show positive/negtaive sign
-                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((laborforce[laborforce.length - 1]['Change From Previous Year']) * 100).toFixed(1))
-                    : 'loading'
-                }%</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <div className="row mh-20 gx-5 gy-5 graph-row"> */}
-        <div className="row mh-20 gx-0 gy-0 graph-row">
+        <div className="row mh-20 gx-0 gy-0 graph-one-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Change in Payroll Employment in Boston from February 2020</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
-              <LineChart
-                width={500}
-                height={400}
-                data={payroll}
-                stackOffset="expand"
-              >
-                <XAxis
-                  dataKey="Epoch Miliseconds"
-                  scale="time"
-                  type="number"
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={dateFormatter}
-                />
-                <YAxis
-                  type="number"
-                  domain={[-0.5, .25]}
-                  tickFormatter={decimalFormatter}
-                  tickCount={4}
-                  interval="equidistantPreserveStart"
-                />
-                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                <Legend iconType="plainline" />
-                <Line
-                  type="monotone"
-                  dataKey="Total Nonfarm Payroll Jobs"
-                  stroke="#003c50"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Production Construction Logistics"
-                  stroke="#00a6b4"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Professional and Financial Services"
-                  stroke="#e05926"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Healthcare and Education"
-                  stroke="#7d972a"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="In Person and Support Services"
-                  stroke="#ce1b46"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Government"
-                  stroke="#7a3a86"
-                  dot={false}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
-          </div>
-          <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Boston Resident Labor Force Unemployment Rate</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
-              <LineChart
-                width={500}
-                height={400}
-                data={unemployment}
-              >
-                <XAxis
-                  dataKey="Epoch Miliseconds"
-                  scale="time"
-                  type="number"
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={dateFormatter}
-                />
-                <YAxis
-                  type="number"
-                  domain={[0, .2]}
-                  tickFormatter={decimalFormatter}
-                />
+            <h6 className="chartTitle">Payroll Employment in Boston by Sector, (Quarter {
+              // once data is loaded, display text. otherwise, show "loading"
+              employment.length ?
+              // @ts-ignore
+              (employment[0].Quarter)
+              : 'loading'
+            }, {
+              // once data is loaded, display text. otherwise, show "loading"
+              employment.length ?
+              // @ts-ignore
+              (employment[0].Year)
+              : 'loading'
+            }) and Change from Four Quarters Prior</h6>
 
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                <Legend iconType="plainline" />
-                <Line
-                  type="monotone"
-                  dataKey="Boston Unemployment Rate"
-                  stroke="#003c50"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Massachusetts Unemployment Rate"
-                  stroke="#00a6b4"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="US Unemployment Rate"
-                  stroke="#e05926"
-                  dot={false}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
-          </div>
-        </div>
-        <div className="row mh-20 gx-0 gy-0 graph-row">
-          <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Change in Job Postings in Boston from February 2020</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
-              <LineChart
-                width={500}
-                height={400}
-                data={postings}
-              >
-                <XAxis
-                  dataKey="Epoch Miliseconds"
-                  scale="time"
-                  type="number"
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={dateFormatter}
-                  height={60}
+            <ResponsiveContainer width="98%" height={(graphHeight*2.5)}>
+                <BarChart
+                  width={500}
+                  height={400}
+                  data={employment}
+                  layout="vertical"
+                  barGap={50}
                 >
-                  <Label value="see legend above" offset={0} position="insideBottom" fill="#151515"/>
-                </XAxis>
-                <YAxis
-                  type="number"
-                  domain={[-0.70, 0.70]}
-                  tickFormatter={decimalFormatter}
-                  tickCount={5}
-                  interval="equidistantPreserveStart"
-                />
-                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                {/* <Legend iconType="plainline" /> */}
-                <Line
-                  type="monotone"
-                  dataKey="Total Nonfarm Payroll Jobs"
-                  stroke="#003c50"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Production Construction Logistics"
-                  stroke="#00a6b4"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Professional and Financial Services"
-                  stroke="#e05926"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Healthcare and Education"
-                  stroke="#7d972a"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="In Person and Support Services"
-                  stroke="#ce1b46"
-                  dot={false}
-                />
-                <Line type="monotone" dataKey="Government" stroke="#7a3a86" dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
-            <p className="citation">Source: Burning Glass Technologies, Labor Insight</p>
+                  <YAxis
+                    dataKey="Sector"
+                    type="category"
+                    interval={0}
+                    tick={{width: 500,  fontSize: 11   }}
+                    width={350}
+                    
+                  />
+                  <XAxis
+                    type="number"
+                    // function takes dataMin & dataMax. Uses the absolute max value to set range on either side of 0. Also rounds to the nearest thousand
+                    domain={([dataMin, dataMax]) => { const absMax = Math.max(Math.ceil(Math.abs(dataMin)/1000)*1000, Math.ceil(Math.abs(dataMax)/1000)*1000); return [-absMax, absMax]; }}
+                    tickFormatter={commaFormatter}
+                  />
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip formatter={commaFormatter} />
+                  <Bar
+                    // stackId="a"
+                    dataKey="Change"
+                    fill="rgba(224, 89, 38, .9)"
+                  >
+                    <LabelList dataKey="Change" position="right" fbackground="#FFFFFF"/>
+                  </Bar>
 
-          </div>
-          <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Boston Resident Labor Force</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
-              <BarChart
-                width={500}
-                height={400}
-                data={laborforce}
-              >
-                <XAxis
-                  dataKey="Epoch Miliseconds"
-                  scale="time"
-                  type="number"
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={dateFormatter}
-                  padding={{ left: 15, right: 15 }}
-                />
-                <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)} />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
-                <Legend />
-                <Bar
-                  stackId="a"
-                  dataKey="Boston Resident Employment"
-                  fill="#003c50"
-                  name="Employed Residents"
-                />
-                <Bar
-                  stackId="a"
-                  dataKey="Boston Resident Unemployment"
-                  fill="#e05926"
-                  name="Unemployed Residents"
-                />
-              </BarChart>
+                </BarChart>
             </ResponsiveContainer>
             <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
+            <p className="citation">Comments: Omit sectors smaller than manufacturing</p>
+          </div>
+          <div className="col-12 col-md-6 graph-column">
+       
+            <h6 className="chartTitle">
+              Job Postings by Detailed Occupation, Average over  
+              {
+                // once data is loaded, display text. otherwise, show "loading"
+                colNames.length ?
+                // @ts-ignore
+                (colNames[3])
+                : 'loading'
+              } to {
+                // once data is loaded, display text. otherwise, show "loading"
+                colNames.length ?
+                // @ts-ignore
+                (colNames[5])
+                : 'loading'
+              }
+            </h6>
+            <ResponsiveContainer width="98%" height={(graphHeight*2.5)}>
+            <BarChart
+                  width={500}
+                  height={400}
+                  data={occupation}
+                  layout="vertical"
+                  barGap={50}
+                >
+                  <YAxis
+                    dataKey="Occupation"
+                    type="category"
+                    interval={0}
+                    // adding width here helps make the axis labels not crush
+                    tick={{width: 500,  fontSize: 11   }}
+                    width={300}
+                    
+                  />
+                  <XAxis
+                    type="number"
+                    // function takes dataMin & dataMax. Uses the absolute max value to set range on either side of 0. Also rounds to the nearest thousand
+                    domain={[0,800]}
+                    tickFormatter={commaFormatter}
+                  />
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip formatter={commaFormatter} />
+                  <Bar
+                    // stackId="a"
+                    dataKey="3 Month Average"
+                    fill="#003c50"
+                    // fill="#00a6b4"
+                  />
+
+                </BarChart>
+            </ResponsiveContainer>
+            <p className="citation">Source: Lightcast Job Postings</p>
+            <p className="citation">Comments: List top 30 Detailed Occupation</p>
           </div>
         </div>
       </div>
