@@ -26,33 +26,60 @@ import {
 
 const EconomicActivity = () => {
   // set up state variables that will store g-sheet data
-  const [dining, setDining] = useState([])
+  const [apparel, setApparel] = useState([])
   const [hotels, setHotels] = useState([])
   const [spending, setSpending] = useState([])
   const [hotelsYearly, setHotelsYearly] = useState([])
   const [width, height, graphHeight] = useDeviceSize();
-
+  const [series, setSeries] = useState([])
   // useEffect to load component after reciving dat
   useEffect(() => {
      // promise/fetch data from g-sheet pages
     Promise.all([
-      fetch(baseAPI + 'EconomicActivity_SeatedDining'),
+      fetch(baseAPI + 'EconomicActivity_Apparel'),
       fetch(baseAPI + 'EconomicActivity_HotelOccupancy'),
       fetch(baseAPI + 'EconomicActivity_InPersonSpending'),
       fetch(baseAPI + 'EconomicActivity_HotelOccupancyByYear'),
     ])
       // parse json results
-      .then(([resSeatedDining, resHotelOccupancy, resInPersonSpending, resHotelOccupancyByYear]) =>
-        Promise.all([resSeatedDining.json(), resHotelOccupancy.json(), resInPersonSpending.json(), resHotelOccupancyByYear.json()])
+      .then(([resApparel, resHotelOccupancy, resInPersonSpending, resHotelOccupancyByYear]) =>
+        Promise.all([resApparel.json(), resHotelOccupancy.json(), resInPersonSpending.json(), resHotelOccupancyByYear.json()])
       )
       // store parsed data in state
-      .then(([dataSeatedDining, dataHotelOccupancy, dataInPersonSpending, dataHotelOccupancyByYear]) => {
-        setDining(dataSeatedDining);
+      .then(([dataApparel, dataHotelOccupancy, dataInPersonSpending, dataHotelOccupancyByYear]) => {
+        setApparel(dataApparel);
         setHotels(dataHotelOccupancy);
         setSpending(dataInPersonSpending);
         setHotelsYearly(dataHotelOccupancyByYear);
         // console.log(dataHotelOccupancyByYear)
+        let combo = [
+          {
+            name: 'Grocery',
+            data: dataInPersonSpending,
+          },
+          {
+            name: 'Apparel',
+            data: dataApparel,
+          }
+        ]
+        console.log(combo);
+        setSeries(combo)
+        console.log(series);
       })
+      // .then(() => {
+      //   let combo = [
+      //     {
+      //       name: 'Grocery',
+      //       data: spending,
+      //     },
+      //     {
+      //       name: 'Apparel',
+      //       data: apparel,
+      //     }
+      //   ]
+      //   console.log(combo);
+      //   setSeries(combo)
+      // })
   }, []);
 
 
@@ -281,12 +308,12 @@ const EconomicActivity = () => {
           </div>
           <div className="col-12 col-md-6 graph-column">
             {/* <h6 className="chartTitle">In-Person Spending in Boston, Compared to the Same Month in 2019</h6> */}
-            <h6 className="chartTitle">Grocery Spending in Boston, Compared to the Same Month in 2019</h6>
+            <h6 className="chartTitle">Spending on Grocery & Apparel in Boston, Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
-                data={spending}
+                // data={spending}
               >
                 <XAxis
                   dataKey="Epoch Miliseconds"
@@ -294,6 +321,7 @@ const EconomicActivity = () => {
                   type="number"
                   domain={['dataMin', 'dataMax']}
                   tickFormatter={dateFormatter}
+                  allowDuplicatedCategory={false}
                 />
                 <YAxis
                   type="number"
@@ -306,24 +334,22 @@ const EconomicActivity = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
                 <Legend iconType="plainline" />
-                <Line
+                {/* <Line
                   type="monotone"
                   dataKey="Grocery"
                   stroke="#003c50"
                   dot={false}
-                />
-                {/* <Line
-                  type="monotone"
-                  dataKey="Eating Places"
-                  stroke="#00a6b4"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Overall Spending"
-                  stroke="#e05926"
-                  dot={false}
                 /> */}
+                {series.map((s) => (
+                  <Line 
+                    // dataKey="value" 
+                    dataKey={s.name === "Grocery" ? "Grocery" : s.name === "Apparel" ? "City of Boston" : "value"}
+                    data={s.data} 
+                    name={s.name}
+                    stroke={s.name === "Grocery" ? "#003c50" : s.name === "Apparel" ? "#e05926" : "#003c50"}
+                    key={s.name} 
+                  />
+                ))}
               </LineChart>
             </ResponsiveContainer>
             <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>

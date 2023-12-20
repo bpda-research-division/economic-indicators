@@ -36,6 +36,7 @@ const RealEstateDevelopment = () => {
   const [startsDemos, setStartsDemos] = useState([])
   const [width, height, graphHeight] = useDeviceSize();
 
+
     // useEffect to load component after reciving data
   useEffect(() => {
     Promise.all([
