@@ -340,6 +340,7 @@ const EconomicActivity = () => {
                   stroke="#003c50"
                   dot={false}
                 /> */}
+                {/* The following is done to combine two datasheets onto one graph */}
                 {series.map((s) => (
                   <Line 
                     // dataKey="value" 
