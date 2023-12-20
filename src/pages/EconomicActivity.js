@@ -348,6 +348,7 @@ const EconomicActivity = () => {
                     name={s.name}
                     stroke={s.name === "Grocery" ? "#003c50" : s.name === "Apparel" ? "#e05926" : "#003c50"}
                     key={s.name} 
+                    dot={false}
                   />
                 ))}
               </LineChart>
