@@ -298,7 +298,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 2021 American Community Survey 1-Year Estimates</p>
+                        <p className="citation">Source: U.S. Census Bureau, 2022 American Community Survey 1-Year Estimates</p>
                     </div>
                 </div>
                 <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -332,7 +332,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 2021 American Community Survey 1-Year Estimates</p>
+                        <p className="citation">Source: U.S. Census Bureau, 2022 American Community Survey 1-Year Estimates</p>
 
                     </div>
                     <div className="col-12 col-md-6 graph-column">
@@ -367,7 +367,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 2021 American Community Survey 1-Year Estimates</p>
+                        <p className="citation">Source: U.S. Census Bureau, 2022 American Community Survey 1-Year Estimates</p>
                     </div>
                 </div>
             </div>
