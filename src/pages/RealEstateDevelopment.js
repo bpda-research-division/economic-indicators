@@ -72,7 +72,7 @@ const RealEstateDevelopment = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                <span className="accentSubText">Non-Residential Permitted Square Feet:</span>
+                <span className="accentSubText">Net Non-Residential Permitted Square Feet:</span>
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -96,7 +96,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Permitted Housing Units:</span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Net Permitted Housing Units:</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -118,7 +118,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Permitted Income-Restricted Units: </span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Net Permitted Income-Restricted Units: </span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -185,7 +185,7 @@ const RealEstateDevelopment = () => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Non-Residential Permitted Square Footage</h6>
+            <h6 className="chartTitle">Net Non-Residential Permitted Square Footage</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
@@ -314,7 +314,7 @@ const RealEstateDevelopment = () => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Permitted Market Rate and Affordable Housing Units</h6>
+            <h6 className="chartTitle">Net Permitted Market Rate and Affordable Housing Units</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}

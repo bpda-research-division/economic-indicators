@@ -119,7 +119,6 @@ const LaborMarketSnapshot = () => {
                 </BarChart>
             </ResponsiveContainer>
             <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
-            <p className="citation">Comments: Omit sectors smaller than manufacturing</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
        
@@ -174,7 +173,6 @@ const LaborMarketSnapshot = () => {
                 </BarChart>
             </ResponsiveContainer>
             <p className="citation">Source: Lightcast Job Postings</p>
-            <p className="citation">Comments: List top 30 Detailed Occupation</p>
           </div>
         </div>
       </div>

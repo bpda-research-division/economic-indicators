@@ -268,7 +268,7 @@ const EconomicActivity = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: OpenTable, Seated diners from online, phone, and walk-in reservations</p>
+            <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -334,12 +334,6 @@ const EconomicActivity = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
                 <Legend iconType="plainline" />
-                {/* <Line
-                  type="monotone"
-                  dataKey="Grocery"
-                  stroke="#003c50"
-                  dot={false}
-                /> */}
                 {/* The following is done to combine two datasheets onto one graph */}
                 {series.map((s) => (
                   <Line 
