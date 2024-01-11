@@ -67,7 +67,13 @@ const SnapshotEconomy = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                City of Boston <span className="accentSubText">Total Employment in 2021</span>
+                City of Boston <span className="accentSubText">Total Employment in {
+                // once data is loaded, display text. otherwise, show "loading"
+                  jobs.length ?
+                  // @ts-ignore
+                  jobs[jobs.length - 1]['Year']
+                  : 'loading'
+              }</span>
               </h4>
               <div className="d-flex flex-row justify-content-around">
 
@@ -83,7 +89,14 @@ const SnapshotEconomy = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Percentage of <span className="accentSubText">Jobs in Boston located in Downtown Boston Commercial Hub in 2019</span></h4>
+              <h4 className="indicatorSubtext">Percentage of <span className="accentSubText">Jobs in Boston located in Downtown Boston Commercial Hub in {
+                // once data is loaded, display text. otherwise, show "loading"
+                downtownJobs.length ?
+                  // @ts-ignore
+                  // new Intl.DateTimeFormat("en-US", options).format((new Date(downtownJobs[0]['Year'])))
+                  downtownJobs[0]['Year']
+                  : 'loading'
+              }</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -96,7 +109,13 @@ const SnapshotEconomy = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Share of workers in Boston who are Boston residents in 2021</h4>
+              <h4 className="indicatorSubtext">Share of workers in Boston who are Boston residents in {
+                // once data is loaded, display text. otherwise, show "loading"
+                commuterShare.length ?
+                  // @ts-ignore
+                  commuterShare[commuterShare.length - 1]['Year']
+                  : 'loading'
+              }</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -109,7 +128,13 @@ const SnapshotEconomy = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Percent of <span className="accentSubText">Boston Jobs in Health Care and Social Assistance in 2021</span></h4>
+              <h4 className="indicatorSubtext">Percent of <span className="accentSubText">Boston Jobs in Health Care and Social Assistance in {
+                // once data is loaded, display text. otherwise, show "loading"
+                industry.length ?
+                  // @ts-ignore
+                  industry[industry.length - 1]['Year']
+                  : 'loading'
+              }</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -123,7 +148,13 @@ const SnapshotEconomy = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Ratio of Boston Educational Services Job Share Compared to US in 2021</h4>
+              <h4 className="indicatorSubtext">Ratio of Boston Educational Services Job Share Compared to US in {
+                // once data is loaded, display text. otherwise, show "loading"
+                industry.length ?
+                  // @ts-ignore
+                  industry[industry.length - 1]['Year']
+                  : 'loading'
+              }</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
