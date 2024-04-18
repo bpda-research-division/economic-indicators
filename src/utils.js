@@ -28,6 +28,13 @@ export const decimalFormatter = (value) => {
     return label;
 };
 
+{/* @ts-ignore */ }
+export const oneDecimalFormatter = (value) => {
+    let num = (value * 100).toFixed(1);
+    let label = `${num}%`;
+    return label;
+};
+
 // add commas to values
 export const commaFormatter = (value) => {
     return value.toLocaleString("en-US");

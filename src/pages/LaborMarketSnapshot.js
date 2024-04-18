@@ -42,7 +42,7 @@ const LaborMarketSnapshot = () => {
       fetch(baseAPI + 'LaborMarket_Employment'),
       fetch(baseAPI + 'LaborMarket_Occupation'),
     ])
-     // parse json results
+      // parse json results
       .then(([resEmployment, resOccupation]) =>
         Promise.all([resEmployment.json(), resOccupation.json()])
       )
@@ -51,12 +51,12 @@ const LaborMarketSnapshot = () => {
         setEmployment(dataEmployment);
         // We're only focused on the top 30 occupations based on their 3 month averages
         // first sort the list by this average, then slice the array to extrat the top 30 records
-        const topOcc = [...dataOccupation].sort((a,b) => (b["3 Month Average"] < a["3 Month Average"])).slice(0,30);
+        const topOcc = [...dataOccupation].sort((a, b) => (b["3 Month Average"] < a["3 Month Average"])).slice(0, 30);
         // use topOcc to set state of Occupation
         setOccupation(topOcc);
         setColNames(Object.keys(dataOccupation[0]));
         // @ts-ignore
-        console.log(employment[0].Quarter);
+        // console.log(employment[0].Quarter);
       })
 
   }, []);
@@ -64,7 +64,7 @@ const LaborMarketSnapshot = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <AspectRatioFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <AspectRatioFill size={(height * 0.015) + 12} color={'#4dc1cb'} className="subHeaderIcon" />
         <h2>Labor Market Snapshot</h2>
       </div>
       <div className="dashBody">
@@ -73,104 +73,104 @@ const LaborMarketSnapshot = () => {
             <h6 className="chartTitle">Payroll Employment in Boston by Sector, (Quarter {
               // once data is loaded, display text. otherwise, show "loading"
               employment.length ?
-              // @ts-ignore
-              (employment[0].Quarter)
-              : 'loading'
+                // @ts-ignore
+                (employment[0].Quarter)
+                : 'loading'
             }, {
-              // once data is loaded, display text. otherwise, show "loading"
-              employment.length ?
-              // @ts-ignore
-              (employment[0].Year)
-              : 'loading'
-            }) and Change from Four Quarters Prior</h6>
+                // once data is loaded, display text. otherwise, show "loading"
+                employment.length ?
+                  // @ts-ignore
+                  (employment[0].Year)
+                  : 'loading'
+              }) and Change from Four Quarters Prior</h6>
 
-            <ResponsiveContainer width="98%" height={(graphHeight*2.5)}>
-                <BarChart
-                  width={500}
-                  height={400}
-                  data={employment}
-                  layout="vertical"
-                  barGap={50}
+            <ResponsiveContainer width="98%" height={(graphHeight * 2.5)}>
+              <BarChart
+                width={500}
+                height={400}
+                data={employment}
+                layout="vertical"
+                barGap={50}
+              >
+                <YAxis
+                  dataKey="Sector"
+                  type="category"
+                  interval={0}
+                  tick={{ width: 500, fontSize: 11 }}
+                  width={350}
+
+                />
+                <XAxis
+                  type="number"
+                  // function takes dataMin & dataMax. Uses the absolute max value to set range on either side of 0. Also rounds to the nearest thousand
+                  domain={([dataMin, dataMax]) => { const absMax = Math.max(Math.ceil(Math.abs(dataMin) / 1000) * 1000, Math.ceil(Math.abs(dataMax) / 1000) * 1000); return [-absMax, absMax]; }}
+                  tickFormatter={commaFormatter}
+                />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip formatter={commaFormatter} />
+                <Bar
+                  // stackId="a"
+                  dataKey="Change"
+                  fill="rgba(224, 89, 38, .9)"
                 >
-                  <YAxis
-                    dataKey="Sector"
-                    type="category"
-                    interval={0}
-                    tick={{width: 500,  fontSize: 11   }}
-                    width={350}
-                    
-                  />
-                  <XAxis
-                    type="number"
-                    // function takes dataMin & dataMax. Uses the absolute max value to set range on either side of 0. Also rounds to the nearest thousand
-                    domain={([dataMin, dataMax]) => { const absMax = Math.max(Math.ceil(Math.abs(dataMin)/1000)*1000, Math.ceil(Math.abs(dataMax)/1000)*1000); return [-absMax, absMax]; }}
-                    tickFormatter={commaFormatter}
-                  />
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip formatter={commaFormatter} />
-                  <Bar
-                    // stackId="a"
-                    dataKey="Change"
-                    fill="rgba(224, 89, 38, .9)"
-                  >
-                    <LabelList dataKey="Change" position="right" fbackground="#FFFFFF"/>
-                  </Bar>
+                  <LabelList dataKey="Change" position="right" fbackground="#FFFFFF" />
+                </Bar>
 
-                </BarChart>
+              </BarChart>
             </ResponsiveContainer>
             <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
-       
+
             <h6 className="chartTitle">
-              Job Postings by Detailed Occupation, Average over  
+              Job Postings by Detailed Occupation, Average over
               {
                 // once data is loaded, display text. otherwise, show "loading"
                 colNames.length ?
-                // @ts-ignore
-                (colNames[3])
-                : 'loading'
+                  // @ts-ignore
+                  (colNames[3])
+                  : 'loading'
               } to {
                 // once data is loaded, display text. otherwise, show "loading"
                 colNames.length ?
-                // @ts-ignore
-                (colNames[5])
-                : 'loading'
+                  // @ts-ignore
+                  (colNames[5])
+                  : 'loading'
               }
             </h6>
-            <ResponsiveContainer width="98%" height={(graphHeight*2.5)}>
-            <BarChart
-                  width={500}
-                  height={400}
-                  data={occupation}
-                  layout="vertical"
-                  barGap={50}
-                >
-                  <YAxis
-                    dataKey="Occupation"
-                    type="category"
-                    interval={0}
-                    // adding width here helps make the axis labels not crush
-                    tick={{width: 500,  fontSize: 11   }}
-                    width={300}
-                    
-                  />
-                  <XAxis
-                    type="number"
-                    // function takes dataMin & dataMax. Uses the absolute max value to set range on either side of 0. Also rounds to the nearest thousand
-                    domain={[0,800]}
-                    tickFormatter={commaFormatter}
-                  />
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip formatter={commaFormatter} />
-                  <Bar
-                    // stackId="a"
-                    dataKey="3 Month Average"
-                    fill="#003c50"
-                    // fill="#00a6b4"
-                  />
+            <ResponsiveContainer width="98%" height={(graphHeight * 2.5)}>
+              <BarChart
+                width={500}
+                height={400}
+                data={occupation}
+                layout="vertical"
+                barGap={50}
+              >
+                <YAxis
+                  dataKey="Occupation"
+                  type="category"
+                  interval={0}
+                  // adding width here helps make the axis labels not crush
+                  tick={{ width: 500, fontSize: 11 }}
+                  width={300}
 
-                </BarChart>
+                />
+                <XAxis
+                  type="number"
+                  // function takes dataMin & dataMax. Uses the absolute max value to set range on either side of 0. Also rounds to the nearest thousand
+                  domain={[0, 800]}
+                  tickFormatter={commaFormatter}
+                />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip formatter={commaFormatter} />
+                <Bar
+                  // stackId="a"
+                  dataKey="3 Month Average"
+                  fill="#003c50"
+                // fill="#00a6b4"
+                />
+
+              </BarChart>
             </ResponsiveContainer>
             <p className="citation">Source: Lightcast Job Postings</p>
           </div>
