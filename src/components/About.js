@@ -23,12 +23,12 @@ function About() {
         {/* <Offcanvas.Header className="" closeButton> */}
           {/* <Offcanvas.Title><h4>About The Dashboard</h4></Offcanvas.Title> */}
           <div className="invisibleObject"></div>
-          <img src={require("../images/BPDALogoFull.png")} alt="BPDA Logo" id="aboutLogo" className=""/>
+          <img src={require("../images/Planning Department-CoB_Wordmark-COLOR.png")} alt="City of Boston Planning Department Logo" id="aboutLogo" className=""/>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <p>
-            This Economic Indicators Dashboard is a joint project of the BPDA Research Division
-            and the BPDA GIS Lab. It provides monthly and quarterly data updates to
+            This Economic Indicators Dashboard is a joint project of the City of Boston Planning Department's Research & GIS Divisions.
+            It provides monthly and quarterly data updates to
             track Boston’s economy in five areas: <b>Labor Market, Mobility, Economic Activity,
               Real Estate Market, and Real Estate Development</b>. In addition to citywide data for
             each of these five topic areas, the dashboard provides profiles of each of Boston’s
@@ -102,13 +102,13 @@ function About() {
           </ul>
           <h5>Real Estate Development</h5>
           <ul>
-            <li>Boston Planning & Development Agency (BPDA) Development Review</li>
+            <li>City of Boston Planning Department Divsion of Development Review</li>
             <li>Boston Mayor’s Office of Housing  </li>
             <li>Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports</li>
           </ul>
           <br /><br />
-          <p className="text-center">Data curated and managed by BPDA Research Division</p>
-          <p className="text-center">Application developed by the BPDA GIS Lab</p>
+          <p className="text-center">Data curated and managed by City of Boston Planning Department Research Division</p>
+          <p className="text-center">Application developed by the City of Boston Planning Department GIS Division</p>
         </Offcanvas.Body>
       </Offcanvas>
     </div>

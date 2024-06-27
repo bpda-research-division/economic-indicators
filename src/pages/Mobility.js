@@ -59,7 +59,7 @@ const Mobility = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height * 0.015) + 12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height * 0.015) + 12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Mobility</h2>
       </div>
       <div className="dashBody">
@@ -233,7 +233,7 @@ const Mobility = () => {
                 <Line
                   type="monotone"
                   dataKey="Total Stoppers"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
               </LineChart>
@@ -266,7 +266,7 @@ const Mobility = () => {
                 <Line
                   type="monotone"
                   dataKey="Sum of Validations"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
               </LineChart>
@@ -304,13 +304,13 @@ const Mobility = () => {
                 <Line
                   type="monotone"
                   dataKey="Logan Domestic Passengers"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Logan International Passengers"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
               </LineChart>

@@ -64,7 +64,7 @@ const LaborMarketSnapshot = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <AspectRatioFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <AspectRatioFill size={(height*0.015)+12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Labor Market Snapshot</h2>
       </div>
       <div className="dashBody">
@@ -166,7 +166,7 @@ const LaborMarketSnapshot = () => {
                   <Bar
                     // stackId="a"
                     dataKey="3 Month Average"
-                    fill="#003c50"
+                    fill="#091F2F"
                     // fill="#00a6b4"
                   />
 

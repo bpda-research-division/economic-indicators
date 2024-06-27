@@ -64,7 +64,7 @@ const RealEstateDevelopment = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Real Estate Development</h2>
       </div>
       <div className="dashBody">
@@ -214,7 +214,7 @@ const RealEstateDevelopment = () => {
                 <Tooltip labelFormatter={quarterlyFormatter} formatter={commaFormatter} />
                 <Bar
                   dataKey="New or Redeveloped SF"
-                  fill="#003c50"
+                  fill="#091F2F"
                 />
 
               </BarChart>
@@ -222,7 +222,7 @@ const RealEstateDevelopment = () => {
             <p className="citation">Source: Mayor’s Office of Housing, net of demolitions</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">BPDA Development Pipeline Square Footage by Use Type</h6>
+            <h6 className="chartTitle">Planning Dept. Development Pipeline Square Footage by Use Type</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <BarChart
                 width={500}
@@ -260,12 +260,12 @@ const RealEstateDevelopment = () => {
                 <Bar
                   stackId="a"
                   dataKey="Residential sqft"
-                  fill="#003c50"
+                  fill="#091F2F"
                 />
                 <Bar
                   stackId="a"
                   dataKey="Retail sqft"
-                  fill="#00a6b4"
+                  fill="#1871bd"
                 />
                 <Bar
                   stackId="a"
@@ -275,7 +275,7 @@ const RealEstateDevelopment = () => {
                 <Bar
                   stackId="a"
                   dataKey="RnD sqft"
-                  fill="#e05926"
+                  fill="#FB4D42"
                 />
                 <Bar
                   stackId="a"
@@ -309,7 +309,7 @@ const RealEstateDevelopment = () => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Boston Planning & Development Agency (BPDA) Development Review</p>
+            <p className="citation">Source: City of Boston Planning Department Division of Development Review</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -339,13 +339,13 @@ const RealEstateDevelopment = () => {
                 <Bar
                   stackId="a"
                   dataKey="Net Income-restricted Units"
-                  fill="#003c50"
+                  fill="#091F2F"
                   name="Income-restricted New Units"
                 />
                 <Bar
                   stackId="a"
                   dataKey="Net Market Rate Units"
-                  fill="#e05926"
+                  fill="#FB4D42"
                   name="Market Rate New Units"
                 />
 
@@ -380,7 +380,7 @@ const RealEstateDevelopment = () => {
                 <Line
                   type="monotone"
                   dataKey="Construction Hours"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
               </LineChart>

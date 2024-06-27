@@ -62,7 +62,7 @@ const LaborMarket = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Labor Market Trends</h2>
       </div>
       <div className="dashBody">
@@ -209,19 +209,19 @@ const LaborMarket = () => {
                 <Line
                   type="monotone"
                   dataKey="Total Nonfarm Payroll Jobs"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Production Construction Logistics"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Professional and Financial Services"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
                 <Line
@@ -273,19 +273,19 @@ const LaborMarket = () => {
                 <Line
                   type="monotone"
                   dataKey="Boston Unemployment Rate"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Massachusetts Unemployment Rate"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="US Unemployment Rate"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
               </LineChart>
@@ -326,19 +326,19 @@ const LaborMarket = () => {
                 <Line
                   type="monotone"
                   dataKey="Total Nonfarm Payroll Jobs"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Production Construction Logistics"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Professional and Financial Services"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
                 <Line
@@ -382,13 +382,13 @@ const LaborMarket = () => {
                 <Bar
                   stackId="a"
                   dataKey="Boston Resident Employment"
-                  fill="#003c50"
+                  fill="#091F2F"
                   name="Employed Residents"
                 />
                 <Bar
                   stackId="a"
                   dataKey="Boston Resident Unemployment"
-                  fill="#e05926"
+                  fill="#FB4D42"
                   name="Unemployed Residents"
                 />
               </BarChart>
