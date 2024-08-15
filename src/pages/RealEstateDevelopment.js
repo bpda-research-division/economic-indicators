@@ -146,7 +146,7 @@ const RealEstateDevelopment = () => {
                   // once data is loaded, display text. otherwise, show "loading"
                   upcomingDev.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(upcomingDev[upcomingDev.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(upcomingDev[0]['Month'])))
                     : 'loading'
                 }
                 </h4>
