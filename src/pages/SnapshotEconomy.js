@@ -17,6 +17,7 @@ import { AspectRatioFill, ArrowRight} from "react-bootstrap-icons";
 import {
   baseAPI,
   decimalFormatter,
+  oneDecimalFormatter,
   commaFormatter,
 } from "../utils.js"
 import {
@@ -225,7 +226,7 @@ const SnapshotEconomy = () => {
                     tickFormatter={decimalFormatter}
                   />
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip formatter={decimalFormatter} />
+                  <Tooltip formatter={oneDecimalFormatter} />
                   <Legend />
                   <Bar
                     // stackId="a"

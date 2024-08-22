@@ -18,6 +18,7 @@ import {
   baseAPI,
   dateFormatter,
   decimalFormatter,
+  oneDecimalFormatter,
   commaFormatter,
   options,
 } from "../utils.js"
@@ -229,7 +230,7 @@ const Mobility = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Line
                   type="monotone"
                   dataKey="Total Stoppers"

@@ -18,6 +18,7 @@ import {
   baseAPI,
   dateFormatter,
   decimalFormatter,
+  oneDecimalFormatter,
   options,
 } from "../utils.js"
 import {
@@ -220,7 +221,7 @@ const EconomicActivity = () => {
                 />
 
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
@@ -257,7 +258,7 @@ const EconomicActivity = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
@@ -332,7 +333,7 @@ const EconomicActivity = () => {
                 />
           
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 {/* The following is done to combine two datasheets onto one graph */}
                 {series.map((s) => (

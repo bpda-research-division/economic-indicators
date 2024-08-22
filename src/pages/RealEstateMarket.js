@@ -18,7 +18,9 @@ import {
   baseAPI,
   dateFormatter,
   decimalFormatter,
+  oneDecimalFormatter,
   dollarFormatter,
+  dollarDecimalFormatter,
   options,
   quarterlyFormatter,
 } from "../utils.js"
@@ -192,7 +194,7 @@ const RealEstateMarket = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
@@ -234,7 +236,7 @@ const RealEstateMarket = () => {
                 />
 
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={dollarDecimalFormatter}/>
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
@@ -276,7 +278,7 @@ const RealEstateMarket = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter}  formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter}  formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
