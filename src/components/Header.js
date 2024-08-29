@@ -6,9 +6,11 @@ function Header() {
     return (
         <div className="HeaderDiv">
             <OffcanvasNav />
-                <img src={require("../images/BPDALogo.png")} alt="BPDA Logo" id="BPDALogo" />
                 <h1>Boston Economic Indicators Dashboard</h1>
+                
+                {/* <h1>Boston Economic Indicators Dashboard</h1> */}
             <About />
+            <img src={require("../images/Planning Department-CoB_Wordmark-WHITE.png")} alt="BPDA Logo" id="BPDALogo" />
         </div>
     );
 }

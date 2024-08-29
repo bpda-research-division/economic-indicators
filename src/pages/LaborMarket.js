@@ -41,8 +41,8 @@ const LaborMarket = () => {
   useEffect(() => {
     // promise/fetch data from g-sheet pages
     Promise.all([
-      fetch(baseAPI + 'LaborMarket_PayrollEst'),
-      fetch(baseAPI + 'LaborMarket_JobPostings'),
+      fetch(baseAPI + 'LaborMarket_NewPayroll'),
+      fetch(baseAPI + 'LaborMarket_NewJobPostings'),
       fetch(baseAPI + 'LaborMarket_UnemploymentRate'),
       fetch(baseAPI + 'LaborMarket_ResLaborForce'),
     ])
@@ -63,7 +63,7 @@ const LaborMarket = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Labor Market Trends</h2>
       </div>
       <div className="dashBody">
@@ -71,13 +71,7 @@ const LaborMarket = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in Boston <span className="accentSubText">Payroll Employment</span> from {
-                  // once data is loaded, display text. otherwise, show "loading"
-                  payroll.length ?
-                    // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(payroll[0]['Month'])))
-                    : 'loading'
-                }
+                Change in Boston <span className="accentSubText">Payroll Employment</span> from same month in 2019
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -100,13 +94,9 @@ const LaborMarket = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in Boston <span className="accentSubText">Job Postings</span> from {
-                // once data is loaded, display text. otherwise, show "loading"
-                postings.length ?
-                  // @ts-ignoreang 
-                  new Intl.DateTimeFormat("en-US", options).format((new Date(postings[0]['Month'])))
-                  : 'loading'
-              }</h4>
+              <h4 className="indicatorSubtext">
+                Change in Boston <span className="accentSubText">Job Postings</span> from same month in 2019
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -181,7 +171,7 @@ const LaborMarket = () => {
         {/* <div className="row mh-20 gx-5 gy-5 graph-row"> */}
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Change in Payroll Employment in Boston from February 2020</h6>
+            <h6 className="chartTitle">Change in Payroll Employment in Boston from Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -205,24 +195,24 @@ const LaborMarket = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Total Nonfarm Payroll Jobs"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Production Construction Logistics"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Professional and Financial Services"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
                 <Line
@@ -274,19 +264,19 @@ const LaborMarket = () => {
                 <Line
                   type="monotone"
                   dataKey="Boston Unemployment Rate"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Massachusetts Unemployment Rate"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="US Unemployment Rate"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
               </LineChart>
@@ -296,7 +286,7 @@ const LaborMarket = () => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Change in Job Postings in Boston from February 2020</h6>
+            <h6 className="chartTitle">Change in Job Postings in Boston from Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -322,24 +312,24 @@ const LaborMarket = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 {/* <Legend iconType="plainline" /> */}
                 <Line
                   type="monotone"
                   dataKey="Total Nonfarm Payroll Jobs"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Production Construction Logistics"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Professional and Financial Services"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
                 <Line
@@ -383,13 +373,13 @@ const LaborMarket = () => {
                 <Bar
                   stackId="a"
                   dataKey="Boston Resident Employment"
-                  fill="#003c50"
+                  fill="#091F2F"
                   name="Employed Residents"
                 />
                 <Bar
                   stackId="a"
                   dataKey="Boston Resident Unemployment"
-                  fill="#e05926"
+                  fill="#FB4D42"
                   name="Unemployed Residents"
                 />
               </BarChart>

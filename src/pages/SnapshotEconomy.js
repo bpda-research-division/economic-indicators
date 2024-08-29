@@ -17,6 +17,7 @@ import { AspectRatioFill, ArrowRight} from "react-bootstrap-icons";
 import {
   baseAPI,
   decimalFormatter,
+  oneDecimalFormatter,
   commaFormatter,
 } from "../utils.js"
 import {
@@ -59,7 +60,7 @@ const SnapshotEconomy = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <AspectRatioFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <AspectRatioFill size={(height*0.015)+12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Annual Snapshot: Economy</h2>
       </div>
       <div className="dashBody">
@@ -195,7 +196,7 @@ const SnapshotEconomy = () => {
                   />
                   <Bar
                     dataKey="Total Jobs"
-                    fill="#003c50"
+                    fill="#091F2F"
                   />
                 </BarChart>
               </ResponsiveContainer>
@@ -225,12 +226,12 @@ const SnapshotEconomy = () => {
                     tickFormatter={decimalFormatter}
                   />
                   <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip formatter={decimalFormatter} />
+                  <Tooltip formatter={oneDecimalFormatter} />
                   <Legend />
                   <Bar
                     // stackId="a"
                     dataKey="Boston Share"
-                    fill="#003c50"
+                    fill="#091F2F"
                   />
                   <Bar
                     // stackId="a"

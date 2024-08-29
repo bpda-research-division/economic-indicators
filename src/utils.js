@@ -23,6 +23,9 @@ export const quarterlyFormatter = epoch => {
 // convert decimals to percents
 {/* @ts-ignore */ }
 export const decimalFormatter = (value) => {
+    if (typeof value === 'string' && value.includes('%')) {
+        value = parseFloat(value.replace('%', ''));
+    }
     let num = (value * 100).toFixed(0);
     let label = `${num}%`;
     return label;
@@ -30,6 +33,9 @@ export const decimalFormatter = (value) => {
 
 {/* @ts-ignore */ }
 export const oneDecimalFormatter = (value) => {
+    if (typeof value === 'string' && value.includes('%')) {
+        value = parseFloat(value.replace('%', ''));
+    }
     let num = (value * 100).toFixed(1);
     let label = `${num}%`;
     return label;
@@ -43,6 +49,11 @@ export const commaFormatter = (value) => {
 // format number as dollar value with commas
 export const dollarFormatter = (value) => {
     return ('$' + Math.round(value).toLocaleString("en-US"));
+};
+
+// format number as dollar value with commas
+export const dollarDecimalFormatter = (value) => {
+    return ('$' + parseFloat(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 };
 
 // convert a number to an ordinal, est 1 -> 1st, 2 -> 2nd, 3 -> 3rd

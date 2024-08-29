@@ -20,6 +20,7 @@ import {
   baseAPI,
   dateFormatter,
   decimalFormatter,
+  oneDecimalFormatter,
   dollarFormatter,
   options,
   quarterlyFormatter,
@@ -77,7 +78,7 @@ const CommercialHub = (props) => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <GeoAltFill size={(height * 0.015) + 12} color={'#4dc1cb'} />
+        <GeoAltFill size={(height * 0.015) + 12} color={'#288BE4'} />
         <h2>{hubName}</h2>
       </div>
       <div className="dashBody">
@@ -249,11 +250,11 @@ const CommercialHub = (props) => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Line
                   type="monotone"
                   dataKey="Total Stoppers"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
               </LineChart>
@@ -285,24 +286,24 @@ const CommercialHub = (props) => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Grocery"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Eating Places"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Overall Spending"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
               </LineChart>
@@ -334,24 +335,24 @@ const CommercialHub = (props) => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={quarterlyFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={quarterlyFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Multifamily Residential"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Office"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Retail"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                   hide={hide}
                 />
@@ -390,7 +391,7 @@ const CommercialHub = (props) => {
                 <Line
                   type="monotone"
                   dataKey={hubName + " Validation Sums"}
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
 
@@ -427,12 +428,12 @@ const CommercialHub = (props) => {
                 <Bar
                   stackId="a"
                   dataKey="Residential sqft"
-                  fill="#003c50"
+                  fill="#091F2F"
                 />
                 <Bar
                   stackId="a"
                   dataKey="Retail sqft"
-                  fill="#00a6b4"
+                  fill="#1871bd"
                 />
                 <Bar
                   stackId="a"
@@ -442,7 +443,7 @@ const CommercialHub = (props) => {
                 <Bar
                   stackId="a"
                   dataKey="RnD sqft"
-                  fill="#e05926"
+                  fill="#FB4D42"
                 />
                 <Bar
                   stackId="a"
@@ -476,7 +477,7 @@ const CommercialHub = (props) => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: BPDA Development Review</p>
+            <p className="citation">Source: City of Boston Planning Department Division of Development Review</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Commerical Asking Rents in {hubName}</h6>
@@ -505,7 +506,7 @@ const CommercialHub = (props) => {
                 <Line
                   type="monotone"
                   dataKey="Office Asking Rent"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
 
@@ -513,7 +514,7 @@ const CommercialHub = (props) => {
                 <Line
                   type="monotone"
                   dataKey="Retail Asking Rent"
-                  stroke="#00a6b4"
+                  stroke="#1871bd"
                   dot={false}
                   hide={hide}
                 />

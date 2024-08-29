@@ -18,7 +18,9 @@ import {
   baseAPI,
   dateFormatter,
   decimalFormatter,
+  oneDecimalFormatter,
   dollarFormatter,
+  dollarDecimalFormatter,
   options,
   quarterlyFormatter,
 } from "../utils.js"
@@ -54,7 +56,7 @@ const RealEstateMarket = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Real Estate Market</h2>
       </div>
       <div className="dashBody">
@@ -192,18 +194,18 @@ const RealEstateMarket = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Office Vacancy"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Retail Vacancy"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
               </LineChart>
@@ -234,18 +236,18 @@ const RealEstateMarket = () => {
                 />
 
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={dollarDecimalFormatter}/>
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Office Asking Rent"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Retail Asking Rent"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
               </LineChart>
@@ -276,12 +278,12 @@ const RealEstateMarket = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter}  formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter}  formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Multifamily Vacancy"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
               </LineChart>
@@ -316,13 +318,13 @@ const RealEstateMarket = () => {
                 <Line
                   type="monotone"
                   dataKey="Single-Family Home"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
                 <Line
                   type="monotone"
                   dataKey="Condominium Unit"
-                  stroke="#e05926"
+                  stroke="#FB4D42"
                   dot={false}
                 />
               </LineChart>

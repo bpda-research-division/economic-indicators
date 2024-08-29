@@ -18,6 +18,7 @@ import {
   baseAPI,
   dateFormatter,
   decimalFormatter,
+  oneDecimalFormatter,
   options,
 } from "../utils.js"
 import {
@@ -86,7 +87,7 @@ const EconomicActivity = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <Clipboard2DataFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <Clipboard2DataFill size={(height*0.015)+12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Economic Activity</h2>
       </div>
       <div className="dashBody">
@@ -220,12 +221,12 @@ const EconomicActivity = () => {
                 />
 
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Overall Spending"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                 />
               </LineChart>
@@ -257,12 +258,12 @@ const EconomicActivity = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Eating Places"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                   name="Restaurant Spending"
                 />
@@ -297,7 +298,7 @@ const EconomicActivity = () => {
                 <Line
                   type="monotone"
                   dataKey="Boston"
-                  stroke="#003c50"
+                  stroke="#091F2F"
                   dot={false}
                   name="Hotel Occupancy Rate in Boston"
                 />
@@ -332,7 +333,7 @@ const EconomicActivity = () => {
                 />
           
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Legend iconType="plainline" />
                 {/* The following is done to combine two datasheets onto one graph */}
                 {series.map((s) => (
@@ -341,7 +342,7 @@ const EconomicActivity = () => {
                     dataKey={s.name === "Grocery" ? "Grocery" : s.name === "Apparel" ? "City of Boston" : "value"}
                     data={s.data} 
                     name={s.name}
-                    stroke={s.name === "Grocery" ? "#003c50" : s.name === "Apparel" ? "#e05926" : "#003c50"}
+                    stroke={s.name === "Grocery" ? "#091F2F" : s.name === "Apparel" ? "#FB4D42" : "#091F2F"}
                     key={s.name} 
                     dot={false}
                   />

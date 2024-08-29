@@ -48,15 +48,15 @@ const RealEstateMarket = () => {
 
     // set up color order for last bar chart
     const barColors = [
-        "#003c50",
-        "#003c50",
-        "#003c50",
-        "#003c50",
-        "#003c50",
-        "#003c50",
-        "#003c50",
-        "#e05926",
-        "#e05926",
+        "#091F2F",
+        "#091F2F",
+        "#091F2F",
+        "#091F2F",
+        "#091F2F",
+        "#091F2F",
+        "#091F2F",
+        "#FB4D42",
+        "#FB4D42",
     ]
 
 
@@ -148,7 +148,7 @@ const RealEstateMarket = () => {
     return (
         <div className="dashboard">
             <div className="subHeader">
-                <AspectRatioFill size={(height*0.015)+12} color={'#4dc1cb'} className="subHeaderIcon" />
+                <AspectRatioFill size={(height*0.015)+12} color={'#288BE4'} className="subHeaderIcon" />
                 <h2>Annual Snapshot: Population</h2>
             </div>
             <div className="dashBody">
@@ -265,7 +265,7 @@ const RealEstateMarket = () => {
                                 <Line
                                     type="monotone"
                                     dataKey="Total Population"
-                                    stroke="#003c50"
+                                    stroke="#091F2F"
                                     dot={true}
                                 />
                             </LineChart>
@@ -293,7 +293,7 @@ const RealEstateMarket = () => {
                                 <Tooltip formatter={decimalFormatter} />
                                 <Bar
                                     dataKey="percent"
-                                    fill="#e05926"
+                                    fill="#FB4D42"
                                 />
 
                             </BarChart>
@@ -327,7 +327,7 @@ const RealEstateMarket = () => {
                                 <Tooltip formatter={decimalFormatter} />
                                 <Bar
                                     dataKey="percent"
-                                    fill="#e05926"
+                                    fill="#FB4D42"
                                 />
 
                             </BarChart>
@@ -358,7 +358,7 @@ const RealEstateMarket = () => {
                                 <Tooltip formatter={decimalFormatter} />
                                 <Bar
                                     dataKey="percent"
-                                    fill="#003c50"
+                                    fill="#091F2F"
                                 >
                                     {barColors.map((entry, index) => (
                                         <Cell key={`cell-${index}`} fill={barColors[index % 20]} />
