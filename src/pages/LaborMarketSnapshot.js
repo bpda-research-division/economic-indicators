@@ -64,7 +64,7 @@ const LaborMarketSnapshot = () => {
   return (
     <div className="dashboard">
       <div className="subHeader">
-        <AspectRatioFill size={(height * 0.015) + 12} color={'#4dc1cb'} className="subHeaderIcon" />
+        <AspectRatioFill size={(height * 0.015) + 12} color={'#288BE4'} className="subHeaderIcon" />
         <h2>Labor Market Snapshot</h2>
       </div>
       <div className="dashBody">
@@ -155,6 +155,22 @@ const LaborMarketSnapshot = () => {
                   width={300}
 
                 />
+                <XAxis
+                  type="number"
+                  // function takes dataMin & dataMax. Uses the absolute max value to set range on either side of 0. Also rounds to the nearest thousand
+                  domain={[0, 800]}
+                  tickFormatter={commaFormatter}
+                />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip formatter={commaFormatter} />
+                <Bar
+                  // stackId="a"
+                  dataKey="3 Month Average"
+                  fill="#091F2F"
+                // fill="#00a6b4"
+                />
+
+                
                 <XAxis
                   type="number"
                   // function takes dataMin & dataMax. Uses the absolute max value to set range on either side of 0. Also rounds to the nearest thousand
