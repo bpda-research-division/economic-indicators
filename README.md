@@ -89,7 +89,7 @@ Uses react's grid and breakpoints system to make a mobile & desktop friendly web
 ## Getting Started
 1. Clone the repo to your local computer
 2. While working in the project folder, run `npm install` in your terminal
-3. While working in the project folder, run `npm start` in your terminal to start a live preview of the application
+3. While working in the project folder, run `npm start` in your terminal to start a live preview of the application on local host
 4. Once changes are made and you are ready to push them live: While working in the project folder, run `npm run build` in the terminal
 5. Copy the contents in the `build` folder and replace the contents of the economic-indicators folder on the www.maps server
 
