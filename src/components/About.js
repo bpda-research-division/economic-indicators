@@ -42,7 +42,13 @@ function About() {
           <h4>Notes on Data Sources</h4>
           <h5>Overview of the Population</h5>
           <ul>
-            <li>U.S. Census Bureau, American Community Survey</li>
+            <li>U.S. Census Bureau, 1900-2020 Decennial Census.</li>
+            <li>City of Boston Planning Department Research Division Estimates, 2024. 
+              <ul>
+              <li>The Research Division creates annual population estimates for Boston to provide alternative estimates to those produced by the US Census Bureau, which continue to underestimate Boston's population following the disrupted 2020 Census.</li> 
+              <li>A detailed explanation of the evidence for the need for revised population estimates can be found <a href="https://www.bostonplans.org/documents/research-other/rationale-for-creating-alternatives-to-census-esti" target="_blank">here</a>. A presentation overview of the undercount of Boston's population can be found <a href="https://www.bostonplans.org/documents/research-other/undercount-of-boston-s-population-presentation" target="_blank">here</a>. A detailed explanation of the population estimate methodology can be found <a href="https://www.bostonplans.org/documents/research-other/summary-population-adjustment-and-projection-metho" target="_blank">here</a>.</li>
+              </ul>
+            </li>
           </ul>
           <h5>Overview of the Economy</h5>
           <ul>
