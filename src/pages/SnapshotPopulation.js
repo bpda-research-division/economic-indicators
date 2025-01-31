@@ -270,7 +270,7 @@ const RealEstateMarket = () => {
                                 />
                             </LineChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2020 U.S. Decennial Census</p>
+                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2020 U.S. Decennial Census; City of Boston Planning Department Research Division Estimates, 2024.</p>
                     </div>
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Age Groups</h6>
@@ -298,7 +298,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 2022 American Community Survey 1-Year Estimates</p>
+                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
                     </div>
                 </div>
                 <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -332,7 +332,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 2022 American Community Survey 1-Year Estimates</p>
+                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
 
                     </div>
                     <div className="col-12 col-md-6 graph-column">
@@ -367,7 +367,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 2022 American Community Survey 1-Year Estimates</p>
+                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
                     </div>
                 </div>
             </div>
