@@ -284,10 +284,9 @@ const RealEstateMarket = () => {
                                 <XAxis dataKey="category" />
                                 <YAxis
                                     type="number"
-                                    domain={[0, .50]}
+                                    domain={[0, .5]}
                                     tickFormatter={decimalFormatter}
                                     tickCount={3}
-                                    interval="equidistantPreserveStart"
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <Tooltip formatter={decimalFormatter} />
@@ -321,7 +320,6 @@ const RealEstateMarket = () => {
                                     domain={[0, .3]}
                                     tickFormatter={decimalFormatter}
                                     tickCount={3}
-                                    interval="equidistantPreserveStart"
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <Tooltip formatter={decimalFormatter} />
@@ -367,6 +365,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </ResponsiveContainer>
+                        <p className="citation">*Note: Excludes those identifying as Hispanic or Latino. </p>
                         <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
                     </div>
                 </div>
