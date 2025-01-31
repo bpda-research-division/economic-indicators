@@ -365,6 +365,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </ResponsiveContainer>
+                        <p className="citation">*Note: Excludes those identifying as Hispanic or Latino. </p>
                         <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
                     </div>
                 </div>
