@@ -32,6 +32,7 @@ const Mobility = () => {
   const [logan, setLogan] = useState([])
   const [MBTA, setMBTA] = useState([])
   const [MBTALine, setMBTALine] = useState([])
+  // const [blueBikes, setBlueBikes] = useState([])
   const [width, height, graphHeight] = useDeviceSize();
 
   // useEffect to load component after reciving data
@@ -42,17 +43,22 @@ const Mobility = () => {
       fetch(baseAPI + 'Mobility_LoganAirport'),
       fetch(baseAPI + 'Mobility_MBTA'),
       fetch(baseAPI + 'Mobility_MBTALine'),
+      // fetch(baseAPI + 'Mobility_BlueBikes')
     ])
       // parse json results
+      // would add resBlueBikes here
       .then(([resDomestic, resLogan, resMBTA, resMBTALine]) =>
         Promise.all([resDomestic.json(), resLogan.json(), resMBTA.json(), resMBTALine.json()])
+        // would add resBlueBikes.json() here
       )
       // store parsed data in state
+      // would add dataBlueBikes
       .then(([dataDomestic, dataLogan, dataMBTA, dataMBTALine]) => {
         setDomestic(dataDomestic);
         setLogan(dataLogan);
         setMBTA(dataMBTA);
         setMBTALine(dataMBTALine);
+        // setBlueBikes(dataBlueBikes)
       })
 
   }, []);
@@ -371,6 +377,41 @@ const Mobility = () => {
               </LineChart>
             </ResponsiveContainer>
             <p className="citation">Source: MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</p>
+            </div>
+        </div>
+        <div className="row mh-20 gx-0 gy-0 graph-row">
+          <div className="col-12 col-md-6 graph-column">
+            <h6 className="chartTitle">Blue Bikes Placeholder</h6>
+            <ResponsiveContainer width="98%" height={graphHeight}>
+              <LineChart
+                width={500}
+                height={400}
+                data={MBTA}
+              >
+                <XAxis
+                  dataKey="Epoch Miliseconds"
+                  scale="time"
+                  type="number"
+                  domain={['dataMin', 'dataMax']}
+                  tickFormatter={dateFormatter}
+                />
+                <YAxis
+                  type="number"
+                  width={90}
+                  tickFormatter={commaFormatter}
+                />
+
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
+                <Line
+                  type="monotone"
+                  dataKey="Sum of Validations"
+                  stroke="#091F2F"
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+            <p className="citation">Source: Bluebikes placeholder source</p>
           </div>
         </div>
       </div>
