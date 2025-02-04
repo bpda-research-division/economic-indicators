@@ -32,7 +32,7 @@ const Mobility = () => {
   const [logan, setLogan] = useState([])
   const [MBTA, setMBTA] = useState([])
   const [MBTALine, setMBTALine] = useState([])
-  // const [blueBikes, setBlueBikes] = useState([])
+  const [blueBikes, setBlueBikes] = useState([])
   const [width, height, graphHeight] = useDeviceSize();
 
   // useEffect to load component after reciving data
@@ -43,22 +43,22 @@ const Mobility = () => {
       fetch(baseAPI + 'Mobility_LoganAirport'),
       fetch(baseAPI + 'Mobility_MBTA'),
       fetch(baseAPI + 'Mobility_MBTALine'),
-      // fetch(baseAPI + 'Mobility_BlueBikes')
+      fetch(baseAPI + 'Mobility_BlueBikes'),
     ])
       // parse json results
       // would add resBlueBikes here
-      .then(([resDomestic, resLogan, resMBTA, resMBTALine]) =>
-        Promise.all([resDomestic.json(), resLogan.json(), resMBTA.json(), resMBTALine.json()])
+      .then(([resDomestic, resLogan, resMBTA, resMBTALine, resBlueBikes]) =>
+        Promise.all([resDomestic.json(), resLogan.json(), resMBTA.json(), resMBTALine.json(), resBlueBikes.json()])
         // would add resBlueBikes.json() here
       )
       // store parsed data in state
       // would add dataBlueBikes
-      .then(([dataDomestic, dataLogan, dataMBTA, dataMBTALine]) => {
+      .then(([dataDomestic, dataLogan, dataMBTA, dataMBTALine, dataBlueBikes]) => {
         setDomestic(dataDomestic);
         setLogan(dataLogan);
         setMBTA(dataMBTA);
         setMBTALine(dataMBTALine);
-        // setBlueBikes(dataBlueBikes)
+        setBlueBikes(dataBlueBikes);
       })
 
   }, []);
@@ -381,12 +381,12 @@ const Mobility = () => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Blue Bikes Placeholder</h6>
+            <h6 className="chartTitle">Bluebikes Trips</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
                 height={400}
-                data={MBTA}
+                data={blueBikes}
               >
                 <XAxis
                   dataKey="Epoch Miliseconds"
@@ -399,19 +399,28 @@ const Mobility = () => {
                   type="number"
                   width={90}
                   tickFormatter={commaFormatter}
+                  tickCount={4}
+                  interval="equidistantPreserveStart"
                 />
-
+                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
+                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
-                  dataKey="Sum of Validations"
+                  dataKey="Member Trips" // Change to Member Trips
                   stroke="#091F2F"
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Non-Member Trips" // Change to Non-Member Trips
+                  stroke="#1871BD"
                   dot={false}
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Bluebikes placeholder source</p>
+            <p className="citation">Source: Bluebikes System Data.</p>
           </div>
         </div>
       </div>
