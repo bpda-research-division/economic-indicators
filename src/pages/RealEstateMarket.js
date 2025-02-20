@@ -279,7 +279,6 @@ const RealEstateMarket = () => {
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter}  formatter={oneDecimalFormatter} />
-                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Multifamily Vacancy"
@@ -292,7 +291,7 @@ const RealEstateMarket = () => {
 
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Median Sales Price for Single-Family Homes and Condos</h6>
+            <h6 className="chartTitle">Median Sales Price for Single-Family Homes and Condos in Boston</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -329,7 +328,7 @@ const RealEstateMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: City of Boston, Mayor's Office of Housing.</p>
+            <p className="citation">Source: City of Boston, Mayor's Office of Housing using data from the Warren Group.</p>
           </div>
         </div>
       </div>
