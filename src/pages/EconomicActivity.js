@@ -247,7 +247,7 @@ const EconomicActivity = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
+            <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Restaurant Spending Compared to the Same Month in 2019</h6>
@@ -285,7 +285,7 @@ const EconomicActivity = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
+            <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -320,7 +320,7 @@ const EconomicActivity = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report</p>
+            <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -365,7 +365,7 @@ const EconomicActivity = () => {
                 ))}
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
+            <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
         </div>
       </div>

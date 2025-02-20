@@ -88,13 +88,13 @@ function About() {
               metrics on this dashboard represent 3-month rolling averages rather than 1-month snapshots, due to a change in the
                underlying Cuebiq data which reduced the monthly sample size.</li>
             <li>Massachusetts Port Authority, Aviation General Management (Massport)</li>
-            <li>MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</li>
+            <li>MBTA, Gated Station Validations by Station.</li>
             <li>Bluebikes System Data.</li>
           </ul>
           <h5>Economic Activity</h5>
           <ul>
             <li>The Pinnacle Perspective Boston Monthly Report</li>
-            <li>Mastercard Geographic Insights from Carto</li>
+            <li>Mastercard Geographic Insights.</li>
             <li>OpenTable: State of the Industry</li>
           </ul>
           <h5>Real Estate Market</h5>

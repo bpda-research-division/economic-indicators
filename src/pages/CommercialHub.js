@@ -274,7 +274,7 @@ const CommercialHub = (props) => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Cuebiq mobility data</p>
+            <p className="citation">Source: Cuebiq mobility data.</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">In-Person Spending in {hubName}, Compared to the Same Month 2019</h6>
@@ -323,7 +323,7 @@ const CommercialHub = (props) => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mastercard Geographic Insights from Carto adjusted for inflation</p>
+            <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Vacancy Rates in {hubName}</h6>
@@ -374,7 +374,7 @@ const CommercialHub = (props) => {
                 
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: CoStar</p>
+            <p className="citation">Source: CoStar.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -412,7 +412,7 @@ const CommercialHub = (props) => {
 
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</p>
+            <p className="citation">Source: MBTA, Gated Station Validations by Station.</p>
 
           </div>
           <div className="col-12 col-md-4 graph-column">
@@ -492,7 +492,7 @@ const CommercialHub = (props) => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: City of Boston Planning Department Division of Development Review</p>
+            <p className="citation">Source: City of Boston Planning Department Division of Development Review.</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Commerical Asking Rents in {hubName}</h6>
@@ -535,7 +535,7 @@ const CommercialHub = (props) => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: CoStar</p>
+            <p className="citation">Source: CoStar.</p>
           </div>
         </div>
       </div>

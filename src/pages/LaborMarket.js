@@ -244,7 +244,7 @@ const LaborMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
+            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD).</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Boston Resident Labor Force Unemployment Rate</h6>
@@ -290,7 +290,7 @@ const LaborMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
+            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD).</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -356,7 +356,7 @@ const LaborMarket = () => {
                 <Line type="monotone" dataKey="Government" stroke="#7a3a86" dot={false} />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Burning Glass Technologies, Labor Insight</p>
+            <p className="citation">Source: Lightcast, Labor Insight.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -393,7 +393,7 @@ const LaborMarket = () => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD)</p>
+            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD.)</p>
           </div>
         </div>
       </div>
