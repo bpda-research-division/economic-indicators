@@ -238,7 +238,6 @@ const EconomicActivity = () => {
 
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
-                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Overall Spending"
@@ -250,7 +249,7 @@ const EconomicActivity = () => {
             <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Restaurant Spending Compared to the Same Month in 2019</h6>
+            <h6 className="chartTitle">Restaurant Spending in Boston Compared to the Same Month in 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
@@ -275,7 +274,6 @@ const EconomicActivity = () => {
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
-                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Eating Places"
@@ -310,7 +308,6 @@ const EconomicActivity = () => {
                 />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={decimalFormatter} />
-                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Boston"
