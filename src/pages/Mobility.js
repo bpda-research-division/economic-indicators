@@ -22,6 +22,8 @@ import {
   commaFormatter,
   options,
   secondOptions,
+  CustomTooltip,
+  MBTACustomTooltip,
 } from "../utils.js"
 import {
   useDeviceSize
@@ -367,7 +369,8 @@ const Mobility = () => {
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
+                {/*<Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} content={MBTACustomTooltip}/>*/}
+                <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} content={MBTACustomTooltip}/>
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
@@ -395,7 +398,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: MBTA, Gated Station Validations by Station.</p>
+            <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
             </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
