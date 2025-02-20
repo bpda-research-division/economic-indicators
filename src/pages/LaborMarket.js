@@ -24,10 +24,13 @@ import {
   oneDecimalFormatter,
   commaFormatter,
   options,
+  secondOptions,
 } from "../utils.js"
 import {
   useDeviceSize
 } from "../useDeviceSize"
+
+
 
 const LaborMarket = () => {
   // set up state variables that will store g-sheet data
@@ -57,7 +60,7 @@ const LaborMarket = () => {
         setUnemployment(dataUnemployment);
         setLaborforce(dataLaborforce);
       })
-
+      
   }, []);
 
   return (
@@ -71,7 +74,10 @@ const LaborMarket = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in Boston <span className="accentSubText">Payroll Employment</span> from same month in 2019
+                Change in Boston <span className="accentSubText">Payroll Employment</span> from {payroll.length ?
+                    // @ts-ignore
+                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(payroll[payroll.length - 1]['Month'])))
+                    : ''} 2019
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -95,7 +101,10 @@ const LaborMarket = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in Boston <span className="accentSubText">Job Postings</span> from same month in 2019
+                  Change in Boston <span className="accentSubText">Job Postings</span> from {payroll.length ?
+                    // @ts-ignore
+                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(postings[postings.length - 1]['Month'])))
+                    : ''} 2019
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{

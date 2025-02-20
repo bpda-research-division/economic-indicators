@@ -20,6 +20,7 @@ import {
   decimalFormatter,
   oneDecimalFormatter,
   options,
+  secondOptions,
 } from "../utils.js"
 import {
   useDeviceSize
@@ -94,7 +95,12 @@ const EconomicActivity = () => {
         <div className="row mh-20 g-6 indicator-row">
         <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Overall Spending</span> from the Same Month in 2019
+              <h4 className="indicatorSubtext">
+                {/*Change in <span className="accentSubText">Overall Spending</span> from the Same Month in 2019*/}
+                Change in <span className="accentSubText">Overall In-Person Spending</span> from {spending.length ?
+                                                    // @ts-ignore
+                                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(spending[spending.length - 1]['Month'])))
+                                                    : ''} 2019
                 {/* {
                 spending.length ?
                   // @ts-ignore
@@ -122,7 +128,7 @@ const EconomicActivity = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Hotel Occupancy Rate</span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Hotel Occupancy </span>Rate</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -143,7 +149,13 @@ const EconomicActivity = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Restaurant Spending</span> from the Same Month in 2019
+              <h4 className="indicatorSubtext">
+                
+                {/*Change in <span className="accentSubText">Restaurant Spending</span> from the Same Month in 2019*/}
+                Change in <span className="accentSubText">Restaurant Spending</span> from {spending.length ?
+                                                    // @ts-ignore
+                                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(spending[spending.length - 1]['Month'])))
+                                                    : ''} 2019
                 {/* {
                 spending.length ?
                   // @ts-ignore
@@ -172,7 +184,11 @@ const EconomicActivity = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in <span className="accentSubText">Grocery Spending</span> from the Same Month in 2019
+                {/*Change in <span className="accentSubText">Grocery Spending</span> from the Same Month in 2019*/}
+                Change in <span className="accentSubText">Grocery Spending</span> from {spending.length ?
+                                                    // @ts-ignore
+                                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(spending[spending.length - 1]['Month'])))
+                                                    : ''} 2019
                 {/* {
                     dining.length ?
                       // @ts-ignore

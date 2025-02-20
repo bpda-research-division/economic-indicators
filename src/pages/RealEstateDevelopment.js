@@ -21,6 +21,7 @@ import {
   dateFormatter,
   commaFormatter,
   options,
+  secondOptions,
   quarterlyFormatter,
   CustomTooltip,
 } from "../utils.js"
@@ -72,7 +73,7 @@ const RealEstateDevelopment = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                <span className="accentSubText">Net Non-Residential Permitted Square Feet:</span>
+                <span className="accentSubText">Net Non-Residential Permitted Square Feet</span>
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -96,7 +97,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Net Permitted Housing Units:</span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Net Permitted Housing Units</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -118,7 +119,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Net Permitted Income-Restricted Units: </span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Net Permitted Income-Restricted Units</span></h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -162,7 +163,13 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Change in Construction Hours from the Same Month in 2019</span></h4>
+              <h4 className="indicatorSubtext">
+                {/*Change in <span className="accentSubText">Construction Hours</span> from the Same Month in 2019*/}
+                Change in <span className="accentSubText">Construction Hours</span> from {bjrp.length ?
+                                                                    // @ts-ignore
+                                                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(bjrp[bjrp.length - 1]['Month'])))
+                                                                    : ''} 2019
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"
