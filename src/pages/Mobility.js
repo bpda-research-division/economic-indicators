@@ -21,6 +21,7 @@ import {
   oneDecimalFormatter,
   commaFormatter,
   options,
+  secondOptions,
 } from "../utils.js"
 import {
   useDeviceSize
@@ -74,7 +75,11 @@ const Mobility = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in Boston <span className="accentSubText">People Stopping</span> from the Same Month in 2019
+                {/*Change in Boston <span className="accentSubText">People Stopping</span> from the Same Month in 2019*/}
+                Change in Boston <span className="accentSubText">People Stopping</span> from {domestic.length ?
+                                    // @ts-ignore
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(domestic[domestic.length - 1]['Month'])))
+                                    : ''} 2019
                 {/* {
                     domestic.length ?
                       // @ts-ignore
@@ -103,7 +108,12 @@ const Mobility = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Logan Airport Domestic Passengers</span> from the Same Month in 2019
+              <h4 className="indicatorSubtext">
+                {/*Change in <span className="accentSubText">Logan Airport Domestic Passengers</span> from the Same Month in 2019*/}
+                Change in <span className="accentSubText">Logan Airport Domestic Passengers</span> from {logan.length ?
+                                    // @ts-ignore
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(logan[logan.length - 1]['Month'])))
+                                    : ''} 2019
                 {/* {
                 logan.length ?
                   // @ts-ignore
@@ -130,7 +140,11 @@ const Mobility = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in <span className="accentSubText">Logan Airport International Passengers</span> from the Same Month in 2019
+                {/*Change in <span className="accentSubText">Logan Airport International Passengers</span> from the Same Month in 2019*/}
+                Change in <span className="accentSubText">Logan Airport International Passengers</span> from {logan.length ?
+                                    // @ts-ignore
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(logan[logan.length - 1]['Month'])))
+                                    : ''} 2019
                 {/* {
                     domestic.length ?
                       // @ts-ignore
@@ -156,7 +170,12 @@ const Mobility = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">MBTA Passengers</span> from the Same Month in 2019
+              <h4 className="indicatorSubtext">
+                {/*Change in <span className="accentSubText">MBTA Passengers</span> from the Same Month in 2019*/}
+                Change in <span className="accentSubText">MBTA Passengers</span> from {MBTA.length ?
+                                    // @ts-ignore
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(MBTA[MBTA.length - 1]['Month'])))
+                                    : ''} 2019
                 {/* {
                 MBTA.length ?
                   // @ts-ignoreang 

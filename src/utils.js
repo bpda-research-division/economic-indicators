@@ -72,6 +72,7 @@ export const ordinal = n => {
 
 
 export const options = { month: "long", year: "numeric" };
+export const secondOptions = {month: "long"};
 
 // custom tick for word-wrap labels
 export const CustomXAxisTick = ({ x, y, payload }) => {

@@ -23,6 +23,7 @@ import {
   oneDecimalFormatter,
   dollarFormatter,
   options,
+  secondOptions,
   quarterlyFormatter,
   commaFormatter,
   CustomTooltip,
@@ -86,7 +87,11 @@ const CommercialHub = (props) => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in <span className="accentSubText">People Stopping</span> from the same month in 2019
+                {/*Change in <span className="accentSubText">People Stopping</span> from the same month in 2019*/}
+                Change in <span className="accentSubText">People Stopping</span> from {hubMobility.length ?
+                                                    // @ts-ignore
+                                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(hubMobility[hubMobility.length - 1]['Month'])))
+                                                    : ''} 2019
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -110,7 +115,11 @@ const CommercialHub = (props) => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                Change in <span className="accentSubText">MBTA Passengers</span> from the same month in 2019
+                {/*Change in <span className="accentSubText">MBTA Passengers</span> from the same month in 2019*/}
+                Change in <span className="accentSubText">MBTA Passengers</span> from {hubValidationSum.length ?
+                                                    // @ts-ignore
+                                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(hubValidationSum[hubValidationSum.length - 1]['Month'])))
+                                                    : ''} 2019
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -133,7 +142,13 @@ const CommercialHub = (props) => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">Overall In-person Spending</span> from same month in 2019</h4>
+              <h4 className="indicatorSubtext">
+                {/*Change in <span className="accentSubText">Overall In-person Spending</span> from same month in 2019*/}
+                Change in <span className="accentSubText">Overall In-Person Spending</span> from {hubEconomicActivity.length ?
+                                                                    // @ts-ignore
+                                                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(hubEconomicActivity[hubEconomicActivity.length - 1]['Month'])))
+                                                                    : ''} 2019
+              </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
