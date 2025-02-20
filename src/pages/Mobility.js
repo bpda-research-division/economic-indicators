@@ -297,7 +297,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</p>
+            <p className="citation">Source: MBTA, Gated Station Validations by Station.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -341,7 +341,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport)</p>
+            <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport).</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -395,7 +395,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: MBTA Datablog, COVID-19 and MBTA Ridership: Part 4</p>
+            <p className="citation">Source: MBTA, Gated Station Validations by Station.</p>
             </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">

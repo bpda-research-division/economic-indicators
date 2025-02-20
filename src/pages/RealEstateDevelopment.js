@@ -226,7 +226,7 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions</p>
+            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Planning Dept. Development Pipeline Square Footage by Use Type</h6>
@@ -316,7 +316,7 @@ const RealEstateDevelopment = () => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: City of Boston Planning Department Division of Development Review</p>
+            <p className="citation">Source: City of Boston Planning Department Division of Development Review.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -358,7 +358,7 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions</p>
+            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -392,7 +392,7 @@ const RealEstateDevelopment = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports</p>
+            <p className="citation">Source: Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports.</p>
           </div>
         </div>
       </div>

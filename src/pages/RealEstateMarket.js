@@ -210,7 +210,7 @@ const RealEstateMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: CoStar</p>
+            <p className="citation">Source: CoStar.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Commercial Space Asking Rent Per Square Foot in Boston</h6>
@@ -252,7 +252,7 @@ const RealEstateMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: CoStar</p>
+            <p className="citation">Source: CoStar.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -288,7 +288,7 @@ const RealEstateMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: CoStar</p>
+            <p className="citation">Source: CoStar.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -329,7 +329,7 @@ const RealEstateMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: City of Boston, Mayor's Office of Housing</p>
+            <p className="citation">Source: City of Boston, Mayor's Office of Housing.</p>
           </div>
         </div>
       </div>

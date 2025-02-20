@@ -200,7 +200,7 @@ const SnapshotEconomy = () => {
                   />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
+              <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development.</p>
             </div>
             <div>
               <h6 className="chartTitle">Boston Employment Shares by Industry</h6>
@@ -241,7 +241,7 @@ const SnapshotEconomy = () => {
                   />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development</p>
+              <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development.</p>
             </div>
           </div>
           <div className="col-12 col-md-5 flex-column econ-column" id="commuterMapCol">
@@ -249,7 +249,7 @@ const SnapshotEconomy = () => {
               <h6 className="chartTitle">Residence of People Working in Boston</h6>
               {/* <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US" frameborder={0} style={{ border: 0 }} height={graphHeight} allow="fullscreen" className="flex-grow-1">iFrames are not supported on this page.</iframe> */}
               <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=707e5cbfeb034ac3987a2751f67dddb9&locale=en-US" frameborder={0} style={{ border: 0 }}  allow="fullscreen" id="commuterMap" title="Boston Commute Map">iFrames are not supported on this page.</iframe>
-              <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES)</p>
+              <p className="citation">Source: U.S. Census Bureau, LEHD Origin and Destination Employment Statistics (LODES).</p>
               <div className="d-grid gap-2">
                 <Button variant="boylstonblue" size="lg" href="https://boston.maps.arcgis.com/apps/dashboards/1af39de1500b4acfb2dd7bb32feb2dd1">
                   Explore Job Density in Boston <ArrowRight></ArrowRight>
