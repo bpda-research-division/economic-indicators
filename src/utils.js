@@ -111,6 +111,21 @@ export const CustomTooltip = (props) => {
     return null;
 };
 
+export const MBTACustomTooltip = (props) => {
+
+    if(props.payload[0]){
+        let total = props.payload[0].payload.Total;
+        const newPayload = [{
+            name:'All Lines*',
+            value:props.payload[0].payload.Total,
+        },...props.payload,
+    ];
+        return <_DefaultTooltipContent.DefaultTooltipContent {...props} payload={newPayload}/>;
+    }
+    return <_DefaultTooltipContent.DefaultTooltipContent {...props} />;
+};
+
+
 // aquire the key of the maximum value in an object 
 // ex: obj {A: 13, B: 4, C: 37}
 // maxKey(obj) returns c
