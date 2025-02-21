@@ -56,6 +56,11 @@ export const dollarDecimalFormatter = (value) => {
     return ('$' + parseFloat(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 };
 
+// format number in terms of millions (1,000,000 -> 1M)
+export const millionFormatter = (value) => {
+    return (Math.round(value / 100000) / 10).toLocaleString("en-US") + 'M';
+}
+
 // convert a number to an ordinal, est 1 -> 1st, 2 -> 2nd, 3 -> 3rd
 export const ordinal = n => {
     if (n === 1) {
