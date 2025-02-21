@@ -20,6 +20,7 @@ import {
   decimalFormatter,
   oneDecimalFormatter,
   commaFormatter,
+  millionFormatter,
   options,
   secondOptions,
   CustomTooltip,
@@ -286,7 +287,7 @@ const Mobility = () => {
                 <YAxis
                   type="number"
                   width={90}
-                  tickFormatter={commaFormatter}
+                  tickFormatter={millionFormatter}
                 />
 
                 <CartesianGrid strokeDasharray="3 3" />
@@ -299,7 +300,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: MBTA, Gated Station Validations by Station.</p>
+            <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -321,7 +322,7 @@ const Mobility = () => {
                 <YAxis
                   type="number"
                   width={90}
-                  tickFormatter={commaFormatter}
+                  tickFormatter={millionFormatter}
                   tickCount={4}
                   interval="equidistantPreserveStart"
                 />
@@ -343,7 +344,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport).</p>
+            <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport).<br></br>Note: M is in millions.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -364,7 +365,7 @@ const Mobility = () => {
                 <YAxis
                   type="number"
                   width={90}
-                  tickFormatter={commaFormatter}
+                  tickFormatter={millionFormatter}
                   domain={[0, 4000000]}
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
@@ -398,7 +399,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
+            <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
             </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
