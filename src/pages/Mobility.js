@@ -206,7 +206,11 @@ const Mobility = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Change in <span className="accentSubText">MBTA Orange Line Passengers</span> from the Same Month in 2019
+              <h4 className="indicatorSubtext">
+              Change in <span className="accentSubText">Bluebikes Trips</span> from {blueBikes.length ?
+                                    // @ts-ignore
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(blueBikes[blueBikes.length - 1]['Month'])))
+                                    : ''} 2019
                 {/* {
                 MBTALine.length ?
                   // @ts-ignore
@@ -216,15 +220,15 @@ const Mobility = () => {
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                  MBTALine.length ?
+                  blueBikes.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(MBTALine[MBTALine.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(blueBikes[blueBikes.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                  MBTALine.length ?
-                    ((MBTALine[MBTALine.length - 1]['Percent Change Orange Line']) * 100).toFixed(1)
+                  blueBikes.length ?
+                    ((blueBikes[blueBikes.length - 1]['Percent Change Bluebikes']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
               </div>
