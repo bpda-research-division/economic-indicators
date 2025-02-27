@@ -374,7 +374,7 @@ const CommercialHub = (props) => {
                 
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: CoStar.</p>
+            <p className="citation">Source: CoStar Real Estate Analytics.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -535,7 +535,7 @@ const CommercialHub = (props) => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: CoStar.</p>
+            <p className="citation">Source: CoStar Real Estate Analytics.</p>
           </div>
         </div>
       </div>

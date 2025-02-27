@@ -99,7 +99,7 @@ function About() {
           </ul>
           <h5>Real Estate Market</h5>
           <ul>
-            <li>CoStar. Vacant space refers to all space not currently occupied by a tenant, regardless of any lease obligation.
+            <li>CoStar Real Estate Analytics. Vacant space refers to all space not currently occupied by a tenant, regardless of any lease obligation.
               Vacant space could be space that is either available or not available. For example, vacant space includes sublease
               space that is currently being paid for by a tenant but not occupied by that tenant and space that has been leased
               but not yet occupied because of finish work being done.</li>
