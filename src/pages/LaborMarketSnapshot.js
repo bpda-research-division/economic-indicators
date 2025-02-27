@@ -111,7 +111,7 @@ const LaborMarketSnapshot = () => {
                 <Bar
                   // stackId="a"
                   dataKey="Change"
-                  fill="rgba(224, 89, 38, .9)"
+                  fill="#FB4D42"
                 >
                   <LabelList dataKey="Change" position="right" fbackground="#FFFFFF" />
                 </Bar>
