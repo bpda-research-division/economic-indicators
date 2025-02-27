@@ -73,7 +73,7 @@ const RealEstateDevelopment = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                <span className="accentSubText">Net Non-Residential Permitted Square Feet</span>
+              Net<span className="accentSubText"> Non-Residential Permitted </span>Square Feet
               </h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -97,7 +97,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Net Permitted Housing Units</span></h4>
+              <h4 className="indicatorSubtext">Net<span className="accentSubText"> Permitted Housing </span>Units</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -119,7 +119,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Net Permitted Income-Restricted Units</span></h4>
+              <h4 className="indicatorSubtext">Net<span className="accentSubText"> Permitted Income-Restricted </span>Units</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -141,7 +141,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Under Review Projects</span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Projects Under Review </span>Square Feet</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -213,7 +213,7 @@ const RealEstateDevelopment = () => {
                   type="number"
                   width={100}
                   tickCount={4}
-                  domain={[0, 3000000]}
+                  domain={[0, 3500000]}
                   tickFormatter={commaFormatter}
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
