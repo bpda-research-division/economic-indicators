@@ -309,6 +309,7 @@ const RealEstateMarket = () => {
                   type="number"
                   tickFormatter={dollarFormatter}
                   width={80}
+                  domain={[500000, 'auto']}
                 />
 
                 <CartesianGrid strokeDasharray="3 3" />

@@ -64,15 +64,10 @@ function About() {
               about their place of work and commute. The universe includes both payroll workers (those covered under unemployment
               insurance) as well as self-employed workers, and reflects the location survey respondents reported for work in the
               week before the survey, which may be their own home.</p>
-            <li>Total employment in Boston is calculated from two sources:</li>
+            <li>Total payroll employment in Boston:</li>
             <ul>
-              <li>U.S. Bureau of Economic Analysis, Total full-time and part-time employment by NAICS industry</li>
               <li>Massachusetts Executive Office of Labor and Workforce Development, Employment and Wages (ES-202)</li>
             </ul>
-            <p>Total jobs by industry are available from the BEA for Suffolk County. These are allocated to Boston based on
-              the share of payroll jobs in that industry that are located in Boston compared to the balance of the county
-              (Chelsea, Revere, and Winthrop) from ES-202 data. Total jobs include both payroll jobs covered by unemployment
-              insurance as well as self-employment.</p>
           </ul>
 
           <h5>Labor Market</h5>

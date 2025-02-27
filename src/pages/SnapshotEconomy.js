@@ -68,7 +68,7 @@ const SnapshotEconomy = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-                City of Boston <span className="accentSubText">Total Employment in {
+                City of Boston <span className="accentSubText">Total Payroll Employment in {
                 // once data is loaded, display text. otherwise, show "loading"
                   jobs.length ?
                   // @ts-ignore
@@ -170,7 +170,7 @@ const SnapshotEconomy = () => {
         <div className="row gx-0 econ-row">
           <div className="col-12 col-md-7 graph-column flex-column">
             <div>
-              <h6 className="chartTitle">Total Employment in Boston</h6>
+              <h6 className="chartTitle">Total Payroll Employment in Boston</h6>
               <ResponsiveContainer width="98%" height={graphHeight/1.5}>
                 <BarChart
                   width={500}
@@ -185,7 +185,7 @@ const SnapshotEconomy = () => {
                   <YAxis
                     type="number"
                     width={40}
-                    domain={[500000, 1000000]}
+                    domain={[500000, 750000]}
                     tickFormatter={commaFormatter}
                     tickCount={3}
                   />
@@ -200,10 +200,10 @@ const SnapshotEconomy = () => {
                   />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development.</p>
+              <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development.</p>
             </div>
             <div>
-              <h6 className="chartTitle">Boston Employment Shares by Industry</h6>
+              <h6 className="chartTitle">Boston Payroll Employment Shares by Industry</h6>
               <p className="subChartTitle">As Compared to Overall U.S. Employment Rate</p>
               <ResponsiveContainer width="98%" height={(graphHeight * 0.9)+(graphHeight/2.3)}>
                 <BarChart
@@ -241,7 +241,7 @@ const SnapshotEconomy = () => {
                   />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="citation">Source: U.S. Bureau of Economic Analysis (BEA) and Massachusetts Executive Office of Labor and Workforce Development.</p>
+              <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development. Bureau of Labor Statistics QCEW.</p>
             </div>
           </div>
           <div className="col-12 col-md-5 flex-column econ-column" id="commuterMapCol">
