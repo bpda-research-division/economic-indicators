@@ -179,12 +179,7 @@ const LaborMarketSnapshot = () => {
                 />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip formatter={commaFormatter} />
-                <Bar
-                  // stackId="a"
-                  dataKey="3 Month Average"
-                  fill="#003c50"
-                // fill="#00a6b4"
-                />
+                
 
               </BarChart>
             </ResponsiveContainer>
