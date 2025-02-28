@@ -23,6 +23,7 @@ import {
   decimalFormatter,
   oneDecimalFormatter,
   commaFormatter,
+  thousandFormatter,
   options,
   secondOptions,
 } from "../utils.js"
@@ -375,7 +376,7 @@ const LaborMarket = () => {
                   tickFormatter={dateFormatter}
                   padding={{ left: 15, right: 15 }}
                 />
-                <YAxis tickFormatter={(value) => new Intl.NumberFormat('en').format(value)} />
+                <YAxis tickFormatter={thousandFormatter} />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
                 <Legend />
@@ -393,7 +394,7 @@ const LaborMarket = () => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD.)</p>
+            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD.)<br></br>Note: K is in thousands.</p>
           </div>
         </div>
       </div>

@@ -22,6 +22,7 @@ import {
   decimalFormatter,
   oneDecimalFormatter,
   dollarFormatter,
+  thousandFormatter,
   options,
   secondOptions,
   quarterlyFormatter,
@@ -396,7 +397,7 @@ const CommercialHub = (props) => {
                 <YAxis
                   type="number"
                   width={80}
-                  tickFormatter={commaFormatter}
+                  tickFormatter={thousandFormatter}
                   tickCount={4}
                   interval="equidistantPreserveStart"
                 />
@@ -412,7 +413,7 @@ const CommercialHub = (props) => {
 
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: MBTA, Gated Station Validations by Station.</p>
+            <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: K is in thousands.</p>
 
           </div>
           <div className="col-12 col-md-4 graph-column">

@@ -20,6 +20,7 @@ import { AspectRatioFill } from "react-bootstrap-icons";
 import {
     baseAPI,
     decimalFormatter,
+    thousandFormatter,
     commaFormatter,
     CustomXAxisTick,
 } from "../utils.js"
@@ -254,7 +255,7 @@ const RealEstateMarket = () => {
                                 <YAxis
                                     type="number"
                                     // domain={[0, dataMax => (Math.round(dataMax / 100.0) * 100)]}
-                                    tickFormatter={commaFormatter}
+                                    tickFormatter={thousandFormatter}
                                     width={80}
                                 />
                                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
@@ -269,7 +270,7 @@ const RealEstateMarket = () => {
                                 />
                             </LineChart>
                         </ResponsiveContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2010 U.S. Decennial Census; City of Boston Planning Department Research Division Estimates, 2020 - 2024.</p>
+                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2010 U.S. Decennial Census; City of Boston Planning Department Research Division Estimates, 2020 - 2024.<br></br>Note: K is in thousands.</p>
                     </div>
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Age Groups</h6>

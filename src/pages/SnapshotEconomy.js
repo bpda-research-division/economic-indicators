@@ -18,6 +18,7 @@ import {
   baseAPI,
   decimalFormatter,
   oneDecimalFormatter,
+  thousandFormatter,
   commaFormatter,
 } from "../utils.js"
 import {
@@ -186,7 +187,7 @@ const SnapshotEconomy = () => {
                     type="number"
                     width={40}
                     domain={[500000, 750000]}
-                    tickFormatter={commaFormatter}
+                    tickFormatter={thousandFormatter}
                     tickCount={3}
                   />
                   <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
@@ -200,7 +201,7 @@ const SnapshotEconomy = () => {
                   />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development.</p>
+              <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development.<br></br>Note: K is in thousands.</p>
             </div>
             <div>
               <h6 className="chartTitle">Boston Payroll Employment Shares by Industry</h6>

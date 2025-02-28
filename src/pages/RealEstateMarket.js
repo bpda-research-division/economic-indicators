@@ -21,6 +21,7 @@ import {
   oneDecimalFormatter,
   dollarFormatter,
   dollarDecimalFormatter,
+  dollarThousandFormatter,
   options,
   quarterlyFormatter,
 } from "../utils.js"
@@ -307,7 +308,7 @@ const RealEstateMarket = () => {
                 />
                 <YAxis
                   type="number"
-                  tickFormatter={dollarFormatter}
+                  tickFormatter={dollarThousandFormatter}
                   width={80}
                   domain={[500000, 'auto']}
                 />
@@ -329,7 +330,7 @@ const RealEstateMarket = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: City of Boston, Mayor's Office of Housing using data from the Warren Group.</p>
+            <p className="citation">Source: City of Boston, Mayor's Office of Housing using data from the Warren Group.<br></br>Note: K is in thousands.</p>
           </div>
         </div>
       </div>
