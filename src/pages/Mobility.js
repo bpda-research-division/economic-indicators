@@ -21,6 +21,7 @@ import {
   oneDecimalFormatter,
   commaFormatter,
   millionFormatter,
+  thousandFormatter,
   options,
   secondOptions,
   CustomTooltip,
@@ -425,7 +426,7 @@ const Mobility = () => {
                 <YAxis
                   type="number"
                   width={90}
-                  tickFormatter={commaFormatter}
+                  tickFormatter={thousandFormatter}
                   tickCount={4}
                   interval="equidistantPreserveStart"
                 />
@@ -447,7 +448,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Bluebikes System Data.</p>
+            <p className="citation">Source: Bluebikes System Data.<br></br>Note: K is in thousands.</p>
           </div>
         </div>
       </div>

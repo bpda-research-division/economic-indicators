@@ -20,6 +20,8 @@ import {
   baseAPI,
   dateFormatter,
   commaFormatter,
+  millionFormatter,
+  thousandFormatter,
   options,
   secondOptions,
   quarterlyFormatter,
@@ -214,7 +216,7 @@ const RealEstateDevelopment = () => {
                   width={100}
                   tickCount={4}
                   domain={[0, 3500000]}
-                  tickFormatter={commaFormatter}
+                  tickFormatter={millionFormatter}
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
@@ -226,7 +228,7 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions.</p>
+            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions.<br></br>Note: M is in millions.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Planning Dept. Development Pipeline Square Footage by Use Type</h6>
@@ -246,7 +248,9 @@ const RealEstateDevelopment = () => {
                 <XAxis
                   type="number"
                   domain={[0, 40000000]}
-                  tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
+                  // tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
+                  tickFormatter={millionFormatter}
+
                   // width={80}
                 />
                 <CartesianGrid strokeDasharray="3 3" />
@@ -316,7 +320,7 @@ const RealEstateDevelopment = () => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            <p className="citation">Source: City of Boston Planning Department Division of Development Review.</p>
+            <p className="citation">Source: City of Boston Planning Department Division of Development Review.<br></br>Note: M is in millions.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -378,7 +382,7 @@ const RealEstateDevelopment = () => {
                 />
                 <YAxis
                   type="number"
-                  tickFormatter={commaFormatter}
+                  tickFormatter={thousandFormatter}
                   width={80}
                 />
 
@@ -392,7 +396,7 @@ const RealEstateDevelopment = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <p className="citation">Source: Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports.</p>
+            <p className="citation">Source: Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports.<br></br>Note: K is in thousands.</p>
           </div>
         </div>
       </div>
