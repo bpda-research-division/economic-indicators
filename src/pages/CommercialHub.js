@@ -170,7 +170,7 @@ const CommercialHub = (props) => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Top Use Type for Recent and Upcoming Development</span> in &nbsp;
+              <h4 className="indicatorSubtext"><span className="accentSubText">Top Use Type </span>for Recent and Upcoming <span className="accentSubText">Development</span> in &nbsp;
                 {
                   // once data is loaded, display text. otherwise, show "loading"
                   hubRealEstate.length ?
@@ -199,7 +199,7 @@ const CommercialHub = (props) => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Office Vacancy Rate</span></h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText">Office Vacancy </span>Rate</h4>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -215,27 +215,6 @@ const CommercialHub = (props) => {
                     ((hubRealEstate[hubRealEstate.length - 1]['Office']) * 100).toFixed(1)
                     : 'loading'
                 }%</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-md justify-content-center text-center">
-            <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText">Office Asking Rent per Square Foot</span></h4>
-              <div className="d-flex flex-row justify-content-around">
-                <h4>{
-                  // once data is loaded, display text. otherwise, show "loading"
-                  hubRealEstate.length ?
-                    // @ts-ignore
-                    (hubRealEstate[hubRealEstate.length - 1]['Year and Quater'])
-                    : 'loading'
-                }
-                </h4>
-                <h4 className="accentNumber">${
-                  // once data is loaded, display text. otherwise, show "loading"
-                  hubRealEstate.length ?
-                    ((hubRealEstate[hubRealEstate.length - 1]['Office Asking Rent']).toFixed(0).toLocaleString("en-US"))
-                    : 'loading'
-                }</h4>
               </div>
             </div>
           </div>
@@ -398,7 +377,7 @@ const CommercialHub = (props) => {
                   type="number"
                   width={80}
                   tickFormatter={thousandFormatter}
-                  tickCount={4}
+                  tickCount={10}
                   interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
@@ -433,10 +412,10 @@ const CommercialHub = (props) => {
                 />
                 <XAxis
                   type="number"
-                  // domain={[0, 0.20]}
+                  //domain={[0, 0.20]}
                   tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}
                   width={80}
-                  tickCount={3}
+                  tickCount={10}
                   interval="equidistantPreserveStart"
                 />
                 <CartesianGrid strokeDasharray="3 3" />
@@ -496,7 +475,7 @@ const CommercialHub = (props) => {
             <p className="citation">Source: City of Boston Planning Department Division of Development Review.</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
-            <h6 className="chartTitle">Commerical Asking Rents in {hubName}</h6>
+            <h6 className="chartTitle">Commercial Asking Rents in {hubName} (per sqft)</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
               <LineChart
                 width={500}
