@@ -312,7 +312,7 @@ const CommercialHub = (props) => {
                 />
                 <Line
                   type="monotone"
-                  dataKey="Eating Places"
+                  dataKey="Restaurants"
                   stroke="#1871bd"
                   dot={false}
                 />
