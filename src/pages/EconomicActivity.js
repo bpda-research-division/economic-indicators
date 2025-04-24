@@ -108,6 +108,9 @@ const EconomicActivity = () => {
                   : 'loading'
               } */}
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/credit_card.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -129,6 +132,9 @@ const EconomicActivity = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"><span className="accentSubText">Hotel Occupancy </span>Rate</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Bed 2 - Side@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -138,6 +144,7 @@ const EconomicActivity = () => {
                     : 'loading'
                 }
                 </h4>
+                
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
                   hotels.length ?
@@ -163,6 +170,9 @@ const EconomicActivity = () => {
                   : 'loading'
               } */}
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/plate.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -196,6 +206,9 @@ const EconomicActivity = () => {
                       : 'loading'
                 } */}
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/fruit_basket.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"

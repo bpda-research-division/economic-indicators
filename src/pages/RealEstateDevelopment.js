@@ -77,6 +77,9 @@ const RealEstateDevelopment = () => {
               <h4 className="indicatorSubtext">
               Net<span className="accentSubText"> Non-Residential Permitted </span>Square Feet
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/non_residential.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -100,6 +103,9 @@ const RealEstateDevelopment = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">Net<span className="accentSubText"> Permitted Housing </span>Units</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Building 6@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -122,6 +128,9 @@ const RealEstateDevelopment = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">Net<span className="accentSubText"> Permitted Income-Restricted </span>Units</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Mortgage 2@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -144,6 +153,9 @@ const RealEstateDevelopment = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"><span className="accentSubText">Projects Under Review </span>Square Feet</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/building_permit.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -172,6 +184,9 @@ const RealEstateDevelopment = () => {
                                                                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(bjrp[bjrp.length - 1]['Month'])))
                                                                     : ''} 2019
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Construction Worker 2@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"

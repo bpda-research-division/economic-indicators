@@ -91,6 +91,9 @@ const Mobility = () => {
                       : 'loading'
                 } */}
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/walking-01-01.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -125,6 +128,9 @@ const Mobility = () => {
                   : 'loading'
               } */}
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Plane - Top@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   logan.length ?
@@ -156,6 +162,9 @@ const Mobility = () => {
                       : 'loading'
                 } */}
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/globe.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   logan.length ?
@@ -187,6 +196,9 @@ const Mobility = () => {
                   : 'loading'
               } */}
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/mbta_logo.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -219,6 +231,9 @@ const Mobility = () => {
                   : 'loading'
               } */}
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Bike 2 - Side@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   blueBikes.length ?

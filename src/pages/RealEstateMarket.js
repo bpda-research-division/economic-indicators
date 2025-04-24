@@ -67,6 +67,9 @@ const RealEstateMarket = () => {
               <h4 className="indicatorSubtext">
                 <span className="accentSubText">Office Vacancy </span>Rate
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/office_single.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                    // once data is loaded, display text. otherwise, show "loading"
@@ -89,6 +92,9 @@ const RealEstateMarket = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"><span className="accentSubText">Retail Vacancy </span>Rate</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Shop Building@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                    // once data is loaded, display text. otherwise, show "loading"
@@ -110,6 +116,9 @@ const RealEstateMarket = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"><span className="accentSubText">Multifamily Residential Vacancy </span>Rate</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Building 3@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                    // once data is loaded, display text. otherwise, show "loading"
@@ -131,6 +140,9 @@ const RealEstateMarket = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"><span className="accentSubText">Office Asking Rent </span>per Square Foot</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/office_price_3.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                    // once data is loaded, display text. otherwise, show "loading"
@@ -152,6 +164,9 @@ const RealEstateMarket = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"><span className="accentSubText">Median Condo Sales </span>Price</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/condo_price_4.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                    // once data is loaded, display text. otherwise, show "loading"
