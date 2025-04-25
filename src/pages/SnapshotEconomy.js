@@ -77,6 +77,9 @@ const SnapshotEconomy = () => {
                   : 'loading'
               }</span>
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/briefcase_check.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
 
                 <h4 className="accentNumber">{
@@ -91,14 +94,17 @@ const SnapshotEconomy = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Percentage of <span className="accentSubText">Jobs in Boston located in Downtown Boston Commercial Hub in {
+              <h4 className="indicatorSubtext">Percentage of <span className="accentSubText">Jobs in Boston</span> located in <span className="accentSubText">Downtown Boston Commercial Hub</span> in {
                 // once data is loaded, display text. otherwise, show "loading"
                 downtownJobs.length ?
                   // @ts-ignore
                   // new Intl.DateTimeFormat("en-US", options).format((new Date(downtownJobs[0]['Year'])))
                   downtownJobs[0]['Year']
                   : 'loading'
-              }</span></h4>
+              }</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/office.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -111,13 +117,16 @@ const SnapshotEconomy = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Share of workers in Boston who are Boston residents in {
+              <h4 className="indicatorSubtext">Share of <span className="accentSubText">workers in Boston</span> who are <span className="accentSubText">Boston residents</span> in {
                 // once data is loaded, display text. otherwise, show "loading"
                 commuterShare.length ?
                   // @ts-ignore
                   commuterShare[commuterShare.length - 1]['Year']
                   : 'loading'
               }</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/briefcase_home.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -137,6 +146,9 @@ const SnapshotEconomy = () => {
                   industry[industry.length - 1]['Year']
                   : 'loading'
               }</span></h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Health 2@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -157,6 +169,9 @@ const SnapshotEconomy = () => {
                   industry[industry.length - 1]['Year']
                   : 'loading'
               }</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Graduation Cap@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"

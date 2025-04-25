@@ -159,6 +159,9 @@ const RealEstateMarket = () => {
                             <h4 className="indicatorSubtext">
                                 City of Boston <span className="accentSubText">Total Population</span>
                             </h4>
+                            <div className="takeawayCardImageContainer">
+                                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/briefcase_check.png")}/>
+                            </div>
                             <div className="d-flex flex-row justify-content-around">
                                 <h4 className="date">{
                                     // once data is loaded, display text. otherwise, show "loading"
@@ -181,6 +184,9 @@ const RealEstateMarket = () => {
                     <div className="col-md justify-content-center text-center">
                         <div className="indicatorContainer">
                             <h4 className="indicatorSubtext">Percent of <span className="accentSubText">Boston Residents over 25</span> with a <span className="accentSubText">Bachelors Degree or Higher</span></h4>
+                            <div className="takeawayCardImageContainer">
+                                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Graduation Cap@4x.png")}/>
+                            </div>
                             <div className="d-flex flex-row justify-content-around">
                                 <h4 className="date">{
                                     education.length ?
@@ -201,6 +207,9 @@ const RealEstateMarket = () => {
                     <div className="col-md justify-content-center text-center">
                         <div className="indicatorContainer">
                             <h4 className="indicatorSubtext">Percentage of <span className="accentSubText">Foreign Born</span></h4>
+                            <div className="takeawayCardImageContainer">
+                                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/world_smaller.png")}/>
+                            </div>
                             <div className="d-flex flex-row justify-content-around">
                                 <h4 className="date">{
                                     raceEthnicity.length ?
@@ -220,6 +229,9 @@ const RealEstateMarket = () => {
                     <div className="col-md justify-content-center text-center">
                         <div className="indicatorContainer">
                             <h4 className="indicatorSubtext">Percent of Boston Residents aged <span className="accentSubText">18-34</span></h4>
+                            <div className="takeawayCardImageContainer">
+                                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/ManWoman_Icon.png")}/>
+                            </div>
                             <div className="d-flex flex-row justify-content-around">
                                 <h4>{
                                     age.length ?
