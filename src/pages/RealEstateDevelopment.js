@@ -78,7 +78,7 @@ const RealEstateDevelopment = () => {
               Net<span className="accentSubText"> Non-Residential Permitted </span>Square Feet
               </h4>
               <div className="takeawayCardImageContainer">
-                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/non_residential.png")}/>
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/non_residential_larger.png")}/>
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -185,7 +185,7 @@ const RealEstateDevelopment = () => {
                                                                     : ''} 2019
               </h4>
               <div className="takeawayCardImageContainer">
-                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Construction Worker 2@4x.png")}/>
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/construction_worker_smaller.png")}/>
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{

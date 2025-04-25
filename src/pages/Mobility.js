@@ -129,7 +129,7 @@ const Mobility = () => {
               } */}
               </h4>
               <div className="takeawayCardImageContainer">
-                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Plane - Top@4x.png")}/>
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/plane_smaller.png")}/>
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
@@ -163,7 +163,7 @@ const Mobility = () => {
                 } */}
               </h4>
               <div className="takeawayCardImageContainer">
-                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/globe.png")}/>
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/world_smaller.png")}/>
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{

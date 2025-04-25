@@ -80,6 +80,9 @@ const LaborMarket = () => {
                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(payroll[payroll.length - 1]['Month'])))
                     : ''} 2019
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/briefcase_check_larger.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -107,6 +110,9 @@ const LaborMarket = () => {
                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(postings[postings.length - 1]['Month'])))
                     : ''} 2019
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/briefcase_searching.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -130,6 +136,9 @@ const LaborMarket = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">Boston <span className="accentSubText">Resident Unemployment</span> Rate</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/briefcase_cross.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -158,6 +167,9 @@ const LaborMarket = () => {
                   new Intl.DateTimeFormat("en-US", options).format((new Date(laborforce[1]['Month'])))
                   : 'loading'
               }</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/briefcase_home.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"
