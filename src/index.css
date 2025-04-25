@@ -512,6 +512,15 @@ iframe {
     font-size: calc(0.1rem + 0.65vw);
   }
 
+  .takeawayCardImageContainer{
+   /*width:50%;
+   height:50%;*/
+  }
+
+  .takeawayCardImage {
+    height:80px;
+  }
+
  
 
 

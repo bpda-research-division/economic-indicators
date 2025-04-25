@@ -94,6 +94,9 @@ const CommercialHub = (props) => {
                                                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(hubMobility[hubMobility.length - 1]['Month'])))
                                                     : ''} 2019
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/walking-01-01.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -122,6 +125,9 @@ const CommercialHub = (props) => {
                                                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(hubValidationSum[hubValidationSum.length - 1]['Month'])))
                                                     : ''} 2019
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/mbta_logo.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -150,6 +156,9 @@ const CommercialHub = (props) => {
                                                                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(hubEconomicActivity[hubEconomicActivity.length - 1]['Month'])))
                                                                     : ''} 2019
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/credit_card.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -179,6 +188,9 @@ const CommercialHub = (props) => {
                     : 'loading'
                 }
               </h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Blue print@4x.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
@@ -200,6 +212,9 @@ const CommercialHub = (props) => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"><span className="accentSubText">Office Vacancy </span>Rate</h4>
+              <div className="takeawayCardImageContainer">
+                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/office_single.png")}/>
+              </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
                   // once data is loaded, display text. otherwise, show "loading"
