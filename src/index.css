@@ -521,8 +521,30 @@ iframe {
     height:80px;
   }
 
- 
+  .smallertakeawayCardImage{
+    height:70px;
+  }
 
+  .btn-group{
+    float:none!important;
+    text-align:right!important;
+    display:block!important;
+  }
 
+  .toggleButton{
+    font-size:0.8rem!important;
+    color:#091F2F!important;
+    background-color:white!important;
+    border:#091F2F 1px !important;
+  }
+
+  .toggleButtonActive{
+    font-size:0.8rem!important;
+    color:white!important;
+    font-weight:bolder!important;
+    background-color:#091F2F!important;
+    border:#091F2F 1px !important;
+    outline:#091F2F 2px;
+  }
 
 }
