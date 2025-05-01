@@ -23,6 +23,7 @@ import {
     thousandFormatter,
     commaFormatter,
     CustomXAxisTick,
+    GraphContainer
 } from "../utils.js"
 // import { Placeholder } from "react-bootstrap";
 import {
@@ -252,7 +253,7 @@ const RealEstateMarket = () => {
                 <div className="row mh-20 gx-0 gy-0 graph-row">
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Citywide Population</h6>
-                        <ResponsiveContainer width="98%" height={graphHeight}>
+                        <GraphContainer data={foreignBorn} height={graphHeight} width="98%">
                             <LineChart
                                 width={500}
                                 height={400}
@@ -281,12 +282,12 @@ const RealEstateMarket = () => {
                                     dot={true}
                                 />
                             </LineChart>
-                        </ResponsiveContainer>
+                        </GraphContainer>
                         <p className="citation">Source: U.S. Census Bureau, 1900 - 2010 U.S. Decennial Census; City of Boston Planning Department Research Division Estimates, 2020 - 2024.<br></br>Note: K is in thousands.</p>
                     </div>
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Age Groups</h6>
-                        <ResponsiveContainer width="98%" height={graphHeight}>
+                        <GraphContainer data={ageBar} height={graphHeight} width="98%">
                             <BarChart
                                 width={500}
                                 height={400}
@@ -308,14 +309,14 @@ const RealEstateMarket = () => {
                                 />
 
                             </BarChart>
-                        </ResponsiveContainer>
+                        </GraphContainer>
                         <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
                     </div>
                 </div>
                 <div className="row mh-20 gx-0 gy-0 graph-row">
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Educational Attainment for Population over 25</h6>
-                        <ResponsiveContainer width="98%" height={graphHeight}>
+                        <GraphContainer data={edBar} height={graphHeight} width="98%">
                             <BarChart
                                 width={500}
                                 height={400}
@@ -341,13 +342,13 @@ const RealEstateMarket = () => {
                                 />
 
                             </BarChart>
-                        </ResponsiveContainer>
+                        </GraphContainer>
                         <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
 
                     </div>
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Race, Ethnicity, and Nativity</h6>
-                        <ResponsiveContainer width="98%" height={graphHeight}>
+                        <GraphContainer data={reBar} height={graphHeight} width="98%">
                             <BarChart
                                 width={500}
                                 height={400}
@@ -376,7 +377,7 @@ const RealEstateMarket = () => {
                                 </Bar>
 
                             </BarChart>
-                        </ResponsiveContainer>
+                        </GraphContainer>
                         <p className="citation">*Note: Excludes those identifying as Hispanic or Latino. </p>
                         <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
                     </div>

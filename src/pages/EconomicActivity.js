@@ -21,6 +21,7 @@ import {
   oneDecimalFormatter,
   options,
   secondOptions,
+  GraphContainer
 } from "../utils.js"
 import {
   useDeviceSize
@@ -231,7 +232,7 @@ const EconomicActivity = () => {
         <div className="row mh-20 gx-0 gy-0 graph-row">
         <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Overall In-Person Spending in Boston, Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={spending} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -258,12 +259,12 @@ const EconomicActivity = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Restaurant Spending in Boston Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={spending} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -295,14 +296,14 @@ const EconomicActivity = () => {
                   name="Restaurant Spending"
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Hotel Occupancy Rate in Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={hotels} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -329,14 +330,14 @@ const EconomicActivity = () => {
                   name="Hotel Occupancy Rate in Boston"
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: The Pinnacle Perspective Boston Monthly Report.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
             {/* <h6 className="chartTitle">In-Person Spending in Boston, Compared to the Same Month in 2019</h6> */}
             <h6 className="chartTitle">Spending on Grocery & Apparel in Boston, Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={series} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -374,7 +375,7 @@ const EconomicActivity = () => {
                   />
                 ))}
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
         </div>

@@ -20,6 +20,7 @@ import {
   oneDecimalFormatter,
   thousandFormatter,
   commaFormatter,
+  GraphContainer
 } from "../utils.js"
 import {
   useDeviceSize
@@ -187,7 +188,7 @@ const SnapshotEconomy = () => {
           <div className="col-12 col-md-7 graph-column flex-column">
             <div>
               <h6 className="chartTitle">Total Payroll Employment in Boston</h6>
-              <ResponsiveContainer width="98%" height={graphHeight/1.5}>
+              <GraphContainer data={jobs} height={graphHeight/1.5} width="98%">
                 <BarChart
                   width={500}
                   height={400}
@@ -215,13 +216,13 @@ const SnapshotEconomy = () => {
                     fill="#091F2F"
                   />
                 </BarChart>
-              </ResponsiveContainer>
+              </GraphContainer>
               <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development.<br></br>Note: K is in thousands.</p>
             </div>
             <div>
               <h6 className="chartTitle">Boston Payroll Employment Shares by Industry</h6>
               <p className="subChartTitle">As Compared to Overall U.S. Employment Rate</p>
-              <ResponsiveContainer width="98%" height={(graphHeight * 0.9)+(graphHeight/2.3)}>
+              <GraphContainer data={industry} height={(graphHeight * 0.9)+(graphHeight/2.3)} width="98%">
                 <BarChart
                   width={500}
                   height={400}
@@ -256,7 +257,7 @@ const SnapshotEconomy = () => {
                   // stroke="#151515"
                   />
                 </BarChart>
-              </ResponsiveContainer>
+              </GraphContainer>
               <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development. Bureau of Labor Statistics QCEW.</p>
             </div>
           </div>

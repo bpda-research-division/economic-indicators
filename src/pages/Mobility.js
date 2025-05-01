@@ -26,6 +26,7 @@ import {
   secondOptions,
   CustomTooltip,
   MBTACustomTooltip,
+  GraphContainer
 } from "../utils.js"
 import {
   useDeviceSize
@@ -255,7 +256,7 @@ const Mobility = () => {
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">People Stopping in Boston, Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={domestic} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -286,12 +287,12 @@ const Mobility = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Cuebiq mobility data.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">MBTA Gated Station Validations in Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={MBTA} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -319,14 +320,14 @@ const Mobility = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Logan Passengers</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={logan} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -363,13 +364,13 @@ const Mobility = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport).<br></br>Note: M is in millions.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Monthly Validations by MBTA Line within Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={MBTALine} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -418,14 +419,14 @@ const Mobility = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
             </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Bluebikes Trips Starting or Stopping in Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={blueBikes} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -462,7 +463,7 @@ const Mobility = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Bluebikes System Data.<br></br>Note: K is in thousands.</p>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { Text } from 'recharts';
+import { Text, ResponsiveContainer } from 'recharts';
 
 // imports for CustomTooltip util:
 import { createElement } from "react";
@@ -147,3 +147,18 @@ export const MBTACustomTooltip = (props) => {
 export const maxKey = (obj) => {
     return Object.keys(obj).slice(0,-1).reduce((a, b) => obj[a] > obj[b] ? a : b);
 }
+
+// Create a responsive container with the ternary operator to load in all graphs after the data is pulled from the API
+export const GraphContainer = ({ data, height, width, children }) => {
+    return (
+        <ResponsiveContainer width={width} height={height}>
+            {data?.length ? (
+                children
+            ) : (
+                <div className="col-md justify-content-center text-center" style={{ height }}>
+                    <p>Loading...</p>
+                </div>
+            )}
+        </ResponsiveContainer>
+    );
+};

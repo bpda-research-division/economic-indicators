@@ -274,6 +274,7 @@ const CommercialHub = (props) => {
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">In-Person Spending in {hubName}, Compared to the Same Month 2019</h6>
             <ResponsiveContainer width="98%" height={graphHeight}>
+              {/* {hubEconomicActivity.length ? ( */}
               <LineChart
                 width={500}
                 height={400}
@@ -317,6 +318,9 @@ const CommercialHub = (props) => {
                   dot={false}
                 />
               </LineChart>
+              {/* ) : ( */}
+                 {/* <p>Loading...</p>
+               )} */}
             </ResponsiveContainer>
             <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>

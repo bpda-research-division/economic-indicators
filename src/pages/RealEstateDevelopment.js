@@ -26,6 +26,7 @@ import {
   secondOptions,
   quarterlyFormatter,
   CustomTooltip,
+  GraphContainer
 } from "../utils.js"
 import {
   useDeviceSize
@@ -210,7 +211,7 @@ const RealEstateDevelopment = () => {
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Net Non-Residential Permitted Square Footage</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={startsDemos} height={graphHeight} width="98%">
               <BarChart
                 width={500}
                 height={400}
@@ -242,12 +243,12 @@ const RealEstateDevelopment = () => {
                 />
 
               </BarChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Mayor’s Office of Housing, net of demolitions.<br></br>Note: M is in millions.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Planning Dept. Development Pipeline Square Footage by Use Type</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={upcomingDev} height={graphHeight} width="98%">
               <BarChart
                 width={500}
                 height={400}
@@ -334,14 +335,14 @@ const RealEstateDevelopment = () => {
                   fill="#931d26"
                 />
               </BarChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: City of Boston Planning Department Division of Development Review.<br></br>Note: M is in millions.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Net Permitted Market Rate and Affordable Housing Units</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={netUnits} height={graphHeight} width="98%">
               <BarChart
                 width={500}
                 height={400}
@@ -376,13 +377,13 @@ const RealEstateDevelopment = () => {
                 />
 
               </BarChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Mayor’s Office of Housing, net of demolitions.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Monthly Construction Hours</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={bjrp} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -410,7 +411,7 @@ const RealEstateDevelopment = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports.<br></br>Note: K is in thousands.</p>
           </div>
         </div>
