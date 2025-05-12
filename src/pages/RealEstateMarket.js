@@ -24,6 +24,7 @@ import {
   dollarThousandFormatter,
   options,
   quarterlyFormatter,
+  GraphContainer
 } from "../utils.js"
 import {
   useDeviceSize
@@ -190,7 +191,7 @@ const RealEstateMarket = () => {
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Commercial Vacancy Rate in Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={rent} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -225,12 +226,12 @@ const RealEstateMarket = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: CoStar Real Estate Analytics.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Commercial Space Asking Rent Per Square Foot in Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={rent} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -267,14 +268,14 @@ const RealEstateMarket = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: CoStar Real Estate Analyics.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Multifamily Residential Vacancy Rate in Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={rent} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -302,13 +303,13 @@ const RealEstateMarket = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: CoStar Real Estate Analytics.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Median Sales Price for Single-Family Homes and Condos in Boston</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={qmhp} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -344,7 +345,7 @@ const RealEstateMarket = () => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: City of Boston, Mayor's Office of Housing using data from the Warren Group.<br></br>Note: K is in thousands.</p>
           </div>
         </div>

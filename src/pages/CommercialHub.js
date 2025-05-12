@@ -28,7 +28,8 @@ import {
   quarterlyFormatter,
   commaFormatter,
   CustomTooltip,
-  maxKey
+  maxKey,
+  GraphContainer
 } from "../utils.js"
 import {
   useDeviceSize
@@ -237,7 +238,7 @@ const CommercialHub = (props) => {
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">People Stopping in {hubName}, Compared to the Same Month in 2019</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={hubMobility} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -268,12 +269,13 @@ const CommercialHub = (props) => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Cuebiq mobility data.</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">In-Person Spending in {hubName}, Compared to the Same Month 2019</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={hubEconomicActivity} height={graphHeight} width="98%">
+              {/* {hubEconomicActivity.length ? ( */}
               <LineChart
                 width={500}
                 height={400}
@@ -317,12 +319,15 @@ const CommercialHub = (props) => {
                   dot={false}
                 />
               </LineChart>
-            </ResponsiveContainer>
+              {/* ) : ( */}
+                 {/* <p>Loading...</p>
+               )} */}
+            </GraphContainer>
             <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Vacancy Rates in {hubName}</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={hubRealEstate} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -368,14 +373,14 @@ const CommercialHub = (props) => {
                 />
                 
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: CoStar Real Estate Analytics.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">MBTA Gated Station Validations in {hubName}</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={hubValidationSum} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -406,13 +411,13 @@ const CommercialHub = (props) => {
                 />
 
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: K is in thousands.</p>
 
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Recent and Upcoming Development in {hubName}</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={hubRealEstateDev} height={graphHeight} width="98%">
               <BarChart
                 width={500}
                 height={400}
@@ -486,12 +491,12 @@ const CommercialHub = (props) => {
                   fill="#931d26"
                 />
               </BarChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: City of Boston Planning Department Division of Development Review.</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">Commercial Asking Rents in {hubName} (per sqft)</h6>
-            <ResponsiveContainer width="98%" height={graphHeight}>
+            <GraphContainer data={hubRealEstate} height={graphHeight} width="98%">
               <LineChart
                 width={500}
                 height={400}
@@ -529,7 +534,7 @@ const CommercialHub = (props) => {
                   hide={hide}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: CoStar Real Estate Analytics.</p>
           </div>
         </div>

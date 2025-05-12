@@ -22,6 +22,7 @@ import {
   decimalFormatter,
   commaFormatter,
   options,
+  GraphContainer
 } from "../utils.js"
 import {
   useDeviceSize
@@ -84,7 +85,7 @@ const LaborMarketSnapshot = () => {
                   : 'loading'
               }) and Change from Four Quarters Prior</h6>
 
-            <ResponsiveContainer width="98%" height={(graphHeight * 2.5)}>
+            <GraphContainer data={employment} height={(graphHeight * 2.5)} width="98%">
               <BarChart
                 width={500}
                 height={400}
@@ -117,7 +118,7 @@ const LaborMarketSnapshot = () => {
                 </Bar>
 
               </BarChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD).</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
@@ -138,7 +139,7 @@ const LaborMarketSnapshot = () => {
                   : 'loading'
               }
             </h6>
-            <ResponsiveContainer width="98%" height={(graphHeight * 2.5)}>
+            <GraphContainer data={occupation} height={(graphHeight * 2.5)} width="98%">
               <BarChart
                 width={500}
                 height={400}
@@ -182,7 +183,7 @@ const LaborMarketSnapshot = () => {
                 
 
               </BarChart>
-            </ResponsiveContainer>
+            </GraphContainer>
             <p className="citation">Source: Lightcast Job Postings.</p>
           </div>
         </div>
