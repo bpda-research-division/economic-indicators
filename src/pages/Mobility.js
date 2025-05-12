@@ -335,7 +335,7 @@ const Mobility = () => {
       
       {radioValue==='1'?
       //show all lines as one
-      <><ResponsiveContainer width="98%" height={graphHeight}>
+      <><GraphContainer data={MBTA} height={graphHeight} width="98%">
       
       <LineChart
         width={500}
@@ -365,10 +365,10 @@ const Mobility = () => {
         />
       </LineChart>
       
-    </ResponsiveContainer>
-    <p className="citation">Source: MBTA, Gated Station Validations by Station. Note: M is in millions.</p></>
+    </GraphContainer>
+    <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.</p></>
       :
-      <><ResponsiveContainer width="98%" height={graphHeight}>
+      <><GraphContainer data={MBTALine} height={graphHeight} width="98%">
       <LineChart
         width={500}
         height={400}
@@ -417,7 +417,7 @@ const Mobility = () => {
           dot={false}
         />
       </LineChart>
-    </ResponsiveContainer>
+    </GraphContainer>
     <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
     </>}
             
