@@ -31,8 +31,22 @@ import {
 import {
   useDeviceSize
 } from "../useDeviceSize"
+import ToggleButton from "react-bootstrap/ToggleButton";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+
 
 const Mobility = () => {
+
+  // Testing out 
+  const [checked, setChecked] = useState(true);
+  const [radioValue, setRadioValue] = useState('1');
+
+  const radios = [
+    { name: 'All', value: '1' },
+    { name: 'By Line', value: '2' },
+  ];
+
+
   // set up state variables that will store g-sheet data
   const [domestic, setDomestic] = useState([])
   const [logan, setLogan] = useState([])
@@ -164,7 +178,7 @@ const Mobility = () => {
                 } */}
               </h4>
               <div className="takeawayCardImageContainer">
-                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/world_smaller.png")}/>
+                <img className="smallertakeawayCardImage" src={require("../images/takeaway_card_icons/world_smaller.png")}/>
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
@@ -291,37 +305,122 @@ const Mobility = () => {
             <p className="citation">Source: Cuebiq mobility data.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">MBTA Gated Station Validations in Boston</h6>
-            <GraphContainer data={MBTA} height={graphHeight} width="98%">
-              <LineChart
-                width={500}
-                height={400}
-                data={MBTA}
+            <h6 className="chartTitle">{radioValue==="1"?'MBTA Gated Station Validations in Boston':"MBTA Gated Station Validations by Line"}</h6>
+            <ButtonGroup>
+            <ToggleButton
+                id={`radio-1`}
+                className={radioValue=='1'?'toggleButtonActive':'toggleButton'}
+                type="radio"
+                //variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+                name="radio"
+                value='1'
+                checked={radioValue === '1'}
+                onChange={(e) => setRadioValue(e.currentTarget.value)}
               >
-                <XAxis
-                  dataKey="Epoch Miliseconds"
-                  scale="time"
-                  type="number"
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={dateFormatter}
-                />
-                <YAxis
-                  type="number"
-                  width={90}
-                  tickFormatter={millionFormatter}
-                />
+                {'All Lines'}
+              </ToggleButton>
+              <ToggleButton
+                id={`radio-2`}
+                className={radioValue=='2'?'toggleButtonActive':'toggleButton'}
+                type="radio"
+                //variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+                name="radio"
+                value='2'
+                checked={radioValue === '2'}
+                onChange={(e) => setRadioValue(e.currentTarget.value)}
+              >
+                {'By Line'}
+              </ToggleButton>
+      </ButtonGroup>
+      
+      {radioValue==='1'?
+      //show all lines as one
+      <><ResponsiveContainer width="98%" height={graphHeight}>
+      
+      <LineChart
+        width={500}
+        height={400}
+        data={MBTA}
+      >
+        <XAxis
+          dataKey="Epoch Miliseconds"
+          scale="time"
+          type="number"
+          domain={['dataMin', 'dataMax']}
+          tickFormatter={dateFormatter}
+        />
+        <YAxis
+          type="number"
+          width={90}
+          tickFormatter={millionFormatter}
+        />
 
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
-                <Line
-                  type="monotone"
-                  dataKey="Sum of Validations"
-                  stroke="#091F2F"
-                  dot={false}
-                />
-              </LineChart>
-            </GraphContainer>
-            <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.</p>
+        <CartesianGrid strokeDasharray="3 3" />
+        <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} />
+        <Line
+          type="monotone"
+          dataKey="Sum of Validations"
+          stroke="#091F2F"
+          dot={false}
+        />
+      </LineChart>
+      
+    </ResponsiveContainer>
+    <p className="citation">Source: MBTA, Gated Station Validations by Station. Note: M is in millions.</p></>
+      :
+      <><ResponsiveContainer width="98%" height={graphHeight}>
+      <LineChart
+        width={500}
+        height={400}
+        data={MBTALine}
+      >
+        <XAxis
+          dataKey="Epoch Miliseconds"
+          scale="time"
+          type="number"
+          domain={['dataMin', 'dataMax']}
+          tickFormatter={dateFormatter}
+        />
+        <YAxis
+          type="number"
+          width={90}
+          tickFormatter={millionFormatter}
+          domain={[0, 4000000]}
+        />
+        <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
+        <CartesianGrid strokeDasharray="3 3" />
+        {/*<Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} content={MBTACustomTooltip}/>*/}
+        <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} content={MBTACustomTooltip}/>
+        <Legend iconType="plainline" />
+        <Line
+          type="monotone"
+          dataKey="Blue Line"
+          stroke="#003da5"
+          dot={false}
+        />
+        <Line
+          type="monotone"
+          dataKey="Red Line"
+          stroke="#da291c"
+          dot={false}
+        />
+        <Line
+          type="monotone"
+          dataKey="Orange Line"
+          stroke="#ed8b00"
+          dot={false}
+        />
+        <Line
+          type="monotone"
+          dataKey="Green Line"
+          stroke="#00843d"
+          dot={false}
+        />
+      </LineChart>
+    </ResponsiveContainer>
+    <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
+    </>}
+            
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -368,62 +467,7 @@ const Mobility = () => {
             <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport).<br></br>Note: M is in millions.</p>
 
           </div>
-          <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Monthly Validations by MBTA Line within Boston</h6>
-            <GraphContainer data={MBTALine} height={graphHeight} width="98%">
-              <LineChart
-                width={500}
-                height={400}
-                data={MBTALine}
-              >
-                <XAxis
-                  dataKey="Epoch Miliseconds"
-                  scale="time"
-                  type="number"
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={dateFormatter}
-                />
-                <YAxis
-                  type="number"
-                  width={90}
-                  tickFormatter={millionFormatter}
-                  domain={[0, 4000000]}
-                />
-                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
-                <CartesianGrid strokeDasharray="3 3" />
-                {/*<Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} content={MBTACustomTooltip}/>*/}
-                <Tooltip labelFormatter={dateFormatter} formatter={commaFormatter} content={MBTACustomTooltip}/>
-                <Legend iconType="plainline" />
-                <Line
-                  type="monotone"
-                  dataKey="Blue Line"
-                  stroke="#003da5"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Red Line"
-                  stroke="#da291c"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Orange Line"
-                  stroke="#ed8b00"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Green Line"
-                  stroke="#00843d"
-                  dot={false}
-                />
-              </LineChart>
-            </GraphContainer>
-            <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
-            </div>
-        </div>
-        <div className="row mh-20 gx-0 gy-0 graph-row">
+          
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Bluebikes Trips Starting or Stopping in Boston</h6>
             <GraphContainer data={blueBikes} height={graphHeight} width="98%">
@@ -466,7 +510,7 @@ const Mobility = () => {
             </GraphContainer>
             <p className="citation">Source: Bluebikes System Data.<br></br>Note: K is in thousands.</p>
           </div>
-        </div>
+          </div>
       </div>
     </div>
   );
