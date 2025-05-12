@@ -90,6 +90,7 @@ body {
 
 .indicator-row {
   margin-bottom: 2vh !important;
+  height: 20%; /*ADded this*/
 }
 
 #aboutCanvas {
@@ -194,7 +195,7 @@ h5 {
 }
 
 .indicatorContainer {
-  height: 12vh;
+  height: 18vh; /*was 14vh*/
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
@@ -400,6 +401,37 @@ iframe {
   width: 100%  !important;
 }
 
+.takeawayCardImage {
+    height:4.0vw;
+  }
+
+  .smallertakeawayCardImage{
+    height:3.0vw; /*Revisit and define relatively*/
+  }
+
+.btn-group{
+    float:none!important;
+    text-align:right!important;
+    display:block!important;
+  }
+
+  .toggleButton{
+    font-size:0.8rem!important;
+    color:#091F2F!important;
+    background-color:white!important;
+    border:#091F2F 1px !important;
+  }
+
+  .toggleButtonActive{
+    font-size:0.8rem!important;
+    color:white!important;
+    font-weight:bolder!important;
+    background-color:#091F2F!important;
+    border:#091F2F 1px !important;
+    outline:#091F2F 2px;
+  }
+
+
 /* Media Query For Wide Screens*/
 @media (min-width: 1400px) {
   #root {
@@ -547,4 +579,12 @@ iframe {
     outline:#091F2F 2px;
   }
 
+}
+
+/*Media Query for Mobile Devices*/
+@media (max-width: 767px) {
+
+  .takeawayCardImage {
+    height: 8.0vh;
+  }
 }
