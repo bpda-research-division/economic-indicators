@@ -587,4 +587,8 @@ iframe {
   .takeawayCardImage {
     height: 8.0vh;
   }
+
+  .smallertakeawayCardImage{
+    height:7.0vh;
+  }
 }
