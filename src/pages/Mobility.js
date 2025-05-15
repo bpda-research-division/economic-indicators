@@ -366,7 +366,7 @@ const Mobility = () => {
       </LineChart>
       
     </GraphContainer>
-    <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.</p></>
+    <p className="citation">Source: MBTA, Gated Station Validations by Station. Note: M is in millions.</p></>
       :
       <><GraphContainer data={MBTALine} height={graphHeight} width="98%">
       <LineChart
@@ -418,7 +418,7 @@ const Mobility = () => {
         />
       </LineChart>
     </GraphContainer>
-    <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: M is in millions.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
+    <p className="citation">Source: MBTA, Gated Station Validations by Station. Note: M is in millions.<br></br>*'All Lines' reflects total gated validations in Boston, ensuring each trip is counted only once, even at transfer stations with multiple lines.</p>
     </>}
             
           </div>
@@ -464,7 +464,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport).<br></br>Note: M is in millions.</p>
+            <p className="citation">Source: Massachusetts Port Authority, Aviation General Management (Massport). Note: M is in millions.</p>
 
           </div>
           
@@ -508,7 +508,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Bluebikes System Data.<br></br>Note: K is in thousands.</p>
+            <p className="citation">Source: Bluebikes System Data. Note: K is in thousands.</p>
           </div>
           </div>
       </div>

@@ -244,7 +244,7 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </GraphContainer>
-            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions.<br></br>Note: M is in millions.</p>
+            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions. Note: M is in millions.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Planning Dept. Development Pipeline Square Footage by Use Type</h6>
@@ -336,7 +336,7 @@ const RealEstateDevelopment = () => {
                 />
               </BarChart>
             </GraphContainer>
-            <p className="citation">Source: City of Boston Planning Department Division of Development Review.<br></br>Note: M is in millions.</p>
+            <p className="citation">Source: City of Boston Planning Department Division of Development Review. Note: M is in millions.</p>
           </div>
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -412,7 +412,7 @@ const RealEstateDevelopment = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports.<br></br>Note: K is in thousands.</p>
+            <p className="citation">Source: Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports. Note: K is in thousands.</p>
           </div>
         </div>
       </div>
