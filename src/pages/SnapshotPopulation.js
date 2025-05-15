@@ -283,7 +283,7 @@ const RealEstateMarket = () => {
                                 />
                             </LineChart>
                         </GraphContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2010 U.S. Decennial Census; City of Boston Planning Department Research Division Estimates, 2020 - 2024.<br></br>Note: K is in thousands.</p>
+                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2010 U.S. Decennial Census; City of Boston Planning Department Research Division Estimates, 2020 - 2024. Note: K is in thousands.</p>
                     </div>
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Age Groups</h6>

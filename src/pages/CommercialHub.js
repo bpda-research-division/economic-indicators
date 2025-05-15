@@ -412,7 +412,7 @@ const CommercialHub = (props) => {
 
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: MBTA, Gated Station Validations by Station.<br></br>Note: K is in thousands.</p>
+            <p className="citation">Source: MBTA, Gated Station Validations by Station. Note: K is in thousands.</p>
 
           </div>
           <div className="col-12 col-md-4 graph-column">

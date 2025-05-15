@@ -94,7 +94,7 @@ const RealEstateMarket = () => {
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext"><span className="accentSubText">Retail Vacancy </span>Rate</h4>
               <div className="takeawayCardImageContainer">
-                <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Shop Building@4x.png")}/>
+                <img className="smallertakeawayCardImage" src={require("../images/takeaway_card_icons/Shop Building@4x.png")}/>
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
@@ -346,7 +346,7 @@ const RealEstateMarket = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: City of Boston, Mayor's Office of Housing using data from the Warren Group.<br></br>Note: K is in thousands.</p>
+            <p className="citation">Source: City of Boston, Mayor's Office of Housing using data from the Warren Group. Note: K is in thousands.</p>
           </div>
         </div>
       </div>

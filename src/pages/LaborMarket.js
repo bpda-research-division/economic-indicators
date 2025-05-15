@@ -407,7 +407,7 @@ const LaborMarket = () => {
                 />
               </BarChart>
             </GraphContainer>
-            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD.)<br></br>Note: K is in thousands.</p>
+            <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development (EOLWD.) Note: K is in thousands.</p>
           </div>
         </div>
       </div>
