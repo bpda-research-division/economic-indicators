@@ -76,7 +76,7 @@ const RealEstateDevelopment = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-              Net<span className="accentSubText"> Non-Residential Permitted </span>Square Feet
+              <span className="accentSubText"> Non-Residential Permitted </span>Square Feet
               </h4>
               <div className="takeawayCardImageContainer">
                 <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/non_residential_larger.png")}/>
@@ -103,7 +103,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Net<span className="accentSubText"> Permitted Housing </span>Units</h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText"> Permitted Housing </span>Units</h4>
               <div className="takeawayCardImageContainer">
                 <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Building 6@4x.png")}/>
               </div>
@@ -210,7 +210,7 @@ const RealEstateDevelopment = () => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Net Non-Residential Permitted Square Footage</h6>
+            <h6 className="chartTitle">Non-Residential Permitted Square Footage (BPDA Board Approved)</h6>
             <GraphContainer data={startsDemos} height={graphHeight} width="98%">
               <BarChart
                 width={500}
@@ -244,7 +244,7 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </GraphContainer>
-            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions. Note: M is in millions.</p>
+            <p className="citation">Source: City of Boston Mayor's Office of Housing (2019-2023), Planning Department Division of Development Review (2024-present).</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">Planning Dept. Development Pipeline Square Footage by Use Type</h6>
