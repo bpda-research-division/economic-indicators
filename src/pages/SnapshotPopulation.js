@@ -19,6 +19,7 @@ import {
 import { AspectRatioFill } from "react-bootstrap-icons";
 import {
     baseAPI,
+    oneDecimalFormatter,
     decimalFormatter,
     thousandFormatter,
     commaFormatter,
@@ -302,7 +303,7 @@ const RealEstateMarket = () => {
                                     tickCount={3}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <Tooltip formatter={decimalFormatter} />
+                                <Tooltip formatter={oneDecimalFormatter} />
                                 <Bar
                                     dataKey="percent"
                                     fill="#FB4D42"
@@ -335,7 +336,7 @@ const RealEstateMarket = () => {
                                     tickCount={3}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <Tooltip formatter={decimalFormatter} />
+                                <Tooltip formatter={oneDecimalFormatter} />
                                 <Bar
                                     dataKey="percent"
                                     fill="#FB4D42"
@@ -366,7 +367,7 @@ const RealEstateMarket = () => {
                                     tickFormatter={decimalFormatter}
                                 />
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <Tooltip formatter={decimalFormatter} />
+                                <Tooltip formatter={oneDecimalFormatter} />
                                 <Bar
                                     dataKey="percent"
                                     fill="#091F2F"
