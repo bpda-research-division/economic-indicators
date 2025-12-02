@@ -104,9 +104,10 @@ function About() {
           </ul>
           <h5>Real Estate Development</h5>
           <ul>
-            <li>City of Boston Planning Department Divsion of Development Review</li>
+            <li>City of Boston Planning Department Division of Development Review</li>
             <li>Boston Mayor’s Office of Housing  </li>
             <li>Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports</li>
+            <li>Non-residential permitted square footage is pulled directly from the City of Boston Mayor's Office of Housing from Q1 2019 to Q4 2023. The following months, Q1 2024 to present, are derived from the City of Boston Planning Department Division of Development Review.</li>
           </ul>
           <br /><br />
           <p className="text-center">Data curated and managed by City of Boston Planning Department Research Division</p>

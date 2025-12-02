@@ -217,7 +217,7 @@ const SnapshotEconomy = () => {
                   />
                 </BarChart>
               </GraphContainer>
-              <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development.<br></br>Note: K is in thousands.</p>
+              <p className="citation">Source: Massachusetts Executive Office of Labor and Workforce Development. Note: K is in thousands.</p>
             </div>
             <div>
               <h6 className="chartTitle">Boston Payroll Employment Shares by Industry</h6>
