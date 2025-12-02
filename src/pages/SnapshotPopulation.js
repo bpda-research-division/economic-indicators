@@ -283,7 +283,7 @@ const RealEstateMarket = () => {
                                 />
                             </LineChart>
                         </GraphContainer>
-                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2010 U.S. Decennial Census; City of Boston Planning Department Research Division Estimates, 2020 - 2024. Note: K is in thousands.</p>
+                        <p className="citation">Source: U.S. Census Bureau, 1900 - 2010 U.S. Decennial Census; City of Boston Planning Department Research Division Estimates, 2020 - 2025. Note: K is in thousands.</p>
                     </div>
                     <div className="col-12 col-md-6 graph-column">
                         <h6 className="chartTitle">Age Groups</h6>
@@ -310,7 +310,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </GraphContainer>
-                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
+                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2025.</p>
                     </div>
                 </div>
                 <div className="row mh-20 gx-0 gy-0 graph-row">
@@ -343,7 +343,7 @@ const RealEstateMarket = () => {
 
                             </BarChart>
                         </GraphContainer>
-                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
+                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2025.</p>
 
                     </div>
                     <div className="col-12 col-md-6 graph-column">
@@ -379,7 +379,7 @@ const RealEstateMarket = () => {
                             </BarChart>
                         </GraphContainer>
                         <p className="citation">*Note: Excludes those identifying as Hispanic or Latino. </p>
-                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2024.</p>
+                        <p className="citation">Source: City of Boston Planning Department Research Division Estimates, 2025.</p>
                     </div>
                 </div>
             </div>
