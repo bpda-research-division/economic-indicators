@@ -95,7 +95,7 @@ const Mobility = () => {
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
                 {/*Change in Boston <span className="accentSubText">People Stopping</span> from the Same Month in 2019*/}
-                Change in Boston <span className="accentSubText">People Stopping</span> from {domestic.length ?
+                Change in <span className="accentSubText">Visits</span> to Boston from {domestic.length ?
                                     // @ts-ignore
                                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(domestic[domestic.length - 1]['Month'])))
                                     : ''} 2019
@@ -269,7 +269,7 @@ const Mobility = () => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">People Stopping in Boston, Compared to the Same Month in 2019</h6>
+            <h6 className="chartTitle">Visits to Boston, Compared to the Same Month in 2019</h6>
             <GraphContainer data={domestic} height={graphHeight} width="98%">
               <LineChart
                 width={500}
@@ -302,7 +302,7 @@ const Mobility = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Cuebiq mobility data.</p>
+            <p className="citation">Source: Citydata.ai mobility data. Visits are defined as crossings from outside to inside Boston boundaries. Event-related visitation peaks are excluded.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
             <h6 className="chartTitle">{radioValue==="1"?'MBTA Gated Station Validations in Boston':"MBTA Gated Station Validations by Line"}</h6>
