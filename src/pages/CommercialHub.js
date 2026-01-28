@@ -90,7 +90,7 @@ const CommercialHub = (props) => {
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
                 {/*Change in <span className="accentSubText">People Stopping</span> from the same month in 2019*/}
-                Change in <span className="accentSubText">People Stopping</span> from {hubMobility.length ?
+                Change in <span className="accentSubText">Visits</span> to {hubName} from {hubMobility.length ?
                                                     // @ts-ignore
                                                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(hubMobility[hubMobility.length - 1]['Month'])))
                                                     : ''} 2019
@@ -237,7 +237,7 @@ const CommercialHub = (props) => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-4 graph-column">
-            <h6 className="chartTitle">People Stopping in {hubName}, Compared to the Same Month in 2019</h6>
+            <h6 className="chartTitle">Visits to {hubName}, Compared to the Same Month in 2019</h6>
             <GraphContainer data={hubMobility} height={graphHeight} width="98%">
               <LineChart
                 width={500}
@@ -270,7 +270,7 @@ const CommercialHub = (props) => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Cuebiq mobility data.</p>
+            <p className="citation">Source: Citydata.ai mobility data. Visits are defined as crossings from outside of to inside of {hubName} boundaries. Event-related visitation peaks are excluded.</p>
           </div>
           <div className="col-12 col-md-4 graph-column">
             <h6 className="chartTitle">In-Person Spending in {hubName}, Compared to the Same Month 2019</h6>
@@ -522,7 +522,8 @@ const CommercialHub = (props) => {
                   type="monotone"
                   dataKey="Office Asking Rent"
                   stroke="#091F2F"
-                  dot={false}
+                  dot={true}
+                  connectNulls={false}
                 />
 
                 {/* hide if Retail Asking Rent is empty */}
@@ -530,7 +531,7 @@ const CommercialHub = (props) => {
                   type="monotone"
                   dataKey="Retail Asking Rent"
                   stroke="#1871bd"
-                  dot={false}
+                  dot={true}
                   hide={hide}
                 />
               </LineChart>

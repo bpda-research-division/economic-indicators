@@ -78,10 +78,10 @@ function About() {
           </ul>
           <h5>Mobility</h5>
           <ul>
-            <li>Cuebiq mobility data. Cuebiq collects first-party data from anonymized users who have opted-in to provide access 
-              to their location data anonymously through a GDPR-compliant framework. Starting in March 2023, Cuebiq mobility 
-              metrics on this dashboard represent 3-month rolling averages rather than 1-month snapshots, due to a change in the
-               underlying Cuebiq data which reduced the monthly sample size.</li>
+            <li>Citydata.ai mobility data. Citydata provides modeled estimates of visitation rates to custom geographies based on 
+              robust samples of anonymized opt-in user location data through a GDPR and CPRA-compliant framework. 
+              Visits are defined as crossings from outside to inside the geography boundaries. 
+              Visits exclude event-related visitation spikes and reflect typical daily visitation rates. Please note that revisions between monthly updates may create slight differences month to month.</li>
             <li>Massachusetts Port Authority, Aviation General Management (Massport)</li>
             <li>MBTA, Gated Station Validations by Station.</li>
             <li>Bluebikes System Data.</li>
