@@ -522,7 +522,7 @@ const CommercialHub = (props) => {
                   type="monotone"
                   dataKey="Office Asking Rent"
                   stroke="#091F2F"
-                  dot={false}
+                  dot={true}
                   connectNulls={false}
                 />
 
@@ -531,7 +531,7 @@ const CommercialHub = (props) => {
                   type="monotone"
                   dataKey="Retail Asking Rent"
                   stroke="#1871bd"
-                  dot={false}
+                  dot={true}
                   hide={hide}
                 />
               </LineChart>
