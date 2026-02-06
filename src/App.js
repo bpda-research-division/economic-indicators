@@ -15,6 +15,7 @@ import Mobility from './pages/Mobility';
 import EconomicActivity from './pages/EconomicActivity';
 import RealEstateMarket from './pages/RealEstateMarket';
 import RealEstateDevelopment from './pages/RealEstateDevelopment';
+import Inflation from './pages/Inflation';
 import CommercialHub from './pages/CommercialHub';
 import SnapshotEconomy from './pages/SnapshotEconomy';
 import SnapshotPopulation from './pages/SnapshotPopulation';
@@ -38,6 +39,7 @@ function App() {
               <Route path="/economic-activity" element={<EconomicActivity />} />
               <Route path="/real-estate-market" element={<RealEstateMarket />} />
               <Route path="/real-estate-development" element={<RealEstateDevelopment />} />
+              <Route path="/inflation" element={<Inflation />} />
               <Route path="/back-bay" element={<CommercialHub hubName={'Back Bay'} hubVar={'Backbay'} />} />
               <Route path="/fenway-longwood" element={<CommercialHub hubName={'Fenway/Longwood'} hubVar={'FenwayLongwood'} />} />
               <Route path="/greater-downtown" element={<CommercialHub hubName={'Greater Downtown'} hubVar={'Downtown'} />} />

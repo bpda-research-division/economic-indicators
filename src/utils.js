@@ -140,6 +140,19 @@ export const MBTACustomTooltip = (props) => {
     return <_DefaultTooltipContent.DefaultTooltipContent {...props} />;
 };
 
+export const InflationCustomTooltip = (props) => {
+    if(props.payload[0]){
+        let total = props.payload[0].payload.Total;
+        const newPayload = [{
+            name:'Shelter Inflation Components',
+            value:props.payload[0].payload.Total,
+        },...props.payload,
+    ];
+        return <_DefaultTooltipContent.DefaultTooltipContent {...props} payload={newPayload}/>;
+    }
+    return <_DefaultTooltipContent.DefaultTooltipContent {...props} />;
+}
+
 
 // aquire the key of the maximum value in an object 
 // ex: obj {A: 13, B: 4, C: 37}
