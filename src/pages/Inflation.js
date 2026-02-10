@@ -65,7 +65,7 @@ const Inflation = () => {
   const [energyComponents, setEnergyComponents] = useState([])
   const [food, setFood] = useState([])
   const [foodComponents, setFoodComponents] = useState([])
-  const [inflationCumulative, setCumulative] = useState([]);
+  const [cumulative, setCumulative] = useState([]);
  
   // useEffect to load component after reciving data
   useEffect(() => {
@@ -127,9 +127,9 @@ const Inflation = () => {
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
                 {/*Change in Boston <span className="accentSubText">People Stopping</span> from the Same Month in 2019*/}
-                Cumulative Change in <span className="accentSubText">Overall Prices</span> from {domestic.length ?
+                Cumulative Change in <span className="accentSubText">Overall Prices</span> from {cumulative.length ?
                                     // @ts-ignore
-                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(domestic[domestic.length - 1]['Month'])))
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(cumulative[cumulative.length - 2]['Month'])))
                                     : ''} 2019
                 {/* {
                     domestic.length ?
@@ -144,17 +144,17 @@ const Inflation = () => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  domestic.length ?
+                  cumulative.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(domestic[domestic.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(cumulative[cumulative.length - 2]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  domestic.length ?
+                  cumulative.length ?
                     // format number to expplicitly show positive/negtaive sign
-                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((domestic[domestic.length - 1]['Total Stoppers']) * 100).toFixed(1))
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((cumulative[cumulative.length - 2]['Overall']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -164,9 +164,9 @@ const Inflation = () => {
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
                 {/*Change in <span className="accentSubText">Logan Airport Domestic Passengers</span> from the Same Month in 2019*/}
-                Cumulative Change in <span className="accentSubText">Shelter Prices</span> from {logan.length ?
+                Cumulative Change in <span className="accentSubText">Shelter Prices</span> from {cumulative.length ?
                                     // @ts-ignore
-                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(logan[logan.length - 1]['Month'])))
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(cumulative[cumulative.length - 1]['Month'])))
                                     : ''} 2019
                 {/* {
                 logan.length ?
@@ -180,15 +180,17 @@ const Inflation = () => {
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
-                  logan.length ?
+                  cumulative.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(logan[logan.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(cumulative[cumulative.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                  logan.length ?
-                    ((logan[logan.length - 1]['Percent Change Domestic']) * 100).toFixed(1)
+                  // once data is loaded, display text. otherwise, show "loading"
+                  cumulative.length ?
+                    // format number to expplicitly show positive/negtaive sign
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((cumulative[cumulative.length - 2]['Shelter']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -198,9 +200,9 @@ const Inflation = () => {
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
                 {/*Change in <span className="accentSubText">Logan Airport International Passengers</span> from the Same Month in 2019*/}
-                Cumulative Change in <span className="accentSubText">Energy Prices</span> from {logan.length ?
+                Cumulative Change in <span className="accentSubText">Energy Prices</span> from {cumulative.length ?
                                     // @ts-ignore
-                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(logan[logan.length - 1]['Month'])))
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(cumulative[cumulative.length - 1]['Month'])))
                                     : ''} 2019
                 {/* {
                     domestic.length ?
@@ -214,15 +216,17 @@ const Inflation = () => {
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4>{
-                  logan.length ?
+                  cumulative.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(logan[logan.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(cumulative[cumulative.length - 1]['Month'])))
                     : 'loading'
                 }
                 </h4>
-                <h4 className="accentNumber">{
-                  logan.length ?
-                    ((logan[logan.length - 1]['Percent Change International']) * 100).toFixed(1)
+                 <h4 className="accentNumber">{
+                  // once data is loaded, display text. otherwise, show "loading"
+                  cumulative.length ?
+                    // format number to expplicitly show positive/negtaive sign
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((cumulative[cumulative.length - 2]['Energy']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -232,9 +236,9 @@ const Inflation = () => {
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
                 {/*Change in <span className="accentSubText">MBTA Passengers</span> from the Same Month in 2019*/}
-                Cumulative Change in <span className="accentSubText">At-Home Food Prices</span> from {MBTA.length ?
+                Cumulative Change in <span className="accentSubText">At-Home Food Prices</span> from {cumulative.length ?
                                     // @ts-ignore
-                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(MBTA[MBTA.length - 1]['Month'])))
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(cumulative[cumulative.length - 2]['Month'])))
                                     : ''} 2019
                 {/* {
                 MBTA.length ?
@@ -249,16 +253,17 @@ const Inflation = () => {
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  MBTA.length ?
+                  cumulative.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(MBTA[MBTA.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(cumulative[cumulative.length - 2]['Month'])))
                     : 'loading'
                 }
                 </h4>
-                <h4 className="accentNumber">{
+                 <h4 className="accentNumber">{
                   // once data is loaded, display text. otherwise, show "loading"
-                  MBTA.length ?
-                    ((MBTA[MBTA.length - 1]['Percent Change']) * 100).toFixed(1)
+                  cumulative.length ?
+                    // format number to expplicitly show positive/negtaive sign
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((cumulative[cumulative.length - 2]['Food at home']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -267,9 +272,9 @@ const Inflation = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-              Cumulative Change in <span className="accentSubText">Food Services Prices</span> from {blueBikes.length ?
+              Cumulative Change in <span className="accentSubText">Food Services Prices</span> from {cumulative.length ?
                                     // @ts-ignore
-                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(blueBikes[blueBikes.length - 1]['Month'])))
+                                    new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(cumulative[cumulative.length - 2]['Month'])))
                                     : ''} 2019
                 {/* {
                 MBTALine.length ?
@@ -283,15 +288,17 @@ const Inflation = () => {
               </div>
               <div className="d-flex flex-row justify-content-around">
                 <h4 className="date">{
-                  blueBikes.length ?
+                  cumulative.length ?
                     // @ts-ignore
-                    new Intl.DateTimeFormat("en-US", options).format((new Date(blueBikes[blueBikes.length - 1]['Month'])))
+                    new Intl.DateTimeFormat("en-US", options).format((new Date(cumulative[cumulative.length - 2]['Month'])))
                     : 'loading'
                 }
                 </h4>
                 <h4 className="accentNumber">{
-                  blueBikes.length ?
-                    ((blueBikes[blueBikes.length - 1]['Percent Change Bluebikes']) * 100).toFixed(1)
+                  // once data is loaded, display text. otherwise, show "loading"
+                  cumulative.length ?
+                    // format number to expplicitly show positive/negtaive sign
+                    new Intl.NumberFormat("en-US", { signDisplay: "exceptZero" }).format(((cumulative[cumulative.length - 2]['Food away from home']) * 100).toFixed(1))
                     : 'loading'
                 }%</h4>
               </div>
@@ -328,16 +335,8 @@ const Inflation = () => {
                 <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
                 <Line
                   type="monotone"
-                  dataKey="US - Seasonally adjusted"
-                  stroke="#1871BD"
-                  dot={false}
-                  connectNulls='True'
-                />
-                <Line
-                  type="monotone"
                   dataKey="US - Unadjusted"
-                  stroke="#45789C"
-                  strokeDasharray = "5 5"
+                  stroke="#1871BD"
                   dot={false}
                   connectNulls='True'
                 />
@@ -357,10 +356,10 @@ const Inflation = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Enter source.</p>
+            <p className="citation">Source: BLS, All items CPI-U, National and Boston-Cambridge-Newton, MA-NH, not seasonally adjusted.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">{radioValue==="1"?'Shelter Inflation Rate Year Over Year Change':"Shelter Inflation Rate Year Over Year Change By Component"}</h6>
+            <h6 className="chartTitle">{radioValue==="1"?'Boston Metro Shelter Inflation Change':"Boston Metro Shelter Inflation Change By Component"}</h6>
             <ButtonGroup>
             <ToggleButton
                 id={`radio-1`}
@@ -422,9 +421,9 @@ const Inflation = () => {
       </LineChart>
       
     </GraphContainer>
-    <p className="citation">Source: Enter source.</p></>
+    <p className="citation">Source: BLS, CPI-U Shelter, Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
       :
-      <><GraphContainer data={MBTALine} height={graphHeight} width="98%">
+      <><GraphContainer data={shelterComponents} height={graphHeight} width="98%">
       <LineChart
         width={500}
         height={400}
@@ -464,7 +463,7 @@ const Inflation = () => {
         />
       </LineChart>
     </GraphContainer>
-    <p className="citation">Source: Enter source.</p>
+    <p className="citation">Source: BLS, CPI-U Shelter series (Shelter, Rent of Primary Residence, Owners’ Equivalent Rent of Residences), Boston-Cambridge-Newton, MA-NH (not seasonally adjusted)</p>
     </>}
             
           </div>
@@ -529,7 +528,7 @@ const Inflation = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Enter source.</p></>
+            <p className="citation">Source: BLS, CPI-U Energy, Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
             :
             <><GraphContainer data={energyComponents} height={graphHeight} width="98%">
               <LineChart
@@ -569,7 +568,7 @@ const Inflation = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Enter source.</p></>
+            <p className="citation">Source: BLS, CPI-U Energy series (Energy, Electricity, Utility (Piped) Gas Service), Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
             }
             
 
@@ -635,7 +634,7 @@ const Inflation = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Enter source.</p></>
+            <p className="citation">Source: BLS, CPI-U Food, Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
             :
             <><GraphContainer data={foodComponents} height={graphHeight} width="98%">
               <LineChart
@@ -677,7 +676,7 @@ const Inflation = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: Enter source.</p></>
+            <p className="citation">Source: BLS, CPI-U Food series (Food, Food at Home, Food Away from Home), Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
             }
           </div>
           </div>

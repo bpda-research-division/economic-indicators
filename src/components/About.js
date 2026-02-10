@@ -109,6 +109,31 @@ function About() {
             <li>Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports</li>
             <li>Non-residential permitted square footage is pulled directly from the City of Boston Mayor's Office of Housing from Q1 2019 to Q4 2023. The following months, Q1 2024 to present, are derived from the City of Boston Planning Department Division of Development Review.</li>
           </ul>
+          <h5>Inflation</h5>
+          About the data source:
+          <ul>
+            <li>U.S. Bureau of Labor Statistics (BLS), Consumer Price Index (CPI-U) (not seasonally adjusted). 
+              Explore additional data, download historical series, or related detailed item indexes though the BLS website <a href='https://www.bls.gov/data/' target="_blank">here</a>.</li>
+            <li>The BLS collects prices each month for goods and services purchased by urban households to calculate the CPI-U. 
+              The CPI covers a wide range of consumer expenditures, including food and beverages, housing, apparel, transportation, 
+              medical care, recreation, education and communications, and other goods and services. Prices are gathered in 75 urban areas 
+              from approximately 23,000 retail and service establishments and from approximately 50,000 landlords or tenants for rent data. 
+              Weights for items in the CPI are based on reported expenditures from the Consumer Expenditure Survey.</li>
+            <li>A detailed explanation of CPI methodology can be found <a href="https://www.bls.gov/opub/hom/cpi/concepts.htm" target="_blank">here</a>.</li>
+            <li>Base period: CPI index values are expressed to a reference base period set to 100. For the United States and Boston-Cambridge-Newton, MA-NH, 
+              the base period is 1982-84 = 100, while the New England series uses December 2017 = 100.</li>
+          </ul>
+          About the data displayed on the Inflation page:
+          <ul>
+            <li>The takeaway cards display cumulative inflation, which is the percent change in the CPI-U since 2019, showing how much consumer prices have increased over time.</li>
+            <li>The charts show inflation measured as the 12-month percent change in the CPI-U for the United States, New England, and Boston-Cambridge-Newton, MA-NH.</li>
+            <li>For the Boston metropolitan area (Boston-Cambridge-Newton, MA-NH), the dashboard displays the change over time of key CPI components: </li>
+                <ul>
+                  <li>Food: Food, composed of: Food at Home, Food Away from Home</li>
+                  <li>Energy: Energy, composed of: Electricity, Utility (Piped) Gas Service</li>
+                  <li>Shelter: Shelter, composed of: Rent of Primary Residence, Owners’ Equivalent Rent of Residences</li>
+                </ul>
+          </ul>
           <br /><br />
           <p className="text-center">Data curated and managed by City of Boston Planning Department Research Division</p>
           <p className="text-center">Application developed by the City of Boston Planning Department GIS Division</p>
