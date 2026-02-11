@@ -41,7 +41,7 @@ const Inflation = () => {
   // Testing out 
   const [checked, setChecked] = useState(true);
   const [radioValue, setRadioValue] = useState('1');
-  const [energyRadioValue, setEnergyRadioValue] = useState('1');
+  //const [energyRadioValue, setEnergyRadioValue] = useState('1');
   const [foodRadioValue, setFoodRadioValue] = useState('1');
 
   const radios = [
@@ -59,13 +59,16 @@ const Inflation = () => {
   const [width, height, graphHeight] = useDeviceSize()
   //cecilia edits
   const [overall, setOverall] = useState([])
+  const [cumulative, setCumulative] = useState([])
+  const [less, setLess] = useState([])
   const [shelter, setShelter] = useState([])
+  const [shelterEnergy, setShelterEnergy] = useState([])
   const [shelterComponents, setShelterComponents] = useState([])
   const [energy, setEnergy] = useState([])
   const [energyComponents, setEnergyComponents] = useState([])
   const [food, setFood] = useState([])
-  const [foodComponents, setFoodComponents] = useState([])
-  const [cumulative, setCumulative] = useState([]);
+  const [foodComponents, setFoodComponents] = useState([]);
+  
  
   // useEffect to load component after reciving data
   useEffect(() => {
@@ -78,7 +81,9 @@ const Inflation = () => {
       fetch(baseAPI + 'Mobility_BlueBikes'),
       fetch(baseAPI + 'Inflation_Cumulative'),
       fetch(baseAPI + 'Inflation_Overall'),
+      fetch(baseAPI + 'Inflation_Less'),
       fetch(baseAPI + 'Inflation_Shelter'),
+      fetch(baseAPI + 'Inflation_ShelterEnergy'),
       fetch(baseAPI + 'Inflation_ShelterComponents'),
       fetch(baseAPI + 'Inflation_Energy'),
       fetch(baseAPI + 'Inflation_EnergyComponents'),
@@ -88,16 +93,16 @@ const Inflation = () => {
       // parse json results
       // would add resBlueBikes here
       .then(([resDomestic, resLogan, resMBTA, resMBTALine, resBlueBikes,
-        resCumulative, resOverall, resShelter, resShelterComponents, resEnergy, resEnergyComponents, resFood, resFoodComponents,
+        resCumulative, resOverall, resLess, resShelter, resShelterEnergy, resShelterComponents, resEnergy, resEnergyComponents, resFood, resFoodComponents,
       ]) =>
         Promise.all([resDomestic.json(), resLogan.json(), resMBTA.json(), resMBTALine.json(), resBlueBikes.json(),
-            resCumulative.json(), resOverall.json(), resShelter.json(), resShelterComponents.json(), resEnergy.json(), resEnergyComponents.json(), resFood.json(), resFoodComponents.json(),
+            resCumulative.json(), resOverall.json(), resLess.json(), resShelter.json(), resShelterEnergy.json(), resShelterComponents.json(), resEnergy.json(), resEnergyComponents.json(), resFood.json(), resFoodComponents.json(),
         ])
         // would add resBlueBikes.json() here
       )
       // store parsed data in state
       // would add dataBlueBikes
-      .then(([dataDomestic, dataLogan, dataMBTA, dataMBTALine, dataBlueBikes, dataCumulative, dataOverall, dataShelter, dataShelterComponents, dataEnergy, dataEnergyComponents, dataFood, dataFoodComponents,]) => {
+      .then(([dataDomestic, dataLogan, dataMBTA, dataMBTALine, dataBlueBikes, dataCumulative, dataOverall, dataLess, dataShelter, dataShelterEnergy, dataShelterComponents, dataEnergy, dataEnergyComponents, dataFood, dataFoodComponents,]) => {
         setDomestic(dataDomestic);
         setLogan(dataLogan);
         setMBTA(dataMBTA);
@@ -105,7 +110,9 @@ const Inflation = () => {
         setBlueBikes(dataBlueBikes);
         setCumulative(dataCumulative);
         setOverall(dataOverall);
+        setLess(dataLess);
         setShelter(dataShelter);
+        setShelterEnergy(dataShelterEnergy);
         setShelterComponents(dataShelterComponents);
         setEnergy(dataEnergy);
         setEnergyComponents(dataEnergyComponents);
@@ -308,7 +315,7 @@ const Inflation = () => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Overall Inflation Rate Year over Year Change</h6>
+            <h6 className="chartTitle">National and Boston Metro Overall Inflation</h6>
             <GraphContainer data={overall} height={graphHeight} width="98%">
               <LineChart
                 width={500}
@@ -336,13 +343,6 @@ const Inflation = () => {
                 <Line
                   type="monotone"
                   dataKey="US - Unadjusted"
-                  stroke="#1871BD"
-                  dot={false}
-                  connectNulls='True'
-                />
-                <Line
-                  type="monotone"
-                  dataKey="New England"
                   stroke="#FB4D42"
                   dot={false}
                   connectNulls='True'
@@ -356,10 +356,63 @@ const Inflation = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: BLS, All items CPI-U, National and Boston-Cambridge-Newton, MA-NH, not seasonally adjusted.</p>
+            <p className="citation">Source: BLS, All items CPI-U, National and Boston-Cambridge-Newton, MA-NH, not seasonally adjusted.Metro data available bi-monthly.</p>
           </div>
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">{radioValue==="1"?'Boston Metro Shelter Inflation Change':"Boston Metro Shelter Inflation Change By Component"}</h6>
+            <h6 className="chartTitle">Boston Metro Core, Ex-Shelter, Ex-Energy Inflation</h6>
+            <GraphContainer data={less} height={graphHeight} width="98%">
+              <LineChart
+                width={500}
+                height={400}
+                data={less}
+              // stackOffset="expand"
+              >
+                <XAxis
+                  dataKey="Epoch Miliseconds"
+                  scale="time"
+                  type="number"
+                  domain={['dataMin', 'dataMax']}
+                  tickFormatter={dateFormatter}
+                />
+                <YAxis
+                  type="number"
+                  domain={[0, 0.1]}
+                  tickFormatter={decimalFormatter}
+                  tickCount={4}
+                  interval="equidistantPreserveStart"
+                />
+                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
+                <Line
+                  type="monotone"
+                  dataKey="All items less food and energy"
+                  stroke="#1871BD"
+                  dot={false}
+                  connectNulls='True'
+                />
+                <Line
+                  type="monotone"
+                  dataKey="All items less shelter"
+                  stroke="#FB4D42"
+                  dot={false}
+                  connectNulls='True'
+                />
+                <Line
+                  type="monotone"
+                  dataKey="All items less energy"
+                  stroke="#091F2F"
+                  dot={false}
+                  connectNulls='True'
+                />
+              </LineChart>
+            </GraphContainer>
+            <p className="citation">Source: BLS, All items CPI-U, National and Boston-Cambridge-Newton, MA-NH, not seasonally adjusted. Metro data available bi-monthly.</p>
+          </div>
+        </div>
+        <div className="row mh-20 gx-0 gy-0 graph-row">
+          <div className="col-12 col-md-6 graph-column">
+            <h6 className="chartTitle">{radioValue==="1"?'Boston Metro Energy and Shelter Inflation':"Boston Metro Shelter Inflation By Component"}</h6>
             <ButtonGroup>
             <ToggleButton
                 id={`radio-1`}
@@ -389,12 +442,12 @@ const Inflation = () => {
       
       {radioValue==='1'?
       //show all lines as one
-      <><GraphContainer data={shelter} height={graphHeight} width="98%">
+      <><GraphContainer data={shelterEnergy} height={graphHeight} width="98%">
       
       <LineChart
         width={500}
         height={400}
-        data={shelter}
+        data={shelterEnergy}
       >
         <XAxis
           dataKey="Epoch Miliseconds"
@@ -418,10 +471,17 @@ const Inflation = () => {
           dot={false}
           connectNulls="True"
         />
+        <Line
+          type="monotone"
+          dataKey="Energy"
+          stroke="#FB4D42"
+          dot={false}
+          connectNulls="True"
+        />
       </LineChart>
       
     </GraphContainer>
-    <p className="citation">Source: BLS, CPI-U Shelter, Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
+    <p className="citation">Source: BLS, CPI-U Energy and Shelter, Boston-Cambridge-Newton, MA-NH (not seasonally adjusted). Metro data available bi-monthly.</p></>
       :
       <><GraphContainer data={shelterComponents} height={graphHeight} width="98%">
       <LineChart
@@ -463,113 +523,8 @@ const Inflation = () => {
         />
       </LineChart>
     </GraphContainer>
-    <p className="citation">Source: BLS, CPI-U Shelter series (Shelter, Rent of Primary Residence, Owners’ Equivalent Rent of Residences), Boston-Cambridge-Newton, MA-NH (not seasonally adjusted)</p>
+    <p className="citation">Source: BLS, CPI-U Shelter series (Shelter, Rent of Primary Residence, Owners’ Equivalent Rent of Residences), Boston-Cambridge-Newton, MA-NH (not seasonally adjusted). Metro data available bi-monthly. Energy components not available.</p>
     </>}
-            
-          </div>
-        </div>
-        <div className="row mh-20 gx-0 gy-0 graph-row">
-          <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">{energyRadioValue==='1'?'Energy Inflation Rate Year over Year Change':'Energy Inflation Rate Year over Year Change by Component'}</h6>
-            <ButtonGroup>
-            <ToggleButton
-                id={`energy-radio-1`}
-                className={energyRadioValue=='1'?'toggleButtonActive':'toggleButton'}
-                type="radio"
-                name="radio"
-                value='1'
-                checked={energyRadioValue === '1'}
-                onChange={(e) => setEnergyRadioValue(e.currentTarget.value)}
-              >
-                {'All'}
-              </ToggleButton>
-              <ToggleButton
-                id={`energy-radio-2`}
-                className={energyRadioValue=='2'?'toggleButtonActive':'toggleButton'}
-                type="radio"
-                name="radio"
-                value='2'
-                checked={energyRadioValue === '2'}
-                onChange={(e) => setEnergyRadioValue(e.currentTarget.value)}
-              >
-                {'Components'}
-              </ToggleButton>
-      </ButtonGroup>
-      {energyRadioValue==='1'? <>
-      <GraphContainer data={energy} height={graphHeight} width="98%">
-              <LineChart
-                width={500}
-                height={400}
-                data={energy}
-              >
-                <XAxis
-                  dataKey="Epoch Miliseconds"
-                  scale="time"
-                  type="number"
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={dateFormatter}
-                />
-                <YAxis
-                  type="number"
-                  width={90}
-                  tickFormatter={oneDecimalFormatter}
-                  tickCount={4}
-                  interval="equidistantPreserveStart"
-                />
-                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
-                <Legend iconType="plainline" />
-                <Line
-                  type="monotone"
-                  dataKey="Energy"
-                  stroke="#091F2F"
-                  dot={false}
-                />
-              </LineChart>
-            </GraphContainer>
-            <p className="citation">Source: BLS, CPI-U Energy, Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
-            :
-            <><GraphContainer data={energyComponents} height={graphHeight} width="98%">
-              <LineChart
-                width={500}
-                height={400}
-                data={energyComponents}
-              >
-                <XAxis
-                  dataKey="Epoch Miliseconds"
-                  scale="time"
-                  type="number"
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={dateFormatter}
-                />
-                <YAxis
-                  type="number"
-                  width={90}
-                  tickFormatter={decimalFormatter}
-                  tickCount={4}
-                  interval="equidistantPreserveStart"
-                />
-                <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
-                <Legend iconType="plainline" />
-                <Line
-                  type="monotone"
-                  dataKey="Electricity"
-                  stroke="#1871BD"
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Utility (piped) gas service"
-                  stroke="#FB4D42"
-                  dot={false}
-                />
-              </LineChart>
-            </GraphContainer>
-            <p className="citation">Source: BLS, CPI-U Energy series (Energy, Electricity, Utility (Piped) Gas Service), Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
-            }
             
 
           </div>
@@ -634,7 +589,7 @@ const Inflation = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: BLS, CPI-U Food, Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
+            <p className="citation">Source: BLS, CPI-U Food, Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).  Metro data available bi-monthly.</p></>
             :
             <><GraphContainer data={foodComponents} height={graphHeight} width="98%">
               <LineChart
@@ -676,7 +631,7 @@ const Inflation = () => {
                 />
               </LineChart>
             </GraphContainer>
-            <p className="citation">Source: BLS, CPI-U Food series (Food, Food at Home, Food Away from Home), Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).</p></>
+            <p className="citation">Source: BLS, CPI-U Food series (Food, Food at Home, Food Away from Home), Boston-Cambridge-Newton, MA-NH (not seasonally adjusted).  Metro data available bi-monthly.</p></>
             }
           </div>
           </div>

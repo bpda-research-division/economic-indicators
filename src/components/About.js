@@ -121,16 +121,16 @@ function About() {
               Weights for items in the CPI are based on reported expenditures from the Consumer Expenditure Survey.</li>
             <li>A detailed explanation of CPI methodology can be found <a href="https://www.bls.gov/opub/hom/cpi/concepts.htm" target="_blank">here</a>.</li>
             <li>Base period: CPI index values are expressed to a reference base period set to 100. For the United States and Boston-Cambridge-Newton, MA-NH, 
-              the base period is 1982-84 = 100, while the New England series uses December 2017 = 100.</li>
+              the base period is 1982-84 = 100.</li>
           </ul>
           About the data displayed on the Inflation page:
           <ul>
-            <li>The takeaway cards display cumulative inflation, which is the percent change in the CPI-U since 2019, showing how much consumer prices have increased over time.</li>
+            <li>The takeaway cards display cumulative inflation, which is the percent change in the CPI-U since 2019, showing how much consumer prices have increased over time for the Boston metropolitan area (Boston-Cambridge-Newton, MA-NH).</li>
             <li>The charts show inflation measured as the 12-month percent change in the CPI-U for the United States, New England, and Boston-Cambridge-Newton, MA-NH.</li>
             <li>For the Boston metropolitan area (Boston-Cambridge-Newton, MA-NH), the dashboard displays the change over time of key CPI components: </li>
                 <ul>
                   <li>Food: Food, composed of: Food at Home, Food Away from Home</li>
-                  <li>Energy: Energy, composed of: Electricity, Utility (Piped) Gas Service</li>
+                  <li>Energy: Energy, compositions not shown due to data discontinuation since 2025.</li>
                   <li>Shelter: Shelter, composed of: Rent of Primary Residence, Owners’ Equivalent Rent of Residences</li>
                 </ul>
           </ul>
