@@ -122,6 +122,9 @@ function About() {
             <li>A detailed explanation of CPI methodology can be found <a href="https://www.bls.gov/opub/hom/cpi/concepts.htm" target="_blank">here</a>.</li>
             <li>Base period: CPI index values are expressed to a reference base period set to 100. For the United States and Boston-Cambridge-Newton, MA-NH, 
               the base period is 1982-84 = 100.</li>
+              <li>Boston metropolitan area data is available bi-monthly. Months between data months are labeled ‘N/A’.</li>
+              <li>Please note government shutdowns created gaps in the available data for the following periods:</li>
+              <ul><li>October 2025</li></ul>
           </ul>
           About the data displayed on the Inflation page:
           <ul>

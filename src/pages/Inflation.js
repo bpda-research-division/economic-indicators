@@ -279,7 +279,7 @@ const Inflation = () => {
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
               <h4 className="indicatorSubtext">
-              Cumulative Change in <span className="accentSubText">Food Services Prices</span> from {cumulative.length ?
+              Cumulative Change in <span className="accentSubText">Away From Home Food Prices</span> from {cumulative.length ?
                                     // @ts-ignore
                                     new Intl.DateTimeFormat("en-US", secondOptions).format((new Date(cumulative[cumulative.length - 2]['Month'])))
                                     : ''} 2019
@@ -332,17 +332,19 @@ const Inflation = () => {
                 />
                 <YAxis
                   type="number"
-                  domain={[0, 0.1]}
-                  tickFormatter={decimalFormatter}
-                  tickCount={4}
-                  interval="equidistantPreserveStart"
+                  //width={90}
+                  tickFormatter={oneDecimalFormatter}
+                  tickCount={5}
+                  domain={[-0.015,.125]}
+                  //interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} content={InflationCustomTooltip}/>
+                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
-                  dataKey="US - Unadjusted"
+                  dataKey="National"
                   stroke="#FB4D42"
                   dot={false}
                   connectNulls='True'
@@ -376,32 +378,36 @@ const Inflation = () => {
                 />
                 <YAxis
                   type="number"
-                  domain={[0, 0.1]}
-                  tickFormatter={decimalFormatter}
-                  tickCount={4}
-                  interval="equidistantPreserveStart"
+                  //width={90}
+                  tickFormatter={oneDecimalFormatter}
+                  tickCount={5}
+                  domain={[-0.015,.125]}
+                  //interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter}content={InflationCustomTooltip} />
+                <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="All items less food and energy"
-                  stroke="#1871BD"
+                  stroke="#091F2F"
                   dot={false}
                   connectNulls='True'
                 />
                 <Line
                   type="monotone"
                   dataKey="All items less shelter"
-                  stroke="#FB4D42"
+                  //stroke="#ce1b46"
+                  stroke="#7a3a86"
                   dot={false}
                   connectNulls='True'
                 />
                 <Line
                   type="monotone"
                   dataKey="All items less energy"
-                  stroke="#091F2F"
+                  //stroke="#1871bd"
+                  stroke="#FB4D42"
                   dot={false}
                   connectNulls='True'
                 />
@@ -458,23 +464,24 @@ const Inflation = () => {
         />
         <YAxis
           type="number"
-          width={90}
+          //width={90}
           tickFormatter={decimalFormatter}
         />
 
         <CartesianGrid strokeDasharray="3 3" />
-        <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
+        <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} content={InflationCustomTooltip} />
+        <Legend iconType="plainline" />
         <Line
           type="monotone"
           dataKey="Shelter"
-          stroke="#091F2F"
+          stroke="#ce1b46"
           dot={false}
           connectNulls="True"
         />
         <Line
           type="monotone"
           dataKey="Energy"
-          stroke="#FB4D42"
+          stroke="#1871bd"
           dot={false}
           connectNulls="True"
         />
@@ -498,9 +505,10 @@ const Inflation = () => {
         />
         <YAxis
           type="number"
-          width={90}
-          tickFormatter={decimalFormatter}
-          domain={['dataMin', 'dataMax']}
+          tickFormatter={oneDecimalFormatter}
+          //domain={['dataMin', 'dataMax']}
+          tickCount={5}
+          domain={[-0.015,.125]}
         />
         <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
         <CartesianGrid strokeDasharray="3 3" />
@@ -510,14 +518,14 @@ const Inflation = () => {
         <Line
           type="monotone"
           dataKey="Rent of primary residence"
-          stroke="#1871BD"
+          stroke="#eb6485"
           dot={false}
           connectNulls="True"
         />
         <Line
           type="monotone"
           dataKey="Owners' equivalent rent of residences"
-          stroke="#FB4D42"
+          stroke="#740f27"
           dot={false}
           connectNulls="True"
         />
@@ -530,7 +538,7 @@ const Inflation = () => {
           </div>
           
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">{foodRadioValue==='1'?'Food Inflation Rate Year over Year Change':'Food Inflation Rate Year over Year Change by Component'}</h6>
+            <h6 className="chartTitle">{foodRadioValue==='1'?'Boston Metro Food Inflation':'Boston Metro Food Inflation by Component'}</h6>
             <ButtonGroup>
             <ToggleButton
                 id={`food-radio-1`}
@@ -571,19 +579,19 @@ const Inflation = () => {
                 />
                 <YAxis
                   type="number"
-                  width={90}
+                  //width={90}
                   tickFormatter={oneDecimalFormatter}
-                  tickCount={4}
-                  interval="equidistantPreserveStart"
+                  tickCount={5}
+                  domain={[-0.015,.125]}
+                  //interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
-                <Legend iconType="plainline" />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} content={InflationCustomTooltip}/>
                 <Line
                   type="monotone"
                   dataKey="Food"
-                  stroke="#091F2F"
+                  stroke="#7d972a"
                   dot={false}
                   connectNulls="True"
                 />
@@ -606,26 +614,26 @@ const Inflation = () => {
                 />
                 <YAxis
                   type="number"
-                  width={90}
+                  //width={90}
                   tickFormatter={decimalFormatter}
-                  tickCount={4}
-                  interval="equidistantPreserveStart"
+                  tickCount={6}
+                  //interval="equidistantPreserveStart"
                 />
                 <ReferenceLine y={0} stroke="#a3a3a3" strokeWidth="2" />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} />
+                <Tooltip labelFormatter={dateFormatter} formatter={oneDecimalFormatter} content={InflationCustomTooltip} />
                 <Legend iconType="plainline" />
                 <Line
                   type="monotone"
                   dataKey="Food at home"
-                  stroke="#1871BD"
+                  stroke="#b3d057"
                   dot={false}
                   connectNulls="True"
                 />
                 <Line
                   type="monotone"
                   dataKey="Food away from home"
-                  stroke="#FB4D42"
+                  stroke="#3b4714"
                   dot={false}
                   connectNulls="True"
                 />
