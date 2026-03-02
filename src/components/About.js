@@ -119,7 +119,7 @@ function About() {
               medical care, recreation, education and communications, and other goods and services. Prices are gathered in 75 urban areas 
               from approximately 23,000 retail and service establishments and from approximately 50,000 landlords or tenants for rent data. 
               Weights for items in the CPI are based on reported expenditures from the Consumer Expenditure Survey.</li>
-            <li>A detailed explanation of CPI methodology can be found <a href="https://www.bls.gov/opub/hom/cpi/concepts.htm" target="_blank">here</a>.</li>
+            <li>A detailed explanation of CPI methodology can be found <a href="https://www.bls.gov/opub/hom/cpi/concepts.htm" target="_blank">here</a>. A fact sheet for each of the CPI item categories can be found <a href='https://www.bls.gov/cpi/factsheets/' target='_blank'>here</a>.</li>
             <li>Base period: CPI index values are expressed to a reference base period set to 100. For the United States and Boston-Cambridge-Newton, MA-NH, 
               the base period is 1982-84 = 100.</li>
               <li>Boston metropolitan area data is available bi-monthly. Months between data months are labeled ‘N/A’.</li>
@@ -133,8 +133,9 @@ function About() {
             <li>For the Boston metropolitan area (Boston-Cambridge-Newton, MA-NH), the dashboard displays the change over time of key CPI components: </li>
                 <ul>
                   <li>Food: Food, composed of: Food at Home, Food Away from Home</li>
-                  <li>Energy: Energy, compositions not shown due to data discontinuation since 2025.</li>
-                  <li>Shelter: Shelter, composed of: Rent of Primary Residence, Owners’ Equivalent Rent of Residences</li>
+                  <li>Energy: Energy, composed of: <a href='https://www.bls.gov/cpi/factsheets/household-energy.htm' target='_blank'>Household energy</a> (incl. fuel oils, propane, kerosene,
+                  firewood, electricity, and utility (piped) gas service) as well as <a href='https://www.bls.gov/cpi/factsheets/motor-fuel.htm' target='_blank'>Motor fuel</a> (incl. Gasoline (all types) and Other motor fuels). Compositions not shown due to data discontinuation since 2025.</li>
+                  <li>Shelter: Shelter, composed of: <a href='https://www.bls.gov/cpi/factsheets/owners-equivalent-rent-and-rent.htm' target="_blank"> Rent of Primary Residence, Owners’ Equivalent Rent of Residences</a></li>
                 </ul>
           </ul>
           <br /><br />
