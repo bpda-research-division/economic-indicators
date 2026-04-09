@@ -140,6 +140,68 @@ export const MBTACustomTooltip = (props) => {
     return <_DefaultTooltipContent.DefaultTooltipContent {...props} />;
 };
 
+export const InflationCustomTooltip = (props) => {
+    if(props.payload[0]){
+        //console.log('The props are:')
+        //let tooltipdata = props.payload[0].payload
+        //console.log(typeof(tooltipdata))
+        
+        //let datapoints = tooltipdata // subsec tooltip data to just the last X items
+
+        //console.log(JSON.stringify(tooltipdata),null,2)
+        //console.log(JSON.stringify(tooltipdata))
+        // Ok, so len - 2 gives you the number of cols to look at
+        // 
+        //console.log(num_items)
+        //console.log(tooltipdata.slice(2,4))
+        //let colnames = Object.keys(tooltipdata)
+        //let colvalues = Object.values(tooltipdata)
+        //console.log(colnames)
+        //console.log(colvalues)
+        //let num_items= colnames.length
+        //console.log(num_items)
+        //let datapoints = (colvalues).slice(2,num_items)
+        //let colnames_used = (colnames).slice(2,num_items)
+        //console.log(datapoints)
+        //console.log(colnames_used)
+        // then sort them
+        //console.log(props.payload[0].payload.sort((a,b)))
+        //console.log(Object.entries(tooltipdata).sort())
+        //let objentries = (Object.entries(tooltipdata)).slice(2,4)
+        //const sortedEntries = [...objentries].sort((a,b)=>{
+        //    return b[1]-a[1];});
+        //console.log(sortedEntries)
+        //let sorted = Object.fromEntries(Object.entries(tooltipdata).sort(([,a],[,b])=>a-b))
+        //console.log(sorted)
+        //console.log((props.payload[0].payload).filter((obj)=>Object.keys(props.payload[0].payload).indexOf(obj)>1))
+        
+        let total = props.payload[0].payload.Total;
+        const newPayload = [{
+            //name:'Shelter Inflation Components',
+            //value:props.payload[0].payload.Total,
+            //value:sortedEntries,
+        },...props.payload,
+
+        //const sortedPayload=[sortedEntries.map((entry, index)=>(entry=>{name:entry[0], value=entry[1]}))],...props.payload,
+    ];
+        //return <_DefaultTooltipContent.DefaultTooltipContent {...props} payload={newPayload} itemSorter={(item)=>-Number(item.value)}/>;
+        return <_DefaultTooltipContent.DefaultTooltipContent {...props} payload={newPayload} filterNull={false} itemSorter={(item)=>{const val=Number(item.value); return isNaN(val)?-Infinity:-val;}}/>;
+        //return <_DefaultTooltipContent.DefaultTooltipContent {...props} payload={newPayload} filterNull={false} itemSorter={(item)turn isNaN(val)?-Infinity:-val;}}/>;
+
+        /*return(
+            <div className='custom-tooltip'>
+                <p>Test</p>
+                {sortedEntries.map((entry, index)=>(
+                    <p key={`item-${index}`} style={{color:entry.color}}>
+                    {entry[0]}:{entry[1]}
+                    </p>
+                ))}
+            </div>
+        )*/
+    }
+    return <_DefaultTooltipContent.DefaultTooltipContent {...props} />;
+}
+
 
 // aquire the key of the maximum value in an object 
 // ex: obj {A: 13, B: 4, C: 37}

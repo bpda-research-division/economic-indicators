@@ -35,7 +35,7 @@ function About() {
             four commercial hubs: <b>Fenway/Longwood, Back Bay, Downtown, and South Boston
               Waterfront</b>.
           </p>
-          <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=830b98dc4250498795558383a3d20eb4&locale=en-US" frameborder={0} style={{ border: 0 }} height="400" allow="fullscreen" id="commercialHub" title="Map of Commercial Hubs">iFrames are not supported on this page.</iframe>
+          <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=f811f63ac00f48d4ba6ac4f7d40121d9" frameborder={0} style={{ border: 0 }} height="400" allow="fullscreen" id="commercialHub" title="Map of Commercial Hubs">iFrames are not supported on this page.</iframe>
           <p>
             For more economic and demographic research about Boston, please visit <a href="For more economic and demographic research about Boston, please visit https://www.bostonplans.org/research">https://www.bostonplans.org/research</a>
           </p>
@@ -43,7 +43,7 @@ function About() {
           <h5>Overview of the Population</h5>
           <ul>
             <li>U.S. Census Bureau, 1900-2010 Decennial Census.</li>
-            <li>City of Boston Planning Department Research Division Estimates, 2020 - 2024. 
+            <li>City of Boston Planning Department Research Division Estimates, 2020 - 2025. 
               <ul>
               <li>The Research Division creates annual population estimates for Boston to provide alternative estimates to those produced by the US Census Bureau, which continue to underestimate Boston's population following the disrupted 2020 Census.</li> 
               <li>A detailed explanation of the evidence for the need for revised population estimates can be found <a href="https://www.bostonplans.org/documents/research-other/rationale-for-creating-alternatives-to-census-esti" target="_blank">here</a>. A presentation overview of the undercount of Boston's population can be found <a href="https://www.bostonplans.org/documents/research-other/undercount-of-boston-s-population-presentation" target="_blank">here</a>. A detailed explanation of the population estimate methodology can be found <a href="https://www.bostonplans.org/documents/research-other/summary-population-adjustment-and-projection-metho" target="_blank">here</a>.</li>
@@ -108,6 +108,35 @@ function About() {
             <li>Boston Mayor’s Office of Housing  </li>
             <li>Boston Residents Jobs Policy Office (BRJP), Boston Jobs Policy Compliance Reports</li>
             <li>Non-residential permitted square footage is pulled directly from the City of Boston Mayor's Office of Housing from Q1 2019 to Q4 2023. The following months, Q1 2024 to present, are derived from the City of Boston Planning Department Division of Development Review.</li>
+          </ul>
+          <h5>Inflation</h5>
+          About the data source:
+          <ul>
+            <li>U.S. Bureau of Labor Statistics (BLS), Consumer Price Index (CPI-U) (not seasonally adjusted). 
+              Explore additional data, download historical series, or related detailed item indexes though the BLS website <a href='https://www.bls.gov/data/' target="_blank">here</a>.</li>
+            <li>The BLS collects prices each month for goods and services purchased by urban households to calculate the CPI-U. 
+              The CPI covers a wide range of consumer expenditures, including food and beverages, housing, apparel, transportation, 
+              medical care, recreation, education and communications, and other goods and services. Prices are gathered in 75 urban areas 
+              from approximately 23,000 retail and service establishments and from approximately 50,000 landlords or tenants for rent data. 
+              Weights for items in the CPI are based on reported expenditures from the Consumer Expenditure Survey.</li>
+            <li>A detailed explanation of CPI methodology can be found <a href="https://www.bls.gov/opub/hom/cpi/concepts.htm" target="_blank">here</a>. A fact sheet for each of the CPI item categories can be found <a href='https://www.bls.gov/cpi/factsheets/' target='_blank'>here</a>.</li>
+            <li>Base period: CPI index values are expressed to a reference base period set to 100. For the United States and Boston-Cambridge-Newton, MA-NH, 
+              the base period is 1982-84 = 100.</li>
+              <li>Boston metropolitan area data is available bi-monthly. Months between data months are labeled ‘N/A’.</li>
+              <li>Please note government shutdowns created gaps in the available data for the following periods:</li>
+              <ul><li>October 2025</li></ul>
+          </ul>
+          About the data displayed on the Inflation page:
+          <ul>
+            <li>The takeaway cards display cumulative inflation, which is the percent change in the CPI-U since 2019, showing how much consumer prices have increased over time for the Boston metropolitan area (Boston-Cambridge-Newton, MA-NH).</li>
+            <li>The charts show inflation measured as the 12-month percent change in the CPI-U for the United States, New England, and Boston-Cambridge-Newton, MA-NH.</li>
+            <li>For the Boston metropolitan area (Boston-Cambridge-Newton, MA-NH), the dashboard displays the change over time of key CPI components: </li>
+                <ul>
+                  <li>Food: Food, composed of: Food at Home, Food Away from Home</li>
+                  <li>Energy: Energy, composed of: <a href='https://www.bls.gov/cpi/factsheets/household-energy.htm' target='_blank'>Household energy</a> (incl. fuel oils, propane, kerosene,
+                  firewood, electricity, and utility (piped) gas service) as well as <a href='https://www.bls.gov/cpi/factsheets/motor-fuel.htm' target='_blank'>Motor fuel</a> (incl. Gasoline (all types) and Other motor fuels). Compositions not shown due to data discontinuation since 2025.</li>
+                  <li>Shelter: Shelter, composed of: <a href='https://www.bls.gov/cpi/factsheets/owners-equivalent-rent-and-rent.htm' target="_blank"> Rent of Primary Residence, Owners’ Equivalent Rent of Residences</a></li>
+                </ul>
           </ul>
           <br /><br />
           <p className="text-center">Data curated and managed by City of Boston Planning Department Research Division</p>

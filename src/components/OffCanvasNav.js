@@ -54,6 +54,10 @@ function OffcanvasNav() {
                   {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
                   <Nav.Link as={Link} to="/real-estate-development" onClick={handleClose}>Real Estate Development</Nav.Link>
                 </Nav.Item>
+                <Nav.Item as="li">
+                  {/* Bootstrap and React Router have different tags for nav links-- <Nav.Link> and <Link> respectively. Use react's render prop "as" to achieve both. */}
+                  <Nav.Link as={Link} to="/inflation" onClick={handleClose}>Inflation</Nav.Link>
+                </Nav.Item>
               </ul>
               <br />
               <li className="nav-heading"><h4>Commercial Hubs</h4></li>
