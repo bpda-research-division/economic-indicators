@@ -35,7 +35,7 @@ function About() {
             four commercial hubs: <b>Fenway/Longwood, Back Bay, Downtown, and South Boston
               Waterfront</b>.
           </p>
-          <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=830b98dc4250498795558383a3d20eb4&locale=en-US" frameborder={0} style={{ border: 0 }} height="400" allow="fullscreen" id="commercialHub" title="Map of Commercial Hubs">iFrames are not supported on this page.</iframe>
+          <iframe src="https://boston.maps.arcgis.com/apps/instant/basic/index.html?appid=f811f63ac00f48d4ba6ac4f7d40121d9" frameborder={0} style={{ border: 0 }} height="400" allow="fullscreen" id="commercialHub" title="Map of Commercial Hubs">iFrames are not supported on this page.</iframe>
           <p>
             For more economic and demographic research about Boston, please visit <a href="For more economic and demographic research about Boston, please visit https://www.bostonplans.org/research">https://www.bostonplans.org/research</a>
           </p>
@@ -43,7 +43,7 @@ function About() {
           <h5>Overview of the Population</h5>
           <ul>
             <li>U.S. Census Bureau, 1900-2010 Decennial Census.</li>
-            <li>City of Boston Planning Department Research Division Estimates, 2020 - 2024. 
+            <li>City of Boston Planning Department Research Division Estimates, 2020 - 2025. 
               <ul>
               <li>The Research Division creates annual population estimates for Boston to provide alternative estimates to those produced by the US Census Bureau, which continue to underestimate Boston's population following the disrupted 2020 Census.</li> 
               <li>A detailed explanation of the evidence for the need for revised population estimates can be found <a href="https://www.bostonplans.org/documents/research-other/rationale-for-creating-alternatives-to-census-esti" target="_blank">here</a>. A presentation overview of the undercount of Boston's population can be found <a href="https://www.bostonplans.org/documents/research-other/undercount-of-boston-s-population-presentation" target="_blank">here</a>. A detailed explanation of the population estimate methodology can be found <a href="https://www.bostonplans.org/documents/research-other/summary-population-adjustment-and-projection-metho" target="_blank">here</a>.</li>
