@@ -26,6 +26,7 @@ import {
   secondOptions,
   quarterlyFormatter,
   CustomTooltip,
+  DevPipelineCustomTooltip,
   GraphContainer
 } from "../utils.js"
 import {
@@ -274,7 +275,7 @@ const RealEstateDevelopment = () => {
                   // {...this.props}
                   formatter={commaFormatter}
                   // payload={CustomPayload}
-                  content={<CustomTooltip />} 
+                  content={<DevPipelineCustomTooltip />} 
                   // formatter= {
                   //   (value) => ( value > 0 ) ? value : null
                   // }
