@@ -104,7 +104,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext"><span className="accentSubText"> Permitted Housing </span>Units</h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText"> Housing Starts</span></h4>
               <div className="takeawayCardImageContainer">
                 <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Building 6@4x.png")}/>
               </div>
@@ -129,7 +129,7 @@ const RealEstateDevelopment = () => {
           </div>
           <div className="col-md justify-content-center text-center">
             <div className="indicatorContainer">
-              <h4 className="indicatorSubtext">Net<span className="accentSubText"> Permitted Income-Restricted </span>Units</h4>
+              <h4 className="indicatorSubtext"><span className="accentSubText"> Income-Restricted Housing Starts</span></h4>
               <div className="takeawayCardImageContainer">
                 <img className="takeawayCardImage" src={require("../images/takeaway_card_icons/Mortgage 2@4x.png")}/>
               </div>
