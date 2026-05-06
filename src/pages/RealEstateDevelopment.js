@@ -342,7 +342,7 @@ const RealEstateDevelopment = () => {
         </div>
         <div className="row mh-20 gx-0 gy-0 graph-row">
           <div className="col-12 col-md-6 graph-column">
-            <h6 className="chartTitle">Net Permitted Market Rate and Affordable Housing Units</h6>
+            <h6 className="chartTitle">Gross Housing Starts (Market Rate and Income-Restricted)</h6>
             <GraphContainer data={netUnits} height={graphHeight} width="98%">
               <BarChart
                 width={500}
@@ -379,7 +379,7 @@ const RealEstateDevelopment = () => {
 
               </BarChart>
             </GraphContainer>
-            <p className="citation">Source: Mayor’s Office of Housing, net of demolitions.</p>
+            <p className="citation">Source: Mayor’s Office of Housing, construction permits issued by quarter.</p>
 
           </div>
           <div className="col-12 col-md-6 graph-column">
