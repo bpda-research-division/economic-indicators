@@ -28,6 +28,7 @@ import {
   quarterlyFormatter,
   commaFormatter,
   CustomTooltip,
+  DevPipelineCustomTooltip,
   maxKey,
   GraphContainer
 } from "../utils.js"
@@ -439,7 +440,7 @@ const CommercialHub = (props) => {
                   interval="equidistantPreserveStart"
                 />
                 <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip formatter={commaFormatter} content={<CustomTooltip />} />
+                <Tooltip formatter={commaFormatter} content={<DevPipelineCustomTooltip />} />
                 <Bar
                   stackId="a"
                   dataKey="Residential sqft"

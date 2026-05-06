@@ -258,6 +258,12 @@ const EconomicActivity = () => {
                   stroke="#091F2F"
                   dot={false}
                 />
+                <Line
+                  type="monotone"
+                  dataKey="Overall Transaction Counts"
+                  stroke="#FB4D42"
+                  dot={false}
+                />
               </LineChart>
             </GraphContainer>
             <p className="citation">Source: Mastercard Geographic Insights, adjusted for inflation.</p>

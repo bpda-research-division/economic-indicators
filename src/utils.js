@@ -126,6 +126,20 @@ export const CustomTooltip = (props) => {
     return null;
 };
 
+export const DevPipelineCustomTooltip = (props)=>{
+
+    if(props.payload[0]){
+        let total = props.payload[0].payload.Total;
+        const newPayload = [{
+            name:'Total sqft',
+            value:props.payload[0].payload.Total,
+        },...props.payload,
+    ];
+        return <_DefaultTooltipContent.DefaultTooltipContent {...props} payload={newPayload}/>;
+    }
+    return <_DefaultTooltipContent.DefaultTooltipContent {...props} />;
+};
+
 export const MBTACustomTooltip = (props) => {
 
     if(props.payload[0]){
